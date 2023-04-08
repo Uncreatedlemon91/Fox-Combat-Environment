@@ -88,7 +88,7 @@ if (_exists) then {
 				};
 				case "O_ARMOR": {
 					_type = "Armored";
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> ""EAST"" >> _faction >> _type);
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
 					_class = selectRandom _classData;
 					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classData);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
