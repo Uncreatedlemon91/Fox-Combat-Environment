@@ -63,28 +63,28 @@ if (_exists) then {
 			switch (_mkrType) do {
 				case "O_INF": {
 					_class = selectRandom ["o_acmosev_infantry_aa_team", "o_acmosev_infantry_assault_group", "o_acmosev_infantry_at_team", "o_acmosev_infantry_conscript_assault_group", "o_acmosev_infantry_conscript_mg_team", "o_acmosev_infantry_conscript_patrol", "o_acmosev_infantry_at_team", "o_acmosev_infantry_paratrooper_assault_group", "o_acmosev_infantry_patrol"];
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> "Infantry" >> _class);
-					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+					
+					["write", [_regiment, "SpawnClass", _class]] call _db;
 				};
 				case "O_MECH_INF": {
 					_class = selectRandom ["o_acmosev_mechanized_mechanized_infantry_tib_58", "o_acmosev_mechanized_mechanized_infantry_tib_58_copy_1", "o_acmosev_mechanized_mechanized_infantry_tib_80", "o_acmosev_mechanized_mechanized_infantry_tib_80_copy_1"];
-					_spawnGroup = ("true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> "Mechanized" >> _class));
-					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+					
+					["write", [_regiment, "SpawnClass", _class]] call _db;
 				};
 				case "O_MOTOR_INF": {
 					_class = selectRandom ["o_acmosev_motorized_motorized_infantry", "o_acmosev_motorized_motorized_infantry_2"];
-					_spawnGroup = ("true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> "Motorized" >> _class));
-					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+					
+					["write", [_regiment, "SpawnClass", _class]] call _db;
 				};
 				case "O_RECON": {
 					_class = selectRandom ["o_acmosev_specops_fac_4man", "o_acmosev_specops_hunter_team", "o_acmosev_specops_hunter_team_copy_1", "o_acmosev_specops_sabotage_team", "o_acmosev_specops_sabotage_team_copy_1"];
-					_spawnGroup = ("true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> "SpecOps" >> _class));
-					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+					
+					["write", [_regiment, "SpawnClass", _class]] call _db;
 				};
 				case "O_ARMOR": {
 					_class = selectRandom ["o_acmosev_armored_tank_section", "o_acmosev_armored_tank_platoon"];
-					_spawnGroup = ("true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> "Armored" >> _class));
-					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+					
+					["write", [_regiment, "SpawnClass", _class]] call _db;
 				};
 			};	
 
