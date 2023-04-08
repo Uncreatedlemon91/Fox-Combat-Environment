@@ -7,6 +7,7 @@ _rank = _data select 1;
 _pos = _data select 2;
 _class = _data select 3;
 _mkrType = _data select 4;
+_faction = _data select 5;
 
 format ["%1 Spawned at %2 Difficulty for %3!", _class, _rank, _regiment] remoteExec ["systemChat", 0];
 
