@@ -52,6 +52,7 @@ if (_exists) then {
 					_mkr setMarkerType _mkrType; 
 				};
 			};
+			_mkrtype = ["read", [_regiment, "Marker Type"]] call _db;
 			_mkr setMarkerSize [0.4, 0.4];
 			_mkr setMarkerAlpha _mkrAlpha;
 
