@@ -47,7 +47,7 @@ if (_exists) then {
 					["write", [_regiment, "Marker Type", _mkrType]] call _db
 				};
 			};
-			_mkr = createMarker [format ["%1 - %2", _regiment, _trgPos]]; 
+			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000]]; 
 			_mkr setMarkerType _mkrType; 
 			_mkr setMarkerSize [0.4, 0.4];
 			_mkr setMarkerAlpha _mkrAlpha;
