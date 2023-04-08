@@ -62,23 +62,33 @@ if (_exists) then {
 			// Determine Group class / type by marker selected.
 			switch (_mkrType) do {
 				case "O_INF": {
-					_spawnGroup = ["Infantry", _faction] call FCE_fnc_getSpawn;
+					_classData = ("true" configClasses (configfile >> "CfgGroups" >> "EAST" >> _faction >> "Infantry")) apply {configName _x};
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _class);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_MECH_INF": {
-					_spawnGroup = ["Mechanized", _faction] call FCE_fnc_getSpawn;
+					_classData = ("true" configClasses (configfile >> "CfgGroups" >> "EAST" >> _faction >> "Mechanized")) apply {configName _x};
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _class);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_MOTOR_INF": {
-					_spawnGroup = ["Motorized", _faction] call FCE_fnc_getSpawn;
+					_classData = ("true" configClasses (configfile >> "CfgGroups" >> "EAST" >> _faction >> "Motorized")) apply {configName _x};
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _class);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_RECON": {
-					_spawnGroup = ["SpecOps", _faction] call FCE_fnc_getSpawn;
+					_classData = ("true" configClasses (configfile >> "CfgGroups" >> "EAST" >> _faction >> "SpecOps")) apply {configName _x};
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _class);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_ARMOR": {
-					_spawnGroup = ["Armored", _faction] call FCE_fnc_getSpawn;
+					_classData = ("true" configClasses (configfile >> "CfgGroups" >> "EAST" >> _faction >> "Armored")) apply {configName _x};
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _class);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 			};	
