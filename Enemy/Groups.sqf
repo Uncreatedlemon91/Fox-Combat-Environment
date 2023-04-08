@@ -26,29 +26,32 @@ if (_exists) then {
 
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
+			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _pos]; 
 			switch (_type) do {
 				case "Infantry": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db
+					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					_mkr setMarkerType _mkrType; 
 				};
 
 				case "Mechanized": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.3, "O_MECH_INF", 0.5, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.2]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db
+					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					_mkr setMarkerType _mkrType; 
 				};
 
 				case "Motorized": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.1, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db
+					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					_mkr setMarkerType _mkrType; 
 				};
 
 				case "SpecOps": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.2, "O_RECON", 0.6, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db
+					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					_mkr setMarkerType _mkrType; 
 				};
 			};
-			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _pos]; 
-			_mkr setMarkerType _mkrType; 
 			_mkr setMarkerSize [0.4, 0.4];
 			_mkr setMarkerAlpha _mkrAlpha;
 
@@ -61,7 +64,6 @@ if (_exists) then {
 					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
-
 				case "O_MECH_INF": {
 					_type = "Mechanized";
 					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
