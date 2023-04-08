@@ -26,7 +26,8 @@ if (_exists) then {
 
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
-			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _pos]; 
+			_mkrPos = [_pos, 0, 25, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
 			switch (_type) do {
 				case "Infantry": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
@@ -59,46 +60,29 @@ if (_exists) then {
 			// Determine Group class / type by marker selected.
 			switch (_mkrType) do {
 				case "O_INF": {
-					_type = "Infantry"; 
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
-					_class = selectRandom _classData;
-					_classCfg = configName _class;
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classCfg);
+					_spawnGroup = ["Infantry", _faction] call FCE_fnc_getSpawn;
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_MECH_INF": {
-					_type = "Mechanized";
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
-					_class = selectRandom _classData;
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classCfg);
+					_spawnGroup = ["Mechanized", _faction] call FCE_fnc_getSpawn;
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_MOTOR_INF": {
-					_type = "Motorized";
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
-					_class = selectRandom _classData;
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classCfg);
+					_spawnGroup = ["Motorized", _faction] call FCE_fnc_getSpawn;
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_RECON": {
-					_type = "SpecOps";
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
-					_class = selectRandom _classData;
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classCfg);
+					_spawnGroup = ["SpecOps", _faction] call FCE_fnc_getSpawn;
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
 				};
 				case "O_ARMOR": {
-					_type = "Armored";
-					_classData = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type);
-					_class = selectRandom _classData;
-					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _faction >> _type >> _classCfg);
+					_spawnGroup = ["Armored", _faction] call FCE_fnc_getSpawn;
 					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
-
 				};
 			};	
 
 			// Create trigger to spawn AI.
-			_trgPos = [_pos, 0, 500, 5, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_trgPos = [_mkrPos, 0, 500, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
 			_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];

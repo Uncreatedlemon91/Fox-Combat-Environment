@@ -1,0 +1,10 @@
+class cfgFunctions 
+{
+	class FCE
+	{
+		class Enemy
+		{
+			class getSpawnGroup{};
+		};
+	};
+};
