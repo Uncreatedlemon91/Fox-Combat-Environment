@@ -90,6 +90,7 @@ if (_exists) then {
 
 			// Create trigger to spawn AI.
 			_trgPos = [_mkrPos, 0, 500, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_spawnGroup = ["read", [_regiment, "SpawnClass"]] call _db;
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
 			_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
