@@ -26,7 +26,7 @@ if (_exists) then {
 
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
-			_mkrPos = [_pos, 0, 25, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_mkrPos = [_pos, 0, 500, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			["write", [_regiment, "Position", _mkrPos]] call _db;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
 			
@@ -89,12 +89,12 @@ if (_exists) then {
 			};	
 
 			// Create trigger to spawn AI.
-			_trgPos = [_mkrPos, 0, 500, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_trgPos = [_mkrPos, 0, 1, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_spawnGroup = ["read", [_regiment, "SpawnClass"]] call _db;
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
 			_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-			_trg setVariable ["RegimentData", [_regiment, _rank, _trgPos, _spawnGroup]];
+			_trg setVariable ["RegimentData", [_regiment, _rank, _trgPos, _spawnGroup, _mkrType]];
 			_trg setTriggerStatements ["this", "_data = thisTrigger getVariable 'RegimentData'; [_data] execVM 'Enemy\SpawnEnemy.sqf'", ""];
 		};
 	} forEach _sections;
