@@ -1,6 +1,11 @@
-params ["_faction"]; 
+// Pull data from main mission database.
+_mainDB = ["new", format ["%1 on %2", missionName, worldName]] call oo_inidbi;
+_faction = ["read", ["Mission Factions", "OPFOR"]] call _mainDb;
+
+// Pull data from Regiment Database.
 _Regdb = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call oo_inidbi;
 
+// Create Group Database
 _db = ["new", format ["Groups in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
@@ -19,13 +24,25 @@ if (_exists) then {
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
 			switch (_type) do {
-				case "Infantry": {_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]};
+				case "Infantry": {
+					_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
+					["write", [_regiment, "Marker Type", _mkrType]] call _db
+				};
 
-				case "Mechanized": {_mkrType = selectRandomWeighted ["O_INF", 0.3, "O_MECH_INF", 0.5, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.2]};
+				case "Mechanized": {
+					_mkrType = selectRandomWeighted ["O_INF", 0.3, "O_MECH_INF", 0.5, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.2]; 
+					["write", [_regiment, "Marker Type", _mkrType]] call _db
+				};
 
-				case "Motorized": {_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.1, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]};
+				case "Motorized": {
+					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.1, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
+					["write", [_regiment, "Marker Type", _mkrType]] call _db
+				};
 
-				case "SpecOps": {_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.2, "O_RECON", 0.6, "O_ARMOR", 0.1]};
+				case "SpecOps": {
+					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.2, "O_RECON", 0.6, "O_ARMOR", 0.1]; 
+					["write", [_regiment, "Marker Type", _mkrType]] call _db
+				};
 			};
 			_mkr = createMarker [format ["%1 - %2", _regimentName, _trgPos]]; 
 			_mkr setMarkerType _mkrType; 
@@ -34,23 +51,44 @@ if (_exists) then {
 
 			// Determine Group class / type by marker selected.
 			switch (_mkrType) do {
-				case "O_INF": {_type = "Infantry"};
-				case "O_MECH_INF": {_type = "Mechanized"};
-				case "O_MOTOR_INF": {_type = "Motorized"};
-				case "O_RECON": {_type = "SpecOps"};
-				case "O_ARMOR": {_type = "Armored"};
-			};
-			// Find group class to pass onto spawngroup script. 
-			_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
-			_class = selectRandom _classData;
-			_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+				case "O_INF": {
+					_type = "Infantry"; 
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+				};
 
-			// Save to the Group Database.
-			["write", [_regiment, "GroupID", random 500]] call _db;
-			["write", [_regiment, "Position", _pos]] call _db;
-			["write", [_regiment, "Rank", _rank]] call _db;
-			["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
-			["write", [_regiment, "Marker Type", _mkrType]] call _db;
+				case "O_MECH_INF": {
+					_type = "Mechanized";
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+				};
+				case "O_MOTOR_INF": {
+					_type = "Motorized";
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+				};
+				case "O_RECON": {
+					_type = "SpecOps";
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+				};
+				case "O_ARMOR": {
+					_type = "Armored";
+					_classData = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type);
+					_class = selectRandom _classData;
+					_spawnGroup = "true" configClasses (configFile >> "CfgGroups" >> east >> _faction >> _type >> _classData);
+					["write", [_regiment, "SpawnPath", _spawnGroup]] call _db;
+
+				};
+			};	
 
 			// Create trigger to spawn AI.
 			_trgPos = [_pos, 0, 500, 5, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;

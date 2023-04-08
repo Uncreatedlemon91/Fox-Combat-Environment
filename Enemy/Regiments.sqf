@@ -1,6 +1,5 @@
 // Regiment module. 
 // Allows ai to generate regiments that are setup in the map.
-params ["_faction"];
 
 // Check for database.
 _db = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call oo_inidbi;
@@ -27,10 +26,10 @@ if (_exists) then {
 
 		// Regiment Values
 		switch (_size) do {
-			case "Platoon": {_grpCount = round (random [8, 12, 15])};
-			case "Regiment": {_grpCount = round (random [12, 15, 18])};
-			case "Battalion": {_grpCount = round (random [22, 26, 30])};
-			default {_grpCount = round (random [8, 15, 25])};
+			case "Platoon": {_grpCount = round (random [8, 12, 15]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			case "Regiment": {_grpCount = round (random [12, 15, 18]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			case "Battalion": {_grpCount = round (random [22, 26, 30]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			default {_grpCount = round (random [8, 15, 25]); ["write", [_regimentName, "Size", _grpCount]] call _db;};
 		};
 		_rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 
@@ -47,6 +46,6 @@ if (_exists) then {
 		["write", [_regimentName, "Rank", _rank]] call _db;
 		["write", [_regimentName, "Position", _regimentPos]] call _db;
 	};
-	
-	[_faction] execVM "Enemy\Groups.sqf";
+
+	[] execVM "Enemy\Groups.sqf";
 };
