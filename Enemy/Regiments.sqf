@@ -23,7 +23,7 @@ if (_exists) then {
 		// Regiment Name
 		_type = ["Infantry", "Mechanized", "Motorized", "SpecOps"];
 		_Size = ["Platoon", "Regiment", "Battalion"];
-		_regimentName = format ["%1 | %2 %3", round (random 300), _type, _size];
+		_regimentName = format ["%1 - %2 %3", round (random 300), _type, _size];
 
 		// Regiment Values
 		switch (_size) do {
@@ -43,7 +43,7 @@ if (_exists) then {
 		// Save Regiment to database.
 		["write", [_regimentName, "Name", _regimentName]] call _db;
 		["write", [_regimentName, "Type", _type]] call _db;
-		["write", [_regimentName, "Size", _size]] call _db;
+		["write", [_regimentName, "Size", _grpCount]] call _db;
 		["write", [_regimentName, "Rank", _rank]] call _db;
 		["write", [_regimentName, "Position", _regimentPos]] call _db;
 	};
