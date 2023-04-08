@@ -26,8 +26,10 @@ if (_exists) then {
 
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
-			_mkrPos = [_pos, 0, 25, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_mkrPos = [_pos, 0, 25, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			["write", [_regiment, "Position", _mkrPos]] call _db;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
+			
 			switch (_type) do {
 				case "Infantry": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
