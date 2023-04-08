@@ -21,9 +21,9 @@ if (_exists) then {
 		_regimentPos = [_worldPos, 0, 50, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 
 		// Regiment Name
-		_type = ["Infantry", "Mechanized", "Motorized", "SpecOps"];
-		_Size = ["Platoon", "Regiment", "Battalion"];
-		_regimentName = format ["%1 - %2 %3", round (random 300), _type, _size];
+		_type = selectRandom ["Infantry", "Mechanized", "Motorized", "SpecOps"];
+		_Size = selectRandom ["Platoon", "Regiment", "Battalion"];
+		_regimentName = format ["%1 %2 %3", round (random 300), _type, _size];
 
 		// Regiment Values
 		switch (_size) do {
@@ -35,7 +35,7 @@ if (_exists) then {
 		_rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 
 		// Add Marker for Regiment 
-		_mkr = createMarker [format ["%1 - %2", _regimentName, _regimentPos]]; 
+		_mkr = createMarker [format ["%1 - %2", _regimentName, _regimentPos], _regimentPos]; 
 		_mkr setMarkerType "O_HQ"; 
 		_mkr setMarkerSize [1, 1];
 		_mkr setMarkerAlpha _mkrAlpha;
