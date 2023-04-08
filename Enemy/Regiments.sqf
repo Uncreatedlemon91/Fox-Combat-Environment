@@ -9,7 +9,7 @@ _mkrAlpha = 1;
 
 if (_exists) then {
 	// Database exists, spawn existing regiments from database. 
-	[_faction] execVM "Enemy\Groups.sqf";
+	[] execVM "Enemy\Groups.sqf";
 } else {
 	// Database does not exist, create new regiments.
 	_regimentCount = round (random [75, 100, 125]);
@@ -38,11 +38,11 @@ if (_exists) then {
 		_mkr setMarkerType "O_HQ"; 
 		_mkr setMarkerSize [1, 1];
 		_mkr setMarkerAlpha _mkrAlpha;
+		_mkr setMarkerText _regimentName;
 				
 		// Save Regiment to database.
 		["write", [_regimentName, "Name", _regimentName]] call _db;
 		["write", [_regimentName, "Type", _type]] call _db;
-		["write", [_regimentName, "Size", _grpCount]] call _db;
 		["write", [_regimentName, "Rank", _rank]] call _db;
 		["write", [_regimentName, "Position", _regimentPos]] call _db;
 	};

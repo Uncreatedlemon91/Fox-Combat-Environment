@@ -12,6 +12,9 @@ _exists = "exists" call _db;
 _mkrAlpha = 1;
 
 if (_exists) then {
+
+
+} else {
 	_sections = "getSections" call _RegDb;
 	{
 		// Gather information from Regiment Database.
@@ -99,8 +102,5 @@ if (_exists) then {
 			_trg setTriggerStatements ["this", "_data = thisTrigger getVariable 'RegimentData'; [_data] execVM 'Enemy\SpawnEnemy.sqf'", ""];
 		};
 	} forEach _sections;
-
-} else {
-
 };
 

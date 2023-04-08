@@ -25,4 +25,4 @@ if (_exists) then {
 };
 
 // Run modules.
-[_opfor] execVM "Enemy\Regiments.sqf";				// Create Regiments on the map.
+[] execVM "Enemy\Regiments.sqf";				// Create Regiments on the map.
