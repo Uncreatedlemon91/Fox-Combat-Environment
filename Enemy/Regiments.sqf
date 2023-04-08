@@ -6,6 +6,8 @@ params ["_faction"];
 _db = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
+_mkrAlpha = 1;
+
 if (_exists) then {
 	// Database exists, spawn existing regiments from database. 
 	[_faction] execVM "Enemy\Groups.sqf";
@@ -19,7 +21,7 @@ if (_exists) then {
 		_regimentPos = [_worldPos, 0, 50, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 
 		// Regiment Name
-		_type = ["Infantry", "Mechanized", "Motorized", "Special Operations"];
+		_type = ["Infantry", "Mechanized", "Motorized", "SpecOps"];
 		_Size = ["Platoon", "Regiment", "Battalion"];
 		_regimentName = format ["%1 | %2 %3", round (random 300), _type, _size];
 
@@ -31,6 +33,12 @@ if (_exists) then {
 			default {_grpCount = round (random [8, 15, 25])};
 		};
 		_rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
+
+		// Add Marker for Regiment 
+		_mkr = createMarker [format ["%1 - %2", _regimentName, _regimentPos]]; 
+		_mkr setMarkerType "O_HQ"; 
+		_mkr setMarkerSize [1, 1];
+		_mkr setMarkerAlpha _mkrAlpha;
 				
 		// Save Regiment to database.
 		["write", [_regimentName, "Name", _regimentName]] call _db;
