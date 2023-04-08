@@ -15,7 +15,7 @@ if (_exists) then {
 	// Database does not exist, create new regiments.
 	_regimentCount = round (random [75, 100, 125]);
 
-	for "_i" from 0 to _regimentCount {
+	for "_i" from 0 to _regimentCount do {
 		// For each regiment, do this.
 		_worldPos = [["AO"], ["BASE"]] call BIS_fnc_randomPos;
 		_regimentPos = [_worldPos, 0, 50, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
