@@ -26,3 +26,4 @@ if (_exists) then {
 
 // Run modules.
 [] execVM "Enemy\Regiments.sqf";				// Create Regiments on the map.
+[] execVM "Logistics\Init.sqf";					// Start Logistics Module
