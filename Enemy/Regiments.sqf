@@ -10,6 +10,8 @@ _mkrAlpha = 0;
 if (_exists) then {
 	// Database exists, spawn existing regiments from database. 
 	[] execVM "Enemy\Groups.sqf";
+	
+
 } else {
 	// Database does not exist, create new regiments.
 	_regimentCount = round (random [75, 100, 125]);
