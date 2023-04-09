@@ -18,17 +18,14 @@ if (_exists) then {
 		// Current result is saved in variable _x
 		_regiment = ["read", [_x, "Name"]] call _db;
 		_regimentPos = ["read", [_x, "Position"]] call _db;
+
+		// Add Marker for Regiment 
+		_mkr = createMarker [format ["%1 - %2", _regiment, _regimentPos], _regimentPos]; 
+		_mkr setMarkerType "O_HQ"; 
+		_mkr setMarkerSize [1, 1];
+		_mkr setMarkerAlpha _mkrAlpha;
+		_mkr setMarkerText _regiment;
 	} forEach _sections;
-
-	// Add Marker for Regiment 
-	_mkr = createMarker [format ["%1 - %2", _regiment, _regimentPos], _regimentPos]; 
-	_mkr setMarkerType "O_HQ"; 
-	_mkr setMarkerSize [1, 1];
-	_mkr setMarkerAlpha _mkrAlpha;
-	_mkr setMarkerText _regiment;
-
-
-
 } else {
 	// Database does not exist, create new regiments.
 	_regimentCount = round (random [75, 100, 125]);

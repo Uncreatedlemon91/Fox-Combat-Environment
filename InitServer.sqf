@@ -27,4 +27,4 @@ if (_exists) then {
 // Run modules.
 [] execVM "Enemy\Regiments.sqf";				// Create Regiments on the map.
 [] execVM "Logistics\Init.sqf";					// Start Logistics Module
-[] execVM "Player\PlayerPersistence";			// Start Player Persistence
+[] execVM "Player\PlayerPersistence.sqf";			// Start Player Persistence
