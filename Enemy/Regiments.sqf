@@ -21,11 +21,11 @@ if (_exists) then {
 	} forEach _sections;
 
 	// Add Marker for Regiment 
-	_mkr = createMarker [format ["%1 - %2", _regimentName, _regimentPos], _regimentPos]; 
+	_mkr = createMarker [format ["%1 - %2", _regiment, _regimentPos], _regimentPos]; 
 	_mkr setMarkerType "O_HQ"; 
 	_mkr setMarkerSize [1, 1];
 	_mkr setMarkerAlpha _mkrAlpha;
-	_mkr setMarkerText _regimentName;
+	_mkr setMarkerText _regiment;
 
 
 
