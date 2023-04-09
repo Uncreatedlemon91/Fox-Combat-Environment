@@ -93,6 +93,7 @@ if (_exists) then {
 			_trgPos = [_mkrPos, 0, 1, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_spawnGroup = ["read", [_section, "SpawnClass"]] call _db;
 			_faction = ["read", ["Mission Factions", "OPFOR"]] call _mainDB;
+			
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
 			_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
