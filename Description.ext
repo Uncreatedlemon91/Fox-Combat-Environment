@@ -1,2 +1,2 @@
-#include "BaseControls.hpp"
-#include "LogiMenu.hpp"
+#include "Interfaces\BaseControls.hpp"
+#include "Interfaces\LogiMenu.hpp"
