@@ -11,7 +11,7 @@ _faction = ["read", ["Mission Factions", "Opfor"]] call _db;
 		// Current result is saved in variable _x
 		_added = _listbox lbAdd getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 		_listbox lbSetData [_x, _added];
-		_listbox lbsetTextRight [_added, getNumber (configFile >> "CfgVehicles" >> _x >> "armor")];
+		// _listbox lbsetTextRight [_added, getNumber (configFile >> "CfgVehicles" >> _x >> "armor")];
 		// _listbox lbSetPicture [_added, (getText (configFile >> "CfgVehicles" >> _x >> "editorPreview"))];
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
