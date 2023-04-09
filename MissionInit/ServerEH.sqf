@@ -13,12 +13,6 @@ _player = _uid call BIS_fnc_getUnitByUid;
 	["write", ["Player Persistence", "Position", _pos]] call _db;
 	["write", ["Player Persistence", "Direction", _dir]] call _db;
 	["write", ["Player Persistence", "Loadout", _loadout]] call _db;
-
-	while {alive _player} do {
-		_pos = getPosASL _player;
-		_dir = getDir _player;
-		_Loadout = getUnitLoadout _player;
-	};
 }];
 
 
