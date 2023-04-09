@@ -24,34 +24,36 @@ if (_exists) then {
 		_rank = ["read", [_x, "Rank"]] call _RegDb;
 		_pos = ["read", [_x, "Position"]] call _RegDb;
 
+		_section = format ["%1 - %2", _regiment, round (random 1000)];
+
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
 			_mkrPos = [_pos, 0, 500, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
-			["write", [_regiment, "Position", _mkrPos]] call _db;
+			["write", [_section, "Position", _mkrPos]] call _db;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
 			
 			switch (_type) do {
 				case "Infantry": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.5, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					["write", [_section, "Marker Type", _mkrType]] call _db;
 					_mkr setMarkerType _mkrType; 
 				};
 
 				case "Mechanized": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.3, "O_MECH_INF", 0.5, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.2]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					["write", [_section, "Marker Type", _mkrType]] call _db;
 					_mkr setMarkerType _mkrType; 
 				};
 
 				case "Motorized": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.1, "O_MOTOR_INF", 0.4, "O_RECON", 0.2, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					["write", [_section, "Marker Type", _mkrType]] call _db;
 					_mkr setMarkerType _mkrType; 
 				};
 
 				case "SpecOps": {
 					_mkrType = selectRandomWeighted ["O_INF", 0.2, "O_MECH_INF", 0.2, "O_MOTOR_INF", 0.2, "O_RECON", 0.6, "O_ARMOR", 0.1]; 
-					["write", [_regiment, "Marker Type", _mkrType]] call _db;
+					["write", [_section, "Marker Type", _mkrType]] call _db;
 					_mkr setMarkerType _mkrType; 
 				};
 			};
@@ -64,27 +66,27 @@ if (_exists) then {
 				case "O_INF": {
 					_class = selectRandom ["o_acmosev_infantry_aa_team", "o_acmosev_infantry_assault_group", "o_acmosev_infantry_at_team", "o_acmosev_infantry_conscript_assault_group", "o_acmosev_infantry_conscript_mg_team", "o_acmosev_infantry_conscript_patrol", "o_acmosev_infantry_at_team", "o_acmosev_infantry_paratrooper_assault_group", "o_acmosev_infantry_patrol"];
 					
-					["write", [_regiment, "SpawnClass", _class]] call _db;
+					["write", [_section, "SpawnClass", _class]] call _db;
 				};
 				case "O_MECH_INF": {
 					_class = selectRandom ["o_acmosev_mechanized_mechanized_infantry_tib_58", "o_acmosev_mechanized_mechanized_infantry_tib_58_copy_1", "o_acmosev_mechanized_mechanized_infantry_tib_80", "o_acmosev_mechanized_mechanized_infantry_tib_80_copy_1"];
 					
-					["write", [_regiment, "SpawnClass", _class]] call _db;
+					["write", [_section, "SpawnClass", _class]] call _db;
 				};
 				case "O_MOTOR_INF": {
 					_class = selectRandom ["o_acmosev_motorized_motorized_infantry", "o_acmosev_motorized_motorized_infantry_2"];
 					
-					["write", [_regiment, "SpawnClass", _class]] call _db;
+					["write", [_section, "SpawnClass", _class]] call _db;
 				};
 				case "O_RECON": {
 					_class = selectRandom ["o_acmosev_specops_fac_4man", "o_acmosev_specops_hunter_team", "o_acmosev_specops_hunter_team_copy_1", "o_acmosev_specops_sabotage_team", "o_acmosev_specops_sabotage_team_copy_1"];
 					
-					["write", [_regiment, "SpawnClass", _class]] call _db;
+					["write", [_section, "SpawnClass", _class]] call _db;
 				};
 				case "O_ARMOR": {
 					_class = selectRandom ["o_acmosev_armored_tank_section", "o_acmosev_armored_tank_platoon"];
 					
-					["write", [_regiment, "SpawnClass", _class]] call _db;
+					["write", [_section, "SpawnClass", _class]] call _db;
 				};
 			};	
 
