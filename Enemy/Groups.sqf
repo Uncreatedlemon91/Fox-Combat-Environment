@@ -9,7 +9,7 @@ _Regdb = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call 
 _db = ["new", format ["Groups in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-_mkrAlpha = 1;
+_mkrAlpha = 0;
 
 if (_exists) then {
 
@@ -26,7 +26,7 @@ if (_exists) then {
 
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
-			_mkrPos = [_pos, 0, 500, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_mkrPos = [_pos, 10, 750, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
 			_section = format ["%1 - %2", _regiment, round (random 1000)];
 			["write", [_section, "Position", _mkrPos]] call _db;
@@ -93,7 +93,7 @@ if (_exists) then {
 			_trgPos = [_mkrPos, 0, 1, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_spawnGroup = ["read", [_section, "SpawnClass"]] call _db;
 			_faction = ["read", ["Mission Factions", "OPFOR"]] call _mainDB;
-			
+
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
 			_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];

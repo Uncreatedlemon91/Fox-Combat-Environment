@@ -5,7 +5,7 @@
 _db = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-_mkrAlpha = 1;
+_mkrAlpha = 0;
 
 if (_exists) then {
 	// Database exists, spawn existing regiments from database. 
@@ -26,9 +26,9 @@ if (_exists) then {
 
 		// Regiment Values
 		switch (_size) do {
-			case "Platoon": {_grpCount = round (random [8, 12, 15]); ["write", [_regimentName, "Size", _grpCount]] call _db};
-			case "Regiment": {_grpCount = round (random [12, 15, 18]); ["write", [_regimentName, "Size", _grpCount]] call _db};
-			case "Battalion": {_grpCount = round (random [22, 26, 30]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			case "Platoon": {_grpCount = round (random [4, 8, 10]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			case "Regiment": {_grpCount = round (random [8, 12, 16]); ["write", [_regimentName, "Size", _grpCount]] call _db};
+			case "Battalion": {_grpCount = round (random [12, 16, 20]); ["write", [_regimentName, "Size", _grpCount]] call _db};
 			default {_grpCount = round (random [8, 15, 25]); ["write", [_regimentName, "Size", _grpCount]] call _db;};
 		};
 		_rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
