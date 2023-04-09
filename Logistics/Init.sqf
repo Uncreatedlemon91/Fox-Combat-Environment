@@ -1,8 +1,8 @@
+_db = ["new", format ["%1 on %2", missionName, worldName]] call oo_inidbi;
+_faction = ["read", ["Mission Factions", "Opfor"]] call _db;
+
 [LogiLapt, ["Open Logistics Menu", {
 	createDialog "LogiMenu";
-	_db = ["new", format ["%1 on %2", missionName, worldName]] call oo_inidbi;
-	_faction = ["read", ["Mission Factions", "Opfor"]] call _db;
-
 	_vehs = "configName _x isKindof 'Car' && gettext (_x >> 'faction') == _faction" configClasses (configFile >> "CfgVehicles");
 
 
