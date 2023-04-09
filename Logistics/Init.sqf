@@ -7,7 +7,6 @@
 
 
 	_listbox = findDisplay 1 displayCtrl 1500;
-	_listBox = ctrlAddEventHandler [""]
 	{
 		// Current result is saved in variable _x
 		_added = _listbox lbAdd (getText (configFile >> "CfgVehicles" >> _x >> "displayName"));
