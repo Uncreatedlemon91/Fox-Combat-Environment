@@ -3,7 +3,7 @@ _db = ["new", format ["%1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
 // Create Server Event Handlers 
-execVM "MissionInit\ServerEH.sqf";
+[] execVM "ServerEH.sqf";
 
 
 if (_exists) then {
@@ -27,3 +27,4 @@ if (_exists) then {
 // Run modules.
 [] execVM "Enemy\Regiments.sqf";				// Create Regiments on the map.
 [] execVM "Logistics\Init.sqf";					// Start Logistics Module
+[] execVM "Player\PlayerPersistence";			// Start Player Persistence

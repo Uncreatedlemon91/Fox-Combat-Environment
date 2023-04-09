@@ -5,12 +5,29 @@
 _db = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-_mkrAlpha = 0;
+_mkrAlpha = 1;
 
 if (_exists) then {
 	// Database exists, spawn existing regiments from database. 
 	[] execVM "Enemy\Groups.sqf";
-	
+
+	// Get Regiment info 
+	_sections = "getSections" call _db;
+
+	{
+		// Current result is saved in variable _x
+		_regiment = ["read", [_x, "Name"]] call _db;
+		_regimentPos = ["read", [_x, "Position"]] call _db;
+	} forEach _sections;
+
+	// Add Marker for Regiment 
+	_mkr = createMarker [format ["%1 - %2", _regimentName, _regimentPos], _regimentPos]; 
+	_mkr setMarkerType "O_HQ"; 
+	_mkr setMarkerSize [1, 1];
+	_mkr setMarkerAlpha _mkrAlpha;
+	_mkr setMarkerText _regimentName;
+
+
 
 } else {
 	// Database does not exist, create new regiments.

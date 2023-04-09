@@ -1,19 +1,20 @@
-// Save / Load player persistence.
-params ["_uid"];
-_player = _uid call BIS_fnc_getUnitByUid;
-_db = ["new", ["%1 - %2", _name, _uid]] call oo_inidbi;
-_pos = getPosASL _player;
-_dir = getDir _player;
-_Loadout = getUnitLoadout _player;
+while {true} do {
+	{
+		// Current result is saved in variable _x
+		_name = name _x;
+		_uid = getPlayerUID _x;
+		_pos = getPosASL _x;
+		_dir = getDir _x;
+		_Loadout = getUnitLoadout _x;
 
-["write", ["Player Persistence", "Position", _pos]] call _db;
-["write", ["Player Persistence", "Direction", _dir]] call _db;
-["write", ["Player Persistence", "Loadout", _loadout]] call _db;
+		_db = ["new", format ["%1 - %2", _name, _uid]] call oo_inidbi;
 
-while {alive _player} do {
-	_pos = getPosASL _player;
-	_dir = getDir _player;
-	_Loadout = getUnitLoadout _player;
+		["write", ["Player Information", "Name", _name]] call _db;
+		["write", ["Player Information", "UID", _uid]] call _db;
+
+		["write", ["Player Persistence", "Position", _pos]] call _db;
+		["write", ["Player Persistence", "Direction", _dir]] call _db;
+		["write", ["Player Persistence", "Loadout", _loadout]] call _db;
+	} forEach allPlayers;
 	sleep 5;
 };
-
