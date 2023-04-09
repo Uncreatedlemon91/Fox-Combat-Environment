@@ -15,7 +15,7 @@ if (_exists) then {
 } else {
 	// Database does not exist, create initial information.
 	_blufor = selectRandom ["ACM_B_NAG"];
-	_opfor = selectRandom ["ACM_O_SEV"];
+	_opfor = selectRandom ["ACM_O_HDF"];
 	_funds = round (random [40, 80, 120]);
 
 	["write", ["Mission Factions", "OPFOR", _opfor]] call _db;
