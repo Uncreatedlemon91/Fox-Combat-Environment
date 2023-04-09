@@ -24,13 +24,12 @@ if (_exists) then {
 		_rank = ["read", [_x, "Rank"]] call _RegDb;
 		_pos = ["read", [_x, "Position"]] call _RegDb;
 
-		_section = format ["%1 - %2", _regiment, round (random 1000)];
-
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
 			_mkrPos = [_pos, 0, 500, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			["write", [_section, "Position", _mkrPos]] call _db;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
+			_section = format ["%1 - %2", _regiment, round (random 1000)];
 			
 			switch (_type) do {
 				case "Infantry": {
@@ -57,7 +56,7 @@ if (_exists) then {
 					_mkr setMarkerType _mkrType; 
 				};
 			};
-			_mkrtype = ["read", [_regiment, "Marker Type"]] call _db;
+			_mkrtype = ["read", [_section, "Marker Type"]] call _db;
 			_mkr setMarkerSize [0.4, 0.4];
 			_mkr setMarkerAlpha _mkrAlpha;
 
@@ -92,7 +91,7 @@ if (_exists) then {
 
 			// Create trigger to spawn AI.
 			_trgPos = [_mkrPos, 0, 1, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
-			_spawnGroup = ["read", [_regiment, "SpawnClass"]] call _db;
+			_spawnGroup = ["read", [_section, "SpawnClass"]] call _db;
 			_faction = ["read", ["Mission Factions", "OPFOR"]] call _mainDB;
 			_trg = createTrigger ["EmptyDetector", _trgPos, true];
 			_trg setTriggerArea [800, 800, 0, false];
