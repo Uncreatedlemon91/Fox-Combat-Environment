@@ -6,6 +6,8 @@ addMissionEventHandler ["PlayerConnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	_db = ["new", format ["%1 - %2", _name, _uid]] call oo_inidbi;
 	_exists = "Exists" call _db;
+	["write", ["Player Information", "Name", _name]] call _db;
+	["write", ["Player Information", "UID", _uid]] call _db;
 	["write", ["Player Company Information", "Roles", []]] call _db;
 	["write", ["Player Company Information", "S-Shops", []]] call _db;
 
