@@ -47,5 +47,5 @@ if (_exists) then {
 		["write", [_regimentName, "Position", _regimentPos]] call _db;
 	};
 
-	[] execVM "Enemy\Groups.sqf";
+	execVM "Enemy\Groups.sqf";
 };
