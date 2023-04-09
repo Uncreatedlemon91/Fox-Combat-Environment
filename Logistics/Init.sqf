@@ -14,5 +14,5 @@
 		_listbox lbsetTextRight [_added, (getNumber (configFile >> "CfgVehicles" >> _x >> "armor"))];
 		_listbox lbSetPicture [_added, (getText (configFile >> "CfgVehicles" >> _x >> "editorPreview"))];
 	} forEach _vehs;
-	}]] remoteExec ["addAction", 0, true];
+}]] remoteExec ["addAction", 0, true];
 
