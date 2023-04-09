@@ -27,9 +27,9 @@ if (_exists) then {
 		for "_i" from 0 to _size do {
 			// Create a marker for Group 
 			_mkrPos = [_pos, 0, 500, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
-			["write", [_section, "Position", _mkrPos]] call _db;
 			_mkr = createMarker [format ["%1 - %2", _regiment, random 2000], _mkrPos]; 
 			_section = format ["%1 - %2", _regiment, round (random 1000)];
+			["write", [_section, "Position", _mkrPos]] call _db;
 			
 			switch (_type) do {
 				case "Infantry": {
