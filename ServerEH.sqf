@@ -8,6 +8,14 @@ addMissionEventHandler ["PlayerConnected", {
 	["write", ["Player Company Information", "Roles", []]] call _db;
 	["write", ["Player Company Information", "S-Shops", []]] call _db;
 
+	_unit = _uid call BIS_fnc_getUnitByUid;
+	_pos = ["read", ["Player Persistence", "Position"]] call _db;
+	_dir = ["read", ["Player Persistence", "Direction"]] call _db;
+	_loadout = ["read", ["Player Persistence", "Loadout"]] call _db;
+
+	_unit setPosASL _pos;
+	_unit setDir _dir;
+	_unit setUnitLoadout _loadout;
 }];
 
 // Save player information when they disconnect. 
