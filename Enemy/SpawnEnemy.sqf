@@ -15,6 +15,11 @@ switch (_mkrType) do {
 	case "O_INF": {
 		_grp = [_pos, east, (configFile >> "CfgGroups" >> "East" >> _faction >> "Infantry" >> _class)] call BIS_fnc_spawnGroup;
 
+		{
+			// Current result is saved in variable _x
+			zeusCam addCuratorEditableObjects [_x, true];
+		} forEach units _grp;
+
 		_task = selectRandom ["Camp", "Patrol", "Hunt"];
 		switch (_task) do {
 			case "Camp": {[_grp, _pos, 50] call lambs_wp_fnc_taskCamp;};
