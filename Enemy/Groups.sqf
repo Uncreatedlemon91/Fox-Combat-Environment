@@ -9,7 +9,7 @@ _Regdb = ["new", format ["Regiments in %1 on %2", missionName, worldName]] call 
 _db = ["new", format ["Groups in %1 on %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-_mkrAlpha = 0;
+_mkrAlpha = 1;
 
 if (_exists) then {
 	_sections = "getSections" call _db;

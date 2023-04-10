@@ -9,6 +9,16 @@
 		_added = _listbox lbAdd getText (_x >> "displayName");
 		_listbox lbsetTextRight [_added, str (getNumber (_x >> "armor"))];
 		_listbox lbSetPicture [_added, (getText (_x >> "editorPreview"))];
+
+		_veh = configName _x;
+		buttonSetAction [1600, "
+			_listbox = findDisplay 1 displayCtrl 1500;
+			_index = lbCurSel _listbox;
+			_name = _listbox lbText _index;
+			_clientID = clientOwner;
+			_funds = [[_clientID], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
+			
+		"] 
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
 

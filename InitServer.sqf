@@ -10,7 +10,7 @@ if (_exists) then {
 	// Database already exists, load information if needed.
 	_opfor = ["read", ["Mission Factions", "OPFOR"]] call _db;
 	_blufor = ["read", ["Mission Factions", "BLUFOR"]] call _db;
-	_logiFunds = ["read", ["Mission Logistics", "Funds"]] call _db;
+	_funds = ["read", ["Mission Logistics", "Funds"]] call _db;
 
 } else {
 	// Database does not exist, create initial information.

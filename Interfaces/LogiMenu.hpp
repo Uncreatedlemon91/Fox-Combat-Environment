@@ -28,7 +28,7 @@ class LogiMenu
 		class List_Items: RscListbox
 		{
 		idc = 1500;
-		x = 0.304062 * safezoneW + safezoneX;
+		x = 0.8 * safezoneW + safezoneX;
 		y = 0.247 * safezoneH + safezoneY;
 		w = 0.190781 * safezoneW;
 		h = 0.506 * safezoneH;
