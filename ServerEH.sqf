@@ -11,6 +11,13 @@ addMissionEventHandler ["PlayerConnected", {
 	["write", ["Player Company Information", "Roles", []]] call _db;
 	["write", ["Player Company Information", "S-Shops", []]] call _db;
 
+	// Disable channels 
+	_channels = [0, 1, 2, 3, 4];
+	{
+		// Current result is saved in variable _x
+		_x enableChannel [false, false];
+	} forEach _channels;
+
 	if (_exists) then {
 		_unit = _uid call BIS_fnc_getUnitByUid;
 		_pos = ["read", ["Player Persistence", "Position"]] call _db;
