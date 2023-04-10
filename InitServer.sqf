@@ -4,7 +4,7 @@ _exists = "exists" call _db;
 
 // Create Server Event Handlers 
 [] execVM "ServerEH.sqf";
-
+[] execVM "Ambience\MissionSetup.sqf";
 
 if (_exists) then {
 	// Database already exists, load information if needed.
