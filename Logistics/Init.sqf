@@ -7,7 +7,7 @@
 	{
 		// Current result is saved in variable _x
 		_added = _listbox lbAdd getText (_x >> "displayName");
-		_listbox lbsetTextRight [_added, (getNumber (_x >> "armor"))];
+		_listbox lbsetTextRight [_added, str (getNumber (_x >> "armor"))];
 		_listbox lbSetPicture [_added, (getText (_x >> "editorPreview"))];
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
