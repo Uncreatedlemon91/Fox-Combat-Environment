@@ -9,11 +9,12 @@
 		_added = _listbox lbAdd getText (_x >> "displayName");
 		_listbox lbsetTextRight [_added, str (getNumber (_x >> "armor"))];
 		_listbox lbSetPicture [_added, (getText (_x >> "editorPreview"))];
+		_listbox lbSetData [_added, configName _x];
 
-		_veh = configName _x;
 		buttonSetAction [1600, "
 			_listbox = findDisplay 1 displayCtrl 1500;
 			_index = lbCurSel _listbox;
+			_veh = _listbox lbData _index;
 			_name = _listbox lbText _index;
 			_cost = _listbox lbtextRight _index;
 			_clientID = clientOwner;
@@ -21,7 +22,7 @@
 			_newBalance = _funds - _cost;
 			[_newBalance, ['Logistics\SetFunds.sqf']] remoteExec ['execVM', 2];
 			_vehSpawn = _veh createVehicle position logi_spawn;
-			hint 'Object spawned!';
+			hint format ['%1 spawned!', _name];
 		"]
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
