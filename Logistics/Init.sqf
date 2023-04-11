@@ -18,12 +18,15 @@
 		_veh = _listbox lbData _index;
 		_name = _listbox lbText _index;
 		_cost = _listbox lbtextRight _index;
-		_clientID = clientOwner;
-		_funds = [[_clientID], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
+		_funds = [[_cost], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
 		_newBalance = _funds - _cost;
-		[_newBalance, ['Logistics\SetFunds.sqf']] remoteExec ['execVM', 2];
 		_vehSpawn = _veh createVehicle position logi_spawn;
 		hint format ['%1 spawned!', _name];"
 	];
+
+	buttonSetAction [1601, "
+		_funds = 'logistics\getFunds.sqf' remoteExec ['execVM', 2];
+		hint format ['Supplies remaining: %1'];
+	"]
 }]] remoteExec ["addAction", 0, true];
 
