@@ -1,6 +1,6 @@
 [LogiLapt, ["Open Logistics Menu", {
 	createDialog "LogiMenu";
-	_vehs = "configName _x isKindof 'Car' && gettext (_x >> 'faction') == 'ACM_O_HDF'" configClasses (configFile >> "CfgVehicles");
+	_vehs = "configName _x isKindof 'Car' && gettext (_x >> 'faction') == 'ACM_O_NDF'" configClasses (configFile >> "CfgVehicles");
 
 
 	_listbox = findDisplay 1 displayCtrl 1500;

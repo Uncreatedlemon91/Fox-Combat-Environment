@@ -1,2 +1,3 @@
-// Enable / Disable channels 
+// Adjust time flow in scenario 
 setTimeMultiplier 9;
+
