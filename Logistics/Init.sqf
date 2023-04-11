@@ -15,10 +15,12 @@
 			_listbox = findDisplay 1 displayCtrl 1500;
 			_index = lbCurSel _listbox;
 			_name = _listbox lbText _index;
+			_cost = _listbox lbtextRight _index;
 			_clientID = clientOwner;
 			_funds = [[_clientID], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
-			
-		"] 
+			_newBalance = _funds - _cost;
+			[_newBalance, ['Logistics\SetFunds.sqf']] remoteExec ['execVM', 2];
+		"]
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
 
