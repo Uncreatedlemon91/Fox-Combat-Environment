@@ -20,6 +20,8 @@
 			_funds = [[_clientID], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
 			_newBalance = _funds - _cost;
 			[_newBalance, ['Logistics\SetFunds.sqf']] remoteExec ['execVM', 2];
+			_vehSpawn = _veh createVehicle position logi_spawn;
+			hint 'Object spawned!';
 		"]
 	} forEach _vehs;
 }]] remoteExec ["addAction", 0, true];
