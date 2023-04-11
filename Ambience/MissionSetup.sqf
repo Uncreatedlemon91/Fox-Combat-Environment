@@ -1,2 +1,2 @@
 // Enable / Disable channels 
-setTimeMultiplier 12;
+setTimeMultiplier 9;
