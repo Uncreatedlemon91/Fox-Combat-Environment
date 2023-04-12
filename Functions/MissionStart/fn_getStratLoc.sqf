@@ -16,8 +16,9 @@ _locs = nearestLocations [[0,0,0], _locTypes, worldsize * 3];
 
 	// Create and add database for location
 	_db = ["new", format ["Locations - %1 %2", missionName, worldName]] call oo_inidbi;
-	["write", [name _x, "Position", position _x]] call _db;
-	["write", [name _x, "Loyalty", round (random 100)]] call _db;
-	["write", [name _x, "Population", count (nearestTerrainObjects [position _x, ["HOUSE"], 500])]] call _db;
-	["write", [name _x, "Type", type _x]] call _db;
+	["write", [text _x, "Name", text _x]] call _db;
+	["write", [text _x, "Position", position _x]] call _db;
+	["write", [text _x, "Loyalty", round (random 100)]] call _db;
+	["write", [text _x, "Population", count (nearestTerrainObjects [position _x, ["HOUSE"], 500])]] call _db;
+	["write", [text _x, "Type", type _x]] call _db;
 } forEach _locs;
