@@ -6,7 +6,7 @@ params ["_regiment"];
 _mkrAlpha = 1;
 
 // Get information from the database 
-_db = ["new", _regiment] call oo_inidbi;
+_db = ["new", format ["Regiment - %1", _regiment]] call oo_inidbi;
 _regimentName = ["read", ["Regiment Details", "Name"]] call _db;
 _regimentSize = ["read", ["Regiment Details", "Size"]] call _db;
 _regimentType = ["read", ["Regiment Details", "Type"]] call _db;

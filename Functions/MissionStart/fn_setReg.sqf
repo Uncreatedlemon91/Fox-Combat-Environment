@@ -22,7 +22,7 @@ _regimentFaction = _faction;
 */
 
 // Save data to the database 
-_db = ["new", _regimentName] call oo_inidbi;
+_db = ["new", format ["Regiment - %1", _regimentName]] call oo_inidbi;
 ["write", ["Regiment Details", "Name", _regimentName]] call _db;
 ["write", ["Regiment Details", "Size", _regimentSize]] call _db;
 ["write", ["Regiment Details", "Type", _regimentType]] call _db;
