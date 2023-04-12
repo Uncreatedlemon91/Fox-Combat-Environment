@@ -2,12 +2,9 @@ class CfgFunctions
 {
 	class FCE
 	{
-		class Logistics
+		class MissionStart
 		{
-			class getFunds {};
-			class setFunds {};
-			class openMenu {};
-			class getShopData {};
+			class getStratLoc {};
 		};
 	};
 };
