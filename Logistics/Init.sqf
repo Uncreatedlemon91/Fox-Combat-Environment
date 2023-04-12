@@ -19,7 +19,7 @@
 		_name = _listbox lbText _index;
 		_cost = _listbox lbtextRight _index;
 		_funds = [[_cost], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
-		_newBalance = _funds - _cost;
+		_newBalance = _funds - (getNumber (_veh >> 'armor'));
 		_vehSpawn = _veh createVehicle position logi_spawn;
 		hint format ['%1 spawned!', _name];"
 	];
