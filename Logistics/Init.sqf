@@ -1,4 +1,4 @@
-[LogiLapt, ["Open Logistics Menu", {[format ["%1 on %2", missionName, worldName], clientOwner] remoteExec ["fce_fnc_getShopData", 2]}]];
+[LogiLapt, ["Open Logistics Menu", {[format ["%1 on %2", missionName, worldName], clientOwner]}]] remoteExec ["fce_fnc_getShopData", 2];
 
 	
 
