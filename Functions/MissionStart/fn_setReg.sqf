@@ -22,14 +22,14 @@ _regimentFaction = _faction;
 */
 
 // Save data to the database 
-_db = ["new", format ["Regiment - %1", _regimentName]] call oo_inidbi;
-["write", ["Regiment Details", "Name", _regimentName]] call _db;
-["write", ["Regiment Details", "Size", _regimentSize]] call _db;
-["write", ["Regiment Details", "Type", _regimentType]] call _db;
-["write", ["Regiment Details", "Rank", _regimentRank]] call _db;
-["write", ["Regiment Details", "Radius", _regimentRadius]] call _db;
-["write", ["Regiment Details", "Supplies", _regimentSupply]] call _db;
-["write", ["Regiment Details", "Position", _regimentPosition]] call _db;
-["write", ["Regiment Details", "Faction", _regimentFaction]] call _db;
+_db = ["new", format ["Regiment - %1 %2", missionName, worldName]] call oo_inidbi;
+["write", [_regimentName, "Name", _regimentName]] call _db;
+["write", [_regimentName, "Size", _regimentSize]] call _db;
+["write", [_regimentName, "Type", _regimentType]] call _db;
+["write", [_regimentName, "Rank", _regimentRank]] call _db;
+["write", [_regimentName, "Radius", _regimentRadius]] call _db;
+["write", [_regimentName, "Supplies", _regimentSupply]] call _db;
+["write", [_regimentName, "Position", _regimentPosition]] call _db;
+["write", [_regimentName, "Faction", _regimentFaction]] call _db;
 
 _regimentName;
