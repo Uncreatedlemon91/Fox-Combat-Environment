@@ -7,7 +7,7 @@ class CfgFunctions
 			class getStratLoc {};
 			class setReg {};
 			class spawnGrp {};
-			class virtGroup {};
+			class virtGroups {};
 			class virtReg {};
 		};
 	};
