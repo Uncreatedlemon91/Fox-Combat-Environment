@@ -33,7 +33,7 @@ class LogiMenu
 		w = 0.190781 * safezoneW;
 		h = 0.506 * safezoneH;
 		};
-		class RscPicture_1200: RscPicture
+		/*class RscPicture_1200: RscPicture
 		{
 		idc = 1200;
 		text = "#(argb,8,8,3)color(1,1,1,1)";
@@ -41,6 +41,7 @@ class LogiMenu
 		y = 0.247 * safezoneH + safezoneY;
 		w = 0.190781 * safezoneW;
 		h = 0.418 * safezoneH;
+		*/
 		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
