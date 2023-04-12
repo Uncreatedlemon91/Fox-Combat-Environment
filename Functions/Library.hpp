@@ -5,6 +5,7 @@ class CfgFunctions
 		class MissionStart
 		{
 			class getStratLoc {};
+			class setReg {};
 		};
 	};
 };
