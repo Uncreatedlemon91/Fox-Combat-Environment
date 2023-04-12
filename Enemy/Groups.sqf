@@ -111,7 +111,7 @@ if (_exists) then {
 			};	
 
 			// Create trigger to spawn AI.
-			_trgPos = [_mkrPos, 0, 1, 10, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+			_trgPos = [_mkrPos, 0, 1, 25, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 			_spawnGroup = ["read", [_section, "SpawnClass"]] call _db;
 			_faction = ["read", ["Mission Factions", "OPFOR"]] call _mainDB;
 

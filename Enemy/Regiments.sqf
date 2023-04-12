@@ -33,7 +33,7 @@ if (_exists) then {
 	for "_i" from 0 to _regimentCount do {
 		// For each regiment, do this.
 		_worldPos = [["AO"], ["BASE"]] call BIS_fnc_randomPos;
-		_regimentPos = [_worldPos, 0, 50, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
+		_regimentPos = [_worldPos, 20, 200, 0, 0, 20, 0, ["BASE"]] call BIS_fnc_findSafePos;
 
 		// Regiment Name
 		_type = selectRandom ["Infantry", "Mechanized", "Motorized", "SpecOps"];
