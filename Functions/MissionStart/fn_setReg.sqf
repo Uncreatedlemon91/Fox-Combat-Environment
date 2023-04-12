@@ -8,7 +8,7 @@ _regimentType = selectRandom ["O_INF", "O_MECH_INF", "O_RECON", "O_MOT_INF"];
 _regimentRank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 _regimentRadius = round (random [1000, 1500, 3000]);
 _regimentSupply = round (random 300);
-_regimentPosition = [["AO"], ["BASE"]] call BIS_fnc_randomPos;
+_regimentPosition = [["AO"], ["BASE", "water"]] call BIS_fnc_randomPos;
 _regimentFaction = _faction;
 
 // Build enemy commander 
