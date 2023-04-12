@@ -4,47 +4,48 @@ class LogiMenu
 	class Controls
 	{
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by F. Lemon, v1.063, #Mutyxe)
+		// GUI EDITOR OUTPUT START (by F. Lemon, v1.063, #Wycaga)
 		////////////////////////////////////////////////////////
 
-		class Button_Purchase: RscButton
+		class ListV: RscListbox
 		{
-		idc = 1600;
-		text = "Purchase"; //--- ToDo: Localize;
-		x = 0.603125 * safezoneW + safezoneX;
-		y = 0.687 * safezoneH + safezoneY;
-		w = 0.0928125 * safezoneW;
-		h = 0.066 * safezoneH;
+			idc = 1500;
+			x = 0.365937 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.335156 * safezoneW;
+			h = 0.528 * safezoneH;
 		};
-		class Button_Balance: RscButton
+		class RscButton_1600: RscButton
 		{
-		idc = 1601;
-		text = "Check Balance"; //--- ToDo: Localize;
-		x = 0.505156 * safezoneW + safezoneX;
-		y = 0.687 * safezoneH + safezoneY;
-		w = 0.0928125 * safezoneW;
-		h = 0.066 * safezoneH;
+			idc = 1600;
+			text = "CLOSE"; //--- ToDo: Localize;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.088 * safezoneH;
+			action = closeDialog 2;
 		};
-		class List_Items: RscListbox
+		class RscButton_1601: RscButton
 		{
-		idc = 1500;
-		x = 0.8 * safezoneW + safezoneX;
-		y = 0.247 * safezoneH + safezoneY;
-		w = 0.190781 * safezoneW;
-		h = 0.506 * safezoneH;
+			idc = 1601;
+			text = "PURCHASE"; //--- ToDo: Localize;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.577 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.088 * safezoneH;
 		};
-		/*class RscPicture_1200: RscPicture
+		class RscButton_1602: RscButton
 		{
-		idc = 1200;
-		text = "#(argb,8,8,3)color(1,1,1,1)";
-		x = 0.505156 * safezoneW + safezoneX;
-		y = 0.247 * safezoneH + safezoneY;
-		w = 0.190781 * safezoneW;
-		h = 0.418 * safezoneH;
+			idc = 1602;
+			text = "CHECK FUNDS"; //--- ToDo: Localize;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.676 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.088 * safezoneH;
 		};
-		*/
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
 		////////////////////////////////////////////////////////
+
 	};
 };

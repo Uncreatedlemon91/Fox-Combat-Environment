@@ -1,5 +1,58 @@
-[LogiLapt, ["Open Logistics Menu", {
-	createDialog "LogiMenu";
+[LogiLapt, ["Open Logistics Menu", {[format ["%1 on %2", missionName, worldName], clientOwner] remoteExec ["fce_fnc_getShopData", 2]}]];
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*createDialog "LogiMenu";
 	_vehs = "configName _x isKindof 'Car' && gettext (_x >> 'faction') == 'ACM_B_NAG'" configClasses (configFile >> "CfgVehicles");
 
 
@@ -18,7 +71,7 @@
 		_veh = _listbox lbData _index;
 		_name = _listbox lbText _index;
 		_cost = _listbox lbtextRight _index;
-		_funds = [[_cost], ['Logistics\GetFunds.sqf']] remoteExec ['execVM', 2];
+		_funds = [_cost] remoteExec ['fce_fnc_getFunds', 2];
 		_newBalance = _funds - (getNumber (_veh >> 'armor'));
 		_vehSpawn = _veh createVehicle position logi_spawn;
 		hint format ['%1 spawned!', _name];"
