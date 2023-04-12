@@ -41,7 +41,7 @@ _db = ["new", format ["Groups - %1 %2", missionName, worldName]] call oo_inidbi;
 
 // Create group trigger 
 _trg = createTrigger ["EmptyDetector", _grpPos, true];
-_trg setVariable ["grp", _grpID];
+_trg setVariable ["grpData", _grpData];
 _trg setTriggerArea [800, 800, 0, false];
 _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-_trg setTriggerStatements ["this", "_grp = thisTrigger getVariable 'grp'; [_grp] call fce_fnc_spawnGrp", ""];
+_trg setTriggerStatements ["this", "_data = thisTrigger getVariable 'grpData'; [_data] call fce_fnc_spawnGrp", ""];
