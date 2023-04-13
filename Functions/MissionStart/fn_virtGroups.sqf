@@ -11,6 +11,7 @@ _regimentSupply = _data select 5;
 _regimentPosition = _data select 6;
 _regimentFaction = _data select 7;
 
+systemChat format ["%1", _data];
 
 // Define Group variables 
 switch (_regimentType) do {

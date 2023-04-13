@@ -14,6 +14,7 @@ _regimentRank = ["read", [_regiment, "Rank"]] call _db;
 _regimentRadius = ["read", [_regiment, "Radius"]] call _db;
 _regimentSupply = ["read", [_regiment, "Supplies"]] call _db;
 _regimentPosition = ["read", [_regiment, "Position"]] call _db;
+_regimentFaction = ["read", [_regiment, "Faction"]] call _db;
 
 // Create a Marker for the regiment for debug purposes 
 _mkr = createMarker [_regimentName, _regimentPosition];
@@ -30,10 +31,6 @@ _mkrRadius setMarkerColor "COLORRED";
 _mkrRadius setMarkerBrush "SolidBorder";
 
 // Virtualize Groups 
-_data = [];
-_keys = ["getKeys", _regiment] call _db;
-{
-	_data pushback _x;	
-} forEach _keys;
+_data = [_regimentName, _regimentSize, _regimentType, _regimentRank, _regimentRadius, _regimentSupply, _regimentPosition];
 
 [_data] call fce_fnc_virtGroups;
