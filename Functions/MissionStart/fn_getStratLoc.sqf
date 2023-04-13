@@ -5,11 +5,11 @@ Function searches for desired buildings in the map. Place a marker with designat
 
 params ["_locTypes", "_mkrAlpha"];
 
-_mkrAlpha = 1;
+_mkrAlpha = 0;
 _locs = nearestLocations [[0,0,0], _locTypes, worldsize * 3];
 {
 	// Create marker for visual representation
-	_mkr = createMarker [format ["%1 - %2", position _x, name _x], _locs];
+	_mkr = createMarker [format ["%1 - %2", position _x, name _x], position _x];
 	_mkr setMarkerType "hd_dot";
 	_mkr setMarkerColor "ColorGreen";
 	_mkr setMarkerAlpha _mkrAlpha;
