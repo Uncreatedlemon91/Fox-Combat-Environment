@@ -13,15 +13,22 @@ _regimentFaction = _data select 7;
 
 
 // Define Group variables 
-switch (_regimentType) do {
-	case "O_INF": {_type = selectRandomWeighted ["Infantry", 0.7, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.4]};
-
-	case "O_RECON": {_type = selectRandomWeighted ["Infantry", 0.4, "Armored", 0.1, "Mechanized", 0.1, "Motorized", 0.3, "SpecOps", 0.7, "Static", 0.2]};
-
-	case "O_MECH_INF": {_type = selectRandomWeighted ["Infantry", 0.5, "Armored", 0.2, "Mechanized", 0.7, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.1]};
-
-	case "O_MOTOR_INF": {_type = selectRandomWeighted ["Infantry", 0.3, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.8, "SpecOps", 0.3, "Static", 0.4]}
+if (_regimentType == "O_INF") then {
+	_type = selectRandomWeighted ["Infantry", 0.7, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.4]
 };
+
+if (_regimentType == "O_RECON") then {
+	_type = selectRandomWeighted ["Infantry", 0.4, "Armored", 0.1, "Mechanized", 0.1, "Motorized", 0.3, "SpecOps", 0.7, "Static", 0.2]
+};
+
+if (_regimentType == "O_MECH_INF") then {
+	_type = selectRandomWeighted ["Infantry", 0.5, "Armored", 0.2, "Mechanized", 0.7, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.1]
+};
+
+if (_regimentType == "O_MOTOR_INF") then {
+	_type = selectRandomWeighted ["Infantry", 0.3, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.8, "SpecOps", 0.3, "Static", 0.4]
+};
+
 
 _grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
 _grpConfig = selectRandom _grpCfg;
