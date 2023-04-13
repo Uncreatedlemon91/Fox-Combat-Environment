@@ -14,7 +14,6 @@ _grpConfig = _data select 4;
 _active = _data select 5;
 
 _grpRank = ["read", [_regiment, "Rank"]] call _db;
-["write", []]
 
 if (_active) then {
 	// Do nothing, ,the AI Group is spawned.
