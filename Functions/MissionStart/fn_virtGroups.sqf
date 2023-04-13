@@ -16,36 +16,41 @@ systemChat format ["%1", _data];
 // Define Group variables 
 if (_regimentType == "O_INF") then {
 	_type = selectRandomWeighted ["Infantry", 0.7, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.4]
+	_grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
+	_grpConfig = selectRandom _grpCfg;
+	_grpPos = [_regimentPosition, 0, 800, 10, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
+	_grpID = format ["%1 - %3 - %2", _regimentName, _type, random 1000];
+	_active = false;
 };
 
 if (_regimentType == "O_RECON") then {
 	_type = selectRandomWeighted ["Infantry", 0.4, "Armored", 0.1, "Mechanized", 0.1, "Motorized", 0.3, "SpecOps", 0.7, "Static", 0.2]
+	_grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
+	_grpConfig = selectRandom _grpCfg;
+	_grpPos = [_regimentPosition, 0, 800, 10, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
+	_grpID = format ["%1 - %3 - %2", _regimentName, _type, random 1000];
+	_active = false;
 };
 
 if (_regimentType == "O_MECH_INF") then {
 	_type = selectRandomWeighted ["Infantry", 0.5, "Armored", 0.2, "Mechanized", 0.7, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.1]
+	_grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
+	_grpConfig = selectRandom _grpCfg;
+	_grpPos = [_regimentPosition, 0, 800, 10, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
+	_grpID = format ["%1 - %3 - %2", _regimentName, _type, random 1000];
+	_active = false;
 };
 
 if (_regimentType == "O_MOTOR_INF") then {
 	_type = selectRandomWeighted ["Infantry", 0.3, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.8, "SpecOps", 0.3, "Static", 0.4]
+	_grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
+	_grpConfig = selectRandom _grpCfg;
+	_grpPos = [_regimentPosition, 0, 800, 10, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
+	_grpID = format ["%1 - %3 - %2", _regimentName, _type, random 1000];
+	_active = false;
 };
 
-/*
-switch (_regimentType) do {
-	case "O_INF": {_type = selectRandomWeighted ["Infantry", 0.7, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.4]};
 
-	case "O_RECON": {_type = selectRandomWeighted ["Infantry", 0.4, "Armored", 0.1, "Mechanized", 0.1, "Motorized", 0.3, "SpecOps", 0.7, "Static", 0.2]};
-
-	case "O_MECH_INF": {_type = selectRandomWeighted ["Infantry", 0.5, "Armored", 0.2, "Mechanized", 0.7, "Motorized", 0.4, "SpecOps", 0.3, "Static", 0.1]};
-
-	case "O_MOTOR_INF": {_type = selectRandomWeighted ["Infantry", 0.3, "Armored", 0.1, "Mechanized", 0.2, "Motorized", 0.8, "SpecOps", 0.3, "Static", 0.4]}
-};
-*/
-_grpCfg = "true" configClasses (configFile >> "CfgGroups" >> "EAST" >> _regimentFaction >> _type);
-_grpConfig = selectRandom _grpCfg;
-_grpPos = [_regimentPosition, 0, 800, 10, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
-_grpID = format ["%1 - %3 - %2", _regimentName, _type, random 1000];
-_active = false;
 
 // Create group marker 
 _mkr = createMarker [_grpID, _grpPos];
