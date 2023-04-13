@@ -10,5 +10,9 @@ class CfgFunctions
 			class virtGroups {};
 			class virtReg {};
 		};
+		class Logistics
+		{
+			class openMenu {};
+		}
 	};
 };
