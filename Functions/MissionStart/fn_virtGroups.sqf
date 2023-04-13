@@ -55,7 +55,7 @@ _mkr setMarkerColor "ColorBlue";
 // Save Group to database of Regiment 
 _grpData = [_grpID, _regimentName,  _grpPos, _type, _grpConfig, _active];
 _db = ["new", format ["Groups - %1 %2", missionName, worldName]] call oo_inidbi;
-["write", [_regimentName, _groupID, _grpData]] call _db;
+["write", [_regimentName, _grpID, _grpData]] call _db;
 
 // Create group trigger 
 _trg = createTrigger ["EmptyDetector", _grpPos, true];
