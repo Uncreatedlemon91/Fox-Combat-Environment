@@ -30,12 +30,3 @@ if !(_regdbExists) then {
 		[_x] call fce_fnc_virtReg;
 	} forEach _regSections;
 };
-
-
-while {true} do {
-	_start = [] call BIS_fnc_randomPos;
-	_stop = [] call BIS_fnc_randomPos;
-	_plane = selectRandom ["ACM_v_VTOL_01_Mas_Infantry", "ACM_V_Plane_su25", "ACM_V_Plane_Gripen"];
-	[_start, _stop, round(random [10, 40, 100]), "FULL", _plane] call BIS_fnc_ambientFlyby;
-	sleep 180;
-};
