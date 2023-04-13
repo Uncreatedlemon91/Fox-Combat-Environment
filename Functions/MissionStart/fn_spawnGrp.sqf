@@ -30,7 +30,7 @@ if (_grpActive) then {
 		_x setRank _grpRank;
 		_x addEventHandler ["Killed",{
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
-			_grpCount = count (group _unit);
+			_grpCount = count (units _units);
 			if (_grpCount < 2) then {
 				["deleteSection", _grpID] call _db;
 			};

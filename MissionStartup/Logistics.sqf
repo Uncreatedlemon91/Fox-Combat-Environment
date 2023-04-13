@@ -6,11 +6,29 @@ _exists = "exists" call _db;
 
 if (_exists) then {
 	// old data load 
+	fce_dataToSend = [];
+	_sections = "getSections" call _db;
+	{
+		// Current result is saved in variable _x
+		_name = ["read", [_x, "Name"]] call _db;
+		_class = ["read", [_x, "Class"]] call _db;
+		_image = ["read", [_x, "Image"]] call _db;
+		_cost = ["read", [_x, "Cost"]] call _db;
+		_weight = ["read", [_x, "Weight"]] call _db;
+		_canCarry = ["read", [_x, "canCarry"]] call _db;
+
+		_data = [_class, _name, _image, _cost, _weight, _canCarry];
+		fce_dataToSend pushback _data;
+	} forEach _sections;
+	
+
+	[logiLapt, ["Open Logistics Menu", {[fce_dataToSend] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
 } else {
+	_dataToSend = [];
 	// New data load 
 	["write", ["Supply Points", "Balance", round(random 200)]] call _db;
 	_grpCfg = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Car'" configClasses (configFile >> "CfgVehicles");
-	_dataToSend = [];
+	
 	{
 		// Current result is saved in variable _x
 		_class = configName _x;
@@ -28,9 +46,8 @@ if (_exists) then {
 		["write", [_name, "canCarry", _canCarry]] call _db;
 
 		_data = [_class, _name, _image, _cost, _weight, _canCarry];
-		_dataToSend pushback _data;
+		fce_dataToSend pushback _data;
 	} forEach _grpCfg;
-
-	systemChat format ["%1", _grpCfg];
-	[_grpCfg] call fce_fnc_openMenu;
-}
+	
+	[logiLapt, ["Open Logistics Menu", {[fce_dataToSend] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
+};

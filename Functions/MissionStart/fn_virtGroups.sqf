@@ -17,7 +17,7 @@ if !(_exists) then {
 
 	// Define Group variables 
 	for "_i" from 1 to _regimentSize do {
-		_grpPos = [_regimentPosition, 0, _regimentRadius, 3, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
+		_grpPos = [_regimentPosition, 0, _regimentRadius, 8, 0, 30, 0, ["BASE"]] call BIS_fnc_findSafePos;
 		_grpID = format ["%1 - %3 - %2", _regimentName, _regimentType, random 1000];
 		_active = false;
 
