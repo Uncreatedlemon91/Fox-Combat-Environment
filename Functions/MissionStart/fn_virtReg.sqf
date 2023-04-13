@@ -25,7 +25,7 @@ _mkr setMarkerSize [0.6, 0.6];
 // Create marker for a radius of the regiment (It's AO)
 _mkrRadius = createMarker [format ["%1_%2", _regimentName, _regimentRadius]];
 _mkrRadius setMarkerShape "ELLIPSE";
-_mkrRadius setMarkerAlpha 0.3;
+_mkrRadius setMarkerAlpha 1;
 _mkrRadius setMarkerSize [_regimentRadius, _regimentRadius];
 _mkrRadius setMarkerColor "COLORRED";
 _mkrRadius setMarkerBrush "SolidBorder";
