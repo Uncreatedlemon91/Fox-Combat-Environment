@@ -9,11 +9,11 @@ _list = findDisplay 1 displayCtrl 1500;
 {
 	// Current result is saved in variable _x
 	_data = _x select 1;
-	systemChat format ["_data = %1", _data];
+	[format ["_data = %1", _data]] remoteExec ["systemChat", 0];
 	{
 		// Current result is saved in variable _x
 		_classname = _x select 0;
-		systemChat format ["_classname = %1", _classname];
+		[format ["_classname = %1", _classname]] remoteExec ["systemChat", 0];
 		
 		_name = _x select 1;
 		_image = _x select 2;
