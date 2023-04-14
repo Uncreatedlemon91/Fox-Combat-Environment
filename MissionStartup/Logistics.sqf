@@ -19,10 +19,15 @@ if (_exists) then {
 
 		_data = [_class, _name, _image, _cost, _weight, _canCarry];
 		fce_dataToSend pushback _data;
+		
 	} forEach _sections;
 	
 
-	[logiLapt, ["Open Logistics Menu", {[fce_dataToSend] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
+	[logiLapt, ["Open Logistics Menu", {
+			params ["_target", "_caller", "_actionId", "_arguments"];
+			_mData = _target getVariable "MenuData";
+			[_mData] call fce_fnc_openMenu
+		}]]remoteExec ["addAction", 0, true];
 } else {
 	_dataToSend = [];
 	// New data load 
@@ -47,9 +52,13 @@ if (_exists) then {
 
 		_data = [_class, _name, _image, _cost, _weight, _canCarry];
 		fce_dataToSend pushback _data;
+		logiLapt setVariable ["MenuData", fce_dataToSend, true];
 	} forEach _grpCfg;
 	
-	[logiLapt, ["Open Logistics Menu", {[fce_dataToSend] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
+	[logiLapt, ["Open Logistics Menu", {
+		params ["_target", "_caller", "_actionId", "_arguments"];
+		_mData = _target getVariable "MenuData";
+		[_mData] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
 };
 
 // Create Task Missions to get new supplies 
