@@ -14,6 +14,6 @@ class CfgFunctions
 		{
 			class openMenu {};
 			class getLogiData {};
-		}
+		};
 	};
 };
