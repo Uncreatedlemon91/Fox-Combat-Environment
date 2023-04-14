@@ -4,7 +4,6 @@ Creates the enemy locations and situational items on the chosen map.
 // Variables to apply. 
 _faction = "ACM_O_HDF";
 
-
 // find enemy strategic locations + log them into database
 _TerrainLocs = [["RockArea", "Hill"], 1] call fce_fnc_getStratLoc;
 _TownLocs = [["Name", "NameCity", "NameVillage"], 1] call fce_fnc_getStratLoc;
@@ -30,3 +29,4 @@ if !(_regdbExists) then {
 		[_x] call fce_fnc_virtReg;
 	} forEach _regSections;
 };
+
