@@ -5,7 +5,7 @@ _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inid
 _exists = "exists" call _db;
 
 if (_exists) then {
-	_data = call fce_fnc_getLogiData;
+	_data = [_db] remoteExec ["fce_fnc_getLogiData", 0];
 
 	[logiLapt, ["Open Logistics Menu", {
 			[_data] call fce_fnc_openMenu;

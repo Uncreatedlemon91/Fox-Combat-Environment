@@ -1,8 +1,11 @@
 /* 
 Get Data from database 
 */
+params ["_db"];
+
 _sections = "getSections" call _db;
 _dataToSend = [];
+_funds = ["read", ["Supply Points", "Balance"]] call _db;
 {
 	// Current result is saved in variable _x
 	_name = ["read", [_x, "Name"]] call _db;
@@ -16,4 +19,4 @@ _dataToSend = [];
 	_dataToSend pushBack _data;
 } forEach _sections;
 
-_dataToSend;
+[_dataToSend, _funds];

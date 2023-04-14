@@ -23,7 +23,7 @@ class LogiMenu
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
 			h = 0.088 * safezoneH;
-			action = closeDialog 2;
+			action = "closeDialog 2";
 		};
 		class RscButton_1601: RscButton
 		{
