@@ -13,6 +13,7 @@ class CfgFunctions
 		class Logistics
 		{
 			class openMenu {};
+			class getLogiData {};
 		}
 	};
 };

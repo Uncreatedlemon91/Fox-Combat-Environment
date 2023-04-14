@@ -5,28 +5,10 @@ _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inid
 _exists = "exists" call _db;
 
 if (_exists) then {
-	// old data load 
-	fce_dataToSend = [];
-	_sections = "getSections" call _db;
-	{
-		// Current result is saved in variable _x
-		_name = ["read", [_x, "Name"]] call _db;
-		_class = ["read", [_x, "Class"]] call _db;
-		_image = ["read", [_x, "Image"]] call _db;
-		_cost = ["read", [_x, "Cost"]] call _db;
-		_weight = ["read", [_x, "Weight"]] call _db;
-		_canCarry = ["read", [_x, "canCarry"]] call _db;
-
-		_data = [_class, _name, _image, _cost, _weight, _canCarry];
-		fce_dataToSend pushback _data;
-		
-	} forEach _sections;
-	
+	_data = call fce_fnc_getLogiData;
 
 	[logiLapt, ["Open Logistics Menu", {
-			params ["_target", "_caller", "_actionId", "_arguments"];
-			_mData = _target getVariable "MenuData";
-			[_mData] call fce_fnc_openMenu
+			[_data] call fce_fnc_openMenu;
 		}]]remoteExec ["addAction", 0, true];
 } else {
 	_dataToSend = [];
