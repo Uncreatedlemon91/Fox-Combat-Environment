@@ -27,6 +27,7 @@ buttonSetAction [1601,
 	_dmg = random [0.2, 0.5, 0.7];
 	_veh setDamage _dmg;
 	_fuel = random [0.2, 0.5, 0.7];
+	[_veh, true, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
 	_veh setFuel _fuel;
 	closeDialog 2"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
