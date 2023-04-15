@@ -1,7 +1,7 @@
 /* 
 Receives data from server to client for menu 
 */
-params ["_items"];
+params ["_items", "_funds"];
 
 createDialog "LogiMenu";
 _list = findDisplay 1 displayCtrl 1500;

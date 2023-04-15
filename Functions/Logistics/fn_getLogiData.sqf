@@ -1,8 +1,9 @@
 /* 
 Get Data from database 
 */
-params ["_db"];
-
+params ["_clientID"];
+_db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+_exists = "exists" call _db;
 _sections = "getSections" call _db;
 _dataToSend = [];
 _funds = ["read", ["Supply Points", "Balance"]] call _db;
@@ -19,4 +20,4 @@ _funds = ["read", ["Supply Points", "Balance"]] call _db;
 	_dataToSend pushBack _data;
 } forEach _sections;
 
-[_dataToSend, _funds];
+[_dataToSend, _funds] remoteExec ["fce_fnc_openMenu", _clientID];

@@ -4,12 +4,14 @@ Establish supplies of logistics at Laptop
 _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-if (_exists) then {
-	_data = [_db] remoteExec ["fce_fnc_getLogiData", 0];
 
+
+if (_exists) then {
 	[logiLapt, ["Open Logistics Menu", {
-			[_data] call fce_fnc_openMenu;
-		}]]remoteExec ["addAction", 0, true];
+		params ["_target", "_caller", "_actionId", "_arguments"];
+		_clientID = clientOwner;
+		_clientID remoteExec ["fce_fnc_getLogiData", 2];
+	}]]remoteExec ["addAction", 0, true];
 } else {
 	_dataToSend = [];
 	// New data load 
