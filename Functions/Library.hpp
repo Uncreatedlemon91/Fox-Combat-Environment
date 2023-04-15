@@ -4,11 +4,7 @@ class CfgFunctions
 	{
 		class MissionStart
 		{
-			class getStratLoc {};
-			class setReg {};
-			class spawnGrp {};
-			class virtGroups {};
-			class virtReg {};
+			class spawnmkrgrp {};
 		};
 		class Logistics
 		{
