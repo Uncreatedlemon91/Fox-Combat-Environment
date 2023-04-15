@@ -25,7 +25,7 @@ buttonSetAction [1601,
 _hint ctrlSetText format ["Supplies: %1", _funds];
 
 {
-	for "_i" from 1 to (count _x - 1) do {
+	for "_i" from 0 to (count _x - 1) do {
 		_x params ["_classname", "_name", "_image", "_cost"];
 		_added = _list lbAdd _name;
 		_list lbSetData [_added, _classname];
