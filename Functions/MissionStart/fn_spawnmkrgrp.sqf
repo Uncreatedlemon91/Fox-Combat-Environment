@@ -21,10 +21,6 @@ if (_type == "o_inf") then {
 	if (_tasking == "Patrol") then {
 		[_grp, _pos, 500] call lambs_wp_fnc_taskPatrol;
 	};
-	{
-		// Current result is saved in variable _x
-		zeusCam addCuratorEditableObjects [[_x], true];
-	} forEach units _grp;
 
 	["write", [_mkr, "Class", _class]] call _db;
 	[_grp] execVM "MissionStartup\Cleanup.sqf";
@@ -56,7 +52,6 @@ if (_type == "o_armor") then {
 		[_grp, _pos, 500] call lambs_wp_fnc_taskPatrol;
 	};
 
-	zeusCam addCuratorEditableObjects [[_x], true];
 	["write", [_mkr, "Class", _class]] call _db;
 	[_grp] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
@@ -87,7 +82,6 @@ if (_type == "o_motor_inf") then {
 		[_grp, _pos, 500] call lambs_wp_fnc_taskPatrol;
 	};
 	
-	zeusCam addCuratorEditableObjects [[_x], true];
 	["write", [_mkr, "Class", _class]] call _db;
 	[_grp] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
@@ -143,7 +137,6 @@ if (_type == "o_mech_inf") then {
 		[_grp, _pos, 500] call lambs_wp_fnc_taskPatrol;
 	};
 	
-	zeusCam addCuratorEditableObjects [[_x], true];
 	["write", [_mkr, "Class", _class]] call _db;
 	[_grp] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
