@@ -28,10 +28,6 @@ buttonSetAction [1601,
 	_veh setDamage _dmg;
 	_fuel = random [0.2, 0.5, 0.7];
 	_veh setFuel _fuel;
-
-	clearBackpackCargoGlobal _veh;
-	clearWeaponCargoGlobal _veh;
-	clearMagazineCargoGlobal _veh;
 	closeDialog 2"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
 
