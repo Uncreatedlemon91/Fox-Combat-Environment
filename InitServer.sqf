@@ -6,4 +6,4 @@
 
 [] execVM "MissionStartup\SetEnemies.sqf";
 [] execVM "MissionStartup\Logistics.sqf";
-[] execVM "Persistence\Load.sqf";
+// [] execVM "Persistence\Load.sqf";
