@@ -88,3 +88,6 @@ if (_exists) then {
 [logiLapt, ["Open Logistics Menu", {
 	[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
 }]]remoteExec ["addAction", 0, true];
+
+refundTrg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+refundTrg setTriggerStatements [ "this", "{_veh = _x; {_veh deleteVehicleCrew _x} forEach crew _veh; deleteVehicle _veh} foreach (vehicles select {_x inArea thisTrigger});", ""];
