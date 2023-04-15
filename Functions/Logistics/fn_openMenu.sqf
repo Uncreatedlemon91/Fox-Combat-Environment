@@ -6,7 +6,9 @@ params ["_items", "_funds"];
 createDialog "LogiMenu";
 _list = findDisplay 1 displayCtrl 1500;
 _hint = findDisplay 1 displayCtrl 1602;
-[format ["_items = %1", _items]] remoteExec ["systemChat", 0];
+
+_populate = _items;
+[format ["_items = %1", _populate]] remoteExec ["systemChat", 0];
 [format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
 _hint buttonSetAction "Hint format ['Current Supply: %1', _funds]";
@@ -30,5 +32,5 @@ _hint ctrlSetText format ["Supplies: %1", _funds];
 		_list lbSetPicture [_added, _image];
 	} forEach _data;
 
-} forEach _items;
+} forEach _populate;
 
