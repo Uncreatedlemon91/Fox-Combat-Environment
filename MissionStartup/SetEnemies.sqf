@@ -11,7 +11,7 @@ if (_exists) then {
 		_mkr = createMarker [format ["%1 - %2", random 7000, _mkrType], _pos];
 		_mkr setMarkerType _mkrType;
 		_mkr setMarkerSize [0.7, 0.7];
-		_mkr setMarkerAlpha 0.2;
+		_mkr setMarkerAlpha 0;
 
 		_trg = createTrigger ["EmptyDetector", _pos, true];
 		_trg setTriggerArea [1000, 1000, 0, false];
@@ -28,7 +28,7 @@ if (_exists) then {
 		_mkr = createMarker [format ["%1 - %2", random 7000, _mkrType], _pos];
 		_mkr setMarkerType _mkrType;
 		_mkr setMarkerSize [0.7, 0.7];
-		_mkr setMarkerAlpha 0.1;
+		_mkr setMarkerAlpha 0;
 
 		_trg = createTrigger ["EmptyDetector", _pos, true];
 		_trg setTriggerArea [1000, 1000, 0, false];
