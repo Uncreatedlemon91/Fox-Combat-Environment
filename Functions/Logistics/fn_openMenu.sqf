@@ -25,6 +25,7 @@ buttonSetAction [1601,
 	_class = _list lbData _sel; 
 	_class = _class select 0;
 	_cost = _class select 1;
+	_funds = class select 2;
 	if (_cost > _funds) exitwith {systemChat 'You cannot afford this!'};
 	_veh = _class createVehicle position logi_spawn; 
 	_dmg = random [0.2, 0.5, 0.7];
