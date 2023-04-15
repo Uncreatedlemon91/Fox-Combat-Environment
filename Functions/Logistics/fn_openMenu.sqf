@@ -9,10 +9,12 @@ _hint = findDisplay 1 displayCtrl 1602;
 [format ["_items = %1", _items]] remoteExec ["systemChat", 0];
 [format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
+_hint buttonSetAction "Hint format ['Current Supply: %1', _funds]";
+_hint ctrlSetText format ["Supplies: %1", _funds];
 {
 	// Current result is saved in variable _x
 	[format ["ITEM = %1", _x]] remoteExec ["systemChat", 0];
-	_data = _x select 1;
+	_data = _x;
 	[format ["_data = %1", _data]] remoteExec ["systemChat", 0];
 	{
 		// Current result is saved in variable _x
@@ -30,5 +32,3 @@ _hint = findDisplay 1 displayCtrl 1602;
 
 } forEach _items;
 
-_hint setVariable ["funds", _funds];
-_hint buttonSetAction "Hint format ['Current Supply: %1', _funds]";
