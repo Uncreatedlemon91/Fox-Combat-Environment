@@ -11,13 +11,13 @@ if (_exists) then {
 		_mkr = createMarker [format ["%1 - %2", random 7000, _mkrType], _pos];
 		_mkr setMarkerType _mkrType;
 		_mkr setMarkerSize [0.7, 0.7];
-		_mkr setMarkerAlpha 0;
+		_mkr setMarkerAlpha 0.2;
 
 		_trg = createTrigger ["EmptyDetector", _pos, true];
 		_trg setTriggerArea [1000, 1000, 0, false];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setVariable ["grpMkr", _mkr, true];
-		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", ""];
+		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", "_mkr = thisTrigger getvariable 'grpMkr'; _mkr setMarkerAlpha 0.2"];
 	} forEach _sections;
 } else {
 	_countAI = round (random [1500, 1800, 2000]);

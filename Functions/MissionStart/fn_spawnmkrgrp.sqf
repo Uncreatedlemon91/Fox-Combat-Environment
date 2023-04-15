@@ -8,7 +8,7 @@ _active = ["read", [_mkr, "Active"]] call _db;
 if (_active) exitwith {};
 ["write", [_mkr, "Active", true]] call _db;
 
-_mkr setMarkerAlpha 0;
+_mkr setMarkerAlpha 0.1;
 
 if (_type == "o_inf") then {
 	_class = selectRandom ["o_acmohdf_infantry_squad", "o_acmohdf_infantry_weapons_squad", "o_acmohdf_infantry_at_team","o_acmohdf_infantry_aa_team"];
