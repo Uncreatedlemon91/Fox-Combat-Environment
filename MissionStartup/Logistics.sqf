@@ -5,11 +5,11 @@ _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inid
 _exists = "exists" call _db;
 
 if (_exists) then {
-	_data = [_db] remoteExec ["fce_fnc_getLogiData", 0];
-
 	[logiLapt, ["Open Logistics Menu", {
-			[_data] call fce_fnc_openMenu;
-		}]]remoteExec ["addAction", 0, true];
+		params ["_target", "_caller", "_actionId", "_arguments"];
+		_clientID = clientOwner;
+		_clientID remoteExec ["fce_fnc_getLogiData", 2];
+	}]]remoteExec ["addAction", 0, true];
 } else {
 	_dataToSend = [];
 	// New data load 
@@ -43,6 +43,7 @@ if (_exists) then {
 		[_mData] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
 };
 
+/*
 // Create Task Missions to get new supplies 
 _taskPos = [] call BIS_fnc_randomPos;
 _box = "CargoNet_01_box_F";
