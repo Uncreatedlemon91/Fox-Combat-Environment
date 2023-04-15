@@ -1,21 +1,22 @@
 while {true} do {
 	{
-		_type = typeOf _veh;
-		_pos = getPosASL _veh;
-		_dir = getDir _veh;
-		_dmg = damage _veh;
-		_fuel = fuel _veh;
+		_type = typeOf _x;
+		_pos = getPosASL _x;
+		_dir = getDir _x;
+		_dmg = damage _x;
+		_fuel = fuel _x;
 
-		_ammo = magazinesAmmo _veh;
+		_ammo = magazinesAmmo _x;
 
-		_items = getItemCargo _veh;
-		_mags = getMagazineCargo _veh;
-		_weps = getWeaponCargo _veh;
-		_backs = getBackpackCargo _veh;
+		_items = getItemCargo _x;
+		_mags = getMagazineCargo _x;
+		_weps = getWeaponCargo _x;
+		_backs = getBackpackCargo _x;
 
+		
 		// Save to database 
 		_db = ["new", format ["Vehicles %1 - %2", missionName, worldName]] call oo_inidbi;
-		_section = format ["%1 - %2", _type, netId _veh];
+		_section = format ["%1 - %2", _type, netId _x];
 		["write", [_section, "Type", _type]] call _db;
 		["write", [_section, "Position", _pos]] call _db;
 		["write", [_section, "Direction", _dir]] call _db;
