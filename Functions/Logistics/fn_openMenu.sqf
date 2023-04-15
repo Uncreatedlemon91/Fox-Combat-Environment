@@ -8,12 +8,13 @@ _list = findDisplay 1 displayCtrl 1500;
 _hint = findDisplay 1 displayCtrl 1602;
 _purchase = findDisplay 1 displayCtrl 1601;
 
-
+_hint setVariable ["funds", _funds];
 _populate = _items;
 // [format ["_items = %1", _populate]] remoteExec ["systemChat", 0];
 // [format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
-buttonSetAction [1602, "Hint format ['Current Supply: %1', _funds]"];
+buttonSetAction [1602, "_funds = this getVariable 'funds'; Hint format ['Current Supply: %1', _funds]"];
+buttonSetAction [1601, "_list = findDisplay 1 displayCtrl 1500; _sel = lbCurSel _list; _class = _list lbData _sel; _class createVehicle position player; closeDialog 2"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
 
 _populate apply {
