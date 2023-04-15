@@ -6,15 +6,18 @@ params ["_items", "_funds"];
 createDialog "LogiMenu";
 _list = findDisplay 1 displayCtrl 1500;
 _hint = findDisplay 1 displayCtrl 1602;
+_purchase = findDisplay 1 displayCtrl 1601;
+
 
 _populate = _items;
 // [format ["_items = %1", _populate]] remoteExec ["systemChat", 0];
 // [format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
-_hint buttonSetAction "Hint format ['Current Supply: %1', _funds]";
+buttonSetAction [1602, "Hint format ['Current Supply: %1', _funds]"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
 
 _populate apply {
+	[format ["_items = %1", _x]] remoteExec ["systemChat", 0];
 	_classname = _x select 0;
 	_name = _x select 1;
 	_image = _x select 2;
@@ -24,6 +27,7 @@ _populate apply {
 	_list lbsetTextRight [_added, _cost];
 	_list lbSetPicture [_added, _image];
 };
+
 
 /*{
 	[format ["ITEM = %1", _x]] remoteExec ["systemChat", 0];
