@@ -4,8 +4,6 @@ Establish supplies of logistics at Laptop
 _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
-
-
 if (_exists) then {
 	[logiLapt, ["Open Logistics Menu", {
 		params ["_target", "_caller", "_actionId", "_arguments"];
