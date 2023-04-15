@@ -19,4 +19,4 @@ _funds = ["read", ["Supply Points", "Balance"]] call _db;
 	_dataToSend pushBack _data;
 } forEach _sections;
 
-[_dataToSend, _funds] remoteExec ["fce_fnc_openMenu", 0];
+[_dataToSend, _funds] remoteExec ["fce_fnc_openMenu", _clientID];

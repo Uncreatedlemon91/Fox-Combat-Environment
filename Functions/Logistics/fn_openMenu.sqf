@@ -6,11 +6,13 @@ params ["_items", "_funds"];
 createDialog "LogiMenu";
 _list = findDisplay 1 displayCtrl 1500;
 _hint = findDisplay 1 displayCtrl 1602;
-
+[format ["_items = %1", _items]] remoteExec ["systemChat", 0];
+[format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
 {
 	// Current result is saved in variable _x
-	_data = _x select 0;
+	[format ["ITEM = %1", _x]] remoteExec ["systemChat", 0];
+	_data = _x select 1;
 	[format ["_data = %1", _data]] remoteExec ["systemChat", 0];
 	{
 		// Current result is saved in variable _x
