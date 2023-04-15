@@ -7,8 +7,7 @@ _exists = "exists" call _db;
 if (_exists) then {
 	[logiLapt, ["Open Logistics Menu", {
 		params ["_target", "_caller", "_actionId", "_arguments"];
-		_clientID = clientOwner;
-		_clientID remoteExec ["fce_fnc_getLogiData", 2];
+		[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
 	}]]remoteExec ["addAction", 0, true];
 } else {
 	_dataToSend = [];
