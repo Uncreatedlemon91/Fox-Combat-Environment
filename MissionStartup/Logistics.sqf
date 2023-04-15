@@ -5,10 +5,7 @@ _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inid
 _exists = "exists" call _db;
 
 if (_exists) then {
-	[logiLapt, ["Open Logistics Menu", {
-		params ["_target", "_caller", "_actionId", "_arguments"];
-		[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
-	}]]remoteExec ["addAction", 0, true];
+	
 } else {
 	_dataToSend = [];
 	// New data load 
@@ -30,21 +27,14 @@ if (_exists) then {
 		["write", [_name, "Cost", _cost]] call _db;
 		["write", [_name, "Weight", _weight]] call _db;
 		["write", [_name, "canCarry", _canCarry]] call _db;
-
-		_data = [_class, _name, _image, _cost, _weight, _canCarry];
-		fce_dataToSend pushback _data;
-		[logiLapt, ["Open Logistics Menu", {
-			params ["_target", "_caller", "_actionId", "_arguments"];
-			[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
-		}]]remoteExec ["addAction", 0, true];
 	} forEach _grpCfg;
-	
-	[logiLapt, ["Open Logistics Menu", {
-		params ["_target", "_caller", "_actionId", "_arguments"];
-		_mData = _target getVariable "MenuData";
-		[_mData] call fce_fnc_openMenu}]]remoteExec ["addAction", 0, true];
+
 };
 
+[logiLapt, ["Open Logistics Menu", {
+	params ["_target", "_caller", "_actionId", "_arguments"];
+	[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
+}]]remoteExec ["addAction", 0, true];
 /*
 // Create Task Missions to get new supplies 
 _taskPos = [] call BIS_fnc_randomPos;
