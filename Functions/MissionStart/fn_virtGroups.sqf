@@ -25,7 +25,7 @@ if !(_exists) then {
 		_mkr = createMarker [_grpID, _grpPos];
 		_mkr setMarkerType "hd_dot";
 		_mkr setMarkerColor "ColorBlue";
-		_mkr setMarkerAlpha 0;
+		_mkr setMarkerAlpha 1;
 
 		// Save Group to database of Regiment 
 		
