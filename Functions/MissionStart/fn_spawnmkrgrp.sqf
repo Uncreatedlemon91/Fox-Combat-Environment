@@ -113,7 +113,6 @@ if (_type == "o_mortar") then {
 	
 	[_grp] call lambs_wp_fnc_taskArtilleryRegister;
 
-	zeusCam addCuratorEditableObjects [[_x], true];
 	["write", [_mkr, "Class", _class]] call _db;
 	[_grp] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;

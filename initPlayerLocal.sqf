@@ -10,7 +10,7 @@ while {true} do {
 
 	// Send to server 
 	_data = [_name, _uid, _pos, _dir, _gear, _alive];
-	_data remoteExec ["fce_fnc_savePlayer", 2];
+	[_data] remoteExec ["fce_fnc_savePlayer", 2];
 
 	sleep 10;
 };

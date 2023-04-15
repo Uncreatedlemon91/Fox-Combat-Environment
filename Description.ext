@@ -1,4 +1,3 @@
 #include "Interfaces\BaseControls.hpp"
 #include "Interfaces\LogiMenu.hpp"
 #include "Functions\Library.hpp"
-#include "MissionStartup\Vehicles.hpp"
