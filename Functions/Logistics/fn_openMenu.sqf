@@ -20,7 +20,7 @@ buttonSetAction [1601,
 	clearBackpackCargoGlobal _veh;
 	clearWeaponCargoGlobal _veh;
 	clearMagazineCargoGlobal _veh;
-	[_veh] execVM 'Persistence\Vehicle.sqf';
+	[_veh] execVM 'Persistence\SaveVehicle.sqf';
 	closeDialog 2"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
 

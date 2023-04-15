@@ -33,12 +33,12 @@ if (_exists) then {
 	{
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round(random 50);
+		_cost = round(random 10);
 		_weight = 1;
 		_canCarry = true;
 		
 		["write", [_name, "Name", _name]] call _db;
-		["write", [_name, "Class", _class]] call _db;
+		["write", [_name, "Class", _x]] call _db;
 		["write", [_name, "Image", _image]] call _db;
 		["write", [_name, "Cost", _cost]] call _db;
 		["write", [_name, "Weight", _weight]] call _db;
@@ -50,6 +50,5 @@ if (_exists) then {
 
 
 [logiLapt, ["Open Logistics Menu", {
-	params ["_target", "_caller", "_actionId", "_arguments"];
 	[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
 }]]remoteExec ["addAction", 0, true];
