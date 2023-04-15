@@ -90,4 +90,14 @@ if (_exists) then {
 }]]remoteExec ["addAction", 0, true];
 
 refundTrg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-refundTrg setTriggerStatements [ "this", "{_veh = _x; {_veh deleteVehicleCrew _x} forEach crew _veh; deleteVehicle _veh} foreach (vehicles select {_x inArea thisTrigger});", ""];
+refundTrg setTriggerStatements [ "this", "
+	{_veh = _x;
+	{_veh deleteVehicleCrew _x} forEach crew _veh; 
+	deleteVehicle _veh} foreach (vehicles select {_x inArea thisTrigger});
+	_db = ['new', format ['Logistics - %1 %2', missionName, worldName]] call oo_inidbi;
+	_curFunds = ['read', ['Supply Points', 'Balance']] call _db;
+	_newFunds = _curFunds + round(random 20);
+	['write', ['Supply Points', 'Balance', _newFunds]] call _db;
+
+	[format ['New Funds: %1', _newFunds]] remoteExec ['systemChat', 0];
+	", ""];
