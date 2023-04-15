@@ -5,10 +5,12 @@ params ["_items", "_funds"];
 
 createDialog "LogiMenu";
 _list = findDisplay 1 displayCtrl 1500;
+_hint = findDisplay 1 displayCtrl 1602;
+
 
 {
 	// Current result is saved in variable _x
-	_data = _x select 1;
+	_data = _x select 0;
 	[format ["_data = %1", _data]] remoteExec ["systemChat", 0];
 	{
 		// Current result is saved in variable _x
@@ -22,5 +24,9 @@ _list = findDisplay 1 displayCtrl 1500;
 		_list lbSetData [_added, _classname];
 		_list lbsetTextRight [_added, _cost];
 		_list lbSetPicture [_added, _image];
-	} forEach _data ;
+	} forEach _data;
+
 } forEach _items;
+
+_hint setVariable ["funds", _funds];
+_hint buttonSetAction "Hint format ['Current Supply: %1', _funds]";
