@@ -13,10 +13,9 @@ _populate = _items;
 // [format ["_items = %1", _populate]] remoteExec ["systemChat", 0];
 // [format ["_funds = %1", _funds]] remoteExec ["systemChat", 0];
 
-buttonSetAction [1602, "_funds = this getVariable 'funds'; Hint format ['Current Supply: %1', _funds]"];
 buttonSetAction [1601, "_list = findDisplay 1 displayCtrl 1500; _sel = lbCurSel _list; _class = _list lbData _sel; _class createVehicle position player; closeDialog 2"];
 _hint ctrlSetText format ["Supplies: %1", _funds];
-
+diag_log ["_items", _items];
 _populate apply {
 	[format ["_items = %1", _x]] remoteExec ["systemChat", 0];
 	_classname = _x select 0;
@@ -28,7 +27,7 @@ _populate apply {
 	_list lbsetTextRight [_added, _cost];
 	_list lbSetPicture [_added, _image];
 };
-
+diag_log ["_items", _items]
 
 /*{
 	[format ["ITEM = %1", _x]] remoteExec ["systemChat", 0];

@@ -33,7 +33,10 @@ if (_exists) then {
 
 		_data = [_class, _name, _image, _cost, _weight, _canCarry];
 		fce_dataToSend pushback _data;
-		logiLapt setVariable ["MenuData", fce_dataToSend, true];
+		[logiLapt, ["Open Logistics Menu", {
+			params ["_target", "_caller", "_actionId", "_arguments"];
+			[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
+		}]]remoteExec ["addAction", 0, true];
 	} forEach _grpCfg;
 	
 	[logiLapt, ["Open Logistics Menu", {
