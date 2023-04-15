@@ -7,7 +7,6 @@ _exists = "exists" call _db;
 if (_exists) then {
 	[logiLapt, ["Open Logistics Menu", {
 		params ["_target", "_caller", "_actionId", "_arguments"];
-		_caller BIS_fnc_netId
 		[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
 	}]]remoteExec ["addAction", 0, true];
 } else {
