@@ -28,7 +28,7 @@ buttonSetAction [1601,
 	_veh setDamage _dmg;
 	_fuel = random [0.2, 0.5, 0.7];
 	_veh setFuel _fuel;
-	clearItemCargoGlobal _veh;
+
 	clearBackpackCargoGlobal _veh;
 	clearWeaponCargoGlobal _veh;
 	clearMagazineCargoGlobal _veh;
