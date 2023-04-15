@@ -20,7 +20,7 @@ _purchase = findDisplay 1 displayCtrl 1601;
 
 
 buttonSetAction [1601, 
-	"_list = findDisplay 1 displayCtrl 1500; 
+	"_list = findDisplay 1 displayCtrl 1500;
 	_sel = lbCurSel _list; 
 	_class = _list lbData _sel; 
 	_class = _class select 0;
