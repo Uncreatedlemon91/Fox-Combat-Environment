@@ -21,7 +21,7 @@ if (_exists) then {
 		_canCarry = true;
 		
 		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _x]] call _db;
+		["write", [_class, "Class", _class]] call _db;
 		["write", [_class, "Image", _image]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
@@ -31,7 +31,7 @@ if (_exists) then {
 	// Add Car vehicles 
 	_armored = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Armored'" configClasses (configFile >> "CfgVehicles");
 	{
-		_class = configName _x;
+		_class = configName _class;
 		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
 		_cost = round(random [100, 150, 200]);
@@ -61,7 +61,7 @@ if (_exists) then {
 		_canCarry = true;
 		
 		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _x]] call _db;
+		["write", [_class, "Class", _class_x]] call _db;
 		["write", [_class, "Image", _image]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
@@ -77,7 +77,7 @@ if (_exists) then {
 		_canCarry = true;
 		
 		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _x]] call _db;
+		["write", [_class, "Class", _class]] call _db;
 		["write", [_class, "Image", _image]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
@@ -93,7 +93,7 @@ if (_exists) then {
 		_canCarry = true;
 		
 		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _x]] call _db;
+		["write", [_class, "Class", _class]] call _db;
 		["write", [_class, "Image", _image]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
