@@ -8,8 +8,6 @@ _sections = "getSections" call _db;
 	_dmg = ["read", [_x, "Damage"]] call _db;
 	_fuel = ["read", [_x, "Fuel"]] call _db;
 
-	_ammo = ["read", [_x, "Ammo"]] call _db;
-
 	_items = ["read", [_x, "CargoItems"]] call _db;
 	_mags = ["read", [_x, "CargoMags"]] call _db;
 	_weps = ["read", [_x, "CargoWeps"]] call _db;
@@ -26,7 +24,6 @@ _sections = "getSections" call _db;
 	_veh setDamage _dmg;
 	_veh setFuel _fuel;
 
-	_veh setVehicleAmmo _ammo;
 	diag_log _veh;
 
 	{

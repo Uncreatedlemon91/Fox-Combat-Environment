@@ -6,8 +6,6 @@ while {true} do {
 		_dmg = damage _x;
 		_fuel = fuel _x;
 
-		_ammo = magazinesAmmo _x;
-
 		_items = getItemCargo _x;
 		_mags = getMagazineCargo _x;
 		_weps = getWeaponCargo _x;
