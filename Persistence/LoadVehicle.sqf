@@ -16,6 +16,10 @@ _sections = "getSections" call _db;
 
 	// Create new vehicle based on data input 
 	_veh = _type createVehicle _pos;
+	clearItemCargoGlobal _veh;
+	clearMagazineCargoGlobal _veh;
+	clearWeaponCargoGlobal _veh;
+	clearBackpackCargoGlobal _veh;
 	_veh setDir _dir;
 	_veh setDamage _dmg;
 	_veh setFuel _fuel;
