@@ -24,5 +24,7 @@ if (_cost > _funds) then {
 	[_veh, _weight] call ace_cargo_fnc_setSize;
 	_veh setFuel _fuel;
 	closeDialog 2;
+	_newBalance = _funds - _cost;
+	["write", ["Supply Points", "Balance", _newBalance]] call _db;
 };
 
