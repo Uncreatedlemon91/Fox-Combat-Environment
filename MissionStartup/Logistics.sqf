@@ -52,7 +52,7 @@ if (_exists) then {
 		"ACM_B_NAG_WeaponsBox", "ACM_B_NAG_SupportBox", "ACM_B_NAG_AmmoBox", "ACM_B_NAG_LaunchersBox", "ACM_B_NAG_WeaponsBox", "Item_ToolKit", "ACE_Wheel", 
 		"ACE_medicalSupplyCrate_advanced"];
 	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
-	_fortifications = "getText (_x >> 'vehicleClass') == 'Fortifications'" configClasses (configFile >> "CfgVehicles")
+	_fortifications = "getText (_x >> 'vehicleClass') == 'Fortifications'" configClasses (configFile >> "CfgVehicles");
 	{
 		_class = _x;
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
