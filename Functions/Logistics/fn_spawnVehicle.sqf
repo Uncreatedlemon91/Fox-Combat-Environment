@@ -43,4 +43,3 @@ if (_cost > _funds) then {
 	_hint = findDisplay 1 displayCtrl 1602;
 	_hint ctrlSetText str _newBalance;
 };
-
