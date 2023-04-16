@@ -1,4 +1,4 @@
-_db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 while {true} do {
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
@@ -30,7 +30,7 @@ while {true} do {
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
 		};
-	} forEach entities "";
+	} forEach vehicles;
 
 	sleep 20;
 };
