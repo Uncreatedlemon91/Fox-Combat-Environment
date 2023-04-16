@@ -8,7 +8,7 @@ if (_exists) then {
 	
 } else {
 	// New data load 
-	["write", ["Supply Points", "Balance", round(random 300)]] call _db;
+	["write", ["Supply Points", "Balance", round(random [100, 200, 300])]] call _db;
 
 	// Add Car vehicles 
 	_cars = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Car'" configClasses (configFile >> "CfgVehicles");

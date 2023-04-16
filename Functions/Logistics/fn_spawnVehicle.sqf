@@ -7,6 +7,7 @@ _sel = lbCurSel _list;
 
 _class = _list lbData _sel; 
 _cost = ["read", [_class, "Cost"]] call _db;
+format ["%1", _cost] remoteExec ["systemChat", 0];
 
 if (_cost > _funds) then {
 	"You cannot afford this!" remoteExec ["hint", 0];
