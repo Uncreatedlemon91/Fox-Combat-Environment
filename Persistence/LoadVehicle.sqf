@@ -1,5 +1,5 @@
 _db = ["new", format ["Vehicles %1 - %2", missionName, worldName]] call oo_inidbi;
-_section = format ["%1 - %2", _type, netId _veh];
+_sections = "getSections" call _db;
 _type = ["read", [_section, "Type"]] call _db;
 _pos = ["read", [_section, "Position"]] call _db;
 _dir = ["read", [_section, "Direction"]] call _db;
