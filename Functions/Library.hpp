@@ -10,6 +10,7 @@ class CfgFunctions
 		{
 			class openMenu {};
 			class getLogiData {};
+			class spawnVehicle {};
 		};
 	};
 };
