@@ -16,7 +16,7 @@ while {true} do {
 		
 		// Save to database 
 		_db = ["new", format ["Vehicles %1 - %2", missionName, worldName]] call oo_inidbi;
-		_section = format ["%1 - %2 - %3 - %4", _type, netId _x, _dir, _dmg];
+		_section = format ["%1 - %2", _type, netId _x];
 		["write", [_section, "Type", _type]] call _db;
 		["write", [_section, "Position", _pos]] call _db;
 		["write", [_section, "Direction", _dir]] call _db;
