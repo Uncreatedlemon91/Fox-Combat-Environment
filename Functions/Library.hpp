@@ -11,9 +11,5 @@ class CfgFunctions
 			class openMenu {};
 			class getLogiData {};
 		};
-		class Persistence
-		{
-			class savePlayer {};
-		};
 	};
 };
