@@ -28,24 +28,6 @@ if (_exists) then {
 		["write", [_class, "canCarry", _canCarry]] call _db;
 	} forEach _cars;
 
-	// Add Car vehicles 
-	_armored = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Armored'" configClasses (configFile >> "CfgVehicles");
-	{
-		_class = configName _class;
-		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
-		_cost = round(random [100, 150, 200]);
-		_weight = 1;
-		_canCarry = true;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _x]] call _db;
-		["write", [_class, "Image", _image]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _armored;
-
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
 	_supplies = ["kat_surgerySupplyCrate", "kat_pharmaMedicalCrate", "kat_medicalSupplyCrate", "kat_basicSupplyCrate", "kat_stretcherBag", 
