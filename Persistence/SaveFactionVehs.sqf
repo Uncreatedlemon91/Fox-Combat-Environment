@@ -29,8 +29,7 @@ while {true} do {
 		["write", [_section, "CargoMags", _mags]] call _db;
 		["write", [_section, "CargoWeps", _weps]] call _db;
 		["write", [_section, "CargoBps", _backs]] call _db;
-
-		// Repeat 
-		sleep 20;
 	} forEach vehicles;
+
+	sleep 20;
 };
