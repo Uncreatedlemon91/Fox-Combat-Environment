@@ -1,6 +1,6 @@
 while {true} do {
 	{
-		_editorItems = (getMissionLayerEntities "Base") select 0;
+		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		if (_x in _editorItems) then {
 			
 		} else {
