@@ -29,7 +29,7 @@ while {true} do {
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
 		};
-	} forEach vehicles;
+	} forEach entities "";
 
 	sleep 20;
 };
