@@ -31,8 +31,8 @@ if (_exists) then {
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
 	_supplies = ["kat_surgerySupplyCrate", "kat_pharmaMedicalCrate", "kat_medicalSupplyCrate", "kat_basicSupplyCrate", "kat_stretcherBag", 
-		"ACM_B_NAG_WeaponsBox", "ACM_B_NAG_SupportBox", "ACM_B_NAG_AmmoBox", "ACM_B_NAG_LaunchersBox", "ACM_B_NAG_WeaponsBox", "Item_ToolKit", "ACE_Wheel", 
-		"ACE_medicalSupplyCrate_advanced"];
+		"ACM_B_NAG_AmmoBox", "Item_ToolKit", "ACE_Wheel", 
+		"ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F"];
 	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
 	
 	{
