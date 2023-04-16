@@ -1,10 +1,35 @@
-params ["_data"];
-createDialog "LogiMenu";
+/* 
+Receives data from server to client for menu 
+*/
+params ["_items", "_funds"];
 
-_listbox = findDisplay 1 displayCtrl 1500;
+createDialog "LogiMenu";
+_list = findDisplay 1 displayCtrl 1500;
+_hint = findDisplay 1 displayCtrl 1602;
+_purchase = findDisplay 1 displayCtrl 1601;
+
 {
-	_added = _listbox lbAdd _x select 0;
-	_listbox lbsetTextRight [_added, str (_x select 6)];
-	_listbox lbSetPicture [_added, _x select 1];
-	_listbox lbSetData [_added, _x select 2];
-} forEach _data;
+	for "_i" from 0 to (count _x - 1) do {
+		_x params ["_classname", "_name", "_image", "_cost"];
+		_added = _list lbAdd _name;
+		_list lbSetData [_added, _classname];
+		_list lbsetTextRight [_added, str _cost];
+		_list lbSetPicture [_added, _image];
+	};
+} forEach _items;
+
+
+buttonSetAction [1601, 
+	"_list = findDisplay 1 displayCtrl 1500;
+	_sel = lbCurSel _list; 
+	_class = _list lbData _sel; 
+	_veh = _class createVehicle position logi_spawn; 
+	_dmg = random [0.2, 0.5, 0.7];
+	_veh setDamage _dmg;
+	_fuel = random [0.2, 0.5, 0.7];
+	[_veh, true, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
+	_veh setFuel _fuel;
+	closeDialog 2"];
+_hint ctrlSetText format ["Supplies: %1", _funds];
+
+

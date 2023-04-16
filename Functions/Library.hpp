@@ -2,12 +2,18 @@ class CfgFunctions
 {
 	class FCE
 	{
+		class MissionStart
+		{
+			class spawnmkrgrp {};
+		};
 		class Logistics
 		{
-			class getFunds {};
-			class setFunds {};
 			class openMenu {};
-			class getShopData {};
+			class getLogiData {};
+		};
+		class Persistence
+		{
+			class savePlayer {};
 		};
 	};
 };
