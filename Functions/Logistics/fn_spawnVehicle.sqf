@@ -1,3 +1,4 @@
+params ["_class"];
 _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 
 _funds = ["read", ["Supply Points", "Balance"]] call _db;
@@ -5,7 +6,6 @@ _funds = ["read", ["Supply Points", "Balance"]] call _db;
 _list = findDisplay 1 displayCtrl 1500;
 _sel = lbCurSel _list;
 
-_class = _list lbData _sel; 
 _cost = ["read", [_class, "Cost"]] call _db;
 format ["%1", _cost] remoteExec ["systemChat", 0];
 

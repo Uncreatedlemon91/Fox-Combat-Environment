@@ -17,7 +17,6 @@ _purchase = findDisplay 1 displayCtrl 1601;
 } forEach _items;
 
 buttonSetAction [1601, "_list = findDisplay 1 displayCtrl 1500;
-	remoteexec ['fce_fnc_spawnVehicle', 2];
 	_cur = lbCurSel _list;
 	_data = _list lbData _cur;
 	_data remoteExec ['fce_fnc_spawnVehicle', 2];"
