@@ -7,7 +7,7 @@ _list = findDisplay 1 displayCtrl 1500;
 _sel = lbCurSel _list;
 
 _cost = ["read", [_class, "Cost"]] call _db;
-format ["%1", _cost] remoteExec ["systemChat", 0];
+format ["%1", _class] remoteExec ["systemChat", 0];
 
 if (_cost > _funds) then {
 	"You cannot afford this!" remoteExec ["hint", 0];
@@ -23,8 +23,9 @@ if (_cost > _funds) then {
 	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
 	[_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
 	_veh setFuel _fuel;
-	closeDialog 2;
+	
 	_newBalance = _funds - _cost;
 	["write", ["Supply Points", "Balance", _newBalance]] call _db;
+	closeDialog 2;
 };
 
