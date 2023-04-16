@@ -44,7 +44,7 @@ if (_exists) then {
 		_canCarry = true;
 		
 		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class_x]] call _db;
+		["write", [_class, "Class", _class]] call _db;
 		["write", [_class, "Image", _image]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
