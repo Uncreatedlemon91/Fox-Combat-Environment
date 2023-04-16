@@ -1,3 +1,4 @@
+_db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 while {true} do {
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
