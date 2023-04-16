@@ -6,8 +6,14 @@ _pltSgt = "ACM_NAG_Soldier_Radio";
 _engineerImg = "ACM_NAG_Soldier_Repair";
 _leader = "ACM_NAG_Soldier_TL";
 
-
-
+// Get info from ui  
+_list = findDisplay 2 displayCtrl 1500;
+_list ctrlAddEventHandler ["OnLBSelChanged", "_this call fce_fnc_loadoutRefresh"];
 
 // Populate the interface 
-configfile >> "CfgVehicles" >> _kit;
+{
+	// Current result is saved in variable _x
+	_name = getText (configFile >> "CfgVehicles" >> _x >> 'displayName');
+	_added = _list lbAdd _name;
+	_list lbSetData [_added, _x];
+} forEach _roles;
