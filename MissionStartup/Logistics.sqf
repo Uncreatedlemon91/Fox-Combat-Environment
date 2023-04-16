@@ -16,8 +16,8 @@ if (_exists) then {
 		_class = configName _x;
 		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
-		_cost = round(random [30, 50, 70]);
-		_weight = 1;
+		_cost = round (random [30, 50, 70]);
+		_weight = 20;
 		_canCarry = false;
 		
 		["write", [_class, "Name", _name]] call _db;
@@ -39,7 +39,7 @@ if (_exists) then {
 		_class = _x;
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round(random [3, 5, 10]);
+		_cost = round (random [3, 5, 10]);
 		_weight = 1;
 		_canCarry = true;
 		
@@ -55,7 +55,7 @@ if (_exists) then {
 		_class = _x;
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round(random [5, 10, 15]);
+		_cost = round (random [5, 10, 15]);
 		_weight = 1;
 		_canCarry = true;
 		
@@ -71,7 +71,7 @@ if (_exists) then {
 		_class = _x;
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round(random [5, 10, 15]);
+		_cost = round (random [5, 10, 15]);
 		_weight = 1;
 		_canCarry = true;
 		
