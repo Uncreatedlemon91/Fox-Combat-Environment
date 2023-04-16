@@ -39,5 +39,6 @@ if (_exists) then {
 		["write", [_mkr, "Position", _pos]] call _db;
 		["write", [_mkr, "Type", _mkrType]] call _db;
 		["write", [_mkr, "Active", false]] call _db;
+		["write", [_mkr, "Class", ""]] call _db;
 	};
 };
