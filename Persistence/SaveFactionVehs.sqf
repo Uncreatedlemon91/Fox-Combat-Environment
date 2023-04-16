@@ -22,8 +22,6 @@ while {true} do {
 		["write", [_section, "Damage", _dmg]] call _db;
 		["write", [_section, "Fuel", _fuel]] call _db;
 		
-		["write", [_section, "Ammo", _ammo]] call _db;
-
 		["write", [_section, "CargoItems", _items]] call _db;
 		["write", [_section, "CargoMags", _mags]] call _db;
 		["write", [_section, "CargoWeps", _weps]] call _db;
