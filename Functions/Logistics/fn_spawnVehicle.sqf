@@ -20,8 +20,8 @@ if (_cost > _funds) then {
 	_veh setDamage [_dmg, false];
 	_fuel = random [0.2, 0.5, 0.7];
 
-	[_veh, _carry, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
-	[_veh, _weight] call ace_cargo_fnc_setSize;
+	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
+	[_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
 	_veh setFuel _fuel;
 	closeDialog 2;
 	_newBalance = _funds - _cost;

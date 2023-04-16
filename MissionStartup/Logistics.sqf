@@ -18,7 +18,7 @@ if (_exists) then {
 		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
 		_cost = round(random [30, 50, 70]);
 		_weight = 1;
-		_canCarry = true;
+		_canCarry = false;
 		
 		["write", [_class, "Name", _name]] call _db;
 		["write", [_class, "Class", _class]] call _db;
@@ -34,6 +34,7 @@ if (_exists) then {
 		"ACM_B_NAG_WeaponsBox", "ACM_B_NAG_SupportBox", "ACM_B_NAG_AmmoBox", "ACM_B_NAG_LaunchersBox", "ACM_B_NAG_WeaponsBox", "Item_ToolKit", "ACE_Wheel", 
 		"ACE_medicalSupplyCrate_advanced"];
 	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
+	
 	{
 		_class = _x;
 		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
