@@ -9,13 +9,13 @@ _hint = findDisplay 1 displayCtrl 1602;
 _purchase = findDisplay 1 displayCtrl 1601;
 
 {
-	for "_i" from 0 to (count _x - 1) do {
-		_x params ["_classname", "_name", "_image", "_cost"];
-		_added = _list lbAdd _name;
-		_list lbSetData [_added, _classname];
-		_list lbsetTextRight [_added, str _cost];
-		_list lbSetPicture [_added, _image];
-	};
+//	for "_i" from 0 to (count _items - 1) do {
+	_x params ["_classname", "_name", "_image", "_cost"];
+	_added = _list lbAdd _name;
+	_list lbSetData [_added, _classname];
+	_list lbsetTextRight [_added, str _cost];
+	_list lbSetPicture [_added, _image];
+//	};
 } forEach _items;
 
 
