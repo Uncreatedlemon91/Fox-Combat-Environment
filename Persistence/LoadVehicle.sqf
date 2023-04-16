@@ -12,20 +12,14 @@ _sections = "getSections" call _db;
 	_mags = ["read", [_x, "CargoMags"]] call _db;
 	_weps = ["read", [_x, "CargoWeps"]] call _db;
 	_backs = ["read", [_x, "CargoBps"]] call _db;
-	diag_log _type;
-	diag_log _pos;
-	diag_log _dir;
-	diag_log _dmg;
-	diag_log _fuel;
+
 
 	// Create new vehicle based on data input 
 	_veh = _type createVehicle _pos;
 	_veh setDir _dir;
 	_veh setDamage _dmg;
 	_veh setFuel _fuel;
-
-	diag_log _veh;
-
+	
 	{
 		for "_i" from 1 to (count _x - 1) do {
 			_veh addItemCargoGlobal _x;
