@@ -2,7 +2,7 @@ _db = ["new", format ["Vehicles %1 - %2", missionName, worldName]] call oo_inidb
 
 while {true} do {
 	{
-		_editorItems = (getMissionLayerEntities "Base") select 0;
+		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		if (_x in _editorItems) then {
 			
 		} else {
