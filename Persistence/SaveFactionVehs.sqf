@@ -1,5 +1,6 @@
 _db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 _log = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+
 while {true} do {
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
@@ -7,7 +8,9 @@ while {true} do {
 			
 		} else {
 			_type = typeOf _x;
-			if (_type in _savedClasses) then {
+			_sections = "getSections" call _db;
+
+			if (_type in _sections) then {
 				_pos = getPosASL _x;
 				_dir = getDir _x;
 				_dmg = damage _x;
