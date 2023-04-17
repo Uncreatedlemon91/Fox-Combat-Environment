@@ -31,7 +31,7 @@ if (_exists) then {
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
 	_supplies = ["kat_surgerySupplyCrate", "kat_pharmaMedicalCrate", "kat_medicalSupplyCrate", "kat_basicSupplyCrate", "kat_stretcherBag", 
-		"ACM_B_NAG_AmmoBox", "Item_ToolKit", "ACE_Wheel", "ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F"];
+		"ACM_B_NAG_AmmoBox", "ACE_Wheel", "ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F", "Box_IND_AmmoVeh_F"];
 	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
 	
 	{
@@ -93,7 +93,7 @@ refundTrg setTriggerStatements [ "this",
 	"{_veh = _x; {_veh deleteVehicleCrew _x} forEach crew _veh; deleteVehicle _veh} foreach (vehicles select {_x inArea thisTrigger});
 	_db = ['new', format ['Logistics - %1 %2', missionName, worldName]] call oo_inidbi;
 	_curFunds = ['read', ['Supply Points', 'Balance']] call _db;
-	_newFunds = _curFunds + round(random 20);
+	_newFunds = _curFunds + round(random 30);
 	['write', ['Supply Points', 'Balance', _newFunds]] call _db;
 
 	[format ['New Funds: %1', _newFunds]] remoteExec ['systemChat', 0];
