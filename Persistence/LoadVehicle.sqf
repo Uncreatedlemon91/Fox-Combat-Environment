@@ -30,25 +30,20 @@ _sections = "getSections" call _db;
 		[_veh, _carry, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
 		[_veh, _weight] call ace_cargo_fnc_setSize;
 		
-		{
-			for "_i" from 1 to (count _x - 1) do {
-				_veh addItemCargoGlobal _x;
-			};
-		} forEach _items;
-		{
-			for "_i" from 1 to (count _x - 1) do {
-				_veh addItemCargoGlobal _x;
-			};
-		} forEach _mags;
-		{
-			for "_i" from 1 to (count _x - 1) do {
-				_veh addItemCargoGlobal _x;
-			};
-		} forEach _weps;
-		{
-			for "_i" from 1 to (count _x - 1) do {
-				_veh addItemCargoGlobal _x;
-			};
-		} forEach _backs;
+		for "_i" from 0 to count _items - 1 do {
+			_veh addItemCargo [_items select _i,_count select _i];
+		};
+
+		for "_i" from 0 to count _mags - 1 do {
+			_veh addItemCargo [_mags select _i,_count select _i];
+		};
+
+		for "_i" from 0 to count _weps - 1 do {
+			_veh addItemCargo [_weps select _i,_count select _i];
+		};
+
+		for "_i" from 0 to count _backs - 1 do {
+			_veh addItemCargo [_backs select _i,_count select _i];
+		};
 	};
 } forEach _sections;

@@ -10,6 +10,4 @@ _textbox = findDisplay 2 displayCtrl 1000;
 if (_class == "ACM_NAG_Soldier") then {
 	_button ctrlSetText "Load Rifleman Kit";
 	_button buttonSetAction {"call fce_fnc_RiflemanKit"};
-
-	_textbox = 
-}
+};
