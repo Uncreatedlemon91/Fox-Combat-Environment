@@ -5,7 +5,8 @@ while {true} do {
 	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
-		_faction = getText (configFile >> "CfgVehicles" >> _x >> "faction");
+		_class = typeOf _x;
+		_faction = getText (configFile >> "CfgVehicles" >> _class >> "faction");
 		if ((_x in _editorItems) or (_faction == "ACM_O_HDF")) then {
 			
 		} else {
