@@ -7,7 +7,7 @@ while {true} do {
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		_class = typeOf _x;
 		_faction = getText (configFile >> "CfgVehicles" >> _class >> "faction");
-		if ((_x in _editorItems) or (_faction == "ACM_O_HDF")) then {
+		if ((_x in _editorItems) or (_class == "EmptyDetector") or (_class == "Logic") or (_faction == "ACM_O_HDF")) then {
 			
 		} else {
 			_pos = getPosASL _x;
@@ -35,6 +35,6 @@ while {true} do {
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
 		};
-	} forEach entities "";
+	} forEach allMissionObjects "";
 	sleep 20;
 };
