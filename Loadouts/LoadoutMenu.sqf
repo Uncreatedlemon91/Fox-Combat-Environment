@@ -8,8 +8,9 @@ createDialog "LoadoutMenu";
 
 // Populate the interface 
 {
+	_cfg = configName _x;
 	// Current result is saved in variable _x
-	_name = getText (configFile >> "CfgVehicles" >> _x >> 'displayName');
+	_name = getText (configFile >> "CfgVehicles" >> _cfg >> 'displayName');
 	_added = _list lbAdd _name;
-	_list lbSetData [_added, _x];
+	_list lbSetData [_added, _cfg];
 } forEach _roles;
