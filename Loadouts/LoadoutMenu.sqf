@@ -1,24 +1,4 @@
-_riflemanImg = "ACM_NAG_Soldier";
-_atImg = "ACM_NAG_Soldier_RifleAT";
-_clsImg = "ACM_NAG_Soldier_CLS";
-_grenImg = "ACM_NAG_Soldier_GL";
-_pltSgt = "ACM_NAG_Soldier_Radio";
-_engineerImg = "ACM_NAG_Soldier_Repair";
-_leader = "ACM_NAG_Soldier_TL";
-_officer = "ACM_NAG_Soldier_Officer";
-_mg = "ACM_NAG_Soldier_AR";
-
-_roles = [
-	_riflemanImg,
-	_atImg,
-	_clsImg,
-	_grenImg,
-	_pltSgt,
-	_engineerImg,
-	_leader,
-	_officer,
-	_mg
-];
+_roles = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Men'" configClasses (configFile >> "CfgVehicles");
 
 // Get info from ui  
 _list = findDisplay 2 displayCtrl 1500;
