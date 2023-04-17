@@ -30,20 +30,24 @@ _sections = "getSections" call _db;
 		[_veh, _carry, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
 		[_veh, _weight] call ace_cargo_fnc_setSize;
 		
-		for "_i" from 0 to count _items - 1 do {
-			_veh addItemCargo [_items select _i,_count select _i];
+		_items params ["_classes","_count"];
+		for "_i" from 0 to count _classes - 1 do {
+			_veh addItemCargoGlobal [_classes select _i,_count select _i]
 		};
 
-		for "_i" from 0 to count _mags - 1 do {
-			_veh addItemCargo [_mags select _i,_count select _i];
+		_mags params ["_classes","_count"];
+		for "_i" from 0 to count _classes - 1 do {
+			_veh addMagazineCargoGlobal [_classes select _i,_count select _i]
 		};
 
-		for "_i" from 0 to count _weps - 1 do {
-			_veh addItemCargo [_weps select _i,_count select _i];
+		_weps params ["_classes","_count"];
+		for "_i" from 0 to count _classes - 1 do {
+			_veh addWeaponCargoGlobal [_classes select _i,_count select _i]
 		};
 
-		for "_i" from 0 to count _backs - 1 do {
-			_veh addItemCargo [_backs select _i,_count select _i];
+		_backs params ["_classes","_count"];
+		for "_i" from 0 to count _classes - 1 do {
+			_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
 		};
 	};
 } forEach _sections;
