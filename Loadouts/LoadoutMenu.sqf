@@ -19,7 +19,8 @@ _roles = [
 	_officer,
 	_mg
 ];
-
+// Get info from ui  
+_list = findDisplay 2 displayCtrl 1500;
 createDialog "LoadoutMenu";
 
 // Populate the interface 
