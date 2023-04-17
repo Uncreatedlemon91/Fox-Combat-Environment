@@ -1,4 +1,4 @@
-class LogiMenu
+class LoadoutMenu
 {
 	idd = 2;
 	class Controls
