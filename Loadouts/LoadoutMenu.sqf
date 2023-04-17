@@ -17,7 +17,7 @@ _roles = [
 ];
 // Get info from ui  
 _list = findDisplay 2 displayCtrl 1500;
-_list ctrlAddEventHandler ["OnLBSelChanged", "_this call fce_fnc_loadoutRefresh"];
+_list ctrlAddEventHandler ["OnLBSelChanged", "call fce_fnc_loadoutRefresh"];
 
 // Populate the interface 
 {
