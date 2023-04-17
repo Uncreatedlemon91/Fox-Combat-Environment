@@ -12,5 +12,10 @@ class CfgFunctions
 			class getLogiData {};
 			class spawnVehicle {};
 		};
+		class Loadouts
+		{
+			class loadoutRefresh {};
+			class RiflemanKit {};
+		};
 	};
 };
