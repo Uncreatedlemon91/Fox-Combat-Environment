@@ -13,8 +13,10 @@ switch (_class) do {
 	case "ACM_NAG_Soldier_RifleAT": {_button ctrlSetText "Load LAT Kit"; _button buttonSetAction "call fce_fnc_LATKit"};
 	case "ACM_NAG_Soldier_CLS": {_button ctrlSetText "Load Combat Life Saver Kit"; _button buttonSetAction "call fce_fnc_CLSKit"};
 	case "ACM_NAG_Soldier_GL": {_button ctrlSetText "Load Grenadier Kit"; _button buttonSetAction "call fce_fnc_GrenadierKit"};
-	case "ACM_NAG_Soldier_Radio": {_button ctrlSetText "Load Platoon Sergeant Kit"; _button buttonSetAction "call fce_fnc_PltSgtKit"};
+	case "ACM_NAG_Soldier_Radio": {_button ctrlSetText "Load Radioman Kit"; _button buttonSetAction "call fce_fnc_PltSgtKit"};
 	case "ACM_NAG_Soldier_Repair": {_button ctrlSetText "Load Engineer Kit"; _button buttonSetAction "call fce_fnc_EngineerKit"};
 	case "ACM_NAG_Soldier_TL": {_button ctrlSetText "Load Engineer Kit"; _button buttonSetAction "call fce_fnc_TLKit"};
+	case "ACM_NAG_Soldier_Officer": {_button ctrlSetText "Load Officer Kit"; _button buttonSetAction "call fce_fnc_OfficerKit"};
+	case "ACM_NAG_Soldier_AR": {_button ctrlSetText "Load Automatic Rifleman Kit"; _button buttonSetAction "call fce_fnc_MachinegunnerKit"};
 	default { };
 };

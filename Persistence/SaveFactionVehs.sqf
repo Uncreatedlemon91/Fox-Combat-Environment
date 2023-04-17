@@ -6,8 +6,9 @@ while {true} do {
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		_class = typeOf _x;
+		_noSaves = ["CBA_NamespaceDummy", "EmptyDetector", "Logic", "acre_api_basicMissionSetup", "ACM_NAG_Soldier_Survivor", "acre_api_nameChannels","ModuleCurator_F"];
 		_faction = getText (configFile >> "CfgVehicles" >> _class >> "faction");
-		if ((_x in _editorItems) or (_class == "EmptyDetector") or (_class == "Logic") or (_faction == "ACM_O_HDF")) then {
+		if ((_x in _editorItems) or (_class in _noSaves) or (_faction == "ACM_O_HDF")) then {
 			
 		} else {
 			_pos = getPosASL _x;

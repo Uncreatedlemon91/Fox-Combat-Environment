@@ -5,6 +5,8 @@ _grenImg = "ACM_NAG_Soldier_GL";
 _pltSgt = "ACM_NAG_Soldier_Radio";
 _engineerImg = "ACM_NAG_Soldier_Repair";
 _leader = "ACM_NAG_Soldier_TL";
+_officer = "ACM_NAG_Soldier_Officer";
+_mg = "ACM_NAG_Soldier_AR";
 
 _roles = [
 	_riflemanImg,
@@ -13,13 +15,12 @@ _roles = [
 	_grenImg,
 	_pltSgt,
 	_engineerImg,
-	_leader
+	_leader,
+	_officer,
+	_mg
 ];
 
 createDialog "LoadoutMenu";
-// Get info from ui  
-_list = findDisplay 2 displayCtrl 1500;
-_list ctrlAddEventHandler ["OnLBSelChanged", "call fce_fnc_loadoutRefresh"];
 
 // Populate the interface 
 {
