@@ -19,8 +19,11 @@ _roles = [
 	_officer,
 	_mg
 ];
+
 // Get info from ui  
 _list = findDisplay 2 displayCtrl 1500;
+_list ctrlAddEventHandler ["OnLBSelChanged", "call fce_fnc_loadoutRefresh"];
+
 createDialog "LoadoutMenu";
 
 // Populate the interface 
