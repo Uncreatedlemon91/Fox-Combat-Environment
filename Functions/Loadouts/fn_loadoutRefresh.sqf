@@ -1,4 +1,5 @@
 params ["_control", "_lbCurSel", "_lbSelection"];
+systemChat "LOADOUT!!";
 _image = findDisplay 2 displayCtrl 1200;
 _class = _control lbData _lbCurSel;
 _pic = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
