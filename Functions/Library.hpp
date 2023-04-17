@@ -16,6 +16,18 @@ class CfgFunctions
 		{
 			class loadoutRefresh {};
 			class RiflemanKit {};
+			class CLSKit {};
+			class EngineerKit {};
+			class GrenadierKit {};
+			class LATKit {};
+			class OfficerKit {};
+			class PltSgtKit {};
+			class TLKit {};
+			class Machinegunner {};
 		};
+		class players
+		{
+			class CheckRoles {};
+		}
 	};
 };

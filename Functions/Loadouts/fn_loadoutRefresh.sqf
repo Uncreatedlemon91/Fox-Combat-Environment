@@ -8,7 +8,13 @@ _image ctrlSetText _pic;
 _button = findDisplay 2 displayCtrl 1600;
 _textbox = findDisplay 2 displayCtrl 1000;
 
-if (_class == "ACM_NAG_Soldier") then {
-	_button ctrlSetText "Load Rifleman Kit";
-	_button buttonSetAction {"call fce_fnc_RiflemanKit"};
+switch (_class) do {
+	case "ACM_NAG_Soldier": {_button ctrlSetText "Load Rifleman Kit"; _button buttonSetAction "call fce_fnc_RiflemanKit"};
+	case "ACM_NAG_Soldier_RifleAT": {_button ctrlSetText "Load LAT Kit"; _button buttonSetAction "call fce_fnc_LATKit"};
+	case "ACM_NAG_Soldier_CLS": {_button ctrlSetText "Load Combat Life Saver Kit"; _button buttonSetAction "call fce_fnc_CLSKit"};
+	case "ACM_NAG_Soldier_GL": {_button ctrlSetText "Load Grenadier Kit"; _button buttonSetAction "call fce_fnc_GrenadierKit"};
+	case "ACM_NAG_Soldier_Radio": {_button ctrlSetText "Load Platoon Sergeant Kit"; _button buttonSetAction "call fce_fnc_PltSgtKit"};
+	case "ACM_NAG_Soldier_Repair": {_button ctrlSetText "Load Engineer Kit"; _button buttonSetAction "call fce_fnc_EngineerKit"};
+	case "ACM_NAG_Soldier_TL": {_button ctrlSetText "Load Engineer Kit"; _button buttonSetAction "call fce_fnc_TLKit"};
+	default { };
 };
