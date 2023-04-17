@@ -5,7 +5,8 @@ while {true} do {
 	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
-		if (_x in _editorItems) then {
+		_faction = getText (configFile >> "CfgVehicles" >> _x >> "faction");
+		if ((_x in _editorItems) or (_faction == "ACM_O_HDF")) then {
 			
 		} else {
 			_pos = getPosASL _x;
@@ -33,6 +34,6 @@ while {true} do {
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
 		};
-	} forEach vehicles;
+	} forEach entities "";
 	sleep 20;
 };
