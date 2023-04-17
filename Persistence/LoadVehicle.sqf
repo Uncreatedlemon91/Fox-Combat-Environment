@@ -1,4 +1,6 @@
 _db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+
 _sections = "getSections" call _db;
 {
 	if (_x == "Supply Points") then {} else {
@@ -14,8 +16,8 @@ _sections = "getSections" call _db;
 		_weps = ["read", [_x, "CargoWeps"]] call _db;
 		_backs = ["read", [_x, "CargoBps"]] call _db;
 
-		_carry = ["read", [_class, "CanCarry"]] call _db;
-		_weight = ["read", [_class, "Weight"]] call _db;
+		_carry = ["read", [_x, "CanCarry"]] call _logidb;
+		_weight = ["read", [_x, "Weight"]] call _logidb;
 
 		// Create new vehicle based on data input 
 		_veh = _type createVehicle _pos;
