@@ -1,4 +1,4 @@
-_db = ["new", format ["Vehicles %1 - %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 {
 	if (_x == "Supply Points") then {} else {
@@ -51,3 +51,5 @@ _sections = "getSections" call _db;
 		};
 	};
 } forEach _sections;
+
+execVM "Persistence\SaveFactionVehs.sqf";
