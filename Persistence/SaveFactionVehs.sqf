@@ -36,6 +36,6 @@ while {true} do {
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
 		};
-	} forEach allMissionObjects "";
+	} forEach allMissionObjects "All";
 	sleep 20;
 };
