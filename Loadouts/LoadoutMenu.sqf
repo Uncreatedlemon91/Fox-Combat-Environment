@@ -6,6 +6,15 @@ _pltSgt = "ACM_NAG_Soldier_Radio";
 _engineerImg = "ACM_NAG_Soldier_Repair";
 _leader = "ACM_NAG_Soldier_TL";
 
+_roles = [
+	_riflemanImg,
+	_atImg,
+	_clsImg,
+	_grenImg,
+	_pltSgt,
+	_engineerImg,
+	_leader
+];
 // Get info from ui  
 _list = findDisplay 2 displayCtrl 1500;
 _list ctrlAddEventHandler ["OnLBSelChanged", "_this call fce_fnc_loadoutRefresh"];
