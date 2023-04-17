@@ -7,6 +7,7 @@ while {true} do {
 			
 		} else {
 			_pos = getPosASL _x;
+			_type = typeOf _x;
 			_dir = getDir _x;
 			_dmg = damage _x;
 			_fuel = fuel _x;
