@@ -28,6 +28,6 @@ class CfgFunctions
 		class players
 		{
 			class CheckRoles {};
-		}
+		};
 	};
 };
