@@ -24,6 +24,7 @@ class CfgFunctions
 			class PltSgtKit {};
 			class TLKit {};
 			class Machinegunner {};
+			class getLoadout {};
 		};
 		class players
 		{

@@ -2,11 +2,15 @@ params ["_control", "_lbCurSel", "_lbSelection"];
 _image = findDisplay 2 displayCtrl 1200;
 _class = _control lbData _lbCurSel;
 _pic = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
+_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
 _image ctrlSetText _pic;
 
 _button = findDisplay 2 displayCtrl 1600;
+_button ctrlSetText format ["Load %1 Kit", _name];
+_button buttonSetAction "call fce_fnc_getLoadout";
 
 
+/*
 switch (_class) do {
 	case "ACM_NAG_Soldier": {_button ctrlSetText "Load Rifleman Kit"; _button buttonSetAction "call fce_fnc_RiflemanKit"};
 	case "ACM_NAG_Soldier_RifleAT": {_button ctrlSetText "Load LAT Kit"; _button buttonSetAction "call fce_fnc_LATKit"};
