@@ -10,10 +10,16 @@ class CfgFunctions
 		{
 			class openMenu {};
 			class getLogiData {};
+			class spawnVehicle {};
 		};
-		class Persistence
+		class Loadouts
 		{
-			class savePlayer {};
+			class loadoutRefresh {};
+			class getLoadout {};
+		};
+		class players
+		{
+			class CheckRoles {};
 		};
 	};
 };

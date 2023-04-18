@@ -17,7 +17,7 @@ if (_exists) then {
 		_trg setTriggerArea [1000, 1000, 0, false];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setVariable ["grpMkr", _mkr, true];
-		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", "_mkr = thisTrigger getvariable 'grpMkr'; _mkr setMarkerAlpha 0.2"];
+		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", "_mkr = thisTrigger getvariable 'grpMkr'; _mkr setMarkerAlpha 0"];
 	} forEach _sections;
 } else {
 	_countAI = round (random [1500, 1800, 2000]);
@@ -34,10 +34,11 @@ if (_exists) then {
 		_trg setTriggerArea [1000, 1000, 0, false];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setVariable ["grpMkr", _mkr, true];
-		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", "_mkr = thisTrigger getVariable 'grpMkr'; _mkr setMarkerAlpha 0.2"];
+		_trg setTriggerStatements ["this", "_mkr = thisTrigger getvariable 'grpMkr'; [_mkr] call fce_fnc_spawnmkrgrp", "_mkr = thisTrigger getVariable 'grpMkr'; _mkr setMarkerAlpha 0"];
 
 		["write", [_mkr, "Position", _pos]] call _db;
 		["write", [_mkr, "Type", _mkrType]] call _db;
 		["write", [_mkr, "Active", false]] call _db;
+		["write", [_mkr, "Class", ""]] call _db;
 	};
 };

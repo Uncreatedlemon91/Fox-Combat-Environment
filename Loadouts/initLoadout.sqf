@@ -1,0 +1,1 @@
+[Ace_Arsenal, ["Get Kit", {execVM "Loadouts\LoadoutMenu.sqf"}]] remoteExec ["addAction", 0, true];
