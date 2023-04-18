@@ -34,7 +34,7 @@ if (_type == "o_inf") then {
 				_grp = group _unit;
 				_alive = count (units _grp);
 				if (_alive < 2) then {
-					_trg = nearestObject [_unit, "emptyDetector"];
+					_trg = nearestObject [position _unit, "emptyDetector"];
 					deleteVehicle _trg;
 					deleteMarker _mkr;
 				};
@@ -66,7 +66,7 @@ if (_type == "o_armor") then {
 			_grp = group _unit;
 			_alive = count (units _grp);
 			if (_alive < 2) then {
-				_trg = nearestObject [_unit, "emptyDetector"];
+				_trg = nearestObject [position _unit, "emptyDetector"];
 				deleteVehicle _trg;
 				deleteMarker _mkr;
 			};
@@ -98,7 +98,7 @@ if (_type == "o_motor_inf") then {
 				_grp = group _unit;
 				_alive = count (units _grp);
 				if (_alive < 2) then {
-					_trg = nearestObject [_unit, "emptyDetector"];
+					_trg = nearestObject [position _unit, "emptyDetector"];
 					deleteVehicle _trg;
 					deleteMarker _mkr;
 				};
@@ -124,7 +124,7 @@ if (_type == "o_mortar") then {
 			_grp = group _unit;
 			_alive = count (units _grp);
 			if (_alive < 2) then {
-				_trg = nearestObject [_unit, "emptyDetector"];
+				_trg = nearestObject [position _unit, "emptyDetector"];
 				deleteVehicle _trg;
 				deleteMarker _mkr;
 			};
