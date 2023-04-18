@@ -5,7 +5,7 @@ _pic = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
 _image ctrlSetText _pic;
 
 _button = findDisplay 2 displayCtrl 1600;
-_textbox = findDisplay 2 displayCtrl 1000;
+
 
 switch (_class) do {
 	case "ACM_NAG_Soldier": {_button ctrlSetText "Load Rifleman Kit"; _button buttonSetAction "call fce_fnc_RiflemanKit"};

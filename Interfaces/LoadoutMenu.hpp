@@ -14,7 +14,7 @@ class LoadoutMenu
 			y = 0.258038 * safezoneH + safezoneY;
 			w = 0.0979687 * safezoneW;
 			h = 0.472926 * safezoneH;
-			OnLBSelChanged = "_this call fce_fnc_loadoutRefresh";
+			OnLBSelChanged = "call fce_fnc_loadoutRefresh";
 		};
 		class RscPicture_1200: RscPicture
 		{

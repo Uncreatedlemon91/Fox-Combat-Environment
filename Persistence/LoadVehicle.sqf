@@ -16,8 +16,8 @@ _sections = "getSections" call _db;
 		_weps = ["read", [_x, "CargoWeps"]] call _db;
 		_backs = ["read", [_x, "CargoBps"]] call _db;
 
-		_carry = ["read", [_x, "CanCarry"]] call _logidb;
-		_weight = ["read", [_x, "Weight"]] call _logidb;
+		// _carry = ["read", [_x, "CanCarry"]] call _logidb;
+		// _weight = ["read", [_x, "Weight"]] call _logidb;
 
 		// Create new vehicle based on data input 
 		_veh = _type createVehicle _pos;
