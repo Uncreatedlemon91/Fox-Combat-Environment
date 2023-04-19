@@ -44,7 +44,7 @@ if (_type == "o_inf") then {
 };
 
 if (_type == "o_armor") then {
-	_pos = [_pos, 2, 10, 2, 0, 20, 0] call BIS_fnc_findSafePos;
+	_pos = [_pos, 2, 10, 5, 0, 20, 0] call BIS_fnc_findSafePos;
 	_class = selectRandom ["o_acmohdf_armored_tank_section_T55", "o_acmohdf_armored_tank_section_T34"];
 	_grp = [_pos, east, (configfile >> "CfgGroups" >> "East" >> "ACM_O_HDF" >> "Armored" >> _class)] call BIS_fnc_spawnGroup;
 	_tasking = selectRandomWeighted ["Patrol", 0.8, "Camp", 0.3];
@@ -76,7 +76,7 @@ if (_type == "o_armor") then {
 
 if (_type == "o_motor_inf") then {
 	for "_i" from 1 to 2 do {
-		_pos = [_pos, 2, 10, 2, 0, 20, 0] call BIS_fnc_findSafePos;
+		_pos = [_pos, 2, 10, 5, 0, 20, 0] call BIS_fnc_findSafePos;
 		_class = selectRandom ["o_acmohdf_motorized_motorized_reinforcements"];
 		_grp = [_pos, east, (configfile >> "CfgGroups" >> "East" >> "ACM_O_HDF" >> "Motorized" >> _class)] call BIS_fnc_spawnGroup;
 		_tasking = selectRandomWeighted ["Patrol", 0.8, "Camp", 0.3];

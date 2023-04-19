@@ -28,7 +28,7 @@ if (_exists) then {
 		["write", [_class, "canCarry", _canCarry]] call _db;
 	} forEach _cars;
 
-	_cars = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Armored'" configClasses (configFile >> "CfgVehicles");
+	_armored = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Armored'" configClasses (configFile >> "CfgVehicles");
 	{
 		_class = configName _x;
 		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
@@ -43,7 +43,7 @@ if (_exists) then {
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
 		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _cars;
+	} forEach _armored;
 
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
