@@ -4,8 +4,8 @@ _class = _list lbData _lbCurSel;
 _loadout = getUnitLoadout (configFile >> "CfgVehicles" >> _class);
 player setUnitLoadout _loadout;
 
-player removeItem ItemGPS;
-player removeItem ItemRadio;
+player removeItem "ItemGPS";
+player removeItem "ItemRadio";
 
 Player addItemToUniform "ACE_EarPlugs";
 Player addItemToUniform "ACRE_PRC343";

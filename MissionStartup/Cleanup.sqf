@@ -1,7 +1,8 @@
 /*
 Cleanup props and items around the players. Any item outside of this scope will be culled. 
 */ 
-params ["_grp"];
+params ["_grp", "_mkr"];
+_db = ["new", format ["Enemies %1 %2", missionName, worldName]] call oo_inidbi;
 
 _leader = leader _grp;
 while {true} do {
@@ -16,6 +17,7 @@ while {true} do {
 			deleteVehicle _x;
 			deleteGroup _grp;
 			systemChat "Group Deleted";
+			["write", [_mkr, "Active", false]] call _db;
 		} forEach units _grp;
 	};
 };

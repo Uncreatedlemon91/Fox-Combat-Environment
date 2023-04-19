@@ -25,7 +25,7 @@ if (_type == "o_inf") then {
 		};
 
 		["write", [_mkr, "Class", _class]] call _db;
-		[_grp] execVM "MissionStartup\Cleanup.sqf";
+		[_grp, _mkr] execVM "MissionStartup\Cleanup.sqf";
 		_grp deleteGroupWhenEmpty true;
 		{
 			// Current result is saved in variable _x
@@ -57,7 +57,7 @@ if (_type == "o_armor") then {
 	};
 
 	["write", [_mkr, "Class", _class]] call _db;
-	[_grp] execVM "MissionStartup\Cleanup.sqf";
+	[_grp, _mkr] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
 	{
 		// Current result is saved in variable _x
@@ -89,7 +89,7 @@ if (_type == "o_motor_inf") then {
 		};
 		
 		["write", [_mkr, "Class", _class]] call _db;
-		[_grp] execVM "MissionStartup\Cleanup.sqf";
+		[_grp, _mkr] execVM "MissionStartup\Cleanup.sqf";
 		_grp deleteGroupWhenEmpty true;
 		{
 			// Current result is saved in variable _x
@@ -115,7 +115,7 @@ if (_type == "o_mortar") then {
 	[_grp] call lambs_wp_fnc_taskArtilleryRegister;
 
 	["write", [_mkr, "Class", _class]] call _db;
-	[_grp] execVM "MissionStartup\Cleanup.sqf";
+	[_grp, _mkr] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
 	{
 		// Current result is saved in variable _x
@@ -145,7 +145,7 @@ if (_type == "o_mech_inf") then {
 	};
 	
 	["write", [_mkr, "Class", _class]] call _db;
-	[_grp] execVM "MissionStartup\Cleanup.sqf";
+	[_grp, _mkr] execVM "MissionStartup\Cleanup.sqf";
 	_grp deleteGroupWhenEmpty true;
 	{
 		// Current result is saved in variable _x
@@ -156,6 +156,7 @@ if (_type == "o_mech_inf") then {
 			if (_alive < 2) then {
 				_trg = nearestObject [position _unit, "emptyDetector"];
 				deleteVehicle _trg;
+				
 				deleteMarker _mkr;
 			};
 		}];
