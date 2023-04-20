@@ -39,3 +39,5 @@ player linkItem "ItemMap";
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
 player linkItem "CUP_NVG_PVS15_Hide";
+
+call fce_fnc_openArsenal;

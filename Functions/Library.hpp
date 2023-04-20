@@ -16,6 +16,15 @@ class CfgFunctions
 		{
 			class loadoutRefresh {};
 			class getLoadout {};
+			class Autorifleman {};
+			class fireteamleader {};
+			class Grenadier {};
+			class Lightantitank {};
+			class Medic {};
+			class MissileSpec {};
+			class Rifleman {};
+			class sectionLeader {};
+			class openArsenal {};
 		};
 		class players
 		{
