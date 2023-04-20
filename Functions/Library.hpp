@@ -30,5 +30,10 @@ class CfgFunctions
 		{
 			class CheckRoles {};
 		};
+		class WorldBuilder
+		{
+			class buildCivs {};
+			class spawnCivilianTown {};
+		};
 	};
 };
