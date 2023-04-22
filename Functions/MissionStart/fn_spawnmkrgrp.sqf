@@ -8,7 +8,7 @@ _active = ["read", [_mkr, "Active"]] call _db;
 if (_active) exitwith {};
 ["write", [_mkr, "Active", true]] call _db;
 
-_mkr setMarkerAlpha 0.7;
+_mkr setMarkerAlpha 0;
 
 if (_type == "o_inf") then {
 	for "_i" from 1 to 3 do {
