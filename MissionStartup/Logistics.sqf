@@ -66,6 +66,62 @@ if (_exists) then {
 };
 
 
+/*
+ TURRETS 
+	ACM_B_NAG_T_DSHKM
+	ACM_B_NAG_T_DSHKM_Mini
+	ACM_B_NAG_T_Mortar
+	ACM_B_NAG_T_Searchlight
+	ACM_B_NAG_T_SPG9
+	ACM_B_NAG_T_ZU23
+ITEMS 
+	ACE_SandbagObject
+	ACE_Track
+	ACE_Wheel
+	ACE_TripodObject
+SUPPLIES 
+	ACM_B_NAG_LaunchersBox
+	ACM_B_NAG_AmmoBox
+	Box_IND_WpsSpecial_F
+	ACE_Box_Ammo
+	ACE_medicalSupplyCrate_advanced
+APC 
+	ACM_B_NAG_BMP2
+	ACM_B_NAG_BMP2_AMB
+	ACM_B_NAG_BMP2_ZU
+	ACM_B_NAG_BMP_HQ
+	ACM_B_NAG_BTR80A
+TANK
+	ACM_B_NAG_T72
+ARTY 
+	ACM_B_NAG_RM70
+	ACM_B_NAG_T_D30 (TURRET)
+CARS 
+	ACM_B_NAG_Ifrit
+	ACM_B_NAG_Ifrit_GMG
+	ACM_B_NAG_Ifrit_HMG
+	ACM_B_NAG_Tatra
+	ACM_B_NAG_Tatra_Ammo
+	ACM_B_NAG_Tatra_Refuel
+	ACM_B_NAG_Tatra_Repair
+	ACM_B_NAG_UAZ_Unarmed
+	ACM_B_NAG_UAZ_AGS30
+	ACM_B_NAG_UAZ_MG
+	ACM_B_NAG_UAZ_SPG
+HELI 
+	ACM_B_NAG_MI171
+	ACM_B_NAG_MI171_Unarmed
+	ACM_B_NAG_KA52
+PLANES 
+	ACM_B_NAG_C130
+	ACM_B_NAG_C130_Cargo
+	ACM_B_NAG_Harrier
+	ACM_B_NAG_Civil
+ANTIAIR 
+	ACM_B_NAG_2S6M
+
+*/
+
 [logiLapt, ["Open Logistics Menu", {
 	[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
 }]]remoteExec ["addAction", 0, true];
