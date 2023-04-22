@@ -53,5 +53,8 @@ _sections = "getSections" call _db;
 		};
 	};
 } forEach _sections;
+sleep 10;
+
+"delete" call _db;
 
 execVM "Persistence\SaveFactionVehs.sqf";

@@ -1,12 +1,11 @@
 _db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 
 while {true} do {
-	"delete" call _db;
-	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		_class = typeOf _x;
-		_noSaves = ["CBA_NamespaceDummy", "EmptyDetector", "Logic", "acre_api_basicMissionSetup", "ACM_NAG_Soldier_Survivor", "acre_api_nameChannels","ModuleCurator_F"];
+		_noSaves = ["CBA_NamespaceDummy", "EmptyDetector", "Logic", "acre_api_basicMissionSetup", "ACM_NAG_Soldier_Survivor", "acre_api_nameChannels","ModuleCurator_F", "ace_spectator_virtual"];
 		_faction = getText (configFile >> "CfgVehicles" >> _class >> "faction");
 		if ((_x in _editorItems) or (_class in _noSaves) or (_faction == "ACM_O_HDF")) then {
 			
@@ -22,7 +21,6 @@ while {true} do {
 			_weps = getWeaponCargo _x;
 			_backs = getBackpackCargo _x;
 
-			_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 			_canCarry = ["read", [_type, "canCarry"]] call _logidb;
 			_weight = ["read", [_type, "Weight"]] call _logidb;
 			
