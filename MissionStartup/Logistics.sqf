@@ -15,7 +15,7 @@ if (_exists) then {
 	{
 		_class = configName _x;
 		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
+		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview"); 
 		_cost = round (random [30, 50, 70]);
 		_weight = 20;
 		_canCarry = false;
@@ -47,9 +47,6 @@ if (_exists) then {
 
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
-	_supplies = ["kat_surgerySupplyCrate", "kat_pharmaMedicalCrate", "kat_medicalSupplyCrate", "kat_basicSupplyCrate", "kat_stretcherBag", 
-		"ACM_B_NAG_AmmoBox", "ACE_Wheel", "ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F", "Land_RepairDepot_01_green_F"];
-	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
 	
 	{
 		_class = _x;
@@ -66,38 +63,6 @@ if (_exists) then {
 		["write", [_class, "Weight", _weight]] call _db;
 		["write", [_class, "canCarry", _canCarry]] call _db;
 	} forEach _items;
-
-	{
-		_class = _x;
-		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round (random [5, 10, 15]);
-		_weight = 1;
-		_canCarry = true;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class]] call _db;
-		["write", [_class, "Image", _image]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _supplies;
-
-	{
-		_class = _x;
-		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round (random [5, 10, 15]);
-		_weight = 1;
-		_canCarry = true;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class]] call _db;
-		["write", [_class, "Image", _image]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _furniture;
 };
 
 
