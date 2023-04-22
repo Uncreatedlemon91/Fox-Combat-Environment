@@ -1,7 +1,7 @@
 // 
 _getData = profileNameSpace getVariable "Pos";
 if (isNil "_getData") then {
-	
+	player setPos position ace_arsenal;
 } else {
 	_pos = profileNameSpace getVariable "Pos";
 	_dir = profileNameSpace getVariable "Dir";
