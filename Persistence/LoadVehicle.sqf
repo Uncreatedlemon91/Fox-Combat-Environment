@@ -17,7 +17,7 @@ _sections = "getSections" call _db;
 
 		_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 		_carry = ["read", [_type, "CanCarry"]] call _logidb;
-		_weight = ["read", [_type, "Weight"]] call _logidb;
+		_weight = ["read", [_type, "setSize"]] call _logidb;
 
 		// Create new vehicle based on data input 
 		_veh = _type createVehicle _pos;

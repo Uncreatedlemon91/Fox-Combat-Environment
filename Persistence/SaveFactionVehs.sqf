@@ -22,7 +22,7 @@ while {true} do {
 			_backs = getBackpackCargo _x;
 
 			_canCarry = ["read", [_type, "canCarry"]] call _logidb;
-			_weight = ["read", [_type, "Weight"]] call _logidb;
+			_weight = ["read", [_type, "setSize"]] call _logidb;
 			
 			// Save to database 
 			_section = format ["%1 - %2", _type, netId _x];
