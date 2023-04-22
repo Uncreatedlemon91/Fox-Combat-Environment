@@ -30,7 +30,7 @@ if (_exists) then {
 	0 setGusts _gusts;
 
 	_wind = ["read", ["World Info", "Wind"]] call _db;
-	0 setWind _wind;
+	setWind _wind;
 
 	_windStr = ["read", ["World Info", "Wind Strength"]] call _db;
 	0 setWindStr _windStr;
