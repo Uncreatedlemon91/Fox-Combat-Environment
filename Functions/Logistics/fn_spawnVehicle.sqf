@@ -41,6 +41,14 @@ if (_cost > _funds) then {
 		_veh setDamage [0, false];
 	};
 
+	if (_class == "ACE_medicalSupplyCrate") then {
+		_cargo = [["kat_guedel","ACE_EarPlugs","ACE_fieldDressing","ACE_packingBandage","ACE_elasticBandage","ACE_tourniquet","ACE_splint","ACE_quikclot","ACE_bodyBag"],[30,50,40,40,40,20,50,40,10]];
+		_cargo params ["_classes","_count"];
+		for "_i" from 0 to count _classes - 1 do {
+    		_veh addItemCargoGlobal [_classes select _i,_count select _i]
+		};
+	}
+
 
 	_newBalance = _funds - _cost;
 	["write", ["Supply Points", "Balance", _newBalance]] call _db;
