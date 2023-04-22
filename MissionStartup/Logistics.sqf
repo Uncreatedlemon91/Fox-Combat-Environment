@@ -48,7 +48,7 @@ if (_exists) then {
 	// Add Misc Items
 	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
 	_supplies = ["kat_surgerySupplyCrate", "kat_pharmaMedicalCrate", "kat_medicalSupplyCrate", "kat_basicSupplyCrate", "kat_stretcherBag", 
-		"ACM_B_NAG_AmmoBox", "ACE_Wheel", "ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F", "Box_IND_AmmoVeh_F"];
+		"ACM_B_NAG_AmmoBox", "ACE_Wheel", "ACE_medicalSupplyCrate_advanced", "FlexibleTank_01_forest_F", "Land_RepairDepot_01_green_F"];
 	_furniture = ["Land_CampingChair_V2_F", "Land_CampingTable_F", "Land_Campfire_F"];
 	
 	{
@@ -113,6 +113,6 @@ refundTrg setTriggerStatements [ "this",
 	_newFunds = _curFunds + round(random 30);
 	['write', ['Supply Points', 'Balance', _newFunds]] call _db;
 
-	[format ['New Funds: %1', _newFunds]] remoteExec ['systemChat', 0];
+	'Refund Received!' remoteExec ['systemChat', 0];
 	", 
 	""];

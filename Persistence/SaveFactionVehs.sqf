@@ -22,6 +22,9 @@ while {true} do {
 			_weps = getWeaponCargo _x;
 			_backs = getBackpackCargo _x;
 
+			_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+			_canCarry = ["read", [_type, "canCarry"]] call _logidb;
+			_weight = ["read", [_type, "Weight"]] call _logidb;
 			
 			// Save to database 
 			_section = format ["%1 - %2", _type, netId _x];
@@ -35,6 +38,9 @@ while {true} do {
 			["write", [_section, "CargoMags", _mags]] call _db;
 			["write", [_section, "CargoWeps", _weps]] call _db;
 			["write", [_section, "CargoBps", _backs]] call _db;
+
+			["write", [_section, "canCarry", _canCarry]] call _db;
+			["write", [_section, "Weight", _weight]] call _db;
 		};
 	} forEach allMissionObjects "All";
 	sleep 20;

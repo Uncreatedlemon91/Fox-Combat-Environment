@@ -1,5 +1,5 @@
 // Section Leader loadout
-_helmet = ["ACM_HelmetACH_Anthraxic_GCovered_Headset", "ACM_HelmetACH_Anthraxic_ESS_Goggles_Headset", "ACM_HelmetACH_Anthraxic_Headset"];
+_helmet = selectRandom ["ACM_HelmetACH_Anthraxic_GCovered_Headset", "ACM_HelmetACH_Anthraxic_ESS_Goggles_Headset", "ACM_HelmetACH_Anthraxic_Headset"];
 _uniform = selectRandom ["ACM_NAG_MCCUU", "ACM_NAG_MCCUU", "ACM_NAG_MCCUU_roll_2", "ACM_NAG_MCCUU_roll_2_gloves", "ACM_NAG_MCCUU_roll_2_pads",
 	"ACM_NAG_MCCUU_roll_2_pads_gloves", "ACM_NAG_MCCUU_pads", "ACM_NAG_MCCUU_pads_gloves", "ACM_NAG_MCCUU_pads_roll", "ACM_NAG_MCCUU_roll_gloves", 
 	"ACM_NAG_MCCUU_roll_pads", "ACM_NAG_MCCUU_roll_pads_gloves"];
@@ -40,5 +40,5 @@ player linkItem "ItemCompass";
 player linkItem "ItemWatch";
 player linkItem "CUP_NVG_PVS15_Hide";
 
-
-call fce_fnc_openArsenal;
+[ace_arsenal, player, false] call ace_arsenal_fnc_openBox;
+closeDialog 2;

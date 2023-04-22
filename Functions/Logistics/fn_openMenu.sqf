@@ -19,7 +19,8 @@ _purchase = findDisplay 1 displayCtrl 1601;
 buttonSetAction [1601, "_list = findDisplay 1 displayCtrl 1500;
 	_cur = lbCurSel _list;
 	_data = _list lbData _cur;
-	_data remoteExec ['fce_fnc_spawnVehicle', 2];"
+	_data remoteExec ['fce_fnc_spawnVehicle', 2];
+	closeDialog 2"
 	];
 
 _hint ctrlSetText format ["Supplies: %1", _funds];

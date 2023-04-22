@@ -37,6 +37,12 @@ if (_cost > _funds) then {
 		};
 	};
 	
+	if (_class == "Box_IND_Ammo_F") then {
+		
+	};
+
+
+
 	_newBalance = _funds - _cost;
 	["write", ["Supply Points", "Balance", _newBalance]] call _db;
 	_hint = findDisplay 1 displayCtrl 1602;

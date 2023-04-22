@@ -8,7 +8,7 @@ if (_exists) then {
 		_pos = ["read", [_x, "Position"]] call _db;
 		_mkrtype = ["read", [_x, "Type"]] call _db;
 
-		_mkr = createMarker [format ["%1 - %2", random 7000, _mkrType], _pos];
+		_mkr = createMarker ["new", format ["%1 - %2", random 7000, _mkrType], _pos];
 		_mkr setMarkerType _mkrType;
 		_mkr setMarkerSize [0.7, 0.7];
 		_mkr setMarkerAlpha 0;

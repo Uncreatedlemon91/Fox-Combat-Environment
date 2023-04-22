@@ -14,8 +14,6 @@ class CfgFunctions
 		};
 		class Loadouts
 		{
-			class loadoutRefresh {};
-			class getLoadout {};
 			class Autorifleman {};
 			class fireteamleader {};
 			class Grenadier {};
@@ -24,7 +22,6 @@ class CfgFunctions
 			class MissileSpec {};
 			class Rifleman {};
 			class sectionLeader {};
-			class openArsenal {};
 		};
 		class players
 		{
@@ -32,8 +29,7 @@ class CfgFunctions
 		};
 		class WorldBuilder
 		{
-			class buildCivs {};
-			class spawnCivilianTown {};
+
 		};
 	};
 };
