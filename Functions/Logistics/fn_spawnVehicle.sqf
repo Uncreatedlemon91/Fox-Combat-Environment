@@ -47,7 +47,7 @@ if (_cost > _funds) then {
 		for "_i" from 0 to count _classes - 1 do {
     		_veh addItemCargoGlobal [_classes select _i,_count select _i]
 		};
-	}
+	};
 
 
 	_newBalance = _funds - _cost;
