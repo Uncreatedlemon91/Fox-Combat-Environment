@@ -36,11 +36,10 @@ if (_cost > _funds) then {
     		_veh addItemCargoGlobal [_classes select _i,_count select _i]
 		};
 	};
-	
-	if (_class == "Box_IND_Ammo_F") then {
-		
-	};
 
+	if (_class == "ACE_Wheel") then {
+		_veh setDamage [0, false];
+	};
 
 
 	_newBalance = _funds - _cost;

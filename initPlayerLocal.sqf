@@ -1,17 +1,36 @@
-// Get player information 
-
-// Player Information 
-_name = name player;
-_uid = getPlayerUID player;
-_id = clientOwner;
-
-[_name, _uid, _id] call fce_fnc_CheckPlayerDB;
-sleep 60;
-while {alive Player} do {
-	sleep 10;
+//
+_getData = profileNameSpace getVariable "Position";
+if ("_getData" isNil) then {
+	while {true} do {
 	_pos = getPosASL player;
 	_dir = getDir player;
-	_kit = getUnitLoadout player
+	_kit = getUnitLoadout player;
 
-	[_name, _uid, _id, _pos, _dir, _kit] remoteExec ["fce_fnc_playerDatatoDB", 2];
+	profileNameSpace setVariable ["Position", _pos];
+	profileNamespace setVariable ["Direction", _dir];
+	profileNameSpace setVariable ["Kit", _kit];
+
+	saveProfileNamespace;
+	sleep 3;
+} else {
+	_getPos = profileNameSpace getVariable "Position";
+	_getDir = profileNameSpace getVariable "Direction";
+	_getKit = profileNameSpace getVariable "Kit";
+
+	player setPosASL _getPos;
+	player setDir _getDir;
+	player setUnitLoadout _getKit;
+
+	while {true} do {
+		_pos = getPosASL player;
+		_dir = getDir player;
+		_kit = getUnitLoadout player;
+
+		profileNameSpace setVariable ["Position", _pos];
+		profileNamespace setVariable ["Direction", _dir];
+		profileNameSpace setVariable ["Kit", _kit];
+
+		saveProfileNamespace;
+		sleep 3;
+	};
 };

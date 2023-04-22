@@ -40,9 +40,6 @@ if (_exists) then {
 
 	_lightning = ["read", ["World Info", "Lightning"]] call _db;
 	0 setLightnings _lightning;
-
-} else {
-	
 };
 
 
@@ -54,7 +51,7 @@ while {true} do {
 	["write", ["World Info", "Rain", rain]] call _db;
 	["write", ["World Info", "Humidity", humidity]] call _db;
 	["write", ["World Info", "Overcast", overcast]] call _db;
-	["write", ["World Info", "Rainbows", rainbow]] call _db;
+	["write", ["World Info", "Rainbow", rainbow]] call _db;
 	["write", ["World Info", "Waves", waves]] call _db;
 	["write", ["World Info", "Gusts", gusts]] call _db;
 	["write", ["World Info", "Wind", wind]] call _db;
@@ -62,5 +59,5 @@ while {true} do {
 	["write", ["World Info", "Wind Direction", windDir]] call _db;
 	["write", ["World Info", "Lightning", lightnings]] call _db;
 
-	sleep 300;
+	sleep 10;
 }
