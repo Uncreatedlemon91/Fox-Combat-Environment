@@ -26,6 +26,9 @@ class CfgFunctions
 		class players
 		{
 			class CheckRoles {};
+			class CheckPlayerDB {};
+			class clientToDB {};
+			class LoadPlayer {};
 		};
 		class WorldBuilder
 		{

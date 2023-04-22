@@ -38,6 +38,9 @@ if (_exists) then {
 	_windDir = ["read", ["World Info", "Wind Direction"]] call _db;
 	0 setWindDir _windDir;
 
+	_lightning = ["read", ["World Info", "Lightning"]] call _db;
+	0 setLightnings _lightning;
+
 } else {
 	
 };
@@ -57,6 +60,7 @@ while {true} do {
 	["write", ["World Info", "Wind", wind]] call _db;
 	["write", ["World Info", "Wind Strength", windStr]] call _db;
 	["write", ["World Info", "Wind Direction", windDir]] call _db;
+	["write", ["World Info", "Lightning", lightnings]] call _db;
 
 	sleep 300;
 }
