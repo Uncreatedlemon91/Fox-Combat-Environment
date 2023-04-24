@@ -1,8 +1,9 @@
 // Build up Battalion Size element 
+"BATTALION LOADING" remoteExec ["systemChat", 0];
 _battAOSize = [5000, 5000];
 _battMarkerType = "O_HQ";
-_battMkrAlpha = 0.6;
-_battMkrSize = 1;
+_battMkrAlpha = 1;
+_battMkrSize = [1, 1];
 
 _battNumber = round (random 300);
 _battNumber = [_battNumber, "English"] call BIS_fnc_ordinalNumber;
@@ -40,7 +41,7 @@ for "_i" from 1 to _battsize do {
 
 	_companySize = selectRandom [3, 4, 5];
 	_companyPos = [[_BattMkr2], ["Base", "water"]] call BIS_fnc_randomPos;
-	_companyMkrSize = 0.8;
+	_companyMkrSize = [0.8, 0.8];
 	_companyMkrType = "O_hq";
 	_companyAO = [2000, 2000];
 	_companyMkrAlpha = 0.7;
@@ -73,7 +74,7 @@ for "_i" from 1 to _battsize do {
 		_pltMarker = createMarker [_pltName, _pltPos];
 		_pltMarker setMarkerType "O_SUPPORT";
 		_pltMarker setMarkerText _pltName;
-		_pltMarker setMarkerSize 0.6;
+		_pltMarker setMarkerSize [0.6, 0.6];
 
 		_pltMarker2 = createMarker [format ["%1_2", _pltName], _pltPos];
 		_pltMarker2 setMarkerShape "ELLIPSE";
