@@ -20,6 +20,11 @@ if (_owner == "OPFOR") then {
 		_grp = [_pos, east, (configfile >> "CfgGroups" >> "East" >> "ACM_O_HDF" >> "Infantry" >> _type)] call BIS_fnc_spawnGroup;
 		[_grp, _pos, 500] call BIS_fnc_taskPatrol;
 		_grp deleteGroupWhenEmpty true;
+
+		{
+			// Current result is saved in variable _x
+			_x setVariable ["Mkr", _mkr];
+		} forEach units _grp;
 		sleep 1;
 	};
 };

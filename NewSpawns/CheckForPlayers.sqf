@@ -10,11 +10,12 @@ while {true} do
 
 		} else {
 			_mkr setMarkerColor "COLORGREEN";
-			[_mkr] execVM "SpawnAI.sqf";
+			[_mkr] execVM "NewSpawns\SpawnAI.sqf";
 		};
     } else
     {
         _mkr setMarkerColor "COLORRED";
+		[_mkr] execVM "NewSpawns\DespawnAI.sqf";
     };
     sleep 5;
 };
