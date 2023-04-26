@@ -17,7 +17,7 @@ _sections = "getSections" call _db;
 
 		_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 		_carry = ["read", [_type, "CanCarry"]] call _logidb;
-		_weight = ["read", [_type, "setSize"]] call _logidb;
+		// _weight = ["read", [_type, "setSize"]] call _logidb;
 
 		// Create new vehicle based on data input 
 		_veh = _type createVehicle _pos;
@@ -30,7 +30,7 @@ _sections = "getSections" call _db;
 		_veh setFuel _fuel;
 
 		[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
-		[_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
+		// [_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
 		
 		_items params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {

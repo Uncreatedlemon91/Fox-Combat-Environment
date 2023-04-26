@@ -1,34 +1,35 @@
 // Define the size of each grid square in meters
-private _gridSize = 1000;
+_gridSize = 1000;
 
 // Get the size of the map in meters
-private _mapSize = getNumber(configFile >> "CfgWorlds" >> worldName >> "MapSize");
+_mapSize = getNumber(configFile >> "CfgWorlds" >> worldName >> "MapSize");
 
 // Calculate the number of grid squares in each direction
-private _numGridsX = floor(_mapSize / _gridSize);
-private _numGridsY = floor(_mapSize / _gridSize);
+_numGridsX = floor(_mapSize / _gridSize);
+_numGridsY = floor(_mapSize / _gridSize);
 
 // Loop over each grid square
 for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
     for [{_y = 0}, {_y < _numGridsY}, {_y = _y + 1}] do {
         // Calculate the position of the center of the grid square
-        private _pos = [(_x * _gridSize) + (_gridSize / 2), (_y * _gridSize) + (_gridSize / 2), 0];
+        _pos = [(_x * _gridSize) + (_gridSize / 2), (_y * _gridSize) + (_gridSize / 2), 0];
 
         // Create a marker at the center of the grid square
-        private _marker = createMarker [format ["Grid_%1_%2", _x, _y], _pos];
+        _marker = createMarker [format ["Grid_%1_%2", _x, _y], _pos];
         _db = ["new", _marker] call oo_inidbi;
         _exists = "exists" call _db;
 
+        // Customize the marker's appearance and text
+        _marker setMarkerType "mil_dot";
+        _marker setMarkerSize [1, 1];
+        _marker setMarkerColor "ColorRed";
+        _marker setMarkerText format ["Grid %1,%2", _x, _y];
+        _marker setMarkerAlpha 0;
+
+        [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
         if (_exists) then {
-            // Customize the marker's appearance and text
-            _marker setMarkerType "mil_dot";
-            _marker setMarkerSize [1, 1];
-            _marker setMarkerColor "ColorRed";
-            _marker setMarkerText format ["Grid %1,%2", _x, _y];
-            _marker setMarkerAlpha 0;
-
-            [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
-
+        
+        } else {
             // Set OPFOR Presence 
             _infCount = round (random 6);
             _tankCount = round (random 2);
@@ -63,7 +64,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             _civLoyalty = round (random 100);
 
             // Establish Safe zone 
-            _base = ["Grid 0,2", "Grid 0,3", "Grid 1,2", "Grid 1,3"];
+            _base = ["Grid_0_2", "Grid_0_3", "Grid_1_2", "Grid_1_3"];
             // Save marker to database 
             
             // Status 
@@ -72,7 +73,8 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             } else {
                 ["write", ["Grid Status", "Owner", "OPFOR"]] call _db;
             };
-            
+            // OPFOR Info
+            ["write", ["OPFOR-Info", "Difficulty", _rank]] call _db;
             // Houses
             ["write", ["Grid Locations", "Houses", _houseCount]] call _db;
             // Civilians 
@@ -84,18 +86,10 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             ["write", ["OPFOR-Count", "Mortars", _mortarCount]] call _db;
             ["write", ["OPFOR-Count", "Mechanized", _mechCount]] call _db;
             ["write", ["OPFOR-Count", "Motorized", _motCount]] call _db;
-            ["write", ["OPFOR-Count", "Difficulty", _rank]] call _db;
             // OPFOR Types
             ["write", ["OPFOR-Types", "Infantry", _infTypes]] call _db;
             ["write", ["OPFOR-Types", "Armored", _tankTypes]] call _db;
-        } else {
-            // Customize the marker's appearance and text
-            _marker setMarkerType "mil_dot";
-            _marker setMarkerSize [1, 1];
-            _marker setMarkerColor "ColorRed";
-            _marker setMarkerAlpha 0;
-            _marker setMarkerText format ["Grid %1,%2", _x, _y];
-            [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
         };
     };
 };
+

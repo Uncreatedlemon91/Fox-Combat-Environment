@@ -1,5 +1,10 @@
 params ["_mkr"];
 
+// RED = OPFOR 
+// Green = Players 
+// Blue = Friendly AI 
+
+
 while {true} do
 {
 	_mkrPos = getMarkerPos _mkr;
@@ -14,8 +19,13 @@ while {true} do
 		};
     } else
     {
-        _mkr setMarkerColor "COLORRED";
-		[_mkr] execVM "NewSpawns\DespawnAI.sqf";
+		_color = getMarkerColor _mkr;
+		if (_color == "COLORRED") then {
+
+		} else {
+			_mkr setMarkerColor "COLORRED";
+			[_mkr] execVM "NewSpawns\DespawnAI.sqf";
+		};
     };
     sleep 5;
 };
