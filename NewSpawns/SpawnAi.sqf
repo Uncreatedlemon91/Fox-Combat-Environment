@@ -24,6 +24,7 @@ if (_owner == "OPFOR") then {
 		{
 			// Current result is saved in variable _x
 			_x setVariable ["Mkr", _mkr];
+			systemChat format ["%1", _mkr];
 		} forEach units _grp;
 		sleep 1;
 	};
