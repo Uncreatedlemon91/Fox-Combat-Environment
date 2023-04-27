@@ -32,9 +32,9 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         } else {
             // Set OPFOR Presence 
             _infCount = round (random 6);
-            _tankCount = round (random 2);
-            _mortarCount = round (random 2);
-            _mechCount = round (random 4);
+            _tankCount = round (random 1);
+            _mortarCount = round (random 1);
+            _mechCount = round (random 2);
             _motCount = round (random 3);
 
             _infTypes = [];

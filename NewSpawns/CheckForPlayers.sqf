@@ -16,6 +16,7 @@ while {true} do
 		} else {
 			_mkr setMarkerColor "COLORGREEN";
 			[_mkr] execVM "NewSpawns\SpawnAI.sqf";
+			[_mkr] execVM "NewSpawns\CheckOwnership.sqf";
 		};
     } else
     {
