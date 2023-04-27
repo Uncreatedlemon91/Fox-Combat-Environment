@@ -53,6 +53,27 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
                 _tankTypes pushback _pick;
             };
 
+            _mortarTypes = [];
+            for "_i" from 1 to _mortarCount do 
+            {
+                _pick = selectRandom [""];
+                _mortarTypes pushback _pick;
+            };
+
+            _mechTypes = [];
+            for "_i" from 1 to _mechCount do 
+            {
+                _pick = selectRandom [];
+                _mechTypes pushback _pick;
+            };
+
+            _motTypes = [];
+            for "_i" from 1 to _motCount do 
+            {
+                _pick = selectRandom [];
+                _motTypes = pushback _pick;
+            };
+
             // Set rank of AI 
             _rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT"];
 

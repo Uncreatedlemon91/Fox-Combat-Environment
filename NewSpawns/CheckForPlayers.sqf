@@ -12,7 +12,7 @@ while {true} do
     {
 		_color = getMarkerColor _mkr;
 		if (_color == "COLORGREEN") then {
-
+			[_mkr] execVM "NewSpawns\CheckOwnership.sqf";
 		} else {
 			_mkr setMarkerColor "COLORGREEN";
 			[_mkr] execVM "NewSpawns\SpawnAI.sqf";
