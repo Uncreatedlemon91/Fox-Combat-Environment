@@ -19,4 +19,4 @@ sleep 10;
 
 "delete" call _db;
 
-execVM "Persistence\SaveFactionVehs.sqf";
+execVM "Persistence\SaveTrenches.sqf";
