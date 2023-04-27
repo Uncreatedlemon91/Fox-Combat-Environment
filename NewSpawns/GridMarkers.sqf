@@ -24,7 +24,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         _marker setMarkerSize [1, 1];
         _marker setMarkerColor "ColorRed";
         _marker setMarkerText format ["Grid %1,%2", _x, _y];
-        _marker setMarkerAlpha 0;
+        _marker setMarkerAlpha 1;
 
         [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
         if (_exists) then {
