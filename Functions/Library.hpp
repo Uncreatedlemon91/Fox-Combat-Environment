@@ -2,10 +2,6 @@ class CfgFunctions
 {
 	class FCE
 	{
-		class MissionStart
-		{
-			class spawnmkrgrp {};
-		};
 		class Logistics
 		{
 			class openMenu {};
@@ -29,10 +25,6 @@ class CfgFunctions
 			class CheckPlayerDB {};
 			class clientToDB {};
 			class LoadPlayer {};
-		};
-		class WorldBuilder
-		{
-
 		};
 	};
 };

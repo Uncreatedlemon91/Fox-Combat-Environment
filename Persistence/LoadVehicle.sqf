@@ -20,7 +20,7 @@ _sections = "getSections" call _db;
 		// _weight = ["read", [_type, "setSize"]] call _logidb;
 
 		// Create new vehicle based on data input 
-		_veh = _type createVehicle _pos;
+		_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
 		clearItemCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
 		clearWeaponCargoGlobal _veh;

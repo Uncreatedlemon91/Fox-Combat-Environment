@@ -5,7 +5,7 @@ while {true} do {
 	{
 		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		_class = typeOf _x;
-		_noSaves = ["CBA_NamespaceDummy", "EmptyDetector", "Logic", "acre_api_basicMissionSetup", "ACM_NAG_Soldier_Survivor", "acre_api_nameChannels","ModuleCurator_F", "ace_spectator_virtual"];
+		_noSaves = ["CBA_NamespaceDummy", "EmptyDetector", "Logic", "acre_api_basicMissionSetup", "ACM_NAG_Soldier_Survivor", "acre_api_nameChannels","ModuleCurator_F", "ace_spectator_virtual", "ACE_envelope_big", "GRAD_envelope_short", "GRAD_envelope_long"];
 		_faction = getText (configFile >> "CfgVehicles" >> _class >> "faction");
 		if ((_x in _editorItems) or (_class in _noSaves) or (_faction == "ACM_O_HDF")) then {
 			
