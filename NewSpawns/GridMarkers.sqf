@@ -24,7 +24,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         _marker setMarkerSize [1, 1];
         _marker setMarkerColor "ColorRed";
         _marker setMarkerText format ["Grid %1,%2", _x, _y];
-        _marker setMarkerAlpha 1;
+        _marker setMarkerAlpha 0;
 
         [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
         if (_exists) then {
@@ -36,6 +36,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             _mortarCount = round (random 1);
             _mechCount = round (random 2);
             _motCount = round (random 3);
+            _reconCount = round (random 3);
 
             _infTypes = [];
             for "_i" from 1 to _infCount do
@@ -56,22 +57,29 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             _mortarTypes = [];
             for "_i" from 1 to _mortarCount do 
             {
-                _pick = selectRandom [""];
+                _pick = selectRandom ["ACM_O_HDF_T_Mortar"];
                 _mortarTypes pushback _pick;
             };
 
             _mechTypes = [];
             for "_i" from 1 to _mechCount do 
             {
-                _pick = selectRandom [];
+                _pick = selectRandom ["o_acmohdf_mechanized_mechanized_squad_bmp"];
                 _mechTypes pushback _pick;
             };
 
             _motTypes = [];
             for "_i" from 1 to _motCount do 
             {
-                _pick = selectRandom [];
-                _motTypes = pushback _pick;
+                _pick = selectRandom ["o_acmohdf_motorized_motorized_reinforcements"];
+                _motTypes pushback _pick;
+            };
+
+            _reconTypes = [];
+            for "_i" from 1 to _reconCount do 
+            {
+                _pick = selectRandom ["o_acmohdf_infantry_1hli_squad", "o_acmohdf_infantry_1hli_squad_g22", "o_acmohdf_infantry_1hli_at_team", "o_acmohdf_infantry_1hli_aa_team"];
+                _motTypes pushback _pick;
             };
 
             // Set rank of AI 
@@ -107,9 +115,14 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             ["write", ["OPFOR-Count", "Mortars", _mortarCount]] call _db;
             ["write", ["OPFOR-Count", "Mechanized", _mechCount]] call _db;
             ["write", ["OPFOR-Count", "Motorized", _motCount]] call _db;
+            ["write", ["OPFOR-Count", "Recon", _reconCount]] call _db;
             // OPFOR Types
             ["write", ["OPFOR-Types", "Infantry", _infTypes]] call _db;
             ["write", ["OPFOR-Types", "Armored", _tankTypes]] call _db;
+            ["write", ["OPFOR-Types", "Mortars", _mortarTypes]] call _db;
+            ["write", ["OPFOR-Types", "Mechanized", _mechTypes]] call _db;
+            ["write", ["OPFOR-Types", "Motorized", _motTypes]] call _db;
+            ["write", ["OPFOR-Types", "Recon", _reconTypes]] call _db;
         };
     };
 };

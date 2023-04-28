@@ -8,6 +8,7 @@ if (_owner == "OPFOR") then {
 	_mortarCount = ["read", ["OPFOR-Count", "Mortars"]] call _db;
 	_mechCount = ["read", ["OPFOR-Count", "Mechanized"]] call _db;
 	_motCount = ["read", ["OPFOR-Count", "Motorized"]] call _db;
+	_reconCount = ["read", ["OPFOR-Count", "Recon"]] call _db;
 
 	_index = 0;
 	for "_i" from 1 to _infCount do
@@ -53,9 +54,29 @@ if (_owner == "OPFOR") then {
 	};
 
 	_index = 0;
-	for "_i" from 1 to _mechCount do
+	for "_i" from 1 to _mortarCount do
 	{
 		
+		// Current result is saved in variable _x
+		_type = ["read", ["OPFOR-Types", "Mortars"]] call _db;
+		_type = _type select _index;
+		_index = _index + 1;
+		_pos = [getMarkerPos _mkr, 10, 500, 4, 0, 20, 0, ["Base"]] call BIS_fnc_findSafePos;
+		_grp = [_pos, random 360, _type, EAST] call BIS_fnc_spawnVehicle;
+		_grp deleteGroupWhenEmpty true;
+
+		{
+			// Current result is saved in variable _x
+			_x setVariable ["Mkr", _mkr];
+			systemChat format ["%1", _mkr];
+			sleep 0.5
+		} forEach units _grp;
+		sleep 1;
+	};
+
+	_index = 0;
+	for "_i" from 1 to _mechCount do
+	{
 		// Current result is saved in variable _x
 		_type = ["read", ["OPFOR-Types", "Mechanized"]] call _db;
 		_type = _type select _index;
@@ -84,6 +105,28 @@ if (_owner == "OPFOR") then {
 		_index = _index + 1;
 		_pos = [getMarkerPos _mkr, 10, 500, 4, 0, 20, 0, ["Base"]] call BIS_fnc_findSafePos;
 		_grp = [_pos, east, (configfile >> "CfgGroups" >> "East" >> "ACM_O_HDF" >> "Motorized" >> _type)] call BIS_fnc_spawnGroup;
+		[_grp, _pos, 500] call BIS_fnc_taskPatrol;
+		_grp deleteGroupWhenEmpty true;
+
+		{
+			// Current result is saved in variable _x
+			_x setVariable ["Mkr", _mkr];
+			systemChat format ["%1", _mkr];
+			sleep 0.5
+		} forEach units _grp;
+		sleep 1;
+	};
+
+	_index = 0;
+	for "_i" from 1 to _reconCount do
+	{
+		
+		// Current result is saved in variable _x
+		_type = ["read", ["OPFOR-Types", "Recon"]] call _db;
+		_type = _type select _index;
+		_index = _index + 1;
+		_pos = [getMarkerPos _mkr, 10, 500, 4, 0, 20, 0, ["Base"]] call BIS_fnc_findSafePos;
+		_grp = [_pos, east, (configfile >> "CfgGroups" >> "East" >> "ACM_O_HDF" >> "SpecOps" >> _type)] call BIS_fnc_spawnGroup;
 		[_grp, _pos, 500] call BIS_fnc_taskPatrol;
 		_grp deleteGroupWhenEmpty true;
 

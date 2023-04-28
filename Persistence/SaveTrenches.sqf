@@ -1,10 +1,12 @@
 _db = ["new", format ["Trenches - %1 %2", missionName, worldName]] call oo_inidbi;
 
 while {true} do {
+	"delete" call _db;
+	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+	
 	{
-		_editorItems = (getMissionLayerEntities "MissionProps") select 0;
 		_class = typeOf _x;
-		_savedItems = ["ace_spectator_virtual", "ACE_envelope_big", "GRAD_envelope_short", "GRAD_envelope_long"];
+		_savedItems = ["ACE_envelope_big", "GRAD_envelope_giant", "GRAD_envelope_long", "GRAD_envelope_short", "ACE_envelope_small", "GRAD_envelope_vehicle"];
 		if (_class in _savedItems) then {
 			_pos = getPosASL _x;
 			_type = typeOf _x;

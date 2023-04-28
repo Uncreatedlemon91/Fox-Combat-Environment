@@ -70,12 +70,12 @@ class LoadoutMenu
 		class RscPicture_1206: RscPicture
 		{
 			idc = 1206;
-			text = "Imgs\LCrew.jpg";
+			text = "Imgs\GREN.jpg";
 			x = 0.432969 * safezoneW + safezoneX;
 			y = 0.456007 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.0879862 * safezoneH;
-			tooltip = "Crewman Leader"; //--- ToDo: Localize;
+			tooltip = "Grenadier Kit"; //--- ToDo: Localize;
 		};
 		class RscPicture_1207: RscPicture
 		{
@@ -223,7 +223,7 @@ class LoadoutMenu
 			y = 0.543993 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.0219966 * safezoneH;
-			action = "call fce_fnc_CrewL";
+			action = "call fce_fnc_Grenadier";
 		};
 		class Medic: RscButton
 		{

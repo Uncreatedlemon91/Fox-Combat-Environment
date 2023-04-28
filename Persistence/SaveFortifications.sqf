@@ -1,36 +1,20 @@
-_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Fortifications - %1 %2", missionName, worldName]] call oo_inidbi;
 _logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 _vehicles = [
-	"ACM_B_NAG_Tatra",
-	"ACM_B_NAG_Tatra_Ammo",
-	"ACM_B_NAG_Tatra_Refuel", 
-	"ACM_B_NAG_Tatra_Repair",
-	"ACM_B_NAG_UAZ_Unarmed",
-	"ACM_B_NAG_UAZ_MG",
-	"ACM_B_NAG_UAZ_AGS30",
-	"ACM_B_NAG_UAZ_SPG",
-	"ACM_B_NAG_Ifrit",
-	"ACM_B_NAG_Ifrit_HMG",
-	"ACM_B_NAG_Ifrit_GMG",
-	"ACM_B_NAG_BMP2_AMB",
-	"ACM_B_NAG_BMP2",
-	"ACM_B_NAG_RM70",
-	"ACM_B_NAG_T72",
-	"ACM_B_NAG_MI171_Unarmed",
-	"ACM_B_NAG_Civil",
-	"ACM_B_NAG_KA52",
-	"ACM_B_NAG_LauncherBox",
-	"ACM_B_NAG_AmmoBox",
-	"Box_IND_WpsSpecial_F",
-	"ACE_Box_Ammo",
-	"kat_surgerySupplyCrate",
-	"kat_pharmaMedicalCrate",
-	"kat_medicalSupplyCrate",
-	"kat_basicSupplyCrate",
-	"ACE_medicalSupplyCrate_advanced",
-	"ACE_Wheel",
-	"ACE_Track",
-	"ACE_SandbagObject"
+	"Land_RoadBarrier_01_F",
+	"Land_HBarrier_1_F",
+	"Land_Mil_WallBig_4m_F", 
+	"Land_PortableDesk_01_olive_F",
+	"Land_PlasticCase_01_medium_olive_F",
+	"TargetP_Inf_F",
+	"Land_Campfire_F",
+	"Land_CampingChair_V2_F",
+	"ACM_B_NAG_T_DSHKM",
+	"ACM_B_NAG_T_DSHKM",
+	"ACM_B_NAG_T_Mortar",
+	"ACM_B_NAG_T_Searchlight",
+	"ACM_B_NAG_T_SPG9",
+	"ACM_B_NAG_T_ZU23"
 ];
 
 while {true} do {
@@ -60,7 +44,6 @@ while {true} do {
 			["write", [_section, "Position", _pos]] call _db;
 			["write", [_section, "Direction", _dir]] call _db;
 			["write", [_section, "Damage", _dmg]] call _db;
-			["write", [_section, "Fuel", _fuel]] call _db;
 			
 			["write", [_section, "CargoItems", _items]] call _db;
 			["write", [_section, "CargoMags", _mags]] call _db;

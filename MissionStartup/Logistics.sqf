@@ -8,9 +8,18 @@ if (_exists) then {
 	
 } else {
 	// New data load 
-	["write", ["Supply Points", "Balance", round(random [100, 200, 300])]] call _db;
+	["write", ["Supply Points", "Balance", round (random [100, 200, 300])]] call _db;
 
 	_SpawnItems = [
+		// Fortifications 
+		["Land_RoadBarrier_01_F", "Road Gate", 1, 1, true],
+		["Land_HBarrier_1_F", "Hesco Barrier", 1, 1, true],
+		["Land_Mil_WallBig_4m_F", "Base Wall", 1, 1, true],
+		["Land_PortableDesk_01_olive_F", "Desk", 1, 1, true],
+		["Land_PlasticCase_01_medium_olive_F", "Empty Box", 1, 1, true],
+		["TargetP_Inf_F", "Target", 1, 1, true],
+		["Land_Campfire_F", "Campfire", 1, 1, true],
+		["Land_CampingChair_V2_F", "Chair", 1, 1, true],
 		// Turret Items
 		["ACM_B_NAG_T_DSHKM", "DSHKM Turret", 4, 1, true],
 		["ACM_B_NAG_T_DSHKM", "DSHKM Turret (Low)", 4, 1, true],
@@ -25,19 +34,19 @@ if (_exists) then {
 		// Ammunition 
 		["ACM_B_NAG_LauncherBox", "LAT Kit Munitions", 10, 1, true],
 		["ACM_B_NAG_LauncherBox", "HAT Kit Munitions", 40, 1, true],
-		["ACM_B_NAG_AmmoBox", "7.62 FAL Ammo Box", 10, 1, true],
+		["ACM_B_NAG_AmmoBox", "FAL Ammo Box", 10, 1, true],
 		["ACM_B_NAG_AmmoBox", "MG Ammo Box", 10, 1, true],
-		["ACM_B_NAG_AmmoBox", "Carbine Ammo", 10, 1, true],
 		["Box_IND_WpsSpecial_F", "Sniper Supplies", 30, 1, true],
 		["ACE_Box_Ammo", "Grenadier Ammunition", 10, 1, true],
 		["ACE_Box_Ammo", "Grenades", 10, 1, true],
-		["ACE_Box_Ammo", "Shotgun Ammo", 10, 1, true],
+		["ACE_Box_Ammo", "Shotgun Supplies", 10, 1, true],
 		["ACE_Box_Ammo", "Pistol Ammo", 10, 1, true],
-		["ACE_medicalSupplyCrate_advanced", "Packing Bandages", 5, 1, true],
-		["ACE_medicalSupplyCrate_advanced", "Elastic Bandages", 5, 1, true],
-		["ACE_medicalSupplyCrate_advanced", "Fluids", 5, 1, true],
-		["ACE_medicalSupplyCrate_advanced", "Medications", 5, 1, true],
-		["ACE_medicalSupplyCrate_advanced", "Surgery Tools", 5, 1, true],
+		// Medical
+		["kat_surgerySupplyCrate", "KAM Surgery Tools", 5, 1, true],
+		["kat_pharmaMedicalCrate", "KAM Pharmacy Crate", 5, 1, true],
+		["kat_medicalSupplyCrate", "KAM Blood", 5, 1, true],
+		["kat_basicSupplyCrate", "KAM General Items", 5, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "ACE Advanced Medical", 5, 1, true],
 		// Vehicles 
 		["ACM_B_NAG_Tatra", "Tatra Truck", 15, 20, false],
 		["ACM_B_NAG_Tatra_Ammo", "Ammo Truck", 30, 20, false],
@@ -50,7 +59,13 @@ if (_exists) then {
 		["ACM_B_NAG_Ifrit", "Ifrit - Unarmed", 40, 20, false],
 		["ACM_B_NAG_Ifrit_HMG", "Ifrit - Machine Gun", 60, 20, false],
 		["ACM_B_NAG_Ifrit_GMG", "Ifrit - Grenade Launcher", 80, 20, false],
-		["ACM_B_NAG_BMP2", "BMP", 180, 20, false]
+		["ACM_B_NAG_BMP2_AMB", "BMP - Ambulance", 120, 20, false],
+		["ACM_B_NAG_BMP2", "BMP", 180, 20, false],
+		["ACM_B_NAG_RM70", "Rocket Artillery", 220, 20, false],
+		["ACM_B_NAG_T72", "T72 Tank", 320, 20, false],
+		["ACM_B_NAG_MI171_Unarmed", "MI-17 Unarmed", 320, 20, false],
+		["ACM_B_NAG_Civil", "Scout Plane", 560, 20, false],
+		["ACM_B_NAG_KA52", "KA-52 Support Helicopter", 980, 20, false]
 	];
 
 	{
@@ -61,71 +76,14 @@ if (_exists) then {
 		_weight = _x select 3;
 		_canCarry = _x select 4;
 
-		["write", [_class, "Type", _class]] call _db;
-		["write", [_class, "Title", _name]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "CanCarry", _canCarry]] call _db;
+		["write", [_name, "Type", _class]] call _db;
+		["write", [_name, "Title", _name]] call _db;
+		["write", [_name, "Cost", _cost]] call _db;
+		["write", [_name, "Weight", _weight]] call _db;
+		["write", [_name, "CanCarry", _canCarry]] call _db;
 
 	} forEach _spawnItems;
 };
-
-
-/*
- TURRETS 
-	ACM_B_NAG_T_DSHKM
-	ACM_B_NAG_T_DSHKM_Mini
-	ACM_B_NAG_T_Mortar
-	ACM_B_NAG_T_Searchlight
-	ACM_B_NAG_T_SPG9
-	ACM_B_NAG_T_ZU23
-ITEMS 
-	ACE_SandbagObject
-	ACE_Track
-	ACE_Wheel
-	ACE_TripodObject
-SUPPLIES 
-	ACM_B_NAG_LaunchersBox
-	ACM_B_NAG_AmmoBox
-	Box_IND_WpsSpecial_F
-	ACE_Box_Ammo
-	ACE_medicalSupplyCrate_advanced
-APC 
-	ACM_B_NAG_BMP2
-	ACM_B_NAG_BMP2_AMB
-	ACM_B_NAG_BMP2_ZU
-	ACM_B_NAG_BMP_HQ
-	ACM_B_NAG_BTR80A
-TANK
-	ACM_B_NAG_T72
-ARTY 
-	ACM_B_NAG_RM70
-	ACM_B_NAG_T_D30 (TURRET)
-CARS 
-	ACM_B_NAG_Ifrit
-	ACM_B_NAG_Ifrit_GMG
-	ACM_B_NAG_Ifrit_HMG
-	ACM_B_NAG_Tatra
-	ACM_B_NAG_Tatra_Ammo
-	ACM_B_NAG_Tatra_Refuel
-	ACM_B_NAG_Tatra_Repair
-	ACM_B_NAG_UAZ_Unarmed
-	ACM_B_NAG_UAZ_AGS30
-	ACM_B_NAG_UAZ_MG
-	ACM_B_NAG_UAZ_SPG
-HELI 
-	ACM_B_NAG_MI171
-	ACM_B_NAG_MI171_Unarmed
-	ACM_B_NAG_KA52
-PLANES 
-	ACM_B_NAG_C130
-	ACM_B_NAG_C130_Cargo
-	ACM_B_NAG_Harrier
-	ACM_B_NAG_Civil
-ANTIAIR 
-	ACM_B_NAG_2S6M
-
-*/
 
 [logiLapt, ["Open Logistics Menu", {
 	[clientOwner] remoteExec ["fce_fnc_getLogiData", 2];
