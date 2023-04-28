@@ -10,59 +10,64 @@ if (_exists) then {
 	// New data load 
 	["write", ["Supply Points", "Balance", round(random [100, 200, 300])]] call _db;
 
-	// Add Car vehicles 
-	_cars = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Car'" configClasses (configFile >> "CfgVehicles");
-	{
-		_class = configName _x;
-		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview"); 
-		_cost = round (random [30, 50, 70]);
-		_weight = 20;
-		_canCarry = false;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class]] call _db;
-		["write", [_class, "Image", _image]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _cars;
+	_SpawnItems = [
+		// Turret Items
+		["ACM_B_NAG_T_DSHKM", "DSHKM Turret", 4, 1, true],
+		["ACM_B_NAG_T_DSHKM", "DSHKM Turret (Low)", 4, 1, true],
+		["ACM_B_NAG_T_Mortar", "Mortar", 15, 1, true],
+		["ACM_B_NAG_T_Searchlight", "Searchlight", 4, 1, true],
+		["ACM_B_NAG_T_SPG9", "SPG9 Turret", 10, 1, true],
+		["ACM_B_NAG_T_ZU23", "ZU23 AA Turret", 15, 1, true],
+		// ACE Items 
+		["ACE_SandbagObject", "Sandbag (Empty)", 1, 1, true],
+		["ACE_Track", "Replacement Track", 1, 1, true],
+		["ACE_Wheel", "Replacement Wheel", 1, 1, true],
+		// Ammunition 
+		["ACM_B_NAG_LauncherBox", "LAT Kit Munitions", 10, 1, true],
+		["ACM_B_NAG_LauncherBox", "HAT Kit Munitions", 40, 1, true],
+		["ACM_B_NAG_AmmoBox", "7.62 FAL Ammo Box", 10, 1, true],
+		["ACM_B_NAG_AmmoBox", "MG Ammo Box", 10, 1, true],
+		["ACM_B_NAG_AmmoBox", "Carbine Ammo", 10, 1, true],
+		["Box_IND_WpsSpecial_F", "Sniper Supplies", 30, 1, true],
+		["ACE_Box_Ammo", "Grenadier Ammunition", 10, 1, true],
+		["ACE_Box_Ammo", "Grenades", 10, 1, true],
+		["ACE_Box_Ammo", "Shotgun Ammo", 10, 1, true],
+		["ACE_Box_Ammo", "Pistol Ammo", 10, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "Packing Bandages", 5, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "Elastic Bandages", 5, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "Fluids", 5, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "Medications", 5, 1, true],
+		["ACE_medicalSupplyCrate_advanced", "Surgery Tools", 5, 1, true],
+		// Vehicles 
+		["ACM_B_NAG_Tatra", "Tatra Truck", 15, 20, false],
+		["ACM_B_NAG_Tatra_Ammo", "Ammo Truck", 30, 20, false],
+		["ACM_B_NAG_Tatra_Refuel", "Refuel Truck", 30, 20, false],
+		["ACM_B_NAG_Tatra_Repair", "Repair Truck", 30, 20, false],
+		["ACM_B_NAG_UAZ_Unarmed", "UAZ - Unarmed", 10, 20, false],
+		["ACM_B_NAG_UAZ_MG", "UAZ - Machine Gun", 25, false],
+		["ACM_B_NAG_UAZ_AGS30", "UAZ - Grenade Launcher", 40, 20, false],
+		["ACM_B_NAG_UAZ_SPG", "UAZ - SPG9 Launcher", 40, 20, false],
+		["ACM_B_NAG_Ifrit", "Ifrit - Unarmed", 40, 20, false],
+		["ACM_B_NAG_Ifrit_HMG", "Ifrit - Machine Gun", 60, 20, false],
+		["ACM_B_NAG_Ifrit_GMG", "Ifrit - Grenade Launcher", 80, 20, false],
+		["ACM_B_NAG_BMP2", "BMP", 180, 20, false]
+	];
 
-	_armored = "getText (_x >> 'Faction') == 'ACM_B_NAG' && getText (_x >> 'vehicleClass') == 'Armored'" configClasses (configFile >> "CfgVehicles");
 	{
-		_class = configName _x;
-		_name = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _class >> "editorPreview");
-		_cost = round (random [200, 250, 300]);
-		_weight = 50;
-		_canCarry = false;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class]] call _db;
-		["write", [_class, "Image", _image]] call _db;
-		["write", [_class, "Cost", _cost]] call _db;
-		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _armored;
+		// Current result is saved in variable _x
+		_class = _x select 0;
+		_name = _x select 1;
+		_cost = _x select 2;
+		_weight = _x select 3;
+		_canCarry = _x select 4;
 
-	// Add Misc Items
-	_items = ["Land_HBarrier_1_F", "Land_PlasticBarrier_01_F", "Land_PlasticBarrier_03_F", "Land_HBarrier_3_F", "Land_HBarrierTower_F"];
-	
-	{
-		_class = _x;
-		_name = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
-		_image = getText (configFile >> "CfgVehicles" >> _x >> "editorPreview");
-		_cost = round (random [3, 5, 10]);
-		_weight = 1;
-		_canCarry = true;
-		
-		["write", [_class, "Name", _name]] call _db;
-		["write", [_class, "Class", _class]] call _db;
-		["write", [_class, "Image", _image]] call _db;
+		["write", [_class, "Type", _class]] call _db;
+		["write", [_class, "Title", _name]] call _db;
 		["write", [_class, "Cost", _cost]] call _db;
 		["write", [_class, "Weight", _weight]] call _db;
-		["write", [_class, "canCarry", _canCarry]] call _db;
-	} forEach _items;
+		["write", [_class, "CanCarry", _canCarry]] call _db;
+
+	} forEach _spawnItems;
 };
 
 
