@@ -29,9 +29,6 @@ if (_exists) then {
 	_gusts = ["read", ["World Info", "Gusts"]] call _db;
 	0 setGusts _gusts;
 
-	_wind = ["read", ["World Info", "Wind"]] call _db;
-	setWind _wind;
-
 	_windStr = ["read", ["World Info", "Wind Strength"]] call _db;
 	0 setWindStr _windStr;
 
