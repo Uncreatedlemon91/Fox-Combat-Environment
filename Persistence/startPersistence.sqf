@@ -1,2 +1,2 @@
-execVM "LoadTrenches.sqf";
-execVM "LoadVehicle.sqf";
+execVM "Persistence\LoadTrenches.sqf";
+execVM "Persistence\LoadVehicle.sqf";
