@@ -56,6 +56,8 @@ if (_cost > _funds) then {
 
 	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
 	[_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
+	_veh setVariable ["canCarry", _carry];
+	_veh setVariable ["CargoWeight", _weight];
 	
 
 	if (_name == "FAL Ammo Box") then {

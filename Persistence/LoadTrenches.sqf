@@ -1,5 +1,5 @@
 _db = ["new", format ["Trenches - %1 %2", missionName, worldName]] call oo_inidbi;
-
+debugLog "Trenches Loading";
 _sections = "getSections" call _db;
 {
 	if (_x == "Supply Points") then {} else {

@@ -53,7 +53,7 @@ if (_exists) then {
 		["ACM_B_NAG_Tatra_Refuel", "Refuel Truck", 30, 20, false],
 		["ACM_B_NAG_Tatra_Repair", "Repair Truck", 30, 20, false],
 		["ACM_B_NAG_UAZ_Unarmed", "UAZ - Unarmed", 10, 20, false],
-		["ACM_B_NAG_UAZ_MG", "UAZ - Machine Gun", 25, false],
+		["ACM_B_NAG_UAZ_MG", "UAZ - Machine Gun", 25, 20, false],
 		["ACM_B_NAG_UAZ_AGS30", "UAZ - Grenade Launcher", 40, 20, false],
 		["ACM_B_NAG_UAZ_SPG", "UAZ - SPG9 Launcher", 40, 20, false],
 		["ACM_B_NAG_Ifrit", "Ifrit - Unarmed", 40, 20, false],

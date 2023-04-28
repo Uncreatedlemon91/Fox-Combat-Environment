@@ -1,4 +1,5 @@
 _db = ["new", format ["Fortifications - %1 %2", missionName, worldName]] call oo_inidbi;
+debugLog "Fortifications Loading";
 
 _sections = "getSections" call _db;
 {

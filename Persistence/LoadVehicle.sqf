@@ -1,4 +1,5 @@
 _db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+debugLog "Vehicles Loading";
 
 _sections = "getSections" call _db;
 {
