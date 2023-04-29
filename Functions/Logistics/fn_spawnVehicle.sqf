@@ -31,19 +31,7 @@ if (_cost > _funds) then {
 		"ACM_B_NAG_RM70",
 		"ACM_B_NAG_MI171_Unarmed",
 		"ACM_B_NAG_Civil",
-		"ACM_B_NAG_KA52",
-		"ACM_B_NAG_LauncherBox",
-		"ACM_B_NAG_AmmoBox",
-		"Box_IND_WpsSpecial_F",
-		"ACE_Box_Ammo",
-		"kat_surgerySupplyCrate",
-		"kat_pharmaMedicalCrate",
-		"kat_medicalSupplyCrate",
-		"kat_basicSupplyCrate",
-		"ACE_medicalSupplyCrate_advanced",
-		"ACE_SandbagObject",
-		"ACE_Track",
-		"ACE_Wheel"
+		"ACM_B_NAG_KA52"
 	];
 	_veh = _class createVehicle position logi_spawn; 
 	if (_class in _vehicles) then {
@@ -52,6 +40,10 @@ if (_cost > _funds) then {
 		_veh setDamage [_dmg, false];
 		_fuel = random [0.2, 0.5, 0.7];
 		_veh setFuel _fuel;
+		clearItemCargoGlobal _veh;
+		clearMagazineCargoGlobal _veh;
+		clearWeaponCargoGlobal _veh;
+
 	};
 
 	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
@@ -89,7 +81,7 @@ if (_cost > _funds) then {
 		clearWeaponCargoGlobal _veh;
 		clearBackpackCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
-		_veh addWeaponCargoGlobal ["CUP_sgun_Saiga12K", 5];
+		_veh addWeaponCargoGlobal ["CUP_sgun_Saiga12K", 3];
    		_veh addMagazineCargoGlobal ["CUP_5Rnd_B_Saiga12_Buck_1", 20];
 		_veh addMagazineCargoGlobal ["CUP_5Rnd_B_Saiga12_Slug", 20];
 		_veh addMagazineCargoGlobal ["CUP_5Rnd_B_Saiga12_Buck_00", 20];
@@ -104,6 +96,10 @@ if (_cost > _funds) then {
    		_veh addMagazineCargoGlobal ["CUP_5Rnd_762x67_G22", 20];
 		_veh addItemCargoGlobal ["cup_bipod_harris_1a2_l_blk", 3];
 		_veh addItemCargoGlobal ["ace_optic_lrps_pip", 3];
+		_veh addItemCargoGlobal ["ACE_SpottingScope", 3];
+		_veh addItemCargoGlobal ["ACE_DAGR", 3];
+		_veh addItemCargoGlobal ["ACE_Kestrel4500", 3];
+		_veh addBackpackCargo ["ace_gunbag", 3];
 	};
 
 	if (_name == "HAT Kit Munitions") then {
@@ -147,6 +143,10 @@ if (_cost > _funds) then {
 		_veh addMagazineCargoGlobal ["CUP_1Rnd_SmokeRed_GP25_M", 10];
 		_veh addMagazineCargoGlobal ["CUP_1Rnd_HE_GP25_M", 30];
 		_veh addMagazineCargoGlobal ["CUP_1Rnd_SMOKE_GP25_M", 30];
+	};
+
+	if (_class == "ACM_B_NAG_Tatra") then {
+		[_veh, 20] call ace_cargo_fnc_setSpace;
 	};
 
 	_newBalance = _funds - _cost;

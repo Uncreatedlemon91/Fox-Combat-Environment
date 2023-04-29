@@ -18,6 +18,7 @@ class CfgFunctions
 			class MissileSpec {};
 			class Rifleman {};
 			class sectionLeader {};
+			class Scout {};
 		};
 		class players
 		{

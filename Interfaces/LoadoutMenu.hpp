@@ -60,12 +60,12 @@ class LoadoutMenu
 		class RscPicture_1205: RscPicture
 		{
 			idc = 1205;
-			text = "Imgs\Crew.jpg";
+			text = "Imgs\FTL.jpg";
 			x = 0.365937 * safezoneW + safezoneX;
 			y = 0.456007 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.0879862 * safezoneH;
-			tooltip = "Crewman"; //--- ToDo: Localize;
+			tooltip = "Fireteam Leader"; //--- ToDo: Localize;
 		};
 		class RscPicture_1206: RscPicture
 		{
@@ -213,7 +213,7 @@ class LoadoutMenu
 			y = 0.543993 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.0219966 * safezoneH;
-			action = "call fce_fnc_Crew";
+			action = "call fce_fnc_fireteamleader";
 		};
 		class CrewL: RscButton
 		{

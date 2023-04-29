@@ -41,6 +41,11 @@ if (_exists) then {
 		["ACE_Box_Ammo", "Grenades", 10, 1, true],
 		["ACE_Box_Ammo", "Shotgun Supplies", 10, 1, true],
 		["ACE_Box_Ammo", "Pistol Ammo", 10, 1, true],
+		// Supplies 
+		["FlexibleTank_01_forest_F", "Flexible Fuel Carrier", 10, 1, true],
+		["Land_CanisterFuel_F", "Fuel Can", 2, 1, true],
+		["Land_RepairDepot_01_green_F", "Repair Facility", 10, 4, true],
+		["Box_NATO_AmmoVeh_F", "Vehicle Ammo Crate", 20, 4, true],
 		// Medical
 		["kat_surgerySupplyCrate", "KAM Surgery Tools", 5, 1, true],
 		["kat_pharmaMedicalCrate", "KAM Pharmacy Crate", 5, 1, true],
@@ -61,6 +66,7 @@ if (_exists) then {
 		["ACM_B_NAG_Ifrit_GMG", "Ifrit - Grenade Launcher", 80, 20, false],
 		["ACM_B_NAG_BMP2_AMB", "BMP - Ambulance", 120, 20, false],
 		["ACM_B_NAG_BMP2", "BMP", 180, 20, false],
+		["ACM_B_NAG_BTR80A", "BTR 80A", 220, 20, false],
 		["ACM_B_NAG_RM70", "Rocket Artillery", 220, 20, false],
 		["ACM_B_NAG_T72", "T72 Tank", 320, 20, false],
 		["ACM_B_NAG_MI171_Unarmed", "MI-17 Unarmed", 320, 20, false],

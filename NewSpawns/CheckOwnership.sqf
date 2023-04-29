@@ -28,9 +28,7 @@ if (_countEast < 5) then {
 	_newFaction = ["write", ["Grid Status", "Owner", "BLUFOR"]] call _db;
 };
 
-/*
-if (_countWest < 5) then {
+if (_countEast >= 5) then {
 	_db = ["new", _mkr] call oo_inidbi;
 	_newFaction = ["write", ["Grid Status", "Owner", "OPFOR"]] call _db;
 };
-*/
