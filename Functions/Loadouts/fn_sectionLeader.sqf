@@ -32,6 +32,7 @@ player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_Flashlight_XL50";
 player addItemToUniform "ACE_MapTools";
 for "_i" from 1 to 2 do {player addItemToUniform "ACE_CableTie";};
+player addItemToVest "ACE_Vector";
 player addHeadgear _helmet;
 
 comment "Add items";
