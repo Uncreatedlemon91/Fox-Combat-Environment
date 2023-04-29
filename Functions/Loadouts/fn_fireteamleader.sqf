@@ -25,7 +25,7 @@ player addVest _vest;
 player addBackpack "ACM_Bag_B_Patrol_bag_Multac";
 
 comment "Add items to containers";
-player addItemToUniform "ACRE_PRC148";
+player addItemToUniform "ACRE_PRC343";
 player addItemToUniform "ACRE_PRC343";
 player addItemToUniform "ACE_EarPlugs";
 player addItemToUniform "ACE_Flashlight_XL50";
