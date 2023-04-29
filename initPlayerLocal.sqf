@@ -2,7 +2,7 @@
 
 _kit = profileNameSpace getVariable "Kit";
 _dir = profileNameSpace getVariable "Direction";
-_pos = profileNameSpace getVariable "Position";
+_pos = profileNameSpace getVariable "PlayerPosition";
 
 player setUnitLoadout _kit;
 player setDir _dir;
@@ -16,11 +16,11 @@ while {true} do {
 		_pos = getPosASL player;
 		_dir = getDir player;
 		profileNameSpace setVariable ["Kit", _kit];
-		profileNameSpace setVariable ["Position", _pos];
+		profileNameSpace setVariable ["PlayerPosition", _pos];
 		profileNameSpace setVariable ["Direction", _dir];
 	} else {
 		profileNameSpace setVariable ["Kit", nil];
-		profileNameSpace setVariable ["Position", nil];
+		profileNameSpace setVariable ["PlayerPosition", nil];
 		profileNameSpace setVariable ["Direction", nil];
 	};
 
