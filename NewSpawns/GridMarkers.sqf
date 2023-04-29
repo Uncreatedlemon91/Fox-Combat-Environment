@@ -79,7 +79,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             for "_i" from 1 to _reconCount do 
             {
                 _pick = selectRandom ["o_acmohdf_infantry_1hli_squad", "o_acmohdf_infantry_1hli_squad_g22", "o_acmohdf_infantry_1hli_at_team", "o_acmohdf_infantry_1hli_aa_team"];
-                _motTypes pushback _pick;
+                _reconTypes pushback _pick;
             };
 
             // Set rank of AI 
