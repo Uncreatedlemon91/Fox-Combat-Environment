@@ -7,11 +7,7 @@ while {true} do {
 	
 	{
 		_class = typeOf _x;
-<<<<<<< Updated upstream
-		_savedItems = ["ACE_envelope_big", "GRAD_envelope_giant", "GRAD_envelope_long", "GRAD_envelope_short", "ACE_envelope_small", "GRAD_envelope_vehicle"];
-=======
 		_savedItems = ["Crater"];
->>>>>>> Stashed changes
 		if (_class in _savedItems) then {
 			_pos = getPos _x;
 			_type = typeOf _x;
@@ -25,10 +21,6 @@ while {true} do {
 			["write", [_section, "Direction", _dir]] call _db;
 			["write", [_section, "Damage", _dmg]] call _db;
 		};
-<<<<<<< Updated upstream
-	} forEach allMissionObjects "All";
-=======
 	} forEach allMissionObjects "";
->>>>>>> Stashed changes
 	sleep 60;
 };
