@@ -38,7 +38,7 @@ while {true} do {
 	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
 		_type = typeOf _x;
-		_missionLayer = (getmissionlayerEntities "Base") select 0;
+		_missionLayer = (getmissionlayerEntities "MissionProps") select 0;
 		if (_x in _missionLayer) then {} else {
 			if (_type in _vehicles) then {	
 				_pos = getPos _x;
