@@ -139,3 +139,5 @@ if (_owner == "OPFOR") then {
 		sleep 1;
 	};
 };
+
+[_mkr] execVM "NewSpawns\CheckOwnership.sqf";
