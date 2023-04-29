@@ -1,5 +1,5 @@
 params ["_mkr"];
-
+[_mkr] execVM "NewSpawns\CheckOwnership.sqf";
 {
 	// Current result is saved in variable _x
 	_assignedMkr = _x getVariable "Mkr";
