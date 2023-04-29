@@ -39,8 +39,8 @@ while {true} do {
 				_weps = getWeaponCargo _x;
 				_backs = getBackpackCargo _x;
 
-				_canCarry = ["read", [_type, "canCarry"]] call _logidb;
-				_weight = ["read", [_type, "setSize"]] call _logidb;
+				_canCarry = _x getVariable "canCarry";
+				_weight = _x getVariable "CargoWeight";
 				
 				// Save to database 
 				_section = format ["%1 - %2", _type, netId _x];
