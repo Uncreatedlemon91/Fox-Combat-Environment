@@ -17,7 +17,7 @@ removeGoggles player;
 
 comment "Add weapons";
 player addWeapon "ACM_RDI_76_Railed";
-player addPrimaryWeaponItem "optic_mrco";
+player addPrimaryWeaponItem "CUP_optic_Aimpoint_5000";
 
 comment "Add containers";
 player forceAddUniform _uniform;

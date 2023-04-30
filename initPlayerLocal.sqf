@@ -18,7 +18,7 @@ while {true} do {
 	player removeItem "ItemGPS";
 
 	_attachments = primaryWeaponItems player;
-	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "optic_mrco", "ace_acc_pointer_green", "ace_optic_lrps_pip", "cup_bipod_harris_1a2_l_blk"];
+	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "ace_acc_pointer_green", "ace_optic_lrps_pip", "cup_bipod_harris_1a2_l_blk", "cup_muzzle_snds_kzrzp_ak545"];
 
 	{
 		if (_x in _approvedAttachments) then {} else {

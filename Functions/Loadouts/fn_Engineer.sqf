@@ -35,7 +35,7 @@ player addItemToUniform "ACE_EntrenchingTool";
 
 player addItemToBackpack "ACE_wirecutter";
 player addItemToBackpack "ToolKit";
-tplayeris addItemToBackpack "ACE_rope6";
+player addItemToBackpack "ACE_rope6";
 for "_i" from 1 to 20 do {player addItemToBackpack "ace_marker_flags_red";};
 player addItemToBackpack "ACE_Clacker";
 player addItemToBackpack "ACE_EntrenchingTool";
