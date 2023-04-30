@@ -32,8 +32,20 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         } else {
             // Set OPFOR Presence 
             _infCount = round (random 6);
-            _tankCount = round (random 1);
-            _mortarCount = round (random 1);
+            _tankChance = random 100;
+            if (_tankChance <= 20) then {
+                _tankCount = 1;
+            } else {
+                _tankCount = 0;
+            };
+
+            _mortarChance = random 100;
+            if (_mortarChance <= 20) then {
+                _mortarCount = 1;
+            } else {
+                _mortarCount = 0;
+            };
+            
             _mechCount = round (random 2);
             _motCount = round (random 3);
             _reconCount = round (random 3);
@@ -50,7 +62,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             for "_i" from 1 to _tankCount do
             {
                 // Current result is saved in variable _x
-                _pick = selectRandom ["o_acmohdf_armored_tank_section_T55", "o_acmohdf_armored_tank_section", "o_acmohdf_armored_tank_platoon"];
+                _pick = selectRandom ["o_acmohdf_armored_tank_section_T55", "o_acmohdf_armored_tank_section"];
                 _tankTypes pushback _pick;
             };
 
