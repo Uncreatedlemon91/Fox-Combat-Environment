@@ -107,8 +107,8 @@ if (_cost > _funds) then {
 		clearWeaponCargoGlobal _veh;
 		clearBackpackCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
-   		_veh addMagazineCargoGlobal ["Titan_AT", 4];
-		_veh addMagazineCargoGlobal ["Titan_AP", 4];
+   		_veh addMagazineCargoGlobal ["Titan_AT", 2];
+		_veh addMagazineCargoGlobal ["Titan_AP", 2];
 	};
 
 	if (_name == "LAT Kit Munitions") then {

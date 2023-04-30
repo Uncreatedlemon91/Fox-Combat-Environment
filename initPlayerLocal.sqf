@@ -18,7 +18,7 @@ while {true} do {
 	_x removeItem "ItemGPS";
 
 	_attachments = primaryWeaponItems _x;
-	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "optic_mrco", "ace_acc_pointer_green"];
+	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "optic_mrco", "ace_acc_pointer_green", "ace_optic_lrps_pip", "cup_bipod_harris_1a2_l_blk"];
 	_player = _x;
 	{
 		
