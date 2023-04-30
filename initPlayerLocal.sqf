@@ -22,7 +22,7 @@ while {true} do {
 
 	{
 		_player = _x;
-		if (_x in _attachments) then {} else {
+		if (_x in _approvedAttachments) then {} else {
 			_player removePrimaryWeaponItem _x;
 		};
 		sleep 0.5;
@@ -40,7 +40,7 @@ while {true} do {
 		_name = name player;
 		_uid = getPlayerUID player;
 		_clientID = clientOwner;
-		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_writePlayertoDB", 2];
+		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
 	} else {
 		profileNameSpace setVariable ["PlayerKit", nil];
 		profileNameSpace setVariable ["PlayerPosition", nil];
