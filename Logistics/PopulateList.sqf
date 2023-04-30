@@ -106,3 +106,26 @@ refundTrg setTriggerStatements [ "this",
 	'Refund Received!' remoteExec ['systemChat', 0];
 	", 
 	""];
+
+while {true} do {
+	{
+		// Current result is saved in variable _x
+		_upOrDown = selectRandom ["Up", "Down"];
+		_value = round (random 5);
+		_name = _x select 1;
+		_oldCost = ["read", [_name, "Cost"]] call _db;
+		if (_upOrDown == "Up") then {
+			_newCost = _oldCost + _value;
+			["write", [_name, "Cost", _newCost]] call _db;
+		};
+
+		if (_upOrDown == "Down") then {
+			_newCost = _oldCost - _value;
+			if (_newCost <= 0) then {
+				_newCost == 1;
+			};
+			["write", [_name, "Cost", _newCost]] call _db;
+		}
+	} forEach _spawnItems;
+	sleep 3600;
+};
