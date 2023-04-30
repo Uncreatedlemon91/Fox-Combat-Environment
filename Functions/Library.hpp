@@ -19,6 +19,7 @@ class CfgFunctions
 			class Rifleman {};
 			class sectionLeader {};
 			class Scout {};
+			class Engineer {};
 		};
 		class players
 		{

@@ -14,14 +14,14 @@ if (isNil "_kit") then {} else {
 sleep 10;
 
 while {true} do {
-	_x removeItem "ItemRadio";
-	_x removeItem "ItemGPS";
+	player removeItem "ItemRadio";
+	player removeItem "ItemGPS";
 
 	_attachments = primaryWeaponItems _x;
 	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "optic_mrco", "ace_acc_pointer_green", "ace_optic_lrps_pip", "cup_bipod_harris_1a2_l_blk"];
-	_player = _x;
+
 	{
-		
+		_player = _x;
 		if (_x in _attachments) then {} else {
 			_player removePrimaryWeaponItem _x;
 		};
