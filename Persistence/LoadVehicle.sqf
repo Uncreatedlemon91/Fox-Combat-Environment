@@ -1,5 +1,5 @@
 _db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
-_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+debugLog "Vehicles Loading";
 
 _sections = "getSections" call _db;
 {
@@ -16,11 +16,12 @@ _sections = "getSections" call _db;
 		_weps = ["read", [_x, "CargoWeps"]] call _db;
 		_backs = ["read", [_x, "CargoBps"]] call _db;
 
-		// _carry = ["read", [_x, "CanCarry"]] call _logidb;
-		// _weight = ["read", [_x, "Weight"]] call _logidb;
+		_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+		_carry = ["read", [_type, "CanCarry"]] call _logidb;
+		// _weight = ["read", [_type, "setSize"]] call _logidb;
 
 		// Create new vehicle based on data input 
-		_veh = _type createVehicle _pos;
+		_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
 		clearItemCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
 		clearWeaponCargoGlobal _veh;
@@ -29,8 +30,8 @@ _sections = "getSections" call _db;
 		_veh setDamage [_dmg, false];
 		_veh setFuel _fuel;
 
-		[_veh, _carry, [0, 3, 1], 10] call ace_dragging_fnc_setCarryable;
-		[_veh, _weight] call ace_cargo_fnc_setSize;
+		[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
+		// [_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
 		
 		_items params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
@@ -53,5 +54,8 @@ _sections = "getSections" call _db;
 		};
 	};
 } forEach _sections;
+sleep 10;
+
+"delete" call _db;
 
 execVM "Persistence\SaveFactionVehs.sqf";

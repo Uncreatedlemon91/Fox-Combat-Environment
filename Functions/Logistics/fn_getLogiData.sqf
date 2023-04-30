@@ -11,14 +11,11 @@ _funds = ["read", ["Supply Points", "Balance"]] call _db;
 	if (_x == "Supply Points") then {
 		
 	} else {
-		_name = ["read", [_x, "Name"]] call _db;
-		_class = ["read", [_x, "Class"]] call _db;
-		_image = ["read", [_x, "Image"]] call _db;
+		_class = ["read", [_x, "Type"]] call _db;
+		_name = ["read", [_x, "Title"]] call _db;
 		_cost = ["read", [_x, "Cost"]] call _db;
-		_weight = ["read", [_x, "Weight"]] call _db;
-		_canCarry = ["read", [_x, "canCarry"]] call _db;
 
-		_data = [_class, _name, _image, _cost, _weight, _canCarry];		
+		_data = [_class, _name, _cost];		
 		_dataToSend pushBack _data;
 	};
 } forEach _sections;
