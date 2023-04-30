@@ -29,7 +29,7 @@ while {true} do {
 	} forEach _attachments;
 
 	if (alive player) then {
-		_status = _x getVariable "ACE_isUnconcious";
+		_status = player getVariable "ACE_isUnconcious";
 		if (_status) then {
 			profileNameSpace setVariable ["PlayerKit", nil];
 			profileNameSpace setVariable ["PlayerPosition", nil];
