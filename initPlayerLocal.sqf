@@ -17,6 +17,17 @@ while {true} do {
 	_x removeItem "ItemRadio";
 	_x removeItem "ItemGPS";
 
+	_attachments = primaryWeaponItems _x;
+	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "optic_mrco", "ace_acc_pointer_green"];
+	_player = _x;
+	{
+		
+		if (_x in _attachments) then {} else {
+			_player removePrimaryWeaponItem _x;
+		};
+		sleep 0.5;
+	} forEach _attachments;
+
 	if (alive player) then {
 		_status = _x getVariable "ACE_isUnconcious";
 		if (_status) then {
