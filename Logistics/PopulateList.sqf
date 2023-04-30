@@ -140,5 +140,6 @@ while {true} do {
 			["write", [_name, "Cost", _newCost]] call _db;
 		}
 	} forEach _spawnItems;
-	sleep 3600;
+	sleep 60;
+	// sleep 3600;
 };

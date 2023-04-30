@@ -22,7 +22,7 @@ addMissionEventHandler ["HandleDisconnect", {
 	_dir = getDir _unit;
 	_kit = getUnitLoadout _unit;
 
-	_db = ["new", format ["Players %1 %2"], _name, _uid];
+	_db = ["new", format ["Players %1 %2"], _name, _uid] call oo_inidbi;
 	_section = format ["%1 %2", _name, _uid];
 	["write", [_section, "Name", _name]] call _db;
 	["write", [_section, "SteamID", _uid]] call _db;
