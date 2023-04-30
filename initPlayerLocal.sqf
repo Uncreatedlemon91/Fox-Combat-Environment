@@ -15,6 +15,12 @@ sleep 10;
 
 while {true} do {
 	if (alive player) then {
+		_status = _x getVariable "ACE_isUnconcious";
+		if (_status) then {
+			profileNameSpace setVariable ["PlayerKit", nil];
+			profileNameSpace setVariable ["PlayerPosition", nil];
+			profileNameSpace setVariable ["PlayerDirection", nil];
+		};
 		_kit = getUnitLoadout player;
 		_pos = getPosASL player;
 		_dir = getDir player;
