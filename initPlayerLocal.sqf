@@ -14,6 +14,9 @@ if (isNil "_kit") then {} else {
 sleep 10;
 
 while {true} do {
+	_x removeItem "ItemRadio";
+	_x removeItem "ItemGPS";
+
 	if (alive player) then {
 		_status = _x getVariable "ACE_isUnconcious";
 		if (_status) then {
