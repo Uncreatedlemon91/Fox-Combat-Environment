@@ -8,3 +8,4 @@
 [] execVM "Persistence\startPersistence.sqf";																// Add Persistence Module 
 [Ace_Arsenal, ["Get Kit", {createDialog "LoadoutMenu";}]] remoteExec ["addAction", 0, true];				// Add Loadout System
 [] execVM "WorldBuilder\startWorldBuilder.sqf";																// Add environment + Ambience database and modules
+[] execVM "ServerEH.sqf";																					// Add server event handlers 
