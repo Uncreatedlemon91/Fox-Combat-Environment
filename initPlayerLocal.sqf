@@ -1,4 +1,5 @@
 // 
+/*
 _kit = profileNameSpace getVariable "PlayerKit";
 _dir = profileNameSpace getVariable "PlayerDirection";
 _pos = profileNameSpace getVariable "PlayerPosition";
@@ -12,6 +13,7 @@ if (isNil "_kit") then {} else {
 };
 
 sleep 10;
+*/ 
 
 while {true} do {
 	player removeItem "ItemRadio";
