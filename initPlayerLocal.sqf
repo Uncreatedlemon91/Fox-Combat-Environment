@@ -1,19 +1,7 @@
-// 
-/*
-_kit = profileNameSpace getVariable "PlayerKit";
-_dir = profileNameSpace getVariable "PlayerDirection";
-_pos = profileNameSpace getVariable "PlayerPosition";
+_name = name player;
+_uid = getPlayerUID player;
 
-if (isNil "_kit") then {} else {
-	player setUnitLoadout _kit;
-	player setDir _dir;
-	player setPosASL _pos;
-
-	player setPos position Ace_Arsenal;
-};
-
-sleep 10;
-*/ 
+[_name, _uid] remoteExec ["fce_fnc_clientDead_q", 2];
 
 while {true} do {
 	player removeItem "ItemRadio";
@@ -43,9 +31,12 @@ while {true} do {
 		_clientID = clientOwner;
 		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
 	} else {
+		_name = name player;
+		_uid = getPlayerUID player;
 		profileNameSpace setVariable ["PlayerKit", nil];
 		profileNameSpace setVariable ["PlayerPosition", nil];
 		profileNameSpace setVariable ["PlayerDirection", nil];
+		[_name, _uid] remoteExec ["fce_fnc_deadPlayer", 2];
 	};
 
 	sleep 2;
