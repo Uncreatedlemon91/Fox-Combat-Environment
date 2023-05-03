@@ -23,8 +23,7 @@ while {true} do {
 	_approvedAttachments = ["CUP_optic_Aimpoint_5000", "ace_acc_pointer_green", "ace_optic_lrps_pip", "cup_bipod_harris_1a2_l_blk", "cup_muzzle_snds_kzrzp_ak545"];
 
 	{
-		if (_x in _approvedAttachments) then {} else {
-			
+		if (_x in _approvedAttachments) then {} else {	
 			player removePrimaryWeaponItem _x;
 		};
 		sleep 0.5;

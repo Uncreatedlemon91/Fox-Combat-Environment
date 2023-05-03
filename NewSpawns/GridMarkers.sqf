@@ -31,7 +31,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         
         } else {
             // Set OPFOR Presence 
-            _infCount = round (random 6);
+            _infCount = round (random 10);
             _tankChance = random 100;
             if (_tankChance <= 20) then {
                 _tankCount = 1;
