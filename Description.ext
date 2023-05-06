@@ -2,3 +2,16 @@
 #include "Interfaces\LogiMenu.hpp"
 #include "Interfaces\LoadoutMenu.hpp"
 #include "Functions\Library.hpp"
+
+class CfgDebriefing
+{  
+	class fce_dead
+	{
+		title = "You're dead!";
+		subtitle = "";
+		description = "You died earlier in the week! You'll need to rejoin as a Spectator, or wait until Saturday Afternoon to get a new life again!";
+		pictureBackground = "imgs\Deathbk.jpg";
+		picture = "imgs\Skull.jpg";
+		pictureColor[] = { 1, 1, 1, 1 };
+	};
+};

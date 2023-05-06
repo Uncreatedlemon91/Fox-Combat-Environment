@@ -36,6 +36,8 @@ _vehicles = [
 while {true} do {
 	"delete" call _db;
 	_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+	_logdb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+
 	{
 		_type = typeOf _x;
 		_missionLayer = (getmissionlayerEntities "MissionProps") select 0;

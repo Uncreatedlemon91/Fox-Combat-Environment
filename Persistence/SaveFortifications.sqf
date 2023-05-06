@@ -22,12 +22,10 @@ while {true} do {
 	"delete" call _db;
 	_db = ["new", format ["Fortifications - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
-		
-		
 		_type = typeOf _x;
 		_missionLayer = (getmissionlayerEntities "MissionProps") select 0;
 		if (_x in _missionLayer) then {} else {
-			if (_type in _vehicles) then {	
+			if (_type in _vehicles) then {
 				_pos = getPos _x;
 				_type = typeOf _x;
 				_dir = getDir _x;

@@ -27,6 +27,9 @@ class CfgFunctions
 			class CheckPlayerDB {};
 			class clientToDB {};
 			class LoadPlayer {};
+			class DeadPlayer {};
+			class clientDeadQ {};
+			class DbToClient {};
 		};
 	};
 };
