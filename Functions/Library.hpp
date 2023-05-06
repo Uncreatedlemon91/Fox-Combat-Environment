@@ -31,5 +31,9 @@ class CfgFunctions
 			class clientDeadQ {};
 			class DbToClient {};
 		};
+		class enemy 
+		{
+			class Resupply {};
+		};
 	};
 };

@@ -23,11 +23,12 @@ while {true} do {
 		_kit = getUnitLoadout player;
 		_pos = getPosATL player;
 		_dir = getDir player;
+		_insignia = [player] call BIS_fnc_getUnitInsignia;
 
 		_name = name player;
 		_uid = getPlayerUID player;
 		_clientID = clientOwner;
-		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
+		[_kit, _pos, _dir, _insignia, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
 	} else {
 		_name = name player;
 		_uid = getPlayerUID player;
@@ -36,7 +37,7 @@ while {true} do {
 		_dir = random 360;
 		_clientID = clientOwner;
 
-		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
+		[_kit, _pos, _dir, _insignia, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
 		[_name, _uid] remoteExec ["fce_fnc_deadPlayer", 2];
 	};
 
