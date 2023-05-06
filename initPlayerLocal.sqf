@@ -1,7 +1,7 @@
 _name = name player;
 _uid = getPlayerUID player;
 
-[_name, _uid] remoteExec ["fce_fnc_clientDeadQ", 2];
+[_name, _uid, clientOwner] remoteExec ["fce_fnc_clientDeadQ", 2];
 [_name, _uid, clientOwner] remoteExec ["fce_fnc_DbToClient", 2];
 
 while {true} do {
@@ -20,12 +20,8 @@ while {true} do {
 
 	if (alive player) then {
 		_kit = getUnitLoadout player;
-		_pos = getPosASL player;
+		_pos = getPosATL player;
 		_dir = getDir player;
-
-		profileNameSpace setVariable ["PlayerKit", _kit];
-		profileNameSpace setVariable ["PlayerPosition", _pos];
-		profileNameSpace setVariable ["PlayerDirection", _dir];
 
 		_name = name player;
 		_uid = getPlayerUID player;
@@ -34,9 +30,12 @@ while {true} do {
 	} else {
 		_name = name player;
 		_uid = getPlayerUID player;
-		profileNameSpace setVariable ["PlayerKit", nil];
-		profileNameSpace setVariable ["PlayerPosition", nil];
-		profileNameSpace setVariable ["PlayerDirection", nil];
+		_kit = [];
+		_pos = [874.92,3012.66,0.0999985];
+		_dir = random 360;
+		_clientID = clientOwner;
+
+		[_kit, _pos, _dir, _name, _uid, _clientID] remoteExec ["fce_fnc_clientToDb", 2];
 		[_name, _uid] remoteExec ["fce_fnc_deadPlayer", 2];
 	};
 
