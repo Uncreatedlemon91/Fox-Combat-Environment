@@ -1,4 +1,4 @@
-lawnmower limitSpeed 15;
+
 [lawnMower, ["Lower Blades", {
 	removeAllActions lawnmower;
 	_switch = "on";
