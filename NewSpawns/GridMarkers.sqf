@@ -25,7 +25,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         _marker setMarkerSize [500, 500];
         _marker setMarkerColor "ColorRed";
         _marker setMarkerText format ["Grid %1,%2", _x, _y];
-        _marker setMarkerAlpha 1;
+        _marker setMarkerAlpha 0;
 
         if (_exists) then {
             _markers = "getSections" call _db;
@@ -42,7 +42,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
                     _mkr = createMarker [_x, _pos];
                     _mkr setMarkerType "o_inf";
                     _mkr setMarkerSize [0.4, 0.4];
-                    _mkr setMarkerAlpha 0.6;
+                    _mkr setMarkerAlpha 0;
                     _mkr setMarkerColor "ColorRed";
 
                     ["write", [_mkr, "Active", false]] call _db;
