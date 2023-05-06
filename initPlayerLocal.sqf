@@ -2,6 +2,7 @@ _name = name player;
 _uid = getPlayerUID player;
 
 [_name, _uid] remoteExec ["fce_fnc_clientDeadQ", 2];
+[_name, _uid, clientOwner] remoteExec ["fce_fnc_DbToClient", 2];
 
 while {true} do {
 	player removeItem "ItemRadio";
