@@ -1,8 +1,6 @@
 // Autorifleman loadout
 _helmet = selectRandom ["ACM_HelmetACH_Anthraxic", "ACM_HelmetACH_Anthraxic_GCovered", "ACM_HelmetACH_Anthraxic_ESS"];
-_uniform = selectRandom ["ACM_NAG_MCCUU", "ACM_NAG_MCCUU", "ACM_NAG_MCCUU_roll_2", "ACM_NAG_MCCUU_roll_2_gloves", "ACM_NAG_MCCUU_roll_2_pads",
-	"ACM_NAG_MCCUU_roll_2_pads_gloves", "ACM_NAG_MCCUU_pads", "ACM_NAG_MCCUU_pads_gloves", "ACM_NAG_MCCUU_pads_roll", "ACM_NAG_MCCUU_roll_gloves", 
-	"ACM_NAG_MCCUU_roll_pads", "ACM_NAG_MCCUU_roll_pads_gloves"];
+_uniform = selectRandom ["ACM_NAG_MCCUU", "ACM_NAG_MCCUU", "ACM_NAG_MCCUU_roll_2", "ACM_NAG_MCCUU_roll_2_gloves", "ACM_NAG_MCCUU_roll_gloves"];
 _vest = selectRandom ["ACM_Vest_Nagansk_6B45_Sh117_PKP", "ACM_Vest_Nagansk_6B45_Sh117_PKP_Var2", "ACM_Vest_Nagansk_6B45_Sh117_PKP_Var3",
 	"ACM_Vest_Nagansk_6B45_Sh117_PKP_Var3", "ACM_Vest_Nagansk_6B45_Sh117_PKP_Var5"];
 
