@@ -28,8 +28,6 @@ class CfgFunctions
 			class clientToDB {};
 			class LoadPlayer {};
 			class DeadPlayer {};
-			class clientDeadQ {};
-			class DbToClient {};
 		};
 	};
 };
