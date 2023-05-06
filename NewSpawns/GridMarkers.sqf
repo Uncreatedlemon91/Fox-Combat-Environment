@@ -8,6 +8,7 @@ _mapSize = getNumber(configFile >> "CfgWorlds" >> worldName >> "MapSize");
 _numGridsX = floor(_mapSize / _gridSize);
 _numGridsY = floor(_mapSize / _gridSize);
 
+_zones = [];
 // Loop over each grid square
 for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
     for [{_y = 0}, {_y < _numGridsY}, {_y = _y + 1}] do {
@@ -20,83 +21,37 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         _exists = "exists" call _db;
 
         // Customize the marker's appearance and text
-        _marker setMarkerType "mil_dot";
-        _marker setMarkerSize [1, 1];
+        _marker setMarkerShape "Rectangle";
+        _marker setMarkerSize [500, 500];
         _marker setMarkerColor "ColorRed";
         _marker setMarkerText format ["Grid %1,%2", _x, _y];
-        _marker setMarkerAlpha 0;
+        _marker setMarkerAlpha 1;
 
-        [_marker] execVM "NewSpawns\CheckForPlayers.sqf";
         if (_exists) then {
+            _markers = "getSections" call _db;
+            _notOpfor = ["Grid Status", "Grid Locations", "Grid Civilians"];
+            {
+                // Current result is saved in variable _x
+                if (_x in _notOpfor) then 
+                {
+
+                } else 
+                {
+                    _pos = ["read", [_x, "Position"]] call _db;
+
+                    _mkr = createMarker [_x, _pos];
+                    _mkr setMarkerType "o_inf";
+                    _mkr setMarkerSize [0.4, 0.4];
+                    _mkr setMarkerAlpha 0.6;
+                    _mkr setMarkerColor "ColorRed";
+
+                    ["write", [_mkr, "Active", false]] call _db;
+
+                    [_mkr, _marker] execVM "NewSpawns\CheckForPlayers.sqf";
+                };
+            } forEach _markers;
         
         } else {
-            // Set OPFOR Presence 
-            _infCount = round (random 10);
-            _tankChance = random 100;
-            if (_tankChance <= 20) then {
-                _tankCount = 1;
-            } else {
-                _tankCount = 0;
-            };
-
-            _mortarChance = random 100;
-            if (_mortarChance <= 20) then {
-                _mortarCount = 1;
-            } else {
-                _mortarCount = 0;
-            };
-            
-            _mechCount = round (random 2);
-            _motCount = round (random 3);
-            _reconCount = round (random 3);
-
-            _infTypes = [];
-            for "_i" from 1 to _infCount do
-            {
-                // Current result is saved in variable _x
-                _pick = selectRandom ["o_acmohdf_infantry_at_team", "o_acmohdf_infantry_squad", "o_acmohdf_infantry_weapons_squad", "o_acmohdf_infantry_aa_team"];
-                _infTypes pushback _pick;
-            };
-
-            _tankTypes = [];
-            for "_i" from 1 to _tankCount do
-            {
-                // Current result is saved in variable _x
-                _pick = selectRandom ["o_acmohdf_armored_tank_section_T55", "o_acmohdf_armored_tank_section"];
-                _tankTypes pushback _pick;
-            };
-
-            _mortarTypes = [];
-            for "_i" from 1 to _mortarCount do 
-            {
-                _pick = selectRandom ["ACM_O_HDF_T_Mortar"];
-                _mortarTypes pushback _pick;
-            };
-
-            _mechTypes = [];
-            for "_i" from 1 to _mechCount do 
-            {
-                _pick = selectRandom ["o_acmohdf_mechanized_mechanized_squad_bmp"];
-                _mechTypes pushback _pick;
-            };
-
-            _motTypes = [];
-            for "_i" from 1 to _motCount do 
-            {
-                _pick = selectRandom ["o_acmohdf_motorized_motorized_reinforcements"];
-                _motTypes pushback _pick;
-            };
-
-            _reconTypes = [];
-            for "_i" from 1 to _reconCount do 
-            {
-                _pick = selectRandom ["o_acmohdf_infantry_1hli_squad", "o_acmohdf_infantry_1hli_squad_g22", "o_acmohdf_infantry_1hli_at_team", "o_acmohdf_infantry_1hli_aa_team"];
-                _reconTypes pushback _pick;
-            };
-
-            // Set rank of AI 
-            _rank = selectRandom ["PRIVATE", "CORPORAL", "SERGEANT"];
-
             // Get Grid information 
             _houses = nearestObjects [_pos, ["HOUSE"], 1000];
             _houseCount = count _houses;
@@ -105,7 +60,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             _civLoyalty = round (random 100);
 
             // Establish Safe zone 
-            _base = ["Grid_0_2", "Grid_0_3", "Grid_1_2", "Grid_1_3"];
+            _base = ["Grid_0_2", "Grid_0_3", "Grid_1_2", "Grid_1_3", "Grid_0_4"];
             // Save marker to database 
             
             // Status 
@@ -114,28 +69,56 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             } else {
                 ["write", ["Grid Status", "Owner", "OPFOR"]] call _db;
             };
-            // OPFOR Info
-            ["write", ["OPFOR-Info", "Difficulty", _rank]] call _db;
             // Houses
             ["write", ["Grid Locations", "Houses", _houseCount]] call _db;
             // Civilians 
             ["write", ["Grid Civilians", "Civilian Population", _civCount]] call _db;
             ["write", ["Grid Civilians", "Civilian Loyalty", _civLoyalty]] call _db;
-            // OPFOR Count 
-            ["write", ["OPFOR-Count", "Infantry", _infCount]] call _db;
-            ["write", ["OPFOR-Count", "Armored", _tankCount]] call _db;
-            ["write", ["OPFOR-Count", "Mortars", _mortarCount]] call _db;
-            ["write", ["OPFOR-Count", "Mechanized", _mechCount]] call _db;
-            ["write", ["OPFOR-Count", "Motorized", _motCount]] call _db;
-            ["write", ["OPFOR-Count", "Recon", _reconCount]] call _db;
-            // OPFOR Types
-            ["write", ["OPFOR-Types", "Infantry", _infTypes]] call _db;
-            ["write", ["OPFOR-Types", "Armored", _tankTypes]] call _db;
-            ["write", ["OPFOR-Types", "Mortars", _mortarTypes]] call _db;
-            ["write", ["OPFOR-Types", "Mechanized", _mechTypes]] call _db;
-            ["write", ["OPFOR-Types", "Motorized", _motTypes]] call _db;
-            ["write", ["OPFOR-Types", "Recon", _reconTypes]] call _db;
+
+            // Set OPFOR Presence 
+            _infCount = round (random 10);
+
+            for "_i" from 1 to _infCount do
+            {
+                // Current result is saved in variable _x
+                _size = round (random [6, 8, 10]);
+                _grpUnits = ["ACM_HDF_Soldier_TL"];
+                for "_i" from 2 to _size do {
+                    _type = selectRandom [
+                        "ACM_HDF_Soldier_AA",
+                        "ACM_HDF_Soldier_AR",
+                        "ACM_HDF_Soldier_CLS",
+                        "ACM_HDF_Soldier_GL",
+                        "ACM_HDF_Soldier_MR",
+                        "ACM_HDF_Soldier_AT",
+                        "ACM_HDF_Soldier",
+                        "ACM_HDF_Soldier_LiteAT",
+                        "ACM_HDF_Soldier_Light",
+                        "ACM_HDF_Soldier_Thermals"
+                    ];
+                    _grpUnits pushback _type;
+                    };
+                _pos = [[_marker], ["Base", "water"]] call BIS_fnc_randomPos;
+                if (_pos select 0 == 0) then {} else {
+                    _mkr = createMarker [format ["%1 %2", _marker, format ["Group %1", _i]], _pos];
+                    _mkr setMarkerType "o_inf";
+                    _mkr setMarkerSize [0.4, 0.4];
+                    _mkr setMarkerAlpha 0.6;
+                    _mkr setMarkerColor "ColorRed";
+
+                    _rank = selectRandomWeighted ["PRIVATE", 0.7, "CORPORAL", 0.6, "SERGEANT", 0.5, "LIEUTENANT", 0.4, "CAPTAIN", 0.3, "MAJOR", 0.2, "COLONEL", 0.1];
+                    _orders = selectRandomWeighted ["Patrol", 0.7, "Camp", 0.3];
+                
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Units", _grpUnits]] call _db;
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Size", count _grpUnits]] call _db;
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Position", _pos]] call _db;
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Rank", _rank]] call _db;
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Active", false]] call _db;
+                    ["write", [format ["%1 %2", _marker, format ["Group %1", _i]], "Orders", _orders]] call _db;
+
+                    [_mkr, _marker] execVM "NewSpawns\CheckForPlayers.sqf";
+                };
+            };
         };
     };
 };
-
