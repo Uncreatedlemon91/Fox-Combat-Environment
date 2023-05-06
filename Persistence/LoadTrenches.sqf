@@ -10,7 +10,8 @@ _sections = "getSections" call _db;
 		_dmg = ["read", [_x, "Damage"]] call _db;
 
 		// Create new vehicle based on data input 
-		_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
+		_veh = createVehicle [_type, [0,0,100], [], 0, "CAN_COLLIDE"];
+		_veh setPosATL _pos;
 		_veh setDir _dir;
 		_veh setDamage [_dmg, false];
 	};

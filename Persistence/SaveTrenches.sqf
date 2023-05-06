@@ -9,7 +9,7 @@ while {true} do {
 		_class = typeOf _x;
 		_savedItems = ["ACE_envelope_big", "GRAD_envelope_giant", "GRAD_envelope_long", "GRAD_envelope_short", "ACE_envelope_small", "GRAD_envelope_vehicle"];
 		if (_class in _savedItems) then {
-			_pos = getPos _x;
+			_pos = getPosATL _x;
 			_type = typeOf _x;
 			_dir = getDir _x;
 			_dmg = damage _x;

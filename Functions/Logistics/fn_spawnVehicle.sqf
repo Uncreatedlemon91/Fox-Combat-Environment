@@ -43,7 +43,6 @@ if (_cost > _funds) then {
 		clearItemCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
 		clearWeaponCargoGlobal _veh;
-
 	};
 
 	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
