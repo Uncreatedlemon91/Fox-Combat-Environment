@@ -21,6 +21,7 @@ _vehicles = [
 while {true} do {
 	"delete" call _db;
 	_db = ["new", format ["Fortifications - %1 %2", missionName, worldName]] call oo_inidbi;
+	_logidb = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 	{
 		_type = typeOf _x;
 		_missionLayer = (getmissionlayerEntities "MissionProps") select 0;
@@ -36,9 +37,6 @@ while {true} do {
 				_mags = getMagazineCargo _x;
 				_weps = getWeaponCargo _x;
 				_backs = getBackpackCargo _x;
-
-				_canCarry = _x getVariable "canCarry";
-				_weight = _x getVariable "CargoWeight";
 				
 				// Save to database 
 				_section = format ["%1 - %2", _type, netId _x];

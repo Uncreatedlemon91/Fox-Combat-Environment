@@ -7,13 +7,9 @@ _list = findDisplay 1 displayCtrl 1500;
 _sel = lbCurSel _list;
 
 _cost = ["read", [_name, "Cost"]] call _db;
-
 if (_cost > _funds) then {
 	"You cannot afford this!" remoteExec ["hint", 0];
 } else {
-	_carry = ["read", [_name, "CanCarry"]] call _db;
-	_weight = ["read", [_name, "Weight"]] call _db;
-
 	_vehicles = [
 		"ACM_B_NAG_Tatra",
 		"ACM_B_NAG_Tatra_Ammo",
@@ -43,13 +39,8 @@ if (_cost > _funds) then {
 		clearItemCargoGlobal _veh;
 		clearMagazineCargoGlobal _veh;
 		clearWeaponCargoGlobal _veh;
-	};
-
-	[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
-	[_veh, _weight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
-	_veh setVariable ["canCarry", _carry];
-	_veh setVariable ["CargoWeight", _weight];
-	
+		clearBackpackCargoGlobal _veh;
+	};	
 
 	if (_name == "FAL Ammo Box") then {
 		clearItemCargoGlobal _veh;
@@ -152,4 +143,7 @@ if (_cost > _funds) then {
 	["write", ["Supply Points", "Balance", _newBalance]] call _db;
 	_hint = findDisplay 1 displayCtrl 1602;
 	_hint ctrlSetText str _newBalance;
+
+	[_veh, _class] execVM "Persistence\SaveItems.sqf";
 };
+

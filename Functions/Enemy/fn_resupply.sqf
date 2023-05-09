@@ -11,7 +11,7 @@ _veh = _spawnVehicle select 0;
 _crew = _spawnVehicle select 1;
 _grp = _spawnVehicle select 2;
 
-_veh limitSpeed 25;
+_veh limitSpeed 10;
 _grp moveTo _destination;
 
 _mkr = createMarker [format ["Convoy%1_%2", _insertPos, _destination], _insertPos];
@@ -25,3 +25,26 @@ _mkr2 setMarkerColor "colorRed";
 
 _mkr setMarkerAlpha 1;
 _mkr2 setMarkerAlpha 1;
+
+
+waitUntil { moveToCompleted _crew };
+
+_supplyCount = round (random 20);
+for "_i" from 1 to _supplyCount do {
+	"CUP_BOX_ChDKZ_Ammo_F" createVehicle _destination;
+	_mkr = createMarker [format ["%1 Cache %2", _destination, _i], _destination];
+	_mkr setMarkerType "hd_objective_noShadow";
+	_mkr setMarkerSize [0.3, 0.3];
+	_mkr setMarkerColor "ColorGreen";
+	_mkr setMarkerAlpha 1;
+};
+_objs = nearestObjects [_destination, ["CUP_BOX_ChDKZ_Ammo_F"], 100];
+_count = count _objs;
+
+_db = ["new", "Resupply Caches"] call oo_inidbi;
+["write", [_destination, _count]] call db;
+
+deleteVehicleCrew _crew;
+deleteVehicle _veh;
+
+"Enemy Supplies Delivered!" remoteExec ["systemChat", 0];

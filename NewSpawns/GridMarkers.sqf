@@ -121,3 +121,5 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         };
     };
 };
+
+execVM "NewSpawns\OngoingActions.sqf";
