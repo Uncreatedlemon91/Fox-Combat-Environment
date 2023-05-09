@@ -74,6 +74,13 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             ["write", ["Grid Civilians", "Civilian Population", _civCount]] call _db;
             ["write", ["Grid Civilians", "Civilian Loyalty", _civLoyalty]] call _db;
 
+            // Existing Emplacements
+            _chanceOfEmplacement = random 100;
+            if (_chanceOfEmplacement < 25) then {
+                _selectEmplacement = selectRandom ["MG Post", "Mortar", "Mechanized", "Tanks", "Helicopter"];
+                [_selectedEmplacement] execVM "NewSpawns\SpawnEmplacement.sqf";
+            };
+
             // Set OPFOR Presence 
             _infCount = round (random 10);
 
@@ -121,3 +128,5 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
         };
     };
 };
+
+execVM "NewSpawns\OngoingActions.sqf";
