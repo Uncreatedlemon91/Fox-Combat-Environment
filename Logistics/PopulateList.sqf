@@ -39,8 +39,8 @@ _SpawnItems = [
 	["ACE_Track", "Replacement Track", 1, 1, true],
 	["ACE_Wheel", "Replacement Wheel", 1, 1, true],
 	// Ammunition 
-	["ACM_B_NAG_LauncherBox", "LAT Kit Munitions", 10, 1, true],
-	["ACM_B_NAG_LauncherBox", "HAT Kit Munitions", 40, 1, true],
+	["ACM_B_NAG_AmmoBox", "LAT Kit Munitions", 10, 1, true],
+	["ACM_B_NAG_AmmoBox", "HAT Kit Munitions", 40, 1, true],
 	["ACM_B_NAG_AmmoBox", "FAL Ammo Box", 10, 1, true],
 	["ACM_B_NAG_AmmoBox", "MG Ammo Box", 10, 1, true],
 	["Box_IND_WpsSpecial_F", "Sniper Supplies", 30, 1, true],
