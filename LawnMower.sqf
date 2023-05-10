@@ -8,4 +8,4 @@
 		_cutter enableSimulationGlobal false;
 		sleep 1;
 	};
-}]] remoteExec ["addAction", 0];
+}]] remoteExec ["addAction", 0, true];
