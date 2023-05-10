@@ -12,12 +12,30 @@ _veh = _spawnVehicle select 0;
 _crew = _spawnVehicle select 1;
 _grp = _spawnVehicle select 2;
 
-_driver = driver _veh;
+_sizeOfReinforcement = round (random 10);
+_trpGrp = createGroup east;
+
+for "_i" from 1 to _sizeOfReinforcement do {
+	_type = selectRandom [
+		"ACM_HDF_Soldier_AA",
+		"ACM_HDF_Soldier_AR",
+		"ACM_HDF_Soldier_CLS",
+		"ACM_HDF_Soldier_GL",
+		"ACM_HDF_Soldier_MR",
+		"ACM_HDF_Soldier_AT",
+		"ACM_HDF_Soldier",
+		"ACM_HDF_Soldier_LiteAT",
+		"ACM_HDF_Soldier_Light",
+		"ACM_HDF_Soldier_Thermals"
+	];
+	_unit = _trpGrp createUnit [_type, _insertPos, [], 40, "FORM"];
+	_unit moveInCargo _veh;
+};
 
 systemChat format ["%1 Spawned!", _crew];
 
 _veh limitSpeed 10;
-_driver moveTo _destination;
+_grp move _destination;
 
 systemChat format ["%1 Moving!", _grp];
 
@@ -33,25 +51,48 @@ _mkr2 setMarkerColor "colorRed";
 _mkr setMarkerAlpha 1;
 _mkr2 setMarkerAlpha 1;
 
+_dist = _veh distance _insertPos;
+waitUntil { _dist < 10 };
 
-waitUntil { moveToCompleted _driver };
+_newGroup = [];
+{
+	// Current result is saved in variable _x
+	_type = typeOf _x;
+	_newGroup pushback _type;
+	moveOut _x;
+} forEach _trpGrp;
 
-_supplyCount = round (random 20);
-for "_i" from 1 to _supplyCount do {
-	"CUP_BOX_ChDKZ_Ammo_F" createVehicle _destination;
-	_mkr = createMarker [format ["%1 Cache %2", _destination, _i], _destination];
-	_mkr setMarkerType "hd_objective_noShadow";
-	_mkr setMarkerSize [0.3, 0.3];
-	_mkr setMarkerColor "ColorGreen";
-	_mkr setMarkerAlpha 1;
+_objs = [];
+{
+	// Current result is saved in variable _x
+	_mkrType = markerShape _x;
+	if (_mkrType == "RECTANGLE") then {
+		_objs pushback _x;
+	};
+} forEach allMapMarkers;
+
+_objective = [_objs, _insertPos] call BIS_fnc_nearestPosition;
+
+
+_db = ["new", _objective] call oo_inidbi;
+["write", [format ["Reinforcement %1", random 1000], _newGroup]] call _db;
+
+_playerList = allPlayers apply {[_pos distance _x, _x]};
+_playerList sort true;
+_closestPlayer = (_playerList select 0) param [1, objNull];
+_dist = _closestPlayer distance _insertPos;
+
+if (_dist > 800) then {
+	{
+		// Current result is saved in variable _x
+		deleteVehicle _x;
+	} forEach _trpGrp;
 };
-_objs = nearestObjects [_destination, ["CUP_BOX_ChDKZ_Ammo_F"], 100];
-_count = count _objs;
-
-_db = ["new", "Resupply Caches"] call oo_inidbi;
-["write", [_destination, _count]] call db;
 
 deleteVehicleCrew _crew;
 deleteVehicle _veh;
 
-"Enemy Supplies Delivered!" remoteExec ["systemChat", 0];
+deleteMarker _mkr;
+deleteMarker _mkr2;
+
+"Enemy Reinforcements Delivered!" remoteExec ["systemChat", 0];
