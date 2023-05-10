@@ -78,7 +78,7 @@ for [{_x = 0}, {_x < _numGridsX}, {_x = _x + 1}] do {
             _chanceOfEmplacement = random 100;
             if (_chanceOfEmplacement < 25) then {
                 _selectEmplacement = selectRandom ["MG Post", "Mortar", "Mechanized", "Tanks", "Helicopter"];
-                [_selectedEmplacement] execVM "NewSpawns\SpawnEmplacement.sqf";
+                [_selectEmplacement] execVM "NewSpawns\SpawnEmplacement.sqf";
             };
 
             // Set OPFOR Presence 

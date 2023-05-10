@@ -1,5 +1,4 @@
 _db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
-debugLog "Vehicles Loading";
 
 _sections = "getSections" call _db;
 {
@@ -19,9 +18,6 @@ _sections = "getSections" call _db;
 		_weps = ["read", [_x, "CargoWeps"]] call _db;
 		_backs = ["read", [_x, "CargoBps"]] call _db;
 
-		_carry = ["read", [_x, "canCarry"]] call _db;
-		_vweight = ["read", [_x, "V_Weight"]] call _db;
-
 		// Create new vehicle based on data input 
 		_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
 		clearItemCargoGlobal _veh;
@@ -32,8 +28,8 @@ _sections = "getSections" call _db;
 		_veh setDamage [_dmg, false];
 		_veh setFuel _fuel;
 
-		[_veh, _carry, [0, 3, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
-		[_veh, _vweight] remoteExec ["ace_cargo_fnc_setSize", 0, true];
+		[_veh, true, [0, 6, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
+		[_veh, 1] remoteExec ["ace_cargo_fnc_setSize", 0, true];
 		
 		_items params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
