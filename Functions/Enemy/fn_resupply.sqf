@@ -48,7 +48,7 @@ _mkr2 setMarkerType "mil_join";
 _mkr setMarkerColor "colorRed";
 _mkr2 setMarkerColor "colorRed";
 
-_mkr setMarkerAlpha 1;
+_mkr setMarkerAlpha 0;
 _mkr2 setMarkerAlpha 1;
 
 _dist = _veh distance _insertPos;
@@ -60,7 +60,7 @@ _newGroup = [];
 	_type = typeOf _x;
 	_newGroup pushback _type;
 	moveOut _x;
-} forEach _trpGrp;
+} forEach units _trpGrp;
 
 _objs = [];
 {
@@ -86,7 +86,7 @@ if (_dist > 800) then {
 	{
 		// Current result is saved in variable _x
 		deleteVehicle _x;
-	} forEach _trpGrp;
+	} forEach units _trpGrp;
 };
 
 deleteVehicleCrew _crew;

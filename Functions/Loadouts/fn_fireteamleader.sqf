@@ -39,3 +39,5 @@ player linkItem "CUP_NVG_PVS15_Hide";
 
 [ace_arsenal, player, false] call ace_arsenal_fnc_openBox;
 closeDialog 2;
+
+player setVariable ["Role", "FTL"];

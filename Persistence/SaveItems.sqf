@@ -16,10 +16,10 @@ while {true} do {
 	_weps = getWeaponCargo _veh;
 	_backs = getBackpackCargo _veh;
 
-	/*if (_dmg <= 0.1) exitWith {
+	if (_dmg  == 1) exitWith {
 		["deleteSection", _section] call _Vdb;
 	};
-	*/
+	
 	
 	// Save to database 
 	["write", [_section, "Type", _class]] call _Vdb;
