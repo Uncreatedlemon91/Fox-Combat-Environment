@@ -1,4 +1,5 @@
 params ["_class", "_name"];
+_db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
 
 _list = findDisplay 1 displayCtrl 1500;
 _sel = lbCurSel _list;
