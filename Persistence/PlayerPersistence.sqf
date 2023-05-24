@@ -7,6 +7,8 @@ fce_fnc_addPlayerToDatabase = {
 	["write", [_section, "Name", _name]] call _db;
 	["write", [_section, "UID", _uid]] call _db;
 	["write", [_section, "NetId", _netID]] call _db;
+	["write", [_section, "Combat Quals", "Rifle"]] call _db;
+	
 	"Profile Created" remoteExec ["systemChat", _netID];	
 };
 
@@ -55,8 +57,9 @@ fce_fnc_playerDied = {
 	_playerInfo = format ["%1 - %2", _name, _uid];
 	["write", ["Deaths", _playerInfo, format ["%1 - Killed by %2 which is a %3", _date, _killer, _killerType]]] call _db;
 };
-
-// Run persistence gathering
+//
+// Run Persistence Script
+//
 _name = name player;
 _uid = getPlayerUID player;
 _netId = clientOwner;
