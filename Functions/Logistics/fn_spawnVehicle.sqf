@@ -62,8 +62,8 @@ _deleteObject = [
 	100
 ] remoteExec ["ace_interact_menu_fnc_createAction", 0, true];
 
-[_veh, 0, ["ACE_MainActions"], _saveObjectAction] remoteExec ["ace_interact_menu_fnc_addActionToObject", 0, true];
-[_veh, 0, ["ACE_MainActions"], _deleteObject] remoteExec ["ace_interact_menu_fnc_addActionToObject", 0, true];
+[_veh, 0, ["ACE_MainActions"], _saveObjectAction] remoteExec ["ace_interact_menu_fnc_addActionToObject", -2, true];
+[_veh, 0, ["ACE_MainActions"], _deleteObject] remoteExec ["ace_interact_menu_fnc_addActionToObject", -2, true];
 
 [_veh, true, [0, 6, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
 [_veh, 1] remoteExec ["ace_cargo_fnc_setSize", 0, true];
