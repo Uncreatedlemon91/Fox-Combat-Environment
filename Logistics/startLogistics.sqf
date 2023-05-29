@@ -1,0 +1,1 @@
+[]execVM "Logistics\PopulateList.sqf";
