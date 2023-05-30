@@ -46,7 +46,7 @@ while {true} do {
 		_trg setTriggerStatements [
 			"this",
 			"[thisTrigger] remoteExec [""fce_fnc_spawnAI"", 2]",
-			"[thisTrigger] remoteExec [""fce_fnc_despawnAI"", 2]"
+			""
 		];
 
 		_Objdb = ["new", format ["Objectives %1-%2", missionName, worldName]] call oo_inidbi;

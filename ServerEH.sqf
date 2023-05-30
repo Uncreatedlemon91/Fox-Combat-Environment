@@ -1,5 +1,3 @@
-["ace_trenches_finished", fce_fnc_saveTrench] call CBA_fnc_addEventHandler;
-
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 	_pos = getPosATL _unit;

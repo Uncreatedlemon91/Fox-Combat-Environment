@@ -1,1 +1,0 @@
-"TRENCH BUILT" remoteExec ["systemChat", 0, true];

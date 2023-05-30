@@ -31,10 +31,6 @@ class CfgFunctions
 			class playerDied {};
 			class updatePlayerDatabase {};
 		};
-		class EH
-		{
-			class SaveTrench {};
-		};
 		class Objectives
 		{
 			class Objectives {};
