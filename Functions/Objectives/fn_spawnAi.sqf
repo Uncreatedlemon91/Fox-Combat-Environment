@@ -10,9 +10,11 @@ _mech = [];
 _mot = [];
 _armor = [];
 _recon = [];
+_faction = "";
 
 switch (_side) do {
 	case "b": {
+		_faction = west;
 		_inf = [
 			"ACM_NAG_Soldier_AR",
 			"ACM_NAG_Soldier_CLS",
@@ -61,6 +63,7 @@ switch (_side) do {
 		];
 	};
 	case "o": {
+		_faction = east;
 		_inf = [
 			"ACM_HDF_Soldier_AA",
 			"ACM_HDF_Soldier_AR",
@@ -113,13 +116,6 @@ switch (_side) do {
 	};
 };
 
-if (_side == "b") then {
-	_side = west;
-};
-if (_side == "o") then {
-	_side = east;
-};
-
 if (_active) then {
 	// Do nothing, AI is spawned 
 } else {
@@ -128,54 +124,59 @@ if (_active) then {
 	{
 		switch (_x) do {
 			case "Infantry": {
-				_grpSize = round (random [8, 10, 12]);
-				_grp = createGroup _side;
+				_grpSize = round (random [12, 16, 20]);
+				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _inf;
-					_grp createUnit [_unit, _pos, [], random 360, "FORM"];
+					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 				};
 				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
-				[_grp] execVM "Regiments\DespawnAI.sqf";
+				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
+				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
 			case "Mechanized": {
 				_grpSize = round (random [1, 2, 3]);
-				_grp = createGroup _side;
+				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _mech;
 					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 				};
 				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
-				[_grp] execVM "Regiments\DespawnAI.sqf";
+				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
+				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
 			case "Motorized": {
 				_grpsize = round (random [2, 3, 4]);
-				_grp = createGroup _side;
+				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _mot;
 					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 				};
 				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
-				[_grp] execVM "Regiments\DespawnAI.sqf";
+				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
+				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
 			case "Special Operations": {
-				_grpSize = round (random [8, 10, 12]);
-				_grp = createGroup _side;
+				_grpSize = round (random [4, 8, 10]);
+				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _recon;
-					_grp createUnit [_unit, _pos, [], random 360, "FORM"];
+					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 				};
 				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
-				[_grp] execVM "Regiments\DespawnAI.sqf";
+				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
+				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
 			case "Armored": {
 				_grpsize = round (random [2, 3, 4]);
-				_grp = createGroup _side;
+				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _armor;
 					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 				};
 				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
-				[_grp] execVM "Regiments\DespawnAI.sqf";
+				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
+				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
 		};
 	} forEach _plt;
