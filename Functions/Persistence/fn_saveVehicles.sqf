@@ -83,18 +83,5 @@ _veh addEventHandler ["Killed", {
 	["write", [_section, "Fuel", _fuel]] call _db;
 	["write", [_section, "Damage", _dmg]] call _db;
 
-	_mkrText = format ["%1 wreck site", _name];
-	_mkrColor = "ColorRed";
-	_mkrType = "mil_end";
-
-	_mkr = createMarker [format ["%1_%2", _name, random 5000], _pos];
-	_mkr setMarkerType _mkrType;
-	_mkr setMarkerColor _mkrColor;
-	_mkr setMarkerText _mkrText;
-
-	_mkrdb = ["new", format ["Markers %1-%2", missionName, worldName]] call oo_inidbi;
-	["write", [_mkr, "Position", _pos]] call _mkrdb;
-	["write", [_mkr, "Text", _mkrText]] call _mkrdb;
-	["write", [_mkr, "Type", _mkrType]] call _mkrdb;
-	["write", [_mkr, "Color", _mkrColor]] call _mkrdb;
+	[_unit] remoteExec ["fce_fnc_wreckSetup", 0, true];
 }];

@@ -8,6 +8,7 @@ class CfgFunctions
 			class getLogiData {};
 			class spawnVehicle {};
 			class addAceActions {};
+			class wreckSetup {};
 		};
 		class Loadouts
 		{
