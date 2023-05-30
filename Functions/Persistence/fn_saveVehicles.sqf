@@ -1,4 +1,27 @@
 params ["_veh"];
+// Create initial save entry 
+_db = ["new", format ["PVics %1 %2", missionName, worldName]] call oo_inidbi;
+_class = typeOf _veh;
+_section = format ["%1 - %2", _class, netID _veh];
+
+_pos = getPosATL _veh;
+_dir = getDir _veh;
+_fuel = fuel _veh;
+_dmg = damage _veh;
+_items = getItemCargo _veh;
+_mags = getMagazineCargo _veh;
+_weps = getWeaponCargo _veh;
+_backs = getBackpackCargo _veh;
+
+["write", [_section, "Position", _pos]] call _db;
+["write", [_section, "Direction", _dir]] call _db;
+["write", [_section, "Fuel", _fuel]] call _db;
+["write", [_section, "Damage", _dmg]] call _db;
+["write", [_section, "CargoItems", _items]] call _db;
+["write", [_section, "CargoMags", _mags]] call _db;
+["write", [_section, "CargoWeps", _weps]] call _db;
+["write", [_section, "CargoBps", _backs]] call _db;
+
 // Save cargo
 _veh addEventHandler ["ContainerClosed", {
 	params ["_container", "_unit"];
