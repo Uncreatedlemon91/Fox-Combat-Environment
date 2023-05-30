@@ -49,36 +49,8 @@ _sections = "getSections" call _db;
 		_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
 	};
 
-	[_veh, true, [0, 6, 1], 10] remoteExec ["ace_dragging_fnc_setCarryable", 0, true];
-	[_veh, 1] remoteExec ["ace_cargo_fnc_setSize", 0, true];
-
-	_saveObjectAction = [
-		"saveObject",
-		"Lock Object",
-		"",
-		{_class = typeOf _target; [_target, _class] remoteExec ["fce_fnc_saveItem", 2]},
-		{true},
-		{},
-		[],
-		[0, 0, 0],
-		100
-	] call ace_interact_menu_fnc_createAction;
-
-	_deleteObject = [
-		"deleteObject",
-		"Delete Object",
-		"",
-		{[_target] remoteExec ["fce_fnc_deleteItem", 2]},
-		{true},
-		{},
-		[],
-		[0, 0, 0],
-		100
-	] call ace_interact_menu_fnc_createAction;
-
-	[_veh, 0, ["ACE_MainActions"], _saveObjectAction] remoteExec ["ace_interact_menu_fnc_addActionToObject", 0, true];
-	[_veh, 0, ["ACE_MainActions"], _deleteObject] remoteExec ["ace_interact_menu_fnc_addActionToObject", 0, true];
 
 	["deleteSection", _x] call _db;
+	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
 } forEach _sections;
