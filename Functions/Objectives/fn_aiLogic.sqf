@@ -52,7 +52,8 @@ while {true} do {
 		_Objdb = ["new", format ["Objectives %1-%2", missionName, worldName]] call oo_inidbi;
 		_Objsections = "getSections" call _Objdb;
 		_objective = selectRandom _objSections;
-		_objPos = [[_objective], ["water"]] call BIS_fnc_randomPos;
+		_objPosOrigin = ["read", [_objective, "Position"]] call _Objdb;
+		_objPos = [_objPosOrigin, 10, 500, 5, 0, 10, 0, ["base"], _objPosOrigin] call BIS_fnc_findSafePos;
 
 		// Calculate direction and distance between positions
 		_markerPosDiff = _objPos vectorDiff _pos;
@@ -60,11 +61,14 @@ while {true} do {
 
 		// Loop to update position of the marker over time
 		_markerPos = _pos;
+		_trgActive = _trg getVariable "Active";
 		while {_markerPos distance _objPos > 10} do {
-			_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
-			_mkr setMarkerPos _markerPos;
-			_trg setPos _markerPos;
-			sleep 0.05;
+			if !(_trgActive) then {
+				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
+				_mkr setMarkerPos _markerPos;
+				_trg setPos _markerPos;
+				sleep 0.05;
+			};
 		};
 	};
 	sleep random 25;
