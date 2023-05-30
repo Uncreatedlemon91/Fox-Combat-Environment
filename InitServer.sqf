@@ -1,10 +1,13 @@
 // Module based design mission framework
-/*
-
-*/
-[] execVM "ServerEH.sqf";																					// Add server detectors
+// Find and run server event handlers 
+[] execVM "ServerEH.sqf";
+// Create Regiment and Locations 
 [] execVM "Regiments\AOCreator.sqf";
-[] execVM "Logistics\startLogistics.sqf";																	// Add Logistics Module 
-[] execVM "Persistence\startPersistence.sqf";																// Add Persistence Module 
-[Ace_Arsenal, ["Get Kit", {createDialog "LoadoutMenu";}]] remoteExec ["addAction", 0, true];				// Add Loadout System
-[] execVM "WorldBuilder\startWorldBuilder.sqf";																// Add environment + Ambience database and modules
+// Start Logistics Module
+[] execVM "Logistics\startLogistics.sqf";
+// Start persistence module 
+[] execVM "Persistence\startPersistence.sqf";
+// Add loadouts and gear on menu
+[Ace_Arsenal, ["Get Kit", {createDialog "LoadoutMenu";}]] remoteExec ["addAction", 0, true];
+// Start environmental module
+[] execVM "WorldBuilder\startWorldBuilder.sqf";
