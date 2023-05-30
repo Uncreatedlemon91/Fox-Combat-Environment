@@ -7,6 +7,7 @@ class CfgFunctions
 			class openMenu {};
 			class getLogiData {};
 			class spawnVehicle {};
+			class addAceActions {};
 		};
 		class Loadouts
 		{
