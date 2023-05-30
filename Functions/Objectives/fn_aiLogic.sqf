@@ -35,7 +35,7 @@ while {true} do {
 		_mkr = createMarkerLocal [format ["Platoon %1-%2-%3", _regiment, _platoonSize, random 1000], _pos];
 		_mkr setMarkerTypeLocal _mkrType;
 		_mkr setMarkerSizeLocal [0.3, 0.3];
-		_mkr setMarkerAlpha 0;
+		_mkr setMarkerAlpha 0.2;
 
 		_trg = createTrigger ["emptyDetector", _pos];
 		_trg setTriggerArea [1000, 1000, 0, false];

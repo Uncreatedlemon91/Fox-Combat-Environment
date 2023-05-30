@@ -31,6 +31,6 @@ for "_i" from 1 to _count do {
 	// Add marker to world map 
 	_mkr = createMarkerLocal [_regimentName, _hqPos];
 	_mkr setMarkerTextLocal _regimentName;
-	_mkr setMarkerAlphaLocal 0;
+	_mkr setMarkerAlphaLocal 0.2;
 	_mkr setMarkerType _regimentMarker;
 };

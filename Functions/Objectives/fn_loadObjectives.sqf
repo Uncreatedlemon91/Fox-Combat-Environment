@@ -24,7 +24,4 @@ _sections = "getSections" call _db;
 		case "Blufor": {_mkr2 setMarkerColorlocal "ColorBlue"};
 		case "Opfor": {_mkr2 setMarkerColorlocal "ColorRed"};
 	};
-	
-	_mkr2 setMarkerAlphalocal 0;
-	_mkr2 setMarkerText _mkrName;
 } forEach _sections;

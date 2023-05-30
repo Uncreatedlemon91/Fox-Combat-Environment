@@ -29,7 +29,7 @@ _sections2 = "getSections" call _db2;
 	// Add marker to world map 
 	_mkr = createMarkerLocal [_x, _hqPos];
 	_mkr setMarkerTextLocal _x;
-	_mkr setMarkerAlphaLocal 0;
+	_mkr setMarkerAlphaLocal 0.2;
 	_mkr setMarkerType _regimentMarker;
 } forEach _sections2;
 
