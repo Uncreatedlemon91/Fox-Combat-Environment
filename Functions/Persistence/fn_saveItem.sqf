@@ -40,11 +40,15 @@ _veh addEventHandler ["ContainerClosed", {
 	_mags = getMagazineCargo _container;
 	_weps = getWeaponCargo _container;
 	_backs = getBackpackCargo _container;
+	_pos = getPos _veh;
+	_dir = getDir _veh;
 
 	["write", [_section, "CargoItems", _items]] call _db;
 	["write", [_section, "CargoMags", _mags]] call _db;
 	["write", [_section, "CargoWeps", _weps]] call _db;
 	["write", [_section, "CargoBps", _backs]] call _db;
+	["write", [_section, "Position", _pos]] call _Vdb;
+	["write", [_section, "Direction", _dir]] call _Vdb;
 }];
 
 // Save damage of vehicle 
