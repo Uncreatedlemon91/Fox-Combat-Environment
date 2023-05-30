@@ -38,14 +38,14 @@ while {true} do {
 		_mkr setMarkerAlpha 0.2;
 
 		_trg = createTrigger ["emptyDetector", _pos];
-		_trg setTriggerArea [1000, 1000, 0, false];
+		_trg setTriggerArea [1000, 1000, 0, false, 500];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setVariable ["Active", false];
 		_trg setVariable ["PlatoonComp", _platoonComp];
 		_trg setVariable ["Side", _side];
 		_trg setTriggerStatements [
 			"this",
-			"[thisTrigger] remoteExec [""fce_fnc_spawnAI"", 2];",
+			"[thisTrigger] remoteExec [""fce_fnc_spawnAI"", 2]",
 			"[thisTrigger] remoteExec [""fce_fnc_despawnAI"", 2]"
 		];
 
