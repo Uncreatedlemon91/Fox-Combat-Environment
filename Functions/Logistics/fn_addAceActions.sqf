@@ -16,7 +16,9 @@ _deleteObject = [
 	"deleteObject",
 	"Delete Object",
 	"",
-	{deleteVehicle _target},
+	{
+		[_target] remoteExec ["fce_fnc_deleteItem", 2];
+	},
 	{true},
 	{},
 	[],
