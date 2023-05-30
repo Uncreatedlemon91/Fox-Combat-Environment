@@ -7,7 +7,7 @@ while {true} do {
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
 
-	if (_dist > 1000) then {
+	if (_dist > 1200) then {
 		{
 			_vic = vehicle _x;
 			deleteVehicle _vic;
