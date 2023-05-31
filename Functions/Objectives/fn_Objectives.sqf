@@ -5,7 +5,7 @@ _objs = [];
 _blkList = ["water", "base"];
 for "_i" from 1 to _count do {
 	_blkList pushBackUnique _objs;
-	_randPos = [["AO"], _existing] call BIS_fnc_randomPos;
+	_randPos = [["AO"], _blkList] call BIS_fnc_randomPos;
 
 	_mkr = createMarkerlocal [format ["Objective %1", _i], _randPos];
 	_mkr setMarkerShapelocal "Ellipse";
