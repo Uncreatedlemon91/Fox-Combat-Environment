@@ -127,6 +127,7 @@ if (_active) then {
 				_grpSize = round (random [12, 16, 20]);
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
+					_pos = [_pos, 5, 50, 10, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 					_unit = selectRandom _inf;
 					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 					zeusAdmin addCuratorEditableObjects [[_x], true];
@@ -139,6 +140,7 @@ if (_active) then {
 				_grpSize = round (random [1, 2, 3]);
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
+					_pos = [_pos, 5, 50, 10, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 					_unit = selectRandom _mech;
 					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
@@ -151,6 +153,7 @@ if (_active) then {
 				_grpsize = round (random [2, 3, 4]);
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
+					_pos = [_pos, 5, 50, 10, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 					_unit = selectRandom _mot;
 					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
@@ -163,6 +166,7 @@ if (_active) then {
 				_grpSize = round (random [4, 8, 10]);
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
+					_pos = [_pos, 5, 50, 10, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 					_unit = selectRandom _recon;
 					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 					zeusAdmin addCuratorEditableObjects [[_x], true];
@@ -175,6 +179,7 @@ if (_active) then {
 				_grpsize = round (random [2, 3, 4]);
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
+					_pos = [_pos, 5, 50, 10, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 					_unit = selectRandom _armor;
 					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
@@ -183,7 +188,6 @@ if (_active) then {
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
-			
 		};
 	} forEach _plt;
 };
