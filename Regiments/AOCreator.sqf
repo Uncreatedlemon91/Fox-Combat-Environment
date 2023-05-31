@@ -14,11 +14,11 @@ if (_exists) then {
 
 	// Create OPFOR 
 	systemChat "Generating Enemy Forces...";
-	[25, "o"] remoteExec ["fce_fnc_createRegiment", 2];
+	[50, "o"] remoteExec ["fce_fnc_createRegiment", 2];
 
 	// Create BLUFOR
 	systemChat "Generating Friendly Forces...";
-	[10, "b"] remoteExec ["fce_fnc_createRegiment", 2];
+	[20, "b"] remoteExec ["fce_fnc_createRegiment", 2];
 };
 
 _Regdbb = ["new", format ["b Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
