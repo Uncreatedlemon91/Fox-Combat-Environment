@@ -84,6 +84,18 @@ if (_exists) then {
 		_weps = getWeaponCargo _x;
 		_backs = getBackpackCargo _x;
 		
+
+		_logiTrucks = ["ACM_B_NAG_Tatra"];
+		_logiHelo = ["ACM_B_NAG_MI171_Unarmed"];
+		
+		_cargo = 4;
+		if (_class in _logiTrucks) then {
+			_cargo = 20;
+		};
+		if (_class in _logiHelo) then {
+			_cargo = 5;
+		};
+
 		_section = format ["%1 - %2", _class, netId _x];
 		
 		// Save to database 
@@ -97,7 +109,9 @@ if (_exists) then {
 		["write", [_section, "CargoMags", _mags]] call _db;
 		["write", [_section, "CargoWeps", _weps]] call _db;
 		["write", [_section, "CargoBps", _backs]] call _db;
+
+		["write", [_section, "CargoSpace", _cargo]] call _db;
 		
-		[_veh] remoteExec ["fce_fnc_saveVehicles", 2];
+		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
 	} forEach _vehicles;
 };

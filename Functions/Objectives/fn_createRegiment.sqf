@@ -33,4 +33,29 @@ for "_i" from 1 to _count do {
 	_mkr setMarkerTextLocal _regimentName;
 	_mkr setMarkerAlphaLocal 0.2;
 	_mkr setMarkerType _regimentMarker;
+
+	// Add headquarters to destroy with guards 
+	_hqBuilding = "Land_A_tent";
+	_hqBuildingPos = [_hqPos, 0, 20, 3, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
+	_hq = _hqBuilding createVehicle _hqBuildingPos;
+
+	_hqFlag = "Flag_ACM_HDF1";
+	_flagPos = [_hqBuildingPos, 0, 5, 1, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
+	_flag = _hqFlag createVehicle _flagPos;
+
+	_hq allowDamage false;
+	_flag allowDamage false;
+
+	_hq setVariable ["Regiment", _regimentName];
+	_hq setVariable ["Flag", _flag];
+
+	[_hq, ["Destroy Enemy HQ", {
+		_regimentName = _target getVariable "Regiment";
+		_flag = _target getVariable "Flag";
+
+		_db = ["new", format ["%1 Regiments - %2 %3", _side, missionName, worldName]] call oo_inidbi;
+		deleteVehicle _flag;
+		deleteVehicle _target;
+		["deleteSection", _regimentName] call _db;
+	}]] remoteExec ["AddAction", 0, true];
 };

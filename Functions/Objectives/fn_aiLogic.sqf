@@ -14,6 +14,8 @@ _side = ["read", [_regiment, "Side"]] call _db;
 while {true} do {
 	// Virtualize new group 
 	if (_size > 0) then {
+		_size = _size - 1;
+		["write", [_regiment, "Size", _size]] call _db;
 		_platoonSize = round (random [3, 5, 7]);
 		_platoonComp = [];
 		_values = [];
@@ -40,7 +42,7 @@ while {true} do {
 		_trg = createTrigger ["emptyDetector", _pos];
 		_trg setTriggerArea [1000, 1000, 0, false, 500];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-		_trg setVariable ["Active", false];
+		_trg setVariable ["Active", false, true];
 		_trg setVariable ["PlatoonComp", _platoonComp];
 		_trg setVariable ["Side", _side];
 		_trg setTriggerStatements [
@@ -63,9 +65,10 @@ while {true} do {
 		_markerPos = _pos;
 		_trgActive = _trg getVariable "Active";
 		while {_markerPos distance _objPos > 10} do {
-			if (_trgActive) then {
+			if (_trgActive == true) then {
 				
 			} else {
+				systemChat format ["%1", _trgActive];
 				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
 				_mkr setMarkerPos _markerPos;
 				_trg setPos _markerPos;
