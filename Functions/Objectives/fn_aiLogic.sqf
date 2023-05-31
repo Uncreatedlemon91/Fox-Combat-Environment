@@ -63,7 +63,9 @@ while {true} do {
 		_markerPos = _pos;
 		_trgActive = _trg getVariable "Active";
 		while {_markerPos distance _objPos > 10} do {
-			if !(_trgActive) then {
+			if (_trgActive) then {
+				
+			} else {
 				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
 				_mkr setMarkerPos _markerPos;
 				_trg setPos _markerPos;
@@ -71,5 +73,4 @@ while {true} do {
 			};
 		};
 	};
-	sleep random 25;
 };
