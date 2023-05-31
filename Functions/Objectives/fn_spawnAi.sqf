@@ -131,7 +131,7 @@ if (_active) then {
 					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 					zeusAdmin addCuratorEditableObjects [[_x], true];
 				};
-				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
+				[_grp, _pos, 300] call lambs_wp_fnc_taskPatrol;
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
@@ -140,10 +140,10 @@ if (_active) then {
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _mech;
-					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
+					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
 				};
-				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
+				[_grp, _pos, 300] call lambs_wp_fnc_taskPatrol;
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
@@ -152,10 +152,10 @@ if (_active) then {
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _mot;
-					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
+					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
 				};
-				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
+				[_grp, _pos, 300] call lambs_wp_fnc_taskPatrol;
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
@@ -167,7 +167,7 @@ if (_active) then {
 					_grp createUnit [_unit, _pos, [], 10, "FORM"];
 					zeusAdmin addCuratorEditableObjects [[_x], true];
 				};
-				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
+				[_grp, _pos, 300] call lambs_wp_fnc_taskPatrol;
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
@@ -176,10 +176,10 @@ if (_active) then {
 				_grp = createGroup _faction;
 				for "_i" from 1 to _grpSize do {
 					_unit = selectRandom _armor;
-					_grp = [_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
+					[_pos, random 360, _unit, _grp] call BIS_fnc_spawnVehicle;
 					zeusAdmin addCuratorEditableObjects [[_x], true];
 				};
-				[_grp, _pos, 300] call BIS_fnc_taskPatrol;
+				[_grp, _pos, 300] call lambs_wp_fnc_taskPatrol;
 				_grp setVariable ["lambs_danger_enableGroupReinforce", true, true];
 				[_grp, _trg] execVM "Regiments\DespawnAI.sqf";
 			};
