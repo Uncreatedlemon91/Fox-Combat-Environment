@@ -12,6 +12,7 @@ _items = getItemCargo _veh;
 _mags = getMagazineCargo _veh;
 _weps = getWeaponCargo _veh;
 _backs = getBackpackCargo _veh;
+_ammo = magazinesAmmoCargo _veh;
 
 ["write", [_section, "Position", _pos]] call _db;
 ["write", [_section, "Direction", _dir]] call _db;
@@ -21,6 +22,7 @@ _backs = getBackpackCargo _veh;
 ["write", [_section, "CargoMags", _mags]] call _db;
 ["write", [_section, "CargoWeps", _weps]] call _db;
 ["write", [_section, "CargoBps", _backs]] call _db;
+["write", [_section, "Ammunition", _ammo]] call _db;
 
 // Save cargo
 _veh addEventHandler ["ContainerClosed", {
@@ -38,6 +40,7 @@ _veh addEventHandler ["ContainerClosed", {
 	["write", [_section, "CargoMags", _mags]] call _db;
 	["write", [_section, "CargoWeps", _weps]] call _db;
 	["write", [_section, "CargoBps", _backs]] call _db;
+	["write", [_section, "Ammunition", _ammo]] call _db;
 }];
 
 // Save damage of vehicle 
@@ -64,6 +67,7 @@ _veh addEventHandler ["GetOut", {
 	["write", [_section, "Position", _pos]] call _db;
 	["write", [_section, "Direction", _dir]] call _db;
 	["write", [_section, "Fuel", _fuel]] call _db;
+	["write", [_section, "Ammunition", _ammo]] call _db;
 }];
 
 _veh addEventHandler ["Killed", {
