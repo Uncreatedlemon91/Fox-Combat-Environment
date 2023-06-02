@@ -17,7 +17,7 @@ if (_exists) then {
 		_dmg = ["read", [_x, "Damage"]] call _db;
 		_fuel = ["read", [_x, "Fuel"]] call _db;
 		_cargo = ["read", [_x, "CargoSpace"]] call _db;
-		_ammo = ["read", [_x, "Ammo"]] call _db;
+		_ammo = ["read", [_x, "Ammunition"]] call _db;
 
 		_items = ["read", [_x, "CargoItems"]] call _db;
 		_mags = ["read", [_x, "CargoMags"]] call _db;
