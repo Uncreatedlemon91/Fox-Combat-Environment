@@ -4,9 +4,9 @@ _nearestRepair = nearestObject [_veh, _repairStation];
 _dist = getPos _veh distance getPos _nearestRepair;
 if (_dist < 20) then {
 	systemChat "Repairing!";
-	_class = _veh typeOf;
+	_class = typeOf _veh;
 	_pos = getPosATL _veh;
-	
+
 	_veh = _class createVehicle _pos;
 	_veh setDamage 0.9;
 	_veh setFuel 0;
