@@ -16,7 +16,8 @@ _sections = "getSections" call _db;
 	_pitch = ["read", [_x, "Pitch"]] call _db;
 
 	// Create new vehicle based on data input 
-	_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
+	_veh = createVehicle [_type, [0,0,0], [], 0, "CAN_COLLIDE"];
+	_veh setPosATL _pos;
 	clearItemCargoGlobal _veh;
 	clearMagazineCargoGlobal _veh;
 	clearWeaponCargoGlobal _veh;
