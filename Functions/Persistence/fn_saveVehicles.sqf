@@ -12,15 +12,7 @@ _items = getItemCargo _veh;
 _mags = getMagazineCargo _veh;
 _weps = getWeaponCargo _veh;
 _backs = getBackpackCargo _veh;
-_cargoSpace = 4;
-
-_ammo = [];
-{
-	// Current result is saved in variable _x
-	_count = _veh ammo _x;
-	_data = [_x, _count];
-	_ammo pushback _data;
-} forEach weapons _veh;
+_cargoSpace = 2;
 
 if (_class == "ACM_B_NAG_Tatra") then {
 	_cargoSpace = 20;
@@ -31,9 +23,7 @@ if (_class == "B_UGV_01_F") then {
 if (_class == "ACM_B_NAG_MI171_Unarmed") then {
 	_cargoSpace = 10;
 };
-if (_class == "ACM_B_NAG_UAZ_MG") then {
-	_cargoSpace = 2;
-};
+
 
 ["write", [_section, "Position", _pos]] call _db;
 ["write", [_section, "Direction", _dir]] call _db;
@@ -43,7 +33,6 @@ if (_class == "ACM_B_NAG_UAZ_MG") then {
 ["write", [_section, "CargoMags", _mags]] call _db;
 ["write", [_section, "CargoWeps", _weps]] call _db;
 ["write", [_section, "CargoBps", _backs]] call _db;
-["write", [_section, "Ammunition", _ammo]] call _db;
 ["write", [_section, "CargoSpace", _cargoSpace]] call _db;
 
 // Save cargo
@@ -62,7 +51,6 @@ _veh addEventHandler ["ContainerClosed", {
 	["write", [_section, "CargoMags", _mags]] call _db;
 	["write", [_section, "CargoWeps", _weps]] call _db;
 	["write", [_section, "CargoBps", _backs]] call _db;
-	["write", [_section, "Ammunition", _ammo]] call _db;
 }];
 
 // Save damage of vehicle 
@@ -89,7 +77,6 @@ _veh addEventHandler ["GetOut", {
 	["write", [_section, "Position", _pos]] call _db;
 	["write", [_section, "Direction", _dir]] call _db;
 	["write", [_section, "Fuel", _fuel]] call _db;
-	["write", [_section, "Ammunition", _ammo]] call _db;
 }];
 
 _veh addEventHandler ["Killed", {
