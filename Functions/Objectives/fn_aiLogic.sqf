@@ -68,7 +68,6 @@ while {true} do {
 			if (_trgActive == true) then {
 				
 			} else {
-				systemChat format ["%1", _trgActive];
 				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
 				_mkr setMarkerPos _markerPos;
 				_trg setPos _markerPos;
