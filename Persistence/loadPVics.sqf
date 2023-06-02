@@ -30,6 +30,10 @@ if (_exists) then {
 		_veh setDamage [_dmg, false];
 		_veh setFuel _fuel;
 		
+		if (_dmg == 1) then {
+			[_veh] remoteExec ["fce_fnc_wreckSetup", 2];
+		};
+		
 		[_veh, _cargo] call ace_cargo_fnc_setSpace;
 
 		_items params ["_classes","_count"];
@@ -55,21 +59,6 @@ if (_exists) then {
 		_veh allowDamage true;
 		[_veh] remoteExec ["fce_fnc_saveVehicles", 2];
 	} forEach _sections;	
-
-	_mkrdb = ["new", format ["Markers %1-%2", missionName, worldName]] call oo_inidbi;
-	_mkrSections = "getSections" call _mkrdb;
-
-	{
-		// Current result is saved in variable _x
-		_pos = ["read", [_x, "Position"]] call _mkrdb;
-		_text = ["read", [_x, "Text"]] call _mkrdb;
-
-		_mkr = createMarker [_x, _pos];
-		_mkr setMarkerType "mil_end";
-		_mkr setMarkerColor "ColorRed";
-		_mkr setMarkerText _text;
-	} forEach _mkrSections;
-
 } else {
 	_vehicles = (getmissionlayerEntities "playerVehicles") select 0;
 	{
