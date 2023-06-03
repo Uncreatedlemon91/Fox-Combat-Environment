@@ -1,34 +1,9 @@
-// Check if map world is saved already or not 
-_worldDb = ["new", format ["Objective %1-%2", missionName, worldName]] call oo_inidbi;
-_exists = "exists" call _worldDb;
-if (_exists) then {
-	// Load Objectives onto map 
-	[[1000, 1000]] remoteExec ["fce_fnc_loadObjectives", 2];
+// find locations on the map. 
+["base", ["NameVillage", "NameLocal", "NameCity", "NamyCityCapital", "Strategic", "StrongholdPointArea", "Hill", "VegetationBroadLead", "VegetationFir", "VegetationPalm", "VegetationVineyard"]] remoteExec ["fce_fnc_Find_Objectives", 2];
 
-	// Load Regiments onto map 
-	[] remoteExec ["fce_fnc_loadRegiments", 2];
-} else {
-	// Create objectives on map 
-	systemChat "Generating Objective Areas...";
-	[1000, 1000] remoteExec ["fce_fnc_Objectives", 2];
+// Create Regiments on the map
+_bCount = round (random 10);
+_oCount = round (random 30);
+[_bCount, "B"] remoteExec ["fce_fnc_CreateRegiment", 2];
+[_oCount, "O"] remoteExec ["fce_fnc_CreateRegiment", 2];
 
-	// Create OPFOR 
-	systemChat "Generating Enemy Forces...";
-	[4, "o"] remoteExec ["fce_fnc_createRegiment", 2];
-
-	// Create BLUFOR
-	systemChat "Generating Friendly Forces...";
-	[2, "b"] remoteExec ["fce_fnc_createRegiment", 2];
-};
-
-_Regdbb = ["new", format ["b Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
-_sectionsb = "getSections" call _Regdbb;
-{
-	[_x, "b"] remoteExec ["fce_fnc_aiLogic", 2];
-} forEach _sectionsb;
-
-_Regdbo = ["new", format ["o Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
-_sectionso = "getSections" call _Regdbo;
-{
-	[_x, "o"] remoteExec ["fce_fnc_aiLogic", 2];
-} forEach _sectionso;

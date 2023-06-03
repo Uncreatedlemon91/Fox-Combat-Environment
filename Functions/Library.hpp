@@ -35,7 +35,7 @@ class CfgFunctions
 		};
 		class Objectives
 		{
-			class Objectives {};
+			class Find_Objectives {};
 			class createRegiment {};
 			class loadObjectives {};
 			class loadRegiments {};
