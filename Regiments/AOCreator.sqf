@@ -1,5 +1,5 @@
 // Check if map world is saved already or not 
-_worldDb = ["new", format ["Objectives %1-%2", missionName, worldName]] call oo_inidbi;
+_worldDb = ["new", format ["Objective %1-%2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _worldDb;
 if (_exists) then {
 	// Load Objectives onto map 
@@ -10,15 +10,15 @@ if (_exists) then {
 } else {
 	// Create objectives on map 
 	systemChat "Generating Objective Areas...";
-	[10, [1000, 1000]] remoteExec ["fce_fnc_Objectives", 2];
+	[1000, 1000] remoteExec ["fce_fnc_Objectives", 2];
 
 	// Create OPFOR 
 	systemChat "Generating Enemy Forces...";
-	[50, "o"] remoteExec ["fce_fnc_createRegiment", 2];
+	[4, "o"] remoteExec ["fce_fnc_createRegiment", 2];
 
 	// Create BLUFOR
 	systemChat "Generating Friendly Forces...";
-	[20, "b"] remoteExec ["fce_fnc_createRegiment", 2];
+	[2, "b"] remoteExec ["fce_fnc_createRegiment", 2];
 };
 
 _Regdbb = ["new", format ["b Regiments - %1 %2", missionName, worldName]] call oo_inidbi;

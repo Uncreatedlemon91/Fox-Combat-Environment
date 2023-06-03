@@ -37,7 +37,7 @@ while {true} do {
 		_mkr = createMarkerLocal [format ["Platoon %1-%2-%3", _regiment, _platoonSize, random 1000], _pos];
 		_mkr setMarkerTypeLocal _mkrType;
 		_mkr setMarkerSizeLocal [0.3, 0.3];
-		_mkr setMarkerAlpha 0;
+		_mkr setMarkerAlpha 0.1;
 
 		_trg = createTrigger ["emptyDetector", _pos];
 		_trg setTriggerArea [1000, 1000, 0, false, 500];
@@ -51,7 +51,7 @@ while {true} do {
 			""
 		];
 
-		_Objdb = ["new", format ["Objectives %1-%2", missionName, worldName]] call oo_inidbi;
+		_Objdb = ["new", format ["Objective %1-%2", missionName, worldName]] call oo_inidbi;
 		_Objsections = "getSections" call _Objdb;
 		_objective = selectRandom _objSections;
 		_objPosOrigin = ["read", [_objective, "Position"]] call _Objdb;
@@ -68,6 +68,7 @@ while {true} do {
 			if (_trgActive == true) then {
 				
 			} else {
+				"AI Spawning" remoteExec ["systemChat", 0];
 				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
 				_mkr setMarkerPos _markerPos;
 				_trg setPos _markerPos;
