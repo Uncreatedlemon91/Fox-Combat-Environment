@@ -1,4 +1,4 @@
-_db = ["new", format ["ALLITEMS %1 %2 %3", missionName, worldName, random 3000]] call oo_inidbi;
+_db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 {
 	// Current result is saved in variable _x
