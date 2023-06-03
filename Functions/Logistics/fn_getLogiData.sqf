@@ -3,6 +3,8 @@ Get Data from database
 */
 params ["_clientID"];
 _db = ["new", format ["Logistics - %1 %2", missionName, worldName]] call oo_inidbi;
+_exists = "Exists" call _db;
+
 _sections = "getSections" call _db;
 _dataToSend = [];
 {
