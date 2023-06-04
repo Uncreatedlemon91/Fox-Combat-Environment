@@ -13,5 +13,6 @@ _unit addEventHandler ["Killed",
 			_regiment = _target getVariable "Regiment";
 			[format ["You recognize the emblem of %1 on the soldier's uniform", _regiment]] remoteExec ["systemChat", 0, true];
 		}]] remoteExec ["addAction", 0, true];
-	}];
+	};
+];
 

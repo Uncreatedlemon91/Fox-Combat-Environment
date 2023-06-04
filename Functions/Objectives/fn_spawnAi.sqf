@@ -38,5 +38,17 @@ if (_active == true) then {
 		{
 			[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
 		} forEach units _grp;
+
+		[_unit, "lambs_danger_OnContact", {
+			params [_unit, _groupOfUnit, _target];
+			_chanceOfAirSupport = round (random 100);
+			_chanceOfParatrooper = round (random 100);
+			_chanceOfJetSupport = round (random 100);
+
+			if (_chanceOfAirSupport < 10) then {
+				_pos = getPos _unit;
+				[_pos] remoteExec ["fce_fnc_aiAirSupport", 2];
+			};
+		}] call BIS_fnc_addScriptedEventHandler;
 	};
 };

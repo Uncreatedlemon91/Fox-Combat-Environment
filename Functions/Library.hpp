@@ -42,6 +42,7 @@ class CfgFunctions
 			class AIAttributes {};
 			class spawnArtillery {};
 			class spawnAASite {};
+			class aiAirSupport {};
 		};
 		class Persistence
 		{
