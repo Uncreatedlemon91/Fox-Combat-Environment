@@ -1,9 +1,6 @@
-// find locations on the map. 
-["base", ["NameVillage", "NameLocal", "NameCity", "NamyCityCapital", "Strategic", "StrongholdPointArea", "Hill", "VegetationBroadLead", "VegetationFir", "VegetationPalm", "VegetationVineyard"]] remoteExec ["fce_fnc_Find_Objectives", 2];
+// Get all locations on the map 
+[] remoteExec ["fce_fnc_Objectives", 2];
 
-// Create Regiments on the map
-_bCount = round (random 10);
-_oCount = round (random 30);
-[_bCount, "B"] remoteExec ["fce_fnc_CreateRegiment", 2];
-[_oCount, "O"] remoteExec ["fce_fnc_CreateRegiment", 2];
-
+// Add artillery around the map 
+_count = round (random [15, 25, 35]);
+[_count] remoteExec ["fce_fnc_spawnArtillery", 2];

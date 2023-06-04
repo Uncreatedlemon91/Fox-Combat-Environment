@@ -35,12 +35,12 @@ class CfgFunctions
 		};
 		class Objectives
 		{
-			class Find_Objectives {};
+			class Objectives {};
 			class createRegiment {};
-			class loadObjectives {};
-			class loadRegiments {};
-			class aiLogic {};
-			class spawnAi {};
+			class loadRegiment {};
+			class spawnAI {};
+			class AIAttributes {};
+			class spawnArtillery {};
 		};
 		class Persistence
 		{

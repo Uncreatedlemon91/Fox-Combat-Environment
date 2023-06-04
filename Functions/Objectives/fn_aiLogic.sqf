@@ -31,6 +31,8 @@ while {true} do {
 			_platoonComp pushback _pickSquad;
 		};
 
+		
+
 		// Send platoon to objective area
 		_size = _size - 1;
 		["write", [_regiment, "size", _size]] call _db;
@@ -38,42 +40,6 @@ while {true} do {
 		_mkr setMarkerTypeLocal _mkrType;
 		_mkr setMarkerSizeLocal [0.3, 0.3];
 		_mkr setMarkerAlpha 0.1;
-
-		_trg = createTrigger ["emptyDetector", _pos];
-		_trg setTriggerArea [1000, 1000, 0, false, 500];
-		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-		_trg setVariable ["Active", false, true];
-		_trg setVariable ["PlatoonComp", _platoonComp];
-		_trg setVariable ["Side", _side];
-		_trg setTriggerStatements [
-			"this",
-			"[thisTrigger] remoteExec [""fce_fnc_spawnAI"", 2]",
-			""
-		];
-
-		_Objdb = ["new", format ["Objective %1-%2", missionName, worldName]] call oo_inidbi;
-		_Objsections = "getSections" call _Objdb;
-		_objective = selectRandom _objSections;
-		_objPosOrigin = ["read", [_objective, "Position"]] call _Objdb;
-		_objPos = [_objPosOrigin, 10, 500, 5, 0, 10, 0, ["base"], _objPosOrigin] call BIS_fnc_findSafePos;
-
-		// Calculate direction and distance between positions
-		_markerPosDiff = _objPos vectorDiff _pos;
-		_markerPosDir = vectorNormalized _markerPosDiff;
-
-		// Loop to update position of the marker over time
-		_markerPos = _pos;
-		_trgActive = _trg getVariable "Active";
-		while {_markerPos distance _objPos > 10} do {
-			if (_trgActive == true) then {
-				
-			} else {
-				"AI Spawning" remoteExec ["systemChat", 0];
-				_markerPos = _markerPos vectorAdd (_markerPosDir vectorMultiply _speed * 0.05);
-				_mkr setMarkerPos _markerPos;
-				_trg setPos _markerPos;
-				sleep 0.05;
-			};
 		};
 	};
 };

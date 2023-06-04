@@ -1,5 +1,6 @@
 // Setup player character
 //
+
 _name = name player;
 _uid = getPlayerUID player;
 _netId = clientOwner;
