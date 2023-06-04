@@ -1,29 +1,32 @@
-// Finds suitable objective points to fight over. 
-params ["_count", "_size"];
+_base = getMarkerPos "BASE";
+_locs = nearestLocations [_base, ["Name", "NameCity", "NameCityCapital", "NameLocal", "NameVillage", "Hill", "RockArea"], worldSize * 4];
+_countLocs = count _locs;
+_mkrAlpha = 0;
 
-_objs = [];
-_blkList = ["water", "base"];
-for "_i" from 1 to _count do {
-	_blkList pushBackUnique _objs;
-	_randPos = [["AO"], _blkList] call BIS_fnc_randomPos;
-
-	_mkr = createMarkerlocal [format ["Objective %1", _i], _randPos];
-	_mkr setMarkerShapelocal "Ellipse";
-	_mkr setMarkerColorlocal "ColorRed";
-	_mkr setMarkerSizelocal _size;
-	_mkr setMarkerAlphalocal 0.5;
-	_mkr setMarkerBrush "DiagGrid";
-
-	_mkr2 = createMarkerlocal [format ["ObjectiveIcon %1", _i], _randPos];
-	_mkr2 setMarkerTypelocal "mil_objective";
-	_mkr2 setMarkerColorlocal "ColorWhite";
-	_mkr2 setMarkerAlphalocal 1;
-	_mkr2 setMarkerText format ["Objective %1", _i];
-
-	_objs pushback [_mkr, _mkr2];
-	_db = ["new", format ["Objectives %1-%2", missionName, worldName]] call oo_inidbi;
-	["write", [_mkr, "Position", _randPos]] call _db;
-	["write", [_mkr, "Marker1", _mkr]] call _db;
-	["write", [_mkr, "Marker2", _mkr2]] call _db;
-	["write", [_mkr, "Owner", "Neutral"]] call _db;
+_db = ["new", format ["o Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
+_exists = "Exists" call _db;
+if (_exists) then {
+	["o"] remoteExec ["fce_fnc_loadRegiment", 2];
 };
+{
+	// Add markers to the map
+	_mkr = createMarkerLocal [format ["Location: %1", str _x], position _x];
+	_mkr setMarkerTypeLocal "hd_Flag";
+	_mkr setMarkerTextLocal str _x;
+	_mkr setMarkerAlphaLocal _mkrAlpha;
+	_mkr setMarkerColor "ColorYellow";
+
+	_mkr2 = createMarkerLocal [format ["%1", str _x], position _x];
+	_mkr2 setMarkerShapeLocal "ELLIPSE";
+	_mkr2 setMarkerColorLocal "ColorRed";
+	_mkr2 setMarkerSizeLocal [500, 500];
+	_mkr2 setMarkerAlphaLocal _mkrAlpha;
+	_mkr2 setMarkerBrush "DIAGGRID";
+
+	if (_exists) then {
+		
+	} else {
+		[_x, _mkr2, "o"] remoteExec ["fce_fnc_createRegiment", 2];
+	};
+} forEach _locs;
+

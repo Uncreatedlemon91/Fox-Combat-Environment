@@ -37,10 +37,11 @@ class CfgFunctions
 		{
 			class Objectives {};
 			class createRegiment {};
-			class loadObjectives {};
-			class loadRegiments {};
-			class aiLogic {};
-			class spawnAi {};
+			class loadRegiment {};
+			class spawnAI {};
+			class AIAttributes {};
+			class spawnArtillery {};
+			class spawnAASite {};
 		};
 		class Persistence
 		{

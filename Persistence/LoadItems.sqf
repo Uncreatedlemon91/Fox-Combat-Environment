@@ -1,5 +1,4 @@
 _db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
-
 _sections = "getSections" call _db;
 {
 	// Current result is saved in variable _x
@@ -15,8 +14,11 @@ _sections = "getSections" call _db;
 	_backs = ["read", [_x, "CargoBps"]] call _db;
 	_pitch = ["read", [_x, "Pitch"]] call _db;
 
+	["deleteSection", _x] call _db;
+
 	// Create new vehicle based on data input 
-	_veh = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
+	_veh = createVehicle [_type, [0,0,0], [], 0, "CAN_COLLIDE"];
+	_veh setPosATL _pos;
 	clearItemCargoGlobal _veh;
 	clearMagazineCargoGlobal _veh;
 	clearWeaponCargoGlobal _veh;
@@ -48,9 +50,11 @@ _sections = "getSections" call _db;
 	for "_i" from 0 to count _classes - 1 do {
 		_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
 	};
-
-
-	["deleteSection", _x] call _db;
+	
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
+	[format ["%1 Loaded!", _x]] remoteExec ["systemChat", 0, true];
+	sleep 0.5;
 } forEach _sections;
+
+"All Persistent Data Loaded" remoteExec ["SystemChat", 0, true];

@@ -4,7 +4,7 @@ _Vdb = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi
 
 _section = format ["%1 - %2", _class, netId _veh];
 // Get info 
-_pos = getPos _veh;
+_pos = getPosATL _veh;
 _dir = getDir _veh;
 _dmg = damage _veh;
 _fuel = fuel _veh;
@@ -34,13 +34,13 @@ _veh addEventHandler ["ContainerClosed", {
 	params ["_container", "_unit"];
 	_db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
 	_class = typeOf _container;
-	_section = format ["%1 - %2", _class, netId _container];
+	_section = format ["%1 - %2 - %3", _class, netId _container, random 3000];
 
 	_items = getItemCargo _container;
 	_mags = getMagazineCargo _container;
 	_weps = getWeaponCargo _container;
 	_backs = getBackpackCargo _container;
-	_pos = getPos _veh;
+	_pos = getPosATL _veh;
 	_dir = getDir _veh;
 
 	["write", [_section, "CargoItems", _items]] call _db;
@@ -68,7 +68,7 @@ _veh addEventHandler ["GetOut", {
 	_db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
 	_class = typeOf _vehicle;
 	_fuel = fuel _vehicle;
-	_pos = getPos _vehicle;
+	_pos = getPosATL _vehicle;
 	_dir = getDir _vehicle;
 
 	_section = format ["%1 - %2", _class, netId _vehicle];
