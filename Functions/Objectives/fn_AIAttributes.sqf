@@ -8,15 +8,14 @@ _unit addEventHandler ["Killed",
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		_groupID = _unit getVariable "Group";
 		_regimentName = _unit getVariable "Regiment";
-		_countGrp = count group _unit;
+		_grp = group _unit;
+		_countGrp = count units _grp;
 		if (_countGrp < 3) then {
-			
 			["deleteKey", [_regimentName, _groupID]] call _db;
 		};
 
 		[_unit, ["Check for Intel", {
-			_regiment = _target getVariable "Regiment";
-			[format ["You recognize the emblem of %1 on the soldier's uniform", _regiment]] remoteExec ["systemChat", 0, true];
+			[format ["You recognize the emblem of %1 on the soldier's uniform", _regimentName]] remoteExec ["systemChat", 0, true];
 		}]] remoteExec ["addAction", 0, true];
 	}];
 

@@ -58,6 +58,7 @@ if (_exists) then {
 
 		_veh allowDamage true;
 		[_veh] remoteExec ["fce_fnc_saveVehicles", 2];
+		["deleteSection", _x] call _db;
 	} forEach _sections;	
 } else {
 	_vehicles = (getmissionlayerEntities "playerVehicles") select 0;
