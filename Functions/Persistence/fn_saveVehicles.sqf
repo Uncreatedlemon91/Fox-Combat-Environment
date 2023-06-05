@@ -1,13 +1,12 @@
 params ["_veh"];
 // Create initial save entry 
-_db = ["new", format ["PVics %1 %2", missionName, worldName]] call oo_inidbi;
-_class = typeOf _veh;
-_section = format ["%1 - %2", _class, netID _veh];
+
 while {true} do {
 	sleep 5;
 	_db = ["new", format ["PVics %1 %2", missionName, worldName]] call oo_inidbi;
 	_class = typeOf _veh;
-	_section = format ["%1 - %2", _class, netID _veh];
+	//_section = format ["%1 - %2", _class, netID _veh];
+	_section = str _x;
 
 	_pos = getPosATL _veh;
 	_dir = getDir _veh;
@@ -17,7 +16,7 @@ while {true} do {
 	_mags = getMagazineCargo _veh;
 	_weps = getWeaponCargo _veh;
 	_backs = getBackpackCargo _veh;
-	_cargoSpace = 2;
+	/*_cargoSpace = 2;
 
 	if (_class == "ACM_B_NAG_Tatra") then {
 		_cargoSpace = 20;
@@ -28,6 +27,7 @@ while {true} do {
 	if (_class == "ACM_B_NAG_MI171_Unarmed") then {
 		_cargoSpace = 10;
 	};
+	*/
 
 
 	["write", [_section, "Position", _pos]] call _db;
