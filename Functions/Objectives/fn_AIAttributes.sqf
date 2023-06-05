@@ -17,5 +17,6 @@ _unit addEventHandler ["Killed",
 		[_unit, ["Check for Intel", {
 			[format ["You recognize the emblem of %1 on the soldier's uniform", _regimentName]] remoteExec ["systemChat", 0, true];
 		}]] remoteExec ["addAction", 0, true];
-	}];
+	};
+];
 
