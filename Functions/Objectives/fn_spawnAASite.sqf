@@ -19,6 +19,7 @@ if ("OPFOR AA Sites" in _sections) then {
 		_key = format ["AA Site %1", _i];
 		_veh setVariable ["ID", _key];
 		_veh addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
 			_id = _unit getVariable "ID";
 			_db = ["new", format ["Opfor Installations - %1 %2", missionName, worldName]] call oo_inidbi;
 			["deleteKey", ["OPFOR AA Sites", _id]] call _db;
@@ -43,6 +44,7 @@ if ("OPFOR AA Sites" in _sections) then {
 		_key = format ["AA Site %1", _i];
 		_veh setVariable ["PersistID", _key, true];
 		_veh addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
 			_id = _unit getVariable "PersistID";
 			_db = ["new", format ["Opfor Installations - %1 %2", missionName, worldName]] call oo_inidbi;
 			systemChat format ["%1", _id];
