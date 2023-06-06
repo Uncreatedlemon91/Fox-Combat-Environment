@@ -2,13 +2,14 @@ _db = ["new", format ["PVics %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 
 if (_exists) then {
-	_vehicles = (getmissionlayerEntities "playerVehicles") select 0;
+	_vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
 	{
 		// Current result is saved in variable _x
 		deleteVehicle _x;
 	} forEach _vehicles;
 	sleep 1;
 	_sections = "getSections" call _db;
+	systemChat format ["Vehicle Layer Count: %1", count _vehicles];
 	{
 		// Current result is saved in variable _x
 		_class = ["read", [_x, "Type"]] call _db;
@@ -59,9 +60,10 @@ if (_exists) then {
 		_veh allowDamage true;
 		[_veh] remoteExec ["fce_fnc_saveVehicles", 2];
 		["deleteSection", _x] call _db;
-	} forEach _sections;	
+	} forEach _sections;
 } else {
-	_vehicles = (getmissionlayerEntities "playerVehicles") select 0;
+	_vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
+	systemChat format ["Vehicle Layer Count: %1", count _vehicles];
 	{
 		_pos = getPos _x;
 		_class = typeOf _x;
