@@ -49,6 +49,7 @@ class CfgFunctions
 			class saveItem {};
 			class deleteItem {};
 			class saveVehicles {};
+			class saveVehicle {};
 		};
 	};
 };

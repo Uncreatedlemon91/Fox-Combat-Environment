@@ -1,70 +1,58 @@
-_db = ["new", format ["PVics %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Player-Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
+_vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
 
 if (_exists) then {
-	_vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
 	{
-		// Current result is saved in variable _x
-		deleteVehicle _x;
-	} forEach _vehicles;
-	sleep 1;
-	_sections = "getSections" call _db;
-	systemChat format ["Vehicle Layer Count: %1", count _vehicles];
-	{
-		// Current result is saved in variable _x
-		_class = ["read", [_x, "Type"]] call _db;
-		_pos = ["read", [_x, "Position"]] call _db;
-		_dir = ["read", [_x, "Direction"]] call _db;
-		_dmg = ["read", [_x, "Damage"]] call _db;
-		_fuel = ["read", [_x, "Fuel"]] call _db;
-		_cargo = ["read", [_x, "CargoSpace"]] call _db;
-		_ammo = ["read", [_x, "Ammunition"]] call _db;
+		_vehID = _x getVariable "SavedData";
 
-		_items = ["read", [_x, "CargoItems"]] call _db;
-		_mags = ["read", [_x, "CargoMags"]] call _db;
-		_weps = ["read", [_x, "CargoWeps"]] call _db;
-		_backs = ["read", [_x, "CargoBps"]] call _db;
+		_class = ["read", [_vehID, "Type"]] call _db;
+		_pos = ["read", [_vehID, "Position"]] call _db;
+		_dir = ["read", [_vehID, "Direction"]] call _db;
+		_dmg = ["read", [_vehID, "Damage"]] call _db;
+		_fuel = ["read", [_vehID, "Fuel"]] call _db;
 
-		_veh = createVehicle [_class, _pos, [], 0, "CAN_COLLIDE"];
-		_veh allowDamage false;
-		_veh setDir _dir;
-		_veh setDamage [_dmg, false];
-		_veh setFuel _fuel;
-		
+		_items = ["read", [_vehID, "CargoItems"]] call _db;
+		_mags = ["read", [_vehID, "CargoMags"]] call _db;
+		_weps = ["read", [_vehID, "CargoWeps"]] call _db;
+		_backs = ["read", [_vehID, "CargoBps"]] call _db;
+
+		_x setPosATL _pos;
+		_x allowDamage false;
+		_x setDir _dir;
+		_x setDamage [_dmg, false];
+		_x setFuel _fuel;
+
 		if (_dmg == 1) then {
-			[_veh] remoteExec ["fce_fnc_wreckSetup", 2];
+			[_x] remoteExec ["fce_fnc_wreckSetup", 2];
 		};
-		
-		[_veh, _cargo] call ace_cargo_fnc_setSpace;
 
 		_items params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
-			_veh addItemCargoGlobal [_classes select _i,_count select _i]
+			_x addItemCargoGlobal [_classes select _i,_count select _i]
 		};
 
 		_mags params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
-			_veh addMagazineCargoGlobal [_classes select _i,_count select _i]
+			_x addMagazineCargoGlobal [_classes select _i,_count select _i]
 		};
 
 		_weps params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
-			_veh addWeaponCargoGlobal [_classes select _i,_count select _i]
+			_x addWeaponCargoGlobal [_classes select _i,_count select _i]
 		};
 
 		_backs params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
-			_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
+			_x addBackpackCargoGlobal [_classes select _i,_count select _i]
 		};
 
-		_veh allowDamage true;
-		[_veh] remoteExec ["fce_fnc_saveVehicles", 2];
-		["deleteSection", _x] call _db;
-	} forEach _sections;
+		_x allowDamage true;
+		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
+	} forEach _vehicles;
 } else {
-	_vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
-	systemChat format ["Vehicle Layer Count: %1", count _vehicles];
 	{
+		_vehID = _x getVariable "SavedData";
 		_pos = getPos _x;
 		_class = typeOf _x;
 		_dir = getDir _x;
@@ -76,34 +64,17 @@ if (_exists) then {
 		_weps = getWeaponCargo _x;
 		_backs = getBackpackCargo _x;
 		
-
-		_logiTrucks = ["ACM_B_NAG_Tatra"];
-		_logiHelo = ["ACM_B_NAG_MI171_Unarmed"];
-		
-		_cargo = 4;
-		if (_class in _logiTrucks) then {
-			_cargo = 20;
-		};
-		if (_class in _logiHelo) then {
-			_cargo = 5;
-		};
-
-		_section = format ["%1 - %2", _class, netId _x];
-		
 		// Save to database 
-		["write", [_section, "Type", _class]] call _db;
-		["write", [_section, "Position", _pos]] call _db;
-		["write", [_section, "Direction", _dir]] call _db;
-		["write", [_section, "Damage", _dmg]] call _db;
-		["write", [_section, "Fuel", _fuel]] call _db;
+		["write", [_vehID, "Position", _pos]] call _db;
+		["write", [_vehID, "Direction", _dir]] call _db;
+		["write", [_vehID, "Damage", _dmg]] call _db;
+		["write", [_vehID, "Fuel", _fuel]] call _db;
 
-		["write", [_section, "CargoItems", _items]] call _db;
-		["write", [_section, "CargoMags", _mags]] call _db;
-		["write", [_section, "CargoWeps", _weps]] call _db;
-		["write", [_section, "CargoBps", _backs]] call _db;
+		["write", [_vehID, "CargoItems", _items]] call _db;
+		["write", [_vehID, "CargoMags", _mags]] call _db;
+		["write", [_vehID, "CargoWeps", _weps]] call _db;
+		["write", [_vehID, "CargoBps", _backs]] call _db;
 
-		["write", [_section, "CargoSpace", _cargo]] call _db;
-		
 		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
 	} forEach _vehicles;
 };
