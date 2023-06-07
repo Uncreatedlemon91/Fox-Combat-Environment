@@ -1,5 +1,5 @@
 // Save provided data to the database. 
-params ["_veh", "_vehID"];
+params ["_veh"];
 _db = ["new", format ["Player-Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 
 // Get data needed to save 
@@ -15,12 +15,12 @@ _mags = getMagazineCargo _veh;
 _bpacks = getBackpackCargo _veh;
 
 // Save items to the database 
-["write", [_vehID, "Position", _pos]] call _db;
-["write", [_vehID, "Direction", _dir]] call _db;
-["write", [_vehID, "Damage", _dmg]] call _db;
-["write", [_vehID, "Fuel", _fuel]] call _db;
+["write", [_veh, "Position", _pos]] call _db;
+["write", [_veh, "Direction", _dir]] call _db;
+["write", [_veh, "Damage", _dmg]] call _db;
+["write", [_veh, "Fuel", _fuel]] call _db;
 
-["write", [_vehID, "Items", _items]] call _db;
-["write", [_vehID, "Weapons", _weps]] call _db;
-["write", [_vehID, "Magazines", _mags]] call _db;
-["write", [_vehID, "Backpacks", _bpacks]] call _db;
+["write", [_veh, "Items", _items]] call _db;
+["write", [_veh, "Weapons", _weps]] call _db;
+["write", [_veh, "Magazines", _mags]] call _db;
+["write", [_veh, "Backpacks", _bpacks]] call _db;
