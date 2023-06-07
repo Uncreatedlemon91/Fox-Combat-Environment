@@ -4,7 +4,7 @@ _vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
 
 if (_exists) then {
 	{
-		_vehID = _x getVariable "SavedData";
+		_vehID = _x;
 
 		_class = ["read", [_vehID, "Type"]] call _db;
 		_pos = ["read", [_vehID, "Position"]] call _db;
@@ -52,7 +52,7 @@ if (_exists) then {
 	} forEach _vehicles;
 } else {
 	{
-		_vehID = _x getVariable "SavedData";
+		_vehID = _x;
 		_pos = getPos _x;
 		_class = typeOf _x;
 		_dir = getDir _x;
