@@ -1,7 +1,7 @@
 _base = getMarkerPos "BASE";
 _locs = nearestLocations [_base, ["Name", "NameCity", "NameCityCapital", "NameLocal", "NameVillage", "Hill", "RockArea"], worldSize * 4];
 _countLocs = count _locs;
-_mkrAlpha = 0.3;
+_mkrAlpha = 0;
 
 _db = ["new", format ["o Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "Exists" call _db;

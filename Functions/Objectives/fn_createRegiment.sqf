@@ -17,7 +17,7 @@ switch (_regimentType) do {
 	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.2, 0.1, 0.1, 0.5, 0.1]};
 	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.2, 0.2, 0.2, 0.2, 0.4]};
 };
-_regimentSize = round (random [5, 10, 15]);
+_regimentSize = round (random [10, 15, 20]);
 _HqPos = [[_locMkr], ["base", "water"]] call BIS_fnc_randomPos;
 
 // Save regiment to database 
@@ -37,7 +37,7 @@ _mkr setMarkerType _regimentMarker;
 
 // Start function to watch for player locality
 _trg = createTrigger ["EmptyDetector", _hqPos, true];
-_trg setVariable ["Active", false, true];
+_trg setVariable ["Active", false];
 _trg setVariable ["Regiment", _regimentName];
 _trg setVariable ["Side", _regimentSide];
 _trg setTriggerArea [500, 500, 0, false, 200];

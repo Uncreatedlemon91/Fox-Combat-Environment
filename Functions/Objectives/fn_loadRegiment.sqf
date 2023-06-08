@@ -8,13 +8,12 @@ _sections = "getSections" call _db;
 
 		// Start function to watch for player locality
 		_trg = createTrigger ["EmptyDetector", _hqPos, true];
-		_trg setVariable ["Active", false, true];
+		_trg setVariable ["Active", false];
 		_trg setVariable ["Regiment", _x];
 		_trg setVariable ["Side", _regimentSide];
 		_trg setTriggerArea [500, 500, 0, false, 200];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
-		systemChat format ["Created Trigger for %1", _x];
 
 		// Add marker to world map 
 		_mkr = createMarkerLocal [_x, _hqPos];

@@ -41,12 +41,15 @@ class CfgFunctions
 			class spawnAI {};
 			class AIAttributes {};
 			class spawnArtillery {};
+			class spawnAASite {};
+			class aiAirSupport {};
 		};
 		class Persistence
 		{
 			class saveItem {};
 			class deleteItem {};
 			class saveVehicles {};
+			class saveVehicle {};
 		};
 	};
 };
