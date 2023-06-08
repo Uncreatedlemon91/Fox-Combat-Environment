@@ -1,11 +1,11 @@
 params ["_trg"];
 _active = _trg getVariable "Active";
 
-if (_active == true) then {
+if (_active) then {
 
 } else {
 	// Get variables from the trigger 
-	_trg setVariable ["Active", true, true];
+	_trg setVariable ["Active", true];
 	_regimentSide = _trg getVariable "Side";
 	_regimentName = _trg getVariable "Regiment";
 	
