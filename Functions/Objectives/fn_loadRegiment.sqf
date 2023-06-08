@@ -8,7 +8,7 @@ _sections = "getSections" call _db;
 
 		// Start function to watch for player locality
 		_trg = createTrigger ["EmptyDetector", _hqPos, true];
-		_trg setVariable ["Active", false];
+		_trg setVariable ["Active", false, true];
 		_trg setVariable ["Regiment", _x];
 		_trg setVariable ["Side", _regimentSide];
 		_trg setTriggerArea [500, 500, 0, false, 200];
