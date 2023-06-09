@@ -5,11 +5,6 @@ _veh addEventHandler ["ContainerClosed", {
 	[_container] remoteExec ["fce_fnc_SaveVehicle", 2];
 }];
 
-_veh addEventHandler ["Hit", {
-	params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
 _veh addEventHandler ["Engine", {
 	params ["_vehicle", "_engineState"];
 	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
@@ -38,6 +33,8 @@ _veh addEventHandler ["HandleDamage", {
 	if (_totalDmg >= 0.8) then {
 		_unit setDamage 0.9;
 		_unit allowDamage false;
+	} else {
+		_unit allowDamage true;
 	};
 }];
 
@@ -48,6 +45,8 @@ _veh addEventHandler ["Hit", {
 	if (_totalDmg >= 0.8) then {
 		_unit setDamage 0.9;
 		_unit allowDamage false;
+	} else {
+		_unit allowDamage true;
 	};
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
 }];
