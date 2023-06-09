@@ -30,7 +30,7 @@ _veh addEventHandler ["HandleDamage", {
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
 	_dmg = damage _unit;
 	_totalDmg = _dmg + _damage;
-	if (_totalDmg >= 0.8) then {
+	if (_totalDmg > 0.7) then {
 		_unit setDamage 0.9;
 		_unit allowDamage false;
 	} else {
