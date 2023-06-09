@@ -14,6 +14,13 @@ _weps = getWeaponCargo _veh;
 _mags = getMagazineCargo _veh;
 _bpacks = getBackpackCargo _veh;
 
+// Set Wreckage 
+if (_dmg > 0.75) then {
+	_veh allowDamage false;
+} else {
+	_veh allowDamage true;
+};
+
 // Save items to the database 
 ["write", [_veh, "Position", _pos]] call _db;
 ["write", [_veh, "Direction", _dir]] call _db;

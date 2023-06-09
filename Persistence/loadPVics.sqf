@@ -23,8 +23,11 @@ if (_exists) then {
 		_x setDamage [_dmg, false];
 		_x setFuel _fuel;
 
-		if (_dmg == 1) then {
-			[_x] remoteExec ["fce_fnc_wreckSetup", 2];
+		// Set Wreckage 
+		if (_dmg > 0.75) then {
+			_x allowDamage false;
+		} else {
+			_x allowDamage true;
 		};
 
 		_items params ["_classes","_count"];
