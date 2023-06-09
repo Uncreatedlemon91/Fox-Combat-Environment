@@ -38,19 +38,6 @@ _veh addEventHandler ["HandleDamage", {
 	};
 }];
 
-_veh addEventHandler ["Hit", {
-	params ["_unit", "_source", "_damage", "_instigator"];
-	_dmg = damage _unit;
-	_totalDmg = _dmg + _damage;
-	if (_totalDmg >= 0.8) then {
-		_unit setDamage 0.9;
-		_unit allowDamage false;
-	} else {
-		_unit allowDamage true;
-	};
-	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
 _veh addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
