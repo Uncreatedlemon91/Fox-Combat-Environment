@@ -3,7 +3,6 @@ _exists = "Exists" call _db;
 // Set world settings 
 setTimeMultiplier 6;
 
-
 if (_exists) then {
 	_date = ["read", ["World Info", "Date"]] call _db;
 	setDate _date;
@@ -56,5 +55,5 @@ while {true} do {
 	["write", ["World Info", "Wind Direction", windDir]] call _db;
 	["write", ["World Info", "Lightning", lightnings]] call _db;
 
-	sleep 10;
+	sleep 20;
 }
