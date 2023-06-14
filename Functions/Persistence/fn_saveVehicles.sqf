@@ -28,7 +28,7 @@ _veh addEventHandler ["GetOut", {
 _veh addEventHandler ["Hit", {
 	params ["_unit", "_source", "_damage", "_instigator"];
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}]
+}];
 
 _veh addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
