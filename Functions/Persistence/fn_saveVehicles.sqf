@@ -33,10 +33,10 @@ _veh addEventHandler ["Hit", {
 _veh addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
 	if (_selection isEqualTo "") then {
-		_curDmg = damage _unit;
+		_curDmg = damage _selection;
 		_newDmg = _curDmg + _damage;
 		if (_newDmg > 0.7) then {
-			_unit setDamage 0.9;
+			_selection setDamage 0.9;
 			_unit allowDamage false;
 		};
 	};
