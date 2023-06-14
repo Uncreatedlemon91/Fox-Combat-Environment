@@ -25,16 +25,12 @@ _veh addEventHandler ["GetOut", {
 	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
 }];
 
-_veh addEventHandler ["Hit", {
-	params ["_unit", "_source", "_damage", "_instigator"];
-	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
 _veh addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
 	if (_selection isEqualTo "") then {
 		_curDmg = damage _unit;
 		_newDmg = _curDmg + _damage;
+		systemchat format ["Current Damage: %1 // New Damage: %2", _curDmg, _newDmg];
 		if (_newDmg > 0.7) then {
 			_unit setDamage 0.9;
 			_unit allowDamage false;
