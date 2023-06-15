@@ -1,6 +1,5 @@
 // Setup player character
 //
-
 _name = name player;
 _uid = getPlayerUID player;
 _netId = clientOwner;
@@ -10,12 +9,6 @@ player setVariable ["Roles", ["Rifle"]];
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	_name = name _unit;
-	_time = systemTime;
-	_day = _time select 2;
-	_hour = _time select 3;
-	_minute = _time select 4;
-	_day = [_day, "english"] call BIS_fnc_ordinalNumber;
-	_date = format ["%1 at %2:%3", _day, _hour, _minute];
 	_uid = getPlayerUID _unit;
 
 	_killerType = typeOf _killer;
