@@ -37,25 +37,24 @@ if (_active == true) then {
 		[_grp, _trg] execVM "Regiments\DeSpawnAI.sqf";
 		{
 			[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
+
+			[_x, "lambs_danger_OnAssess", {
+				params ["_unit", "_groupOfUnit", "_enemys"];
+				systemChat "ASSESSING!";
+				_chanceOfAirSupport = round (random 100);
+				_chanceOfParatrooper = round (random 100);
+				_chanceOfJetSupport = round (random 100);
+
+				systemChat format ["Air: %1, Paras: %2, Jets: %3", _chanceofAirSupport, _chanceOfParatrooper, _chanceOfJetSupport];
+
+				if (_chanceOfAirSupport < 10) then {
+					[_unit] remoteExec ["fce_fnc_aiAirSupport", 2];
+				};
+
+				if (_chanceofParatrooper < 70) then {
+					[_unit] remoteExec ["fce_fnc_aiParatroopers", 2];
+				};
+			}] call BIS_fnc_addScriptedEventHandler;
 		} forEach units _grp;
-
-		[_unit, "lambs_danger_OnAssess", {
-			params [_unit, _groupOfUnit, _enemys];
-			_chanceOfAirSupport = round (random 100);
-			_chanceOfParatrooper = round (random 100);
-			_chanceOfJetSupport = round (random 100);
-
-			if (_chanceOfAirSupport < 10) then {
-				[_unit] remoteExec ["fce_fnc_aiAirSupport", 2];
-			};
-
-			if (_chanceofParatrooper < 10) then {
-				[_unit] remoteExec ["fce_fnc_aiParatroopers", 2];
-			};
-
-			if (_chanceOfJetSupport < 10) then {
-				[_unit] remoteExec ["fce_fnc_aiJetSupport", 2];
-			};
-		}] call BIS_fnc_addScriptedEventHandler;
 	};
 };

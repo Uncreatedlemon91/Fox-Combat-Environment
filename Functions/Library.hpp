@@ -43,6 +43,8 @@ class CfgFunctions
 			class spawnArtillery {};
 			class spawnAASite {};
 			class aiAirSupport {};
+			class createConvoy {};
+			class aiParatroopers {};
 		};
 		class Persistence
 		{

@@ -3,16 +3,14 @@ _db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldN
 
 _unit setVariable ["Regiment", _regimentName];
 _unit setVariable ["Group", _groupID];
-_unit addEventHandler ["Killed", 
-	{
-		params ["_unit", "_killer", "_instigator", "_useEffects"];
-		_groupID = _unit getVariable "Group";
-		_regimentName = _unit getVariable "Regiment";
-		_grp = group _unit;
-		_countGrp = count units _grp;
-		if (_countGrp < 3) then {
-			["deleteKey", [_regimentName, _groupID]] call _db;
-		};
+_unit addEventHandler ["Killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	_groupID = _unit getVariable "Group";
+	_regimentName = _unit getVariable "Regiment";
+	_grp = group _unit;
+	_countGrp = count units _grp;
+	if (_countGrp < 3) then {
+		["deleteKey", [_regimentName, _groupID]] call _db;
 	};
-];
+}];
 

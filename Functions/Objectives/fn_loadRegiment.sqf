@@ -11,7 +11,7 @@ _sections = "getSections" call _db;
 		_trg setVariable ["Active", false, true];
 		_trg setVariable ["Regiment", _x];
 		_trg setVariable ["Side", _regimentSide];
-		_trg setTriggerArea [500, 500, 0, false, 200];
+		_trg setTriggerArea [700, 700, 0, false, 200];
 		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
