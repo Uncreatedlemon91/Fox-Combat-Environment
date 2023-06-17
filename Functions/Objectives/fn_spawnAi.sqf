@@ -52,7 +52,7 @@ if (_active == true) then {
 					[_unit] remoteExec ["fce_fnc_aiAirSupport", 2];
 				};
 
-				if (_chanceofParatrooper < 40) then {
+				if (_chanceofParatrooper < 10) then {
 					execVM "Regiments\AIParatroopers.sqf";
 				};
 			}] call BIS_fnc_addScriptedEventHandler;
