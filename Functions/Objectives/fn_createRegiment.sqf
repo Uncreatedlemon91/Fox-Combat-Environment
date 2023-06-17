@@ -41,7 +41,7 @@ _trg setVariable ["Active", false, true];
 _trg setVariable ["Regiment", _regimentName];
 _trg setVariable ["Side", _regimentSide];
 _trg setTriggerArea [700, 700, 0, false, 200];
-_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+_trg setTriggerActivation ["WEST", "PRESENT", true];
 _trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
 // Define classnames for AI spawning 

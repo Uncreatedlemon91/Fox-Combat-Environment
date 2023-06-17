@@ -5,12 +5,16 @@ _unit setVariable ["Regiment", _regimentName];
 _unit setVariable ["Group", _groupID];
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 	_groupID = _unit getVariable "Group";
 	_regimentName = _unit getVariable "Regiment";
 	_grp = group _unit;
 	_countGrp = count units _grp;
+	systemChat "Killed Unit";
+	
 	if (_countGrp < 3) then {
 		["deleteKey", [_regimentName, _groupID]] call _db;
+		systemChat format ["Removed Unit %1 - %2", _regimentName, _groupID];
 	};
 }];
 

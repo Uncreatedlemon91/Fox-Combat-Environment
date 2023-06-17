@@ -44,7 +44,6 @@ class CfgFunctions
 			class spawnAASite {};
 			class aiAirSupport {};
 			class createConvoy {};
-			class aiParatroopers {};
 		};
 		class Persistence
 		{

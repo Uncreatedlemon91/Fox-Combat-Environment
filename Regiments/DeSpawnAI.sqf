@@ -1,10 +1,18 @@
-params ["_grp", "_trg"];
+params ["_grp", "_trg", "_regimentName", "_groupID"];
+_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
+
 while {true} do {
 	_pos = getPos leader _grp;
 	_playerList = allPlayers apply {[_pos distance _x, _x]};
 	_playerList sort true;
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
+	_countGrp = count units _grp;
+
+	if (_countGrp < 3) then {
+		["deleteKey", [_regimentName, _groupID]] call _db;
+		systemChat format ["Removed Unit %1 - %2", _regimentName, _groupID];
+	};
 	
 	if (_dist > 800) then {
 		{	

@@ -5,6 +5,7 @@ if (_active == true) then {
 
 } else {
 	// Get variables from the trigger 
+	"AI Spawning" remoteExec ["systemChat", 0, true];
 	_trg setVariable ["Active", true, true];
 	_regimentSide = _trg getVariable "Side";
 	_regimentName = _trg getVariable "Regiment";
@@ -15,7 +16,7 @@ if (_active == true) then {
 	_regimentSize = ["read", [_regimentName, "Size"]] call _db;
 	_regimentPos = ["read", [_regimentName, "Position"]] call _db;
 	_regimentSide = ["read", [_regimentName, "Side"]] call _db;
-	systemChat format ["%1", _regimentSize];
+	systemChat format ["%1", _regimentName];
 
 	_faction = "";
 	if (_regimentSide == "b") then {
@@ -34,9 +35,9 @@ if (_active == true) then {
 		_grp deleteGroupWhenEmpty true;
 		[_grp, _spawnPos, 100] call lambs_wp_fnc_taskPatrol;
 
-		[_grp, _trg] execVM "Regiments\DeSpawnAI.sqf";
+		[_grp, _trg, _regimentName, _groupID] execVM "Regiments\DeSpawnAI.sqf";
 		{
-			[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
+			//[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
 
 			[_x, "lambs_danger_OnAssess", {
 				params ["_unit", "_groupOfUnit", "_enemys"];
@@ -47,12 +48,12 @@ if (_active == true) then {
 
 				systemChat format ["Air: %1, Paras: %2, Jets: %3", _chanceofAirSupport, _chanceOfParatrooper, _chanceOfJetSupport];
 
-				if (_chanceOfAirSupport < 10) then {
+				if (_chanceOfAirSupport < 5) then {
 					[_unit] remoteExec ["fce_fnc_aiAirSupport", 2];
 				};
 
-				if (_chanceofParatrooper < 70) then {
-					[_unit] remoteExec ["fce_fnc_aiParatroopers", 2];
+				if (_chanceofParatrooper < 40) then {
+					execVM "Regiments\AIParatroopers.sqf";
 				};
 			}] call BIS_fnc_addScriptedEventHandler;
 		} forEach units _grp;

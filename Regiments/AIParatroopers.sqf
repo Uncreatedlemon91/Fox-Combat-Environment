@@ -1,5 +1,5 @@
 params ["_caller"];
-
+// Create Plane 
 _tgtPos = getPos _caller;
 _planeClass = selectRandom ["ACM_O_SEV_C47"];
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
@@ -8,21 +8,16 @@ _jetG = createVehicleCrew _jetV;
 
 _jetG deleteGroupWhenEmpty true;
 
-_jetG move _tgtPos; 
-_dist = 500;
-while {_dist > 400} do {
-	_dist = _jetV distance _tgtPos;
-	sleep 4;
-};
+// Set waypoints for plane
+_jetG move _tgtPos;
+_jetV flyInHeight random [40, 60, 100];
 
+
+waitUntil {_dist = _jetV distance _tgtPos; _dist < 100};
+
+systemChat "Spawning Paratroopers!";
+// Add passengers
 _smoke = "SmokeShellRed" createVehicle _tgtPos;
-_dist = 500;
-while {_dist > 100} do {
-	_dist = _jetV distance _tgtPos;
-	sleep 4;
-};
-
-_jetG setCombatMode "RED";
 _inf = [
 	"ACM_HDF_Soldier_Thermals",
 	"ACM_HDF_Soldier_LiteAT",
@@ -45,24 +40,19 @@ _inf = [
 ];
 _grp = createGroup east;
 for "_i" from 1 to 15 do {
-	_unit = _grp createUnit [selectRandom _inf, [0,0,0], [], 0, "form"];
-	_unit moveInCargo _jetV;
+	_unit = _grp createUnit [selectRandom _inf, getPosATL _jetV, [], 0, "form"];
+	_unit allowDamage false;
 	removeBackpack _unit;
 	_unit addBackpack "ACE_NonSteerableParachute";
-	moveOut _unit;
 	_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
 	_chem attachTo [_unit, [0,0,0.05]];
+	sleep 0.3;
+	_unit allowDamage true;
 };
-[_grp, 800] spawn lambs_wp_fnc_taskRush;
-sleep random [100, 200, 300];
+[_grp, 400] spawn lambs_wp_fnc_taskRush;
 
-_jetV move _spawnPos;
-_dist = 500;
+_jetG move _spawnPos;
 
-while {_dist > 100} do {
-	_dist = _jetV distance _spawnPos;
-	sleep 4;
-};
-
+waitUntil {_dist = _jetV distance _spawnPos; _dist < 75};
 deleteVehicleCrew _jetV;
 deleteVehicle _jetV;

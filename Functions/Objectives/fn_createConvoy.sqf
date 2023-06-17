@@ -26,10 +26,11 @@ while {_dist > 10} do {
 systemChat "Vehicle has arrived";
 sleep 5;
 _building = "";
-_mannedClasses = 
+_mannedClasses = ["OPFOR AA Sites", "Opfor Artillery"];
 
 if (_deployType in _mannedClasses) then {
 	_building = [_deployPoint, random 360, _deployClass, east] call BIS_fnc_spawnVehicle;
+	[_building] call lambs_wp_fnc_taskArtilleryRegister;
 } else {
 	_building = _deployClass createVehicle _deployPoint;
 };
