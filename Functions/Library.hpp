@@ -24,6 +24,7 @@ class CfgFunctions
 			class Scout {};
 			class Engineer {};
 			class Pilot {};
+			class loadoutMenu {};
 		};
 		class players
 		{

@@ -3,6 +3,7 @@ forceRotorLibSimulation = 1; // Default: 0
 #include "Interfaces\BaseControls.hpp"
 #include "Interfaces\LogiMenu.hpp"
 #include "Interfaces\LoadoutMenu.hpp"
+#include "Interfaces\NewLoadoutMenu.hpp"
 #include "Functions\Library.hpp"
 
 class CfgDebriefing
