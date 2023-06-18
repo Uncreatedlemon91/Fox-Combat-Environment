@@ -1,4 +1,4 @@
-params ["_grp", "_trg", "_regimentName", "_groupID"];
+params ["_grp", "_trg", "_regimentName", "_groupID", "_regimentSide"];
 _db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 
 while {true} do {
@@ -8,10 +8,12 @@ while {true} do {
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
 	_countGrp = count units _grp;
+	systemChat format ["Group spawn count", _countGrp];
 
-	if (_countGrp < 3) then {
+	if (_countGrp =< 2) then {
+		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 		["deleteKey", [_regimentName, _groupID]] call _db;
-		systemChat format ["Removed Unit %1 - %2", _regimentName, _groupID];
+		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
 	};
 	
 	if (_dist > 800) then {

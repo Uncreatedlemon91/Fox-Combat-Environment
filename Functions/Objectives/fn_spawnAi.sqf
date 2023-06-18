@@ -35,25 +35,22 @@ if (_active == true) then {
 		_grp deleteGroupWhenEmpty true;
 		[_grp, _spawnPos, 100] call lambs_wp_fnc_taskPatrol;
 
-		[_grp, _trg, _regimentName, _groupID] execVM "Regiments\DeSpawnAI.sqf";
+		[_grp, _trg, _regimentName, _groupID, _regimentSide] execVM "Regiments\DeSpawnAI.sqf";
 		{
 			//[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
 
-			[_x, "lambs_danger_OnAssess", {
-				params ["_unit", "_groupOfUnit", "_enemys"];
+			[_x, "lambs_danger_OnContact", {
+				params ["_unit", "_groupOfUnit", "_target"];
 				systemChat "ASSESSING!";
 				_chanceOfAirSupport = round (random 100);
 				_chanceOfParatrooper = round (random 100);
-				_chanceOfJetSupport = round (random 100);
 
-				systemChat format ["Air: %1, Paras: %2, Jets: %3", _chanceofAirSupport, _chanceOfParatrooper, _chanceOfJetSupport];
-
-				if (_chanceOfAirSupport < 5) then {
-					[_unit] remoteExec ["fce_fnc_aiAirSupport", 2];
+				if (_chanceOfAirSupport < 2) then {
+					[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
 				};
 
-				if (_chanceofParatrooper < 10) then {
-					execVM "Regiments\AIParatroopers.sqf";
+				if (_chanceofParatrooper < 2) then {
+					[_unit] execVM "Regiments\AIParatroopers.sqf";
 				};
 			}] call BIS_fnc_addScriptedEventHandler;
 		} forEach units _grp;

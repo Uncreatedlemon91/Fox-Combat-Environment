@@ -44,8 +44,8 @@ for "_i" from 1 to 15 do {
 	_unit allowDamage false;
 	removeBackpack _unit;
 	_unit addBackpack "ACE_NonSteerableParachute";
-	_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
-	_chem attachTo [_unit, [0,0,0.05]];
+	//_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
+	//_chem attachTo [_unit, [0,0,0.05]];
 	sleep 0.3;
 	_unit allowDamage true;
 };

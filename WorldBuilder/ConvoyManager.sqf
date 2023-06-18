@@ -15,5 +15,5 @@ while {true} do {
 
 	[_deployClass, _deployPoint, _deployType] remoteExec ["fce_fnc_createConvoy", 2];
 
-	sleep random [300, 600, 900];
+	sleep random [900, 1800, 2200];
 };
