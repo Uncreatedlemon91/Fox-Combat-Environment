@@ -4,11 +4,13 @@ _det = lbText [1500, _lbCurSel];
 
 _moveCamera = {
 	params ["_role"];
-	Fox_Loadout_camera camPrepareTarget _role;
-	Fox_Loadout_camera camCommitPrepared 1; // needed for relative position
-	Fox_Loadout_camera camPrepareRelPos [0, 3, 1.5];
-	Fox_Loadout_camera cameraEffect ["internal", "back"];
-	Fox_Loadout_camera camCommitPrepared 2;
+	_Fox_Loadout_camera = player getVariable "Camera";
+	
+	_Fox_Loadout_camera camPrepareTarget _role;
+	_Fox_Loadout_camera camCommitPrepared 1; // needed for relative position
+	_Fox_Loadout_camera camPrepareRelPos [0, 3, 1.5];
+	_Fox_Loadout_camera cameraEffect ["internal", "back"];
+	_Fox_Loadout_camera camCommitPrepared 2;
 
 	// set the role to the player for later reference 
 	player setVariable ["roleLoadout", _role];
@@ -85,5 +87,3 @@ switch (_det) do {
 	};
 };
 
-_anim = selectRandom ["STAND1", "STAND2", "WATCH", "GUARD", "KNEEL", "BRIEFING"];
-[soldierModel, _anim, "ASIS"] call BIS_fnc_ambientAnim;

@@ -1,9 +1,20 @@
 params [];
 
 closeDialog 3;
-_loadout = player getVariable "roleLoadout";
-Fox_Loadout_camera cameraEffect ["terminate", "back"];
-Fox_Loadout_camera camCommitPrepared 0;
-camDestroy Fox_Loadout_camera;
-player setUnitLoadout (getUnitLoadout _loadout);
+_roleUnit = player getVariable "roleLoadout";
+_foxCamera = player getVariable "Camera";
+_foxCamera cameraEffect ["terminate", "back"];
+_foxCamera camCommitPrepared 0;
+camDestroy _foxCamera;
+
+// Get magazines that are in the player's inventory
+_mags = magazinesAmmoCargo player;
+{
+	player setVariable ["whitelistMags", nil];
+	player setVariable ["whitelistVest", nil];
+	player setVariable ["whitelistGrenade", nil];
+	player setVariable 		
+} forEach _mags;
+
+player setUnitLoadout (getUnitLoadout _roleUnit);
 [ace_arsenal, player, false] call ace_arsenal_fnc_openBox;
