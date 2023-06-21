@@ -32,7 +32,6 @@ if (_active == true) then {
 		_grp = [_spawnPos, _faction, _pltComp] call BIS_fnc_spawnGroup;
 		_grp deleteGroupWhenEmpty true;
 		[_grp, _spawnPos, 100] call lambs_wp_fnc_taskPatrol;
-
 		[_grp, _trg, _regimentName, _groupID, _regimentSide] execVM "Regiments\DeSpawnAI.sqf";
 		{
 			[_x, "lambs_danger_OnContact", {

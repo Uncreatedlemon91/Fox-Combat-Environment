@@ -1,6 +1,7 @@
 params ["_grp", "_trg", "_regimentName", "_groupID", "_regimentSide"];
 _db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 
+sleep 5;
 while {true} do {
 	_pos = getPos leader _grp;
 	_playerList = allPlayers apply {[_pos distance _x, _x]};
