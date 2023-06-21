@@ -7,7 +7,7 @@ while {true} do {
 	_playerList sort true;
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
-	_countGrp = count units _grp;
+	_countGrp = { alive _x } count units _grp;
 
 	if (_countGrp < 3) then {
 		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
