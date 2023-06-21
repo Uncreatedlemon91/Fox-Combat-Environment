@@ -10,7 +10,7 @@ while {true} do {
 	_countGrp = count units _grp;
 	systemChat format ["Group spawn count", _countGrp];
 
-	if (_countGrp =< 2) then {
+	if (_countGrp < 3) then {
 		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 		["deleteKey", [_regimentName, _groupID]] call _db;
 		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
