@@ -10,19 +10,18 @@ while {true} do {
 	_countGrp = count units _grp;
 	systemChat format ["Group spawn count", _countGrp];
 
-	if (_dist > 800) then {
+	if (_countGrp < 3) exitWith {
+		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
+		["deleteKey", [_regimentName, _groupID]] call _db;
+		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
+	};	
+
+	if (_dist > 800) exitWith {
 		{	
 			deleteVehicle vehicle _x;
 			deleteVehicle _x;
 		} forEach units _grp;
 		_trg setVariable ["Active", false];
 	};
-
-	if (_countGrp < 3) then {
-		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
-		["deleteKey", [_regimentName, _groupID]] call _db;
-		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
-		exitwith {};
-	};	
 	sleep 5;
 };
