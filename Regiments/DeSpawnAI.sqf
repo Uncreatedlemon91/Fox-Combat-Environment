@@ -8,7 +8,6 @@ while {true} do {
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
 	_countGrp = count units _grp;
-	systemChat format ["Group spawn count", _countGrp];
 
 	if (_countGrp < 3) exitWith {
 		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;

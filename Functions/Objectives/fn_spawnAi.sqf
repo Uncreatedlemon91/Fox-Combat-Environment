@@ -5,7 +5,6 @@ if (_active == true) then {
 
 } else {
 	// Get variables from the trigger 
-	"AI Spawning" remoteExec ["systemChat", 0, true];
 	_trg setVariable ["Active", true, true];
 	_regimentSide = _trg getVariable "Side";
 	_regimentName = _trg getVariable "Regiment";
