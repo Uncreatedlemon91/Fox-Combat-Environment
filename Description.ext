@@ -18,14 +18,3 @@ class CfgDebriefing
 		pictureColor[] = { 1, 1, 1, 1 };
 	};
 };
-
-class CfgSounds
-{
-	sounds[] = {};
-
-	class baseAlarm
-	{
-		name = "Base Alarm";									// display name
-		sound[] = {"Sounds\Alarm.ogg", 1, 10, 500};				// file, volume, pitch, maxDistance
-	};
-};
