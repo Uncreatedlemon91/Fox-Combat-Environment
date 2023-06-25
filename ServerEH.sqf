@@ -16,5 +16,14 @@ addMissionEventHandler ["PlayerDisconnected", {
 	_pos = getPosATL _unit;
 	_gear = getUnitLoadout _unit;
 	_dir = getDir _unit;
+	
+	// Medical Data to save 
+	_unit getVariable ["kat_airway_obstruction", false];
+	_unit getVariable ["kat_airway_occluded", false];
+	_unit getVariable ["kat_breathing_pneumothorax", false];
+	_unit getVariable ["kat_breathing_hemopneumothorax", false];
+	_unit getVariable ["kat_breathing_tensionpneumothorax", false];
+	
+
 	[_name, _UID, _id, _pos, _gear, _dir] remoteExec ["fce_fnc_updatePlayerDatabase", 2];
 }];

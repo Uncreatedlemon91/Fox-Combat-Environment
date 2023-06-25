@@ -19,6 +19,7 @@ while {_loop} do {
 		["write", [_regimentName, "Size", _newSize]] call _Db;
 		if (_newSize = 0) then {
 			["deleteSection", _regimentName] call _db;
+			deleteVehicle _trg;
 		}
 		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
 		_loop = false;
