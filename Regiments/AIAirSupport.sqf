@@ -6,7 +6,7 @@ _mkr setMarkerAlphaLocal 0;
 _mkr setMarkerShapeLocal "Ellipse";
 _mkr setMarkerSize [100, 100];
 _tgtPos = [[_mkr], ["base", "water"]] call BIS_fnc_randomPos;
-
+_jetG setCombatMode "RED";
 
 _jetClass = selectRandom ["FIR_F16C_ENEMY_TYPE_A", "O_Plane_CAS_02_dynamicLoadout_F"];
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
@@ -21,7 +21,6 @@ _jetG deleteGroupWhenEmpty true;
 _jetG move _tgtPos;
 _jetV flyInHeight random [100, 400, 900];
 _dist = 500;
-_jetG setCombatMode "RED";
 while {_dist > 200} do {
 	_dist = _jetV distance _tgtPos;
 	sleep 4;

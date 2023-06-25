@@ -5,9 +5,11 @@ if (_active == true) then {
 
 } else {
 	// Get variables from the trigger 
+	"AI Spawning" remoteExec ["systemChat", 0, true];
 	_trg setVariable ["Active", true, true];
 	_regimentSide = _trg getVariable "Side";
 	_regimentName = _trg getVariable "Regiment";
+	
 
 	_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 
@@ -32,8 +34,11 @@ if (_active == true) then {
 		_grp = [_spawnPos, _faction, _pltComp] call BIS_fnc_spawnGroup;
 		_grp deleteGroupWhenEmpty true;
 		[_grp, _spawnPos, 100] call lambs_wp_fnc_taskPatrol;
+
 		[_grp, _trg, _regimentName, _groupID, _regimentSide] execVM "Regiments\DeSpawnAI.sqf";
 		{
+			//[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];
+
 			[_x, "lambs_danger_OnContact", {
 				params ["_unit", "_groupOfUnit", "_target"];
 				systemChat "ASSESSING!";
