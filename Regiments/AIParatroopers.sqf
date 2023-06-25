@@ -12,7 +12,6 @@ _jetG deleteGroupWhenEmpty true;
 _jetG move _tgtPos;
 _jetV flyInHeight random [40, 60, 100];
 
-
 waitUntil {_dist = _jetV distance _tgtPos; _dist < 200};
 
 systemChat "Spawning Paratroopers!";

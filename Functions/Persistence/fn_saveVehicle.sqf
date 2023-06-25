@@ -17,6 +17,9 @@ _bpacks = getBackpackCargo _veh;
 // Set Wreckage 
 if (_dmg > 0.75) then {
 	_veh allowDamage false;
+	_veh setHit ["motor", 1, false];
+	_veh setFuel 0;
+	_veh setDamage 0.9;
 } else {
 	_veh allowDamage true;
 };
@@ -27,7 +30,7 @@ if (_dmg > 0.75) then {
 ["write", [_veh, "Damage", _dmg]] call _db;
 ["write", [_veh, "Fuel", _fuel]] call _db;
 
-["write", [_veh, "Items", _items]] call _db;
-["write", [_veh, "Weapons", _weps]] call _db;
-["write", [_veh, "Magazines", _mags]] call _db;
-["write", [_veh, "Backpacks", _bpacks]] call _db;
+["write", [_veh, "CargoItems", _items]] call _db;
+["write", [_veh, "CargoWeps", _weps]] call _db;
+["write", [_veh, "CargoMags", _mags]] call _db;
+["write", [_veh, "CargoBps", _bpacks]] call _db;

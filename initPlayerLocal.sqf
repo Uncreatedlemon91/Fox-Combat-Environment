@@ -15,10 +15,3 @@ player addEventHandler ["Killed", {
 	_killer = name _killer;
 	[_name, _uid, _killer, _killerType, _date] remoteExec ["fce_fnc_playerDied", 2];
 }];
-
-player addEventHandler  ["Fired", {
-	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
-	_bullets = _unit getVariable ["Bullets", 0];
-	_bullets = _bullets + 1;
-	_unit setVariable ["Bullets", _bullets];
-}];

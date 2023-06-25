@@ -8,7 +8,7 @@ _mkr setMarkerSize [100, 100];
 _tgtPos = [[_mkr], ["base", "water"]] call BIS_fnc_randomPos;
 _jetG setCombatMode "RED";
 
-_jetClass = selectRandom ["FIR_F16C_ENEMY_TYPE_A", "O_Plane_CAS_02_dynamicLoadout_F"];
+_jetClass = selectRandom ["O_Plane_CAS_02_dynamicLoadout_F"];
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
 _jet = [_spawnPos, random 360, _jetClass, east] call BIS_fnc_spawnVehicle;
 
