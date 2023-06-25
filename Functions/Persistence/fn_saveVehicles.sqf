@@ -30,12 +30,6 @@ _veh addEventHandler ["Hit", {
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
 }];
 
-_veh addEventHandler ["HandleDamage", {
-	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
-	_dmg = damage _unit;
-	systemChat format ["Dmg %1", _dmg];
-}];
-
 _veh addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
