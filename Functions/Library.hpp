@@ -24,6 +24,10 @@ class CfgFunctions
 			class Scout {};
 			class Engineer {};
 			class Pilot {};
+			class loadoutMenu {};
+			class UpdateListBox {};
+			class UpdateSoldier {};
+			class GetLoadout {};
 		};
 		class players
 		{
@@ -42,7 +46,7 @@ class CfgFunctions
 			class AIAttributes {};
 			class spawnArtillery {};
 			class spawnAASite {};
-			class aiAirSupport {};
+			class createConvoy {};
 		};
 		class Persistence
 		{
