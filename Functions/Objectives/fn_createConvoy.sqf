@@ -1,7 +1,8 @@
 // Function to create a convoy that moves to an area, then deploys an item. 
 params ["_deployClass", "_deployPoint", "_deployType"];
 _convoySpawnPos = selectRandom ["INS_1", "INS_2", "INS_3", "INS_4", "INS_5"];
-_spawnVeh = [getMarkerPos _convoySpawnPos, random 360, "ACM_O_HDF_V3S_Covered", east] call BIS_fnc_spawnVehicle;
+_vehicle = selectRandomWeighted ["ACM_O_HDF_V3S_Covered", 0.7, "ACM_NMA_Vehicle_UH1H_Armed", 0.3];
+_spawnVeh = [getMarkerPos _convoySpawnPos, random 360, _vehicle, east] call BIS_fnc_spawnVehicle;
 
 systemChat format ["%1 : %2 : %3", _deployClass, _deployPoint, _deployType];
 
@@ -10,14 +11,16 @@ _crew = _spawnVeh select 1;
 _grp = _spawnVeh select 2;
 _driver = driver _veh;
 
+_veh flyInHeight 10;
+
 _grp deleteGroupWhenEmpty true;
 
 systemChat "Vehicle Spawned";
 
-_grp move _deployPoint;
+_grp move _deployPoint; 
 _dist = 100;
 
-while {_dist > 10} do {
+while {_dist > 50} do {
 	_dist = _veh distance _deployPoint;
 	sleep 5;
 };

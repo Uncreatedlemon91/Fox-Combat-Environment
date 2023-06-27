@@ -11,16 +11,16 @@ while {_loop} do {
 	_countGrp = { alive _x } count units _grp;
 
 	// Exit loop and delete group from data base
-	if (_countGrp < 3) then {
+	if (_countGrp < 2) then {
 		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 		["deleteKey", [_regimentName, _groupID]] call _db;
 		_size = ["read", [_regimentName, "Size"]] call _Db;
 		_newSize = _size - 1;
 		["write", [_regimentName, "Size", _newSize]] call _Db;
-		if (_newSize = 0) then {
+		if (_newSize == 0) then {
 			["deleteSection", _regimentName] call _db;
 			deleteVehicle _trg;
-		}
+		};
 		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
 		_loop = false;
 	};	

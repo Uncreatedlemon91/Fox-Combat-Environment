@@ -8,22 +8,9 @@ class CfgFunctions
 			class getLogiData {};
 			class spawnVehicle {};
 			class addAceActions {};
-			class wreckSetup {};
-			class repairWreck {};
 		};
 		class Loadouts
 		{
-			class Autorifleman {};
-			class fireteamleader {};
-			class Grenadier {};
-			class Lightantitank {};
-			class Medic {};
-			class MissileSpec {};
-			class Rifleman {};
-			class sectionLeader {};
-			class Scout {};
-			class Engineer {};
-			class Pilot {};
 			class loadoutMenu {};
 			class UpdateListBox {};
 			class UpdateSoldier {};

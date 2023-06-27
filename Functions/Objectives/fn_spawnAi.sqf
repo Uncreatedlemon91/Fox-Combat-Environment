@@ -1,6 +1,7 @@
 params ["_trg"];
 _active = _trg getVariable "Active";
 
+
 if (_active == true) then {
 
 } else {
@@ -38,53 +39,70 @@ if (_active == true) then {
 		_grpLdr = leader _grp;
 		[_grpLdr, "lambs_danger_OnContact", {
 			params ["_unit", "_groupOfUnit", "_target"];
-			systemChat "ASSESSING!";
+
 			_chanceOfAirSupport = random 100;
 			_chanceOfParatrooper = random 100;
 
-			if (_chanceOfAirSupport < 5) then {
+			if (_chanceOfAirSupport < 7) then {
 				[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
+				systemChat "Calling in Air";
 			};
 
-			if (_chanceofParatrooper < 5) then {
+			if (_chanceofParatrooper < 7) then {
 				[_unit] execVM "Regiments\AIParatroopers.sqf";
+				systemChat "Calling in Paratroopers";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;
 
 		[_grpLdr, "lambs_danger_OnArtilleryCalled", {
 			params ["_unitThatCalledArtillery", "_groupOfUnit", "_ArtilleryGun", "_TargetPosition"];
-			
-			// Get the players with a 117 radio on them 
-			_radioOperators = [];
-			{
-				_hasRadio = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
-				_detachment = _x getVariable "Detachment";
-				if ((_hasRadio) && (_detachment = "S2")) then {
-					_radioOperators pushback _x;
-				};
-			} forEach allPlayers;
-			
-			_receiver = selectRandom _radioOperators;
-			_receiverID = owner _receiver;
-			[format ["Be Advised: Enemy Observers are requesting %1 to fire at %2"], _artilleryGun, _targetPosition] remoteExec ["SystemChat", _receiverID, true];
+			_chance = random 100;
+			_chanceOfIntercept = 25;
+			systemChat "Arty called";
+			if (_chance < _chanceOfIntercept) then {
+				systemChat "AI is calling Artillery";
+				
+				// Get the players with a 117 radio on them 
+				_radioOperators = [];
+				{
+					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
+					systemChat "Check radios";
+					if (_hasRadio) then {
+						systemChat "Player added to list";
+						_radioOperators pushback _x;
+					};
+				} forEach allPlayers;
+				
+				_receiver = selectRandom _radioOperators;
+				_receiverID = owner _receiver;
+				_arty = [configFile >> "CfgVehicles" >> typeOf _ArtilleryGun] call BIS_fnc_displayName;
+				format ["[RADIO INTERCEPT] This is %2 to %3. We are requesting immediate fire mission on %1", _TargetPosition, _groupOfUnit, _ArtilleryGun] remoteExec ["SystemChat", _receiverID];
+			};
 		}] call BIS_fnc_addScriptedEventHandler;
 
 		[_grpLdr, "lambs_danger_OnInformationShared", {
 			params ["_unit", "_groupOfUnit", "_target", "_groups"];
-			
-			// Get the players with a 117 radio on them 
-			_radioOperators = [];
-			{
-				_hasRadio = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
-				_detachment = _x getVariable "Detachment";
-				if ((_hasRadio) && (_detachment = "S2")) then {
-					_radioOperators pushback _x;
-				};
-			} forEach allPlayers;
-			
-			_receiver = selectRandom _radioOperators;
-			_receiverID = owner _receiver;
-			[format ["Be Advised: Enemy Forces are observing %1. They are receiving information about %2."], _target, _groups] remoteExec ["SystemChat", _receiverID, true];
+			_chance = random 100;
+			_chanceOfIntercept = 25;
+			systemChat "AI is Calling out targets";
+			if (_chance < _chanceOfIntercept) then {
+				// Get the players with a 117 radio on them 
+				_radioOperators = [];
+				{
+					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
+					systemChat "Check radios";
+					if (_hasRadio) then {
+						systemChat "Player added to list";
+						_radioOperators pushback _x;
+					};
+				} forEach allPlayers;
+				
+				systemChat format ["Operators: %1", _radioOperators];
+				_receiver = selectRandom _radioOperators;
+				_receiverID = owner _receiver;
+				systemChat format ["OperatorID: %1", _receiverID];
+				format ["[RADIO INTERCEPT] We have eyes on enemy contact! It looks like %1! Send assistance!", _target] remoteExec ["SystemChat", _receiverID];
+			};
 		}] call BIS_fnc_addScriptedEventHandler;
 
 		{

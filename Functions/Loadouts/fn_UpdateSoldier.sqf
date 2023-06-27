@@ -8,7 +8,7 @@ _moveCamera = {
 	Fox_Loadout_camera camCommitPrepared 1; // needed for relative position
 	Fox_Loadout_camera camPrepareRelPos [0, 3, 1.5];
 	Fox_Loadout_camera cameraEffect ["internal", "back"];
-	Fox_Loadout_camera camCommitPrepared 2;
+	Fox_Loadout_camera camCommitPrepared 1;
 
 	// set the role to the player for later reference 
 	player setVariable ["roleLoadout", _role];
@@ -44,7 +44,7 @@ switch (_det) do {
 		[fox_rto] call _moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "JTAC / FO": {
+	case "JTAC": {
 		[fox_jtac] call _moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};

@@ -16,6 +16,3 @@ player addEventHandler ["Killed", {
 	[_name, _uid, _killer, _killerType, _date] remoteExec ["fce_fnc_playerDied", 2];
 }];
 
-// Grab details on all the variables that are attached to the player 
-_getVariables = allVariables player;
-copyToClipboard _getVariables;
