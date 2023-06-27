@@ -34,8 +34,7 @@ _dropDowndata = [
 _ctrl = findDisplay 3 displayCtrl 2100;
 {
 	_added = _ctrl lbAdd _x;
-	_ctrl lbSetData [_added, str _x];
-	[format ["Added %1 and %2 Data", _added, _ctrl lbData _added]] remoteExec ["systemChat", 0];
+	_ctrl lbSetData [_added, _x];
+	_data = _ctrl lbData _added;
+	[format ["Added %1 and %2 Data", _added, _data]] remoteExec ["systemChat", 0];
 } forEach _dropDowndata;
-
-
