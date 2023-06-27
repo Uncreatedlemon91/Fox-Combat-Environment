@@ -31,9 +31,10 @@ _dropDowndata = [
 	"Medical Detachment"
 ];
 
+_ctrl = findDisplay 3 displayCtrl 2100;
 {
-	_added = lbAdd [2100, _x];
-	lbSetData [2100, _added, _x];
+	_added = _ctrl lbAdd _x;
+	_ctrl lbSetData [_added, _x];
 } forEach _dropDowndata;
 
 
