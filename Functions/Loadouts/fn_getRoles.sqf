@@ -1,4 +1,5 @@
 params ["_group"];
+systemChat "Getting Roles";
 lbClear 1500;
 _roles = (getmissionlayerEntities _group) select 0;
 _ctrl = findDisplay 3 displayCtrl 1500;

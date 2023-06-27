@@ -108,5 +108,6 @@ if (_active == true) then {
 		{
 			[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];	
 		} forEach units _grp;
+	sleep 2;
 	};
 };

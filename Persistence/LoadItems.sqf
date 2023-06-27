@@ -53,7 +53,6 @@ _sections = "getSections" call _db;
 	
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
-	[format ["%1 Loaded!", _x]] remoteExec ["systemChat", 0, true];
 	sleep 0.5;
 } forEach _sections;
 
