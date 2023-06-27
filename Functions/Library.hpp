@@ -15,6 +15,8 @@ class CfgFunctions
 			class UpdateListBox {};
 			class UpdateSoldier {};
 			class GetLoadout {};
+			class getRoles {};
+			class moveCamera {};
 		};
 		class players
 		{

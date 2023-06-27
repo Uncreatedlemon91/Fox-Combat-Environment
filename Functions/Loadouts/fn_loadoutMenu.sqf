@@ -1,15 +1,25 @@
 params [];
 
-Fox_Loadout_camera = "camera" camCreate [0, 0, 0];
-Fox_Loadout_camera camPrepareTarget soldierModel;
-Fox_Loadout_camera camCommitPrepared 0; // needed for relative position
-Fox_Loadout_camera camPrepareRelPos [0, 3, 1.5];
-Fox_Loadout_camera cameraEffect ["internal", "back"];
-Fox_Loadout_camera camCommitPrepared 0;
+_cam = "camera" camCreate [0, 0, 0];
+_cam camPrepareTarget soldierModel;
+_cam camCommitPrepared 0; // needed for relative position
+_cam camPrepareRelPos [0, 3, 1.5];
+_cam cameraEffect ["internal", "back"];
+_cam camCommitPrepared 0;
 
+player setVariable ["Cam", _cam];
 
-// Open the hasInterface 
+// Open the Interface 
 createDialog "NewLoadoutMenu";
+
+// Add eventhandler for interface 
+_display = findDisplay 3;
+
+_dropCtrl = _display displayCtrl 2100;
+_dropEvent = _dropCtrl ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_UpdateListBox}];
+
+_listBox = _display displayCtrl 1500;
+_listEvent = _listBox ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_UpdateSoldier}];
 
 // Populate Drop down box 
 _dropDowndata = [
@@ -25,3 +35,5 @@ _dropDowndata = [
 	_added = lbAdd [2100, _x];
 	lbSetData [2100, _added, _x];
 } forEach _dropDowndata;
+
+

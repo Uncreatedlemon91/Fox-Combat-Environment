@@ -15,4 +15,3 @@ player addEventHandler ["Killed", {
 	_killer = name _killer;
 	[_name, _uid, _killer, _killerType, _date] remoteExec ["fce_fnc_playerDied", 2];
 }];
-
