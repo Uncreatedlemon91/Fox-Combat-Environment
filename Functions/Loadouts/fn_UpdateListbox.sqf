@@ -1,6 +1,6 @@
 params ["_control", "_lbCurSel"];
 
-_det = lbText [2100, _lbCurSel];
+_det = _control lbText _lbCurSel;
 
 switch (_det) do {
 	case "1st Platoon - The Infantry": {
