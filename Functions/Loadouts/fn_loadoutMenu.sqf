@@ -34,3 +34,4 @@ _dropEvent = _dropCtrl ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_Update
 
 _listBox = _display displayCtrl 1500;
 _listEvent = _listBox ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_UpdateSoldier}];
+
