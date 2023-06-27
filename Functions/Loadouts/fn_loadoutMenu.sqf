@@ -18,7 +18,7 @@ _dropDowndata = [
 	"2nd Platoon - The Armor",
 	"Artillery Battery",
 	"317th Air Squadron", 
-	"Engineering & Requisitions Detachment",
+	"Engineering & Requisitions Detachment"
 ];
 
 _ctrl = findDisplay 3 displayCtrl 2100;
