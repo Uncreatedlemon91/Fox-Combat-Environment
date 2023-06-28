@@ -26,6 +26,7 @@ switch (_det) do {
 	};
 };
 
+lbClear 1500;
 _ctrl = findDisplay 3 displayCtrl 1500;
 {
 	_name = _x getVariable "RoleName";
