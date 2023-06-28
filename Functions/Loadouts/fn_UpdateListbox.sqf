@@ -1,7 +1,6 @@
 params ["_control", "_lbCurSel"];
 
 _det = _control lbText _lbCurSel;
-systemChat "Updating List";
 switch (_det) do {
 	case "1st Platoon - The Infantry": {
 		systemChat "INFANTRY";

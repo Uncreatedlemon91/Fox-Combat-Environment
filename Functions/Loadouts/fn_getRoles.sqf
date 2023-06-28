@@ -2,7 +2,7 @@ params ["_group"];
 systemChat "Getting Roles";
 lbClear 1500;
 _roles = (getmissionlayerEntities _group) select 0;
-systemChat format ["Roles: %1", _roles];
+systemChat format ["Roles: %1", _group];
 _ctrl = findDisplay 3 displayCtrl 1500;
 {
 	"Test" remoteExec ["systemChat", 0];
