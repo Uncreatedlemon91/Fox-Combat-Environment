@@ -88,7 +88,7 @@ switch (_det) do {
 		[fox_cls2] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "Medical Technician": {
+	case "Medical Tech": {
 		[fox_mt] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
