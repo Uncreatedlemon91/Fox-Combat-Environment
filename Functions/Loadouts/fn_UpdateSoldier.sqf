@@ -38,7 +38,7 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Missile Specialist": {
-		[fox_missileSpec] call fce_fnc_moveCamera;
+		[fox_missile] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Squad Leader": {
