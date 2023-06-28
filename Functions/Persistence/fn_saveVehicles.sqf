@@ -44,3 +44,14 @@ _veh addEventHandler ["SeatSwitched", {
 	params ["_vehicle", "_unit1", "_unit2"];
 	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
 }];
+
+_veh addEventHandler ["HandleDamage", {
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
+	_dmg = damage _unit;
+	_newDmg = _dmg + _damage;
+	if (_newDmg < 0.70) then {
+		_newDmg;
+	} else {
+		0.85;
+	};
+}];
