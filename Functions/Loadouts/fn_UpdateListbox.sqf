@@ -1,26 +1,33 @@
 params ["_control", "_lbCurSel"];
 
 _det = _control lbText _lbCurSel;
+_roles = [];
 switch (_det) do {
 	case "1st Platoon - The Infantry": {
-		["1stPlt"] call fce_fnc_getRoles;
+		_roles = [fox_rifleman, fox_ammoCarrier, fox_mg, fox_cls, fox_gren, fox_missile, fox_rto, fox_jtac, fox_ftl, fox_sl, fox_pl];
 	};
 	case "2nd Platoon - The Armor": {
-		["2ndPlt"] call fce_fnc_getRoles;
+		_roles = [fox_crewlead, fox_crew];
 	};
 	case "B Battery": {
-		["Arty"] call fce_fnc_getRoles;
+		_roles = [fox_fo, fox_gunner];
 	};
 	case "317th Air Squadron": {
-		["317Air"] call fce_fnc_getRoles;
+		_roles = [fox_helicopterPilot, fox_helicopterCrew, fox_jetPilot];
 	};
 	case "7th Medical Detachment": {
-		["7Med"] call fce_fnc_getRoles;
+		_roles = [fox_mt, fox_cls2];
 	};
 	case "Intelligence Detachment": {
-		["S2"] call fce_fnc_getRoles;
+		_roles = [fox_scout, fox_ScoutTl, fox_Sniper];
 	};
 	case "Engineering & Requisitions Detachment": {
-		["S5"] call fce_fnc_getRoles;
+		_roles = [];
 	};
 };
+
+_ctrl = findDisplay 3 displayCtrl 1500;
+{
+	_name = _x getVariable "RoleName";
+	_ctrl lbAdd _name;
+} forEach _roles;
