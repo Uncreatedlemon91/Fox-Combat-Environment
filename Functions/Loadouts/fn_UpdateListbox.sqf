@@ -4,7 +4,7 @@ _det = _control lbText _lbCurSel;
 _roles = [];
 switch (_det) do {
 	case "1st Platoon - The Infantry": {
-		_roles = [fox_rifleman, fox_ammoCarrier, fox_mg, fox_cls, fox_gren, fox_missile, fox_rto, fox_jtac, fox_ftl, fox_sl, fox_pl];
+		_roles = [fox_rifleman, fox_ammoCarrier, fox_mg, fox_cls, fox_gren, fox_missileSpec, fox_rto, fox_jtac, fox_ftl, fox_sl, fox_pl];
 	};
 	case "2nd Platoon - The Armor": {
 		_roles = [fox_crewlead, fox_crew];

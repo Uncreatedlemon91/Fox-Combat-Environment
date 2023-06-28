@@ -38,7 +38,7 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Missile Specialist": {
-		[fox_missile] call fce_fnc_moveCamera;
+		[fox_missileSpec] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Squad Leader": {
@@ -84,11 +84,11 @@ switch (_det) do {
 	};
 
 	// Add Medical 
-	case "(MedDet)Combat Life Saver": {
+	case "(MedDet) Combat Life Saver": {
 		[fox_cls2] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "Medical Tech": {
+	case "Medical Technician": {
 		[fox_mt] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
