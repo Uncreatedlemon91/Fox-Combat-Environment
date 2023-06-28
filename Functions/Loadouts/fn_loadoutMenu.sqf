@@ -16,8 +16,10 @@ createDialog "NewLoadoutMenu";
 _dropDowndata = [
 	"1st Platoon - The Infantry",
 	"2nd Platoon - The Armor",
-	"Artillery Battery",
-	"317th Air Squadron", 
+	"B Battery",
+	"317th Air Squadron",
+	"7th Medical Detachment",
+	"Intelligence Detachment",
 	"Engineering & Requisitions Detachment"
 ];
 

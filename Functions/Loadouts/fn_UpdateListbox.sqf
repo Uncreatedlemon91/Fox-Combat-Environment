@@ -3,21 +3,24 @@ params ["_control", "_lbCurSel"];
 _det = _control lbText _lbCurSel;
 switch (_det) do {
 	case "1st Platoon - The Infantry": {
-		systemChat "INFANTRY";
-		["1stPltRoles"] call fce_fnc_getRoles;
+		["1stPlt"] call fce_fnc_getRoles;
 	};
 	case "2nd Platoon - The Armor": {
-		systemChat "Armor";
-		["2ndPltRoles"] call fce_fnc_getRoles;
+		["2ndPlt"] call fce_fnc_getRoles;
 	};
-	case "Artillery Battery": {
-		systemChat "Arty";
-		["ArtyRoles"] call fce_fnc_getRoles;
+	case "B Battery": {
+		["Arty"] call fce_fnc_getRoles;
 	};
 	case "317th Air Squadron": {
-		["317Roles"] call fce_fnc_getRoles;
+		["317Air"] call fce_fnc_getRoles;
+	};
+	case "7th Medical Detachment": {
+		["7Med"] call fce_fnc_getRoles;
+	};
+	case "Intelligence Detachment": {
+		["S2"] call fce_fnc_getRoles;
 	};
 	case "Engineering & Requisitions Detachment": {
-		["EngRoles"] call fce_fnc_getRoles;
+		["S5"] call fce_fnc_getRoles;
 	};
 };
