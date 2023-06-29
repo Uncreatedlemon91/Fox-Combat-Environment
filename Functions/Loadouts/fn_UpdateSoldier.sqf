@@ -103,6 +103,3 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 };
-
-_anim = selectRandom ["STAND1", "STAND2", "WATCH", "GUARD", "KNEEL", "BRIEFING"];
-[soldierModel, _anim, "ASIS"] call BIS_fnc_ambientAnim;

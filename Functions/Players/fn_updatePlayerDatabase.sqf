@@ -8,9 +8,7 @@ _db = ["new", format ["Players %1-%2", missionName, worldName]] call oo_inidbi;
 ["write", [_uid, "Gear", _gear]] call _db;
 ["write", [_uid, "Direction", _dir]] call _db;
 
-// Save Medical Data 
-["write", [_uid, "Medical - Airway Obstructed", _medData select 0]] call _db;
-["write", [_uid, "Medical - Airway Occulded", _medData select 1]] call _db;
-["write", [_uid, "Medical - Pneumothorax", _medData select 2]] call _db;
-["write", [_uid, "Medical - Hemopnumothorax", _medData select 3]] call _db;
-["write", [_uid, "Medical - tensionpneumothorax", _medData select 4]] call _db;
+// Save Medical Data
+// [kat_airway_obstruction, kat_airway_occluded, kat_breathing_pneumothorax, kat_breathing_hemopneumothorax, kat_breathing_tensionpneumothorax]
+["write", [_uid, "MedData", _medData]] call _db;
+
