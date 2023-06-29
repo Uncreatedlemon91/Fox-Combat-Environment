@@ -1,6 +1,7 @@
 _db = ["new", format ["Player-Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "exists" call _db;
 _vehicles = (getmissionlayerEntities "PlayerVehicles") select 0;
+_count = count _vehicles;
 
 if (_exists) then {
 	{
@@ -54,18 +55,20 @@ if (_exists) then {
 		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
 	} forEach _vehicles;
 } else {
-	{
-		_vehID = _x;
-		_pos = getPos _x;
-		_class = typeOf _x;
-		_dir = getDir _x;
-		_dmg = damage _x;
-		_fuel = fuel _x;
+	_count = _count - 1;
+	for "_i" from 0 to _count do {
+		_vehID = _i;
+		_unit = _vehicles select _i;
+		_pos = getPos _unit;
+		_class = typeOf _unit;
+		_dir = getDir _unit;
+		_dmg = damage _unit;
+		_fuel = fuel _unit;
 
-		_items = getItemCargo _x;
-		_mags = getMagazineCargo _x;
-		_weps = getWeaponCargo _x;
-		_backs = getBackpackCargo _x;
+		_items = getItemCargo _unit;
+		_mags = getMagazineCargo _unit;
+		_weps = getWeaponCargo _unit;
+		_backs = getBackpackCargo _unit;
 		
 		// Save to database 
 		["write", [_vehID, "Position", _pos]] call _db;
@@ -78,6 +81,6 @@ if (_exists) then {
 		["write", [_vehID, "CargoWeps", _weps]] call _db;
 		["write", [_vehID, "CargoBps", _backs]] call _db;
 
-		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
-	} forEach _vehicles;
+		[_unit] remoteExec ["fce_fnc_saveVehicles", 2];
+	};
 };
