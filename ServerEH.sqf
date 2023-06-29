@@ -76,13 +76,15 @@ addMissionEventHandler ["PlayerDisconnected", {
 		"ace_advanced_fatigue_ae1reserve",
 		"kat_circulation_cprcount",
 		"kat_surgery_debridement",
-		"kat_breathing_pulseoximeter_volumepatient"<
+		"kat_breathing_pulseoximeter_volumepatient"
 	];
 
 	{
 		// Current result is saved in variable _x
 		_data = _unit getVariable _X;
-		_medData pushback _data;
+		_var = _x;
+		_toSave = [_var, _data];
+		_medData pushback _toSave;
 	} forEach _medVars;
 
 	[_name, _UID, _id, _pos, _gear, _dir, _medData] remoteExec ["fce_fnc_updatePlayerDatabase", 2];
