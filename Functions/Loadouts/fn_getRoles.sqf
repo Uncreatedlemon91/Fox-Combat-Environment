@@ -1,5 +1,6 @@
 params ["_group"];
-systemChat "Getting Roles";
+
+// Clear the listbox and repopulate it
 lbClear 1500;
 _roles = [];
 switch (_group) do {
@@ -12,7 +13,6 @@ switch (_group) do {
 	case "S5": {_roles = []};
 };
 
-systemChat format ["Roles: %1", _roles];
 _ctrl = findDisplay 3 displayCtrl 1500;
 {
 	_name = _x getVariable "RoleName";
