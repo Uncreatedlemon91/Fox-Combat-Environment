@@ -19,13 +19,12 @@ _jetG deleteGroupWhenEmpty true;
 _jetG setCombatMode "RED";
 _jetG move _tgtPos;
 _jetV flyInHeight random [100, 400, 900];
+
 _dist = 500;
 while {_dist > 200} do {
-	_dist = _jetV distance _tgtPos;
+	_dist = _jetV distance2D _tgtPos;
 	sleep 4;
 };
-
-
 
 sleep random [100, 200, 300];
 _exfil = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
@@ -33,7 +32,7 @@ _jetV move _exfil;
 _dist = 500;
 
 while {_dist > 200} do {
-	_dist = _jetV distance _tgtPos;
+	_dist = _jetV distance2D _tgtPos;
 	sleep 4;
 };
 

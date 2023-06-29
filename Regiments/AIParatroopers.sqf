@@ -10,9 +10,9 @@ _jetG deleteGroupWhenEmpty true;
 
 // Set waypoints for plane
 _jetG move _tgtPos;
-_jetV flyInHeight random [40, 60, 100];
+_jetV flyInHeight random [20, 80, 150];
 
-waitUntil {_dist = _jetV distance _tgtPos; _dist < 200};
+waitUntil {_dist = _jetV distance2D _tgtPos; _dist < 50};
 
 systemChat "Spawning Paratroopers!";
 // Add passengers
@@ -38,13 +38,13 @@ _inf = [
 	"ACM_HDF_Soldier_TL"
 ];
 _grp = createGroup east;
-for "_i" from 1 to 15 do {
+for "_i" from 1 to 12 do {
 	_unit = _grp createUnit [selectRandom _inf, getPosATL _jetV, [], 0, "form"];
 	_unit allowDamage false;
 	removeBackpack _unit;
 	_unit addBackpack "ACE_NonSteerableParachute";
-	//_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
-	//_chem attachTo [_unit, [0,0,0.05]];
+	_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
+	_chem attachTo [_unit, [0,0,0.05]];
 	sleep 0.3;
 	_unit allowDamage true;
 };
@@ -52,6 +52,6 @@ for "_i" from 1 to 15 do {
 
 _jetG move _spawnPos;
 
-waitUntil {_dist = _jetV distance _spawnPos; _dist < 75};
+waitUntil {_dist = _jetV distance2D _spawnPos; _dist < 75};
 deleteVehicleCrew _jetV;
 deleteVehicle _jetV;
