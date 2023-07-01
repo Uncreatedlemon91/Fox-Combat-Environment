@@ -1,8 +1,14 @@
-params ["_unit", "_groupID", "_regimentName", "_regimentSide"];
+params ["_unit", "_groupID", "_regimentName", "_regimentSide", "_regimentRank"];
 _db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 
+// Add variables to AI 
 _unit setVariable ["Regiment", _regimentName];
 _unit setVariable ["Group", _groupID];
+
+// Change difficulty of AI
+_unit setRank _regimentRank;
+
+// add event handlers
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, ["Check Sleeves", 

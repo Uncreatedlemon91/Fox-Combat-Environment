@@ -56,4 +56,4 @@ while {true} do {
 	["write", ["World Info", "Lightning", lightnings]] call _db;
 
 	sleep 20;
-}
+};

@@ -49,7 +49,6 @@ if (_active == true) then {
 
 			if (_chanceofParatrooper < 7) then {
 				[_unit] execVM "Regiments\AIParatroopers.sqf";
-				systemChat "Calling in Paratroopers";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;
 
@@ -57,17 +56,12 @@ if (_active == true) then {
 			params ["_unitThatCalledArtillery", "_groupOfUnit", "_ArtilleryGun", "_TargetPosition"];
 			_chance = random 100;
 			_chanceOfIntercept = 25;
-			systemChat "Arty called";
 			if (_chance < _chanceOfIntercept) then {
-				systemChat "AI is calling Artillery";
-				
 				// Get the players with a 117 radio on them 
 				_radioOperators = [];
 				{
 					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
-					systemChat "Check radios";
 					if (_hasRadio) then {
-						systemChat "Player added to list";
 						_radioOperators pushback _x;
 					};
 				} forEach allPlayers;
@@ -91,15 +85,12 @@ if (_active == true) then {
 					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
 					systemChat "Check radios";
 					if (_hasRadio) then {
-						systemChat "Player added to list";
 						_radioOperators pushback _x;
 					};
 				} forEach allPlayers;
 				
-				systemChat format ["Operators: %1", _radioOperators];
 				_receiver = selectRandom _radioOperators;
 				_receiverID = owner _receiver;
-				systemChat format ["OperatorID: %1", _receiverID];
 				format ["[RADIO INTERCEPT] We have eyes on enemy contact! It looks like %1! Send assistance!", _target] remoteExec ["SystemChat", _receiverID];
 			};
 		}] call BIS_fnc_addScriptedEventHandler;

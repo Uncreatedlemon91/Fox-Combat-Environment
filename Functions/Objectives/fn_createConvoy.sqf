@@ -21,7 +21,7 @@ _grp move _deployPoint;
 _dist = 100;
 
 while {_dist > 50} do {
-	_dist = _veh distance _deployPoint;
+	_dist = _veh distance2d _deployPoint;
 	sleep 5;
 };
 
@@ -52,7 +52,7 @@ _veh move getMarkerPos _convoySpawnPos;
 _dist = 100;
 
 while {_dist > 10} do {
-	_dist = _veh distance getMarkerPos _convoySpawnPos;
+	_dist = _veh distance2d getMarkerPos _convoySpawnPos;
 	sleep 5;
 };
 

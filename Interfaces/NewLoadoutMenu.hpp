@@ -14,7 +14,6 @@ class NewLoadoutMenu
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.185625 * safezoneW;
 			h = 0.033 * safezoneH;
-			// onLBSelChanged = "call fce_fnc_UpdateListBox";
 			onLoad = "call fce_fnc_addEh";
 		};
 		class RscListbox_1500: RscListbox
@@ -24,7 +23,6 @@ class NewLoadoutMenu
 			y = 0.28 * safezoneH + safezoneY;
 			w = 0.185625 * safezoneW;
 			h = 0.484 * safezoneH;
-			// onLBSelChanged = "call fce_fnc_UpdateSoldier";
 		};
 		class RscStructuredText_1100: RscStructuredText
 		{
