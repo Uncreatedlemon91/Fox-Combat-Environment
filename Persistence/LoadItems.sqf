@@ -14,8 +14,6 @@ _sections = "getSections" call _db;
 	_backs = ["read", [_x, "CargoBps"]] call _db;
 	_pitch = ["read", [_x, "Pitch"]] call _db;
 
-	["deleteSection", _x] call _db;
-
 	// Create new vehicle based on data input 
 	_veh = createVehicle [_type, [0,0,0], [], 0, "CAN_COLLIDE"];
 	_veh setPosATL _pos;
@@ -54,6 +52,7 @@ _sections = "getSections" call _db;
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
 	sleep 0.5;
+	["deleteSection", _x] call _db;
 } forEach _sections;
 
 "All Persistent Data Loaded" remoteExec ["SystemChat", 0, true];
