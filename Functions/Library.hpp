@@ -17,6 +17,7 @@ class CfgFunctions
 			class GetLoadout {};
 			class getRoles {};
 			class moveCamera {};
+			class cleanLoadout {};
 		};
 		class players
 		{

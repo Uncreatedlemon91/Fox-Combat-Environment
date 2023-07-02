@@ -1,1 +1,1 @@
-// Sets up radio configs for Arma 3 
+// Sets up radio configs for ACRE 
