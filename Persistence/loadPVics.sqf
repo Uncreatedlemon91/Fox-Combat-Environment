@@ -24,13 +24,6 @@ if (_exists) then {
 		_x setDamage [_dmg, false];
 		_x setFuel _fuel;
 
-		// Set Wreckage 
-		if (_dmg > 0.75) then {
-			_x allowDamage false;
-		} else {
-			_x allowDamage true;
-		};
-
 		_items params ["_classes","_count"];
 		for "_i" from 0 to count _classes - 1 do {
 			_x addItemCargoGlobal [_classes select _i,_count select _i]
@@ -50,8 +43,7 @@ if (_exists) then {
 		for "_i" from 0 to count _classes - 1 do {
 			_x addBackpackCargoGlobal [_classes select _i,_count select _i]
 		};
-
-		_x allowDamage true;
+		
 		[_x] remoteExec ["fce_fnc_saveVehicles", 2];
 	} forEach _vehicles;
 } else {

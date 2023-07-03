@@ -14,7 +14,6 @@ class NewLoadoutMenu
 			y = 0.236 * safezoneH + safezoneY;
 			w = 0.185625 * safezoneW;
 			h = 0.033 * safezoneH;
-			onLoad = "call fce_fnc_addEh";
 		};
 		class RscListbox_1500: RscListbox
 		{

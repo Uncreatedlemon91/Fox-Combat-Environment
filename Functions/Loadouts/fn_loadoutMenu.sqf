@@ -1,5 +1,6 @@
 params [];
 
+// Create the camera
 _cam = "camera" camCreate [0, 0, 0];
 _cam camPrepareTarget soldierModel;
 _cam camCommitPrepared 0; // needed for relative position
@@ -37,3 +38,10 @@ _dropEvent = _dropCtrl ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_Update
 _listBox = _display displayCtrl 1500;
 _listEvent = _listBox ctrlAddEventHandler ["LBSelChanged", {call fce_fnc_UpdateSoldier}];
 
+// Disable to ESCAPE key while menu is open
+#include "\a3\ui_f\hpp\definedikcodes.inc"
+_display displayAddEventHandler ["KeyDown",
+{
+	params ["", "_key"];
+	_key == DIK_ESCAPE;
+}];

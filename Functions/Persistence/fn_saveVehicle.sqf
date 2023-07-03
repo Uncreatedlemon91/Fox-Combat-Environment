@@ -14,15 +14,6 @@ _weps = getWeaponCargo _veh;
 _mags = getMagazineCargo _veh;
 _bpacks = getBackpackCargo _veh;
 
-// Set Wreckage 
-if (_dmg > 0.75) then {
-	_veh allowDamage false;
-	_veh setHit ["motor", 1, false];
-	_veh setFuel 0;
-	_veh setDamage 0.9;
-} else {
-	_veh allowDamage true;
-};
 
 // Save items to the database 
 ["write", [_veh, "Position", _pos]] call _db;

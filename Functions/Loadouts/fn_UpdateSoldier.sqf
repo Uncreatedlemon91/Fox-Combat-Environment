@@ -14,7 +14,7 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Grenadier": {
-		[fox_gren] call fce_fnc_moveCamera;
+		[fox_grenadier] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Machine Gunner": {
@@ -29,7 +29,7 @@ switch (_det) do {
 		[fox_ftl] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "RTO": {
+	case "Radio Operator": {
 		[fox_rto] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
@@ -50,36 +50,40 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	// Add 2nd platoon roles 
-	case "Crew": {
+	case "Crew Member": {
 		[fox_crew] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Crew Leader": {
-		[fox_crewLead] call fce_fnc_moveCamera;
+		[fox_crewLeader] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 
 	// Add 317th Air Squadron Roles 
 	case "Jet Pilot": {
-		[fox_jetPilot] call fce_fnc_moveCamera;
+		[fox_jPilot] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Helicopter Pilot": {
-		[fox_helicopterPilot] call fce_fnc_moveCamera;
+		[fox_hPilot] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Helicopter Crew": {
-		[fox_helicopterCrew] call fce_fnc_moveCamera;
+		[fox_hCrew] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 
 	// Add Artillery 
-	case "Gunner": {
-		[fox_gunner] call fce_fnc_moveCamera;
+	case "Battery Gunner": {
+		[fox_battGunner] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Forward Observer": {
-		[fox_fo] call fce_fnc_moveCamera;
+		[fox_battFO] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Battery Commander": {
+		[fox_battCommander] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 
@@ -89,17 +93,56 @@ switch (_det) do {
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 	case "Medical Technician": {
-		[fox_mt] call fce_fnc_moveCamera;
+		[fox_medtech] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Surgeon": {
+		[fox_surgeon] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
 
 	// Add S2 
+	case "Scout Leader": {
+		[fox_scoutLead] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
 	case "Scout": {
 		[fox_scout] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "Scout Team Lead": {
-		[fox_scoutTL] call fce_fnc_moveCamera;
+	case "Scout Machinegunner": {
+		[fox_scoutMg] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
+	case "Scout Mule": {
+		[fox_scoutMule] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Scout Sniper": {
+		[fox_scoutSniper] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+
+	// Add Engineer Roles 
+	case "Quartermaster": {
+		[fox_Quartermaster] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Air Traffic Controller": {
+		[fox_ATC] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Combat Engineer": {
+		[fox_cEngineer] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Explosive Ordinance Disposal": {
+		[fox_EOD] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	case "Ground Crew": {
+		[fox_groundCrew] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
+	
 };

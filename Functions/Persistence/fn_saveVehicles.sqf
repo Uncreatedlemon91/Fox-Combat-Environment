@@ -52,6 +52,6 @@ _veh addEventHandler ["HandleDamage", {
 	if (_newDmg < 0.70) then {
 		_newDmg;
 	} else {
-		0.85;
+		0.90;
 	};
 }];
