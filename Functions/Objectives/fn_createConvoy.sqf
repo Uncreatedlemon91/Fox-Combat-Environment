@@ -20,7 +20,7 @@ systemChat "Vehicle Spawned";
 _grp move _deployPoint; 
 _dist = 100;
 
-while {_dist > 50} do {
+while {_dist > 10} do {
 	_dist = _veh distance2d _deployPoint;
 	sleep 5;
 };
@@ -36,6 +36,10 @@ if (_deployType in _mannedClasses) then {
 	[_building] call lambs_wp_fnc_taskArtilleryRegister;
 } else {
 	_building = _deployClass createVehicle _deployPoint;
+	switch (_deployType) do {
+		case "OPFOR Snipers": {[_deployPoint, _building] call fce_fnc_spawnSnipers};
+		default { };
+	};
 };
 
 _data = [_deployPoint, _deployClass];

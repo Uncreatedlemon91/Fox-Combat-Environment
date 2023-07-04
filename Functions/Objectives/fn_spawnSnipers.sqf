@@ -32,7 +32,7 @@ while {_loop} do {
 		};
 	} else {
 		[_grp, _pos, 50] call lambs_wp_fnc_taskCamp;
-		if (_countGrp < 2) then {
+		if (_countGrp < 3) then {
 			_loop = false;
 		};
 	};
