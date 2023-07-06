@@ -18,6 +18,7 @@ class CfgFunctions
 			class getRoles {};
 			class moveCamera {};
 			class cleanLoadout {};
+			class setRadios {};
 		};
 		class players
 		{

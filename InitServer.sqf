@@ -11,4 +11,6 @@
 [Ace_Arsenal, ["Get Kit", {call fce_fnc_loadoutMenu}]] remoteExec ["addAction", 0, true];
 // Start environmental module
 [] execVM "WorldBuilder\startWorldBuilder.sqf";
+// Set combat radios to right channels and frequencies 
+[] remoteExec ["fce_fnc_setRadios", 0, true];
 
