@@ -17,7 +17,7 @@ class CfgFunctions
 			class GetLoadout {};
 			class getRoles {};
 			class moveCamera {};
-			class setRadios {};
+			class cleanLoadout {};
 		};
 		class players
 		{
@@ -44,6 +44,11 @@ class CfgFunctions
 			class deleteItem {};
 			class saveVehicles {};
 			class saveVehicle {};
+		};
+		class ATC
+		{
+			class ATCStart {};
+			class UpdateMarkers {};
 		};
 	};
 };
