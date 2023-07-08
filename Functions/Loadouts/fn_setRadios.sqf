@@ -3,9 +3,9 @@
 ["ACRE_PRC148", "default", 2, "label", "PLTNET2"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 3, "label", "PLTNET3"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 4, "label", "COYNET1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 5, "label", "COYNET2"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 6, "label", "COYNET3"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 7, "label", "CFS1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 5, "label", "CASNET1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 6, "label", "CASNET2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 7, "label", "FIRES"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 8, "label", "LOGINET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 9, "label", "SUPPORTNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 10, "label", "AIRNET1"] call acre_api_fnc_setPresetChannelField;
@@ -19,9 +19,9 @@
 ["ACRE_PRC117F", "default", 2, "label", "PLTNET2"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 3, "label", "PLTNET3"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 4, "label", "COYNET1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 5, "label", "COYNET2"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 6, "label", "COYNET3"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 7, "label", "CFS1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 5, "label", "CASNET1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 6, "label", "CASNET2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 7, "label", "FIRES"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 8, "label", "LOGINET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 9, "label", "SUPPORTNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 10, "label", "AIRNET1"] call acre_api_fnc_setPresetChannelField;
