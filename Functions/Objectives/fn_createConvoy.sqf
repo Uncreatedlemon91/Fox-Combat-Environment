@@ -33,7 +33,8 @@ _mannedClasses = ["OPFOR AA Sites", "Opfor Artillery"];
 
 if (_deployType in _mannedClasses) then {
 	_building = [_deployPoint, random 360, _deployClass, east] call BIS_fnc_spawnVehicle;
-	[_building] call lambs_wp_fnc_taskArtilleryRegister;
+	_buildinggrp = _building select 2;
+	[_buildinggrp] call lambs_wp_fnc_taskArtilleryRegister;
 } else {
 	_building = _deployClass createVehicle _deployPoint;
 	switch (_deployType) do {

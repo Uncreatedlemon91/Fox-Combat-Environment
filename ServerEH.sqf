@@ -3,6 +3,8 @@ addMissionEventHandler ["HandleDisconnect", {
 	_pos = getPosATL _unit;
 	_gear = getUnitLoadout _unit;
 	_dir = getDir _unit;
+	_insig = [_unit] call BIS_fnc_getUnitInsignia;
+	_face = face _unit;
 
 	_medData = [];
 	// Medical Data to save 
@@ -60,5 +62,6 @@ addMissionEventHandler ["HandleDisconnect", {
 		_medData pushback _toSave;
 	} forEach _medVars;
 
-	[_name, _UID, _id, _pos, _gear, _dir, _medData] remoteExec ["fce_fnc_updatePlayerDatabase", 2];
+	_role = _unit getVariable "roleLoadout";
+	[_name, _UID, _id, _pos, _gear, _dir, _medData, _role, _insig, _face] remoteExec ["fce_fnc_updatePlayerDatabase", 2];
 }];

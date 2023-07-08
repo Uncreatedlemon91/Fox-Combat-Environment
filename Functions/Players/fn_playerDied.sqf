@@ -10,7 +10,7 @@ _day = _time select 2;
 _hour = _time select 3;
 _minute = _time select 4;
 _day = [_day, "english"] call BIS_fnc_ordinalNumber;
-_date = format ["The %1 th of %2 at %3:%4", _day, _month, _hour, _minute];
+_date = format ["%1:%2", _hour, _minute];
 
 _section = format ["%1-%2", _month, _day];
 

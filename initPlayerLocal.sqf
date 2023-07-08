@@ -3,7 +3,6 @@
 _name = name player;
 _uid = getPlayerUID player;
 _netId = clientOwner;
-player setVariable ["Roles", ["Rifle"]];
 [_name, _uid, _netId] remoteExec ["fce_fnc_checkPlayerData", 2];
 
 player addEventHandler ["Killed", {
