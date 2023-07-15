@@ -15,6 +15,6 @@ _db = ["new", format ["Players %1-%2", missionName, worldName]] call oo_inidbi;
 ["write", [_uid, "UID", _uid]] call _db;
 ["write", [_uid, "NetId", _netID]] call _db;
 ["write", [_uid, "Combat Quals", ["Rifle"]]] call _db;
-["write", [_uid, "Enlist Date", ]]
+["write", [_uid, "Enlist Date", _date]];
 
 "Profile Created" remoteExec ["systemChat", _netID];
