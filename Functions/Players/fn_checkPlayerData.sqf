@@ -16,18 +16,3 @@ if (_uid in _getSections) then {
 } else {
 	[_name, _uid, _netID] remoteExec ["fce_fnc_addPlayerToDatabase", 2];
 };
-
-// Check if player is on the death list for the day 
-_deadDb = ["new", format ["Deaths %1-%2", missionName, worldName]] call oo_inidbi;
-
-_time = systemTime;
-_month = _time select 1;
-_day = _time select 2;
-_day = [_day, "english"] call BIS_fnc_ordinalNumber;
-
-_section = format ["%1-%2", _month, _day];
-_keys = ["getKeys", _section] call _deadDb;
-if (_uid in _keys) then {
-	["END1"] remoteExec ["endMission", _netID, true];
-	"You have already died today! Come back tomorrow!" remoteExec ["systemChat", _netId, true];
-};
