@@ -19,5 +19,5 @@ _sections = "getSections" call _db;
 // Start the Saving process 
 while {true} do {
 	call fce_fnc_saveVehicles;
-	sleep 30;
+	sleep 60;
 };
