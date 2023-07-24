@@ -17,16 +17,7 @@ class CfgFunctions
 			class GetLoadout {};
 			class getRoles {};
 			class moveCamera {};
-			class cleanLoadout {};
 			class RadioSetup {};
-		};
-		class players
-		{
-			class AddPlayerToDatabase {};
-			class CheckPlayerData {};
-			class loadPlayerData {};
-			class playerDied {};
-			class updatePlayerDatabase {};
 		};
 		class Objectives
 		{
@@ -43,8 +34,10 @@ class CfgFunctions
 		{
 			class saveItem {};
 			class deleteItem {};
+			class LoadPlayer {};
+			class getPlayerData {};
+			class savePlayer {};
 			class saveVehicles {};
-			class saveVehicle {};
 		};
 	};
 };

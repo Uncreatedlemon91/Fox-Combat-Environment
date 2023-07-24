@@ -1,57 +1,30 @@
-params ["_veh"];
-// Add event Handler to vehicle and save to database 
-_veh addEventHandler ["ContainerClosed", {
-	params ["_container", "_unit"];
-	[_container] remoteExec ["fce_fnc_SaveVehicle", 2];
-}];
+_pvic = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
+_wVic = ["new", format ["Wrecks %1 %2", missionName, worldName]] call oo_inidbi;
+{
+	_faction = getText (configfile >> "CfgVehicles" >> typeOf _x >> "faction");
+	if ((_faction == "ACM_B_NAG") && (alive _x)) then {
+		_pos = getPosATL _x;
+		_dir = getDir _x;
+		_dmg = damage _x;
+		_fuel = fuel _x;
+		_type = typeOf _x;
+		_netId = netId _x;
 
-_veh addEventHandler ["Engine", {
-	params ["_vehicle", "_engineState"];
-	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
+		_data = [_type, _pos, _dir, _dmg, _fuel];
 
-_veh addEventHandler ["Fuel", {
-	params ["_vehicle", "_hasFuel"];
-	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["GetIn", {
-	params ["_vehicle", "_role", "_unit", "_turret"];
-	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["GetOut", {
-	params ["_vehicle", "_role", "_unit", "_turret"];
-	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["Hit", {
-	params ["_unit", "_source", "_damage", "_instigator"];
-	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	[_unit] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["LandedTouchDown", {
-	params ["_plane", "_airportID", "_airportObject"];
-	[_plane] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["SeatSwitched", {
-	params ["_vehicle", "_unit1", "_unit2"];
-	[_vehicle] remoteExec ["fce_fnc_saveVehicle", 2];
-}];
-
-_veh addEventHandler ["HandleDamage", {
-	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint", "_directHit"];
-	_dmg = damage _unit;
-	_newDmg = _dmg + _damage;
-	if (_newDmg < 0.70) then {
-		_newDmg;
-	} else {
-		0.90;
+		["write", [_netId, "Vehicle Info", _data]] call _pVic;
 	};
-}];
+
+	if !(alive _x) then {
+		_pos = getPosATL _x;
+		_dir = getDir _x;
+		_dmg = damage _x;
+		_fuel = fuel _x;
+		_type = typeOf _x;
+		_netId = netId _x;
+
+		_data = [_type, _pos, _dir, _dmg, _fuel];
+
+		["write", [_netId, "Vehicle Info", _data]] call _wVic;
+	};
+} forEach vehicles;

@@ -14,3 +14,6 @@ player setUnitLoadout (getUnitLoadout _loadout);
 
 // Open the ace arsenal for glasses customization
 [ace_arsenal, player, false] call ace_arsenal_fnc_openBox;
+
+// Set the player variable to a string instead 
+player setVariable ["roleLoadout", str _loadout];

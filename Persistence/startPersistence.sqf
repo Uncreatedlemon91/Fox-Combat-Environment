@@ -1,3 +1,2 @@
-execVM "Persistence\LoadPVics.sqf";
 execVM "Persistence\LoadItems.sqf";
-
+execVM "Persistence\LoadVehicles.sqf";

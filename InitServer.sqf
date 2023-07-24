@@ -1,6 +1,5 @@
 // Module based design mission framework
-// Find and run server event handlers 
-[] execVM "ServerEH.sqf";
+
 // Create Regiment and Locations 
 [] execVM "Regiments\AOCreator.sqf";
 // Start Logistics Module

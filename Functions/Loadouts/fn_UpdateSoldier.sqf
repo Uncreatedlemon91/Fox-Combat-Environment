@@ -144,5 +144,9 @@ switch (_det) do {
 		[fox_groundCrew] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
+	case "Drone Operator": {
+		[fox_droneOp] call fce_fnc_moveCamera;
+		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
+	};
 	
 };
