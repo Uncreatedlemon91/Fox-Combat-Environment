@@ -1,5 +1,5 @@
 // Get all vehicles and save them regularly to the server 
-_db = ["new", format ["Vehicles - %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 
 // apply saved vehicle locations back to the server 

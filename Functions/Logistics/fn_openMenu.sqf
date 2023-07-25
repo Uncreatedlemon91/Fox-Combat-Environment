@@ -4,7 +4,7 @@ Receives data from server to client for menu
 params ["_items"];
 _loadout = player getVariable "roleLoadout";
 
-if (_loadout == fox_Quartermaster) then {
+if (_loadout == "fox_Quartermaster") then {
 	createDialog "LogiMenu";
 	_list = findDisplay 1 displayCtrl 1500;
 	_hint = findDisplay 1 displayCtrl 1602;

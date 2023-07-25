@@ -15,5 +15,7 @@ if (_uid in _sections) then {
 	_dir = ["read", [_uid, "Direction"]] call _db;
 	_role = ["read", [_uid, "Role"]] call _db;
 
-	[_pos, _gear, _dir, _role] remoteExec ["fce_fnc_loadPlayer", 0, true];
+	_id = owner _player;
+
+	[_pos, _gear, _dir, _role] remoteExec ["fce_fnc_loadPlayer", _id, true];
 };

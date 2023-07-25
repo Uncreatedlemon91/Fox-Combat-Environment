@@ -15,9 +15,9 @@ class CfgFunctions
 			class UpdateListBox {};
 			class UpdateSoldier {};
 			class GetLoadout {};
-			class getRoles {};
 			class moveCamera {};
 			class RadioSetup {};
+			class respawnPlayer {};
 		};
 		class Objectives
 		{
@@ -38,6 +38,7 @@ class CfgFunctions
 			class getPlayerData {};
 			class savePlayer {};
 			class saveVehicles {};
+			class playerKilled {};
 		};
 	};
 };

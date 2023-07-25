@@ -12,7 +12,7 @@ _unit setRank _regimentRank;
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, ["Check Sleeves", 
-	{params ["_target", "_caller", "_actionId", "_arguments"];_regiment = _target getVariable "Regiment"; systemChat format ["You notice the emblem of the %1 on the soldier's sleeve", _regiment]}, 
+	{params ["_target", "_caller", "_actionId", "_arguments"]; _regiment = _target getVariable "Regiment"; systemChat format ["You notice the emblem of the %1 on the soldier's sleeve", _regiment]}, 
 	nil, 
 	1.5, 
 	true, 
@@ -25,3 +25,10 @@ _unit addEventHandler ["Killed", {
 	""]] remoteExec ["Addaction", 0, true];
 }];
 
+_unit addEventHandler ["Killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeBackpack _unit;
+}];

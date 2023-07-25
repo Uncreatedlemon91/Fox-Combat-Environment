@@ -16,6 +16,7 @@ if (_active == true) then {
 	_regimentSize = ["read", [_regimentName, "Size"]] call _db;
 	_regimentPos = ["read", [_regimentName, "Position"]] call _db;
 	_regimentSide = ["read", [_regimentName, "Side"]] call _db;
+	_regimentRank = ["read", [_regimentName, "Skill"]] call _db;
 
 	_faction = "";
 	if (_regimentSide == "b") then {
@@ -42,12 +43,12 @@ if (_active == true) then {
 			_chanceOfAirSupport = random 100;
 			_chanceOfParatrooper = random 100;
 
-			if (_chanceOfAirSupport < 7) then {
+			if (_chanceOfAirSupport < 4) then {
 				[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
 				systemChat "Calling in Air";
 			};
 
-			if (_chanceofParatrooper < 7) then {
+			if (_chanceofParatrooper < 4) then {
 				[_unit] execVM "Regiments\AIParatroopers.sqf";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;
@@ -96,7 +97,7 @@ if (_active == true) then {
 		}] call BIS_fnc_addScriptedEventHandler;
 
 		{
-			[_x, _groupID, _regimentName, _regimentSide] remoteExec ["fce_fnc_AIAttributes", 2];	
+			[_x, _groupID, _regimentName, _regimentSide, _regimentRank] remoteExec ["fce_fnc_AIAttributes", 2];	
 		} forEach units _grp;
 	sleep 2;
 	};

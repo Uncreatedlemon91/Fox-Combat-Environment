@@ -12,7 +12,8 @@ _jetG deleteGroupWhenEmpty true;
 _jetG move _tgtPos;
 _jetV flyInHeight random [100, 200, 300];
 
-waitUntil {_dist = _jetV distance2D _tgtPos; _dist < 20};
+_dist = _jetV distance2D _tgtPos;
+waitUntil {_dist < 50};
 
 systemChat "Spawning Paratroopers!";
 // Add passengers
@@ -53,6 +54,7 @@ for "_i" from 1 to 12 do {
 _jetG move _spawnPos;
 
 _dist = _jetV distance2D _spawnPos;
-waitUntil {_dist < 20};
+waitUntil {_dist < 300};
+
 deleteVehicleCrew _jetV;
 deleteVehicle _jetV;

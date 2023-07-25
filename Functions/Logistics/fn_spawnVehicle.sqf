@@ -38,4 +38,10 @@ for "_i" from 0 to count _classes - 1 do {
 	_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
 };
 
-[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
+_crew = getNumber (configFile >> "CfgVehicles" >> _class >> "hasDriver");
+if (_crew == 0) then {
+	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
+} else {
+	_veh setDamage 0.8;
+	_veh setFuel 0.2;
+};
