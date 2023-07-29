@@ -1,9 +1,8 @@
-params ["_player", "_didJIP"];
-
 // Get existing data from database 
+_name = name player;
 _id = clientOwner; 
 _uid = getPlayerUID player;
-[player, _id, _uid] remoteExec ["fce_fnc_getPlayerData", 2];
+[_name, _uid, _id] remoteExec ["fce_fnc_getPlayerData", 2];
 
 // Add event handlers to player 
 player addEventHandler ["Respawn", {
@@ -34,22 +33,3 @@ player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, _killer, _instigator] remoteExec ["fce_fnc_PlayerKilled", 2];
 }];
-
-sleep 10;
-// Save data to server on a loop 
-while {true} do {
-	_pos = getPosATL player;
-	_gear = getUnitLoadout player;
-	_dir = getDir player;
-	_role = player getVariable ["roleLoadout", "None"];
-	_role = str _role;
-
-	// Get player connection info 
-	_uid = getPlayerUID player;
-
-	// Send data to the server 
-	[_pos, _gear, _dir, _role, _uid] remoteExec ["fce_fnc_savePlayer", 2];
-
-	// Loop script 
-	sleep 5;
-};

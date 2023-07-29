@@ -53,7 +53,6 @@ _sections = "getSections" call _db;
 	
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
-	sleep 0.5;
 } forEach _sections;
 
 "All Persistent Data Loaded" remoteExec ["SystemChat", 0, true];

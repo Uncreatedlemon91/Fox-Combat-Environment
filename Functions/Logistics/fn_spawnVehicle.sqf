@@ -11,6 +11,14 @@ clearMagazineCargoGlobal _veh;
 clearBackpackCargoGlobal _veh;
 clearWeaponCargoGlobal _veh;
 
+_turrets = magazinesAllTurrets _veh;
+
+{
+	_mag = _x select 0;
+	_turret = _x select 1;
+	_veh removeMagazinesTurret [_mag, _turret];
+} forEach _turrets;
+
 _mags = ["read", [_name, "Magazines"]] call _db;
 _items = ["read", [_name, "Items"]] call _db;
 _weps = ["read", [_name, "Weapons"]] call _db;
@@ -38,10 +46,27 @@ for "_i" from 0 to count _classes - 1 do {
 	_veh addBackpackCargoGlobal [_classes select _i,_count select _i]
 };
 
+// Add ace actions and interaction items
+[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
+
+/*
 _crew = getNumber (configFile >> "CfgVehicles" >> _class >> "hasDriver");
 if (_crew == 0) then {
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 } else {
 	_veh setDamage 0.8;
 	_veh setFuel 0.2;
+};
+*/ 
+
+// Setup vehicle event handlers if it is a vehicle
+switch (true) do
+{
+	case (_veh isKindOf "Car") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Tank") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Motorcycle") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Ship") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Helicopter") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Plane") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	default {};
 };

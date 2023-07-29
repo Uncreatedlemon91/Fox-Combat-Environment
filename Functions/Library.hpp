@@ -8,6 +8,7 @@ class CfgFunctions
 			class getLogiData {};
 			class spawnVehicle {};
 			class addAceActions {};
+			class populateList {};
 		};
 		class Loadouts
 		{
@@ -37,8 +38,12 @@ class CfgFunctions
 			class LoadPlayer {};
 			class getPlayerData {};
 			class savePlayer {};
-			class saveVehicles {};
+			class saveVehicle {};
 			class playerKilled {};
+			class setupVehicleEH {};
+			class deleteVehicle {};
+			class loadItems {};
+			class loadVehicles {};
 		};
 	};
 };

@@ -40,13 +40,12 @@ _inf = [
 ];
 _grp = createGroup east;
 for "_i" from 1 to 12 do {
-	_unit = _grp createUnit [selectRandom _inf, getPosATL _jetV, [], 0, "form"];
+	_unit = selectRandom _inf;
+	_unit = _grp createUnit [_unit, position _jetV, [], 0, "form"];
 	_unit allowDamage false;
 	removeBackpack _unit;
 	_unit addBackpack "ACE_NonSteerableParachute";
-	_chem = "ACE_Chemlight_HiRed" createVehicle [0,0,0];
-	_chem attachTo [_unit, [0,0,0.05]];
-	sleep 0.3;
+	sleep 0.1;
 	_unit allowDamage true;
 };
 [_grp, 400] spawn lambs_wp_fnc_taskRush;

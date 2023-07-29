@@ -27,7 +27,7 @@ while {_statusLive} do {
 			_netID = netId _x;
 			_speed = speed _x;
 			_dir = getDir _x;
-			if ((_kind) and (_pos select 2 > 20)) then {
+			if ((_kind) and (_pos select 2 > 50) and (alive _x)) then {
 				_mkr = createMarkerLocal [format ["V_%1", _netID], _pos];
 				switch (_side) do {
 					case east: {_mkr setMarkerTypeLocal "o_unknown"};
@@ -40,8 +40,7 @@ while {_statusLive} do {
 				_mkr setMarkerTextLocal format ["V: %1 | H: %2 | S: %3 kmph | D: %4", _typeName, _alt, round _speed, round _dir];
 				_markedAssets pushback _mkr;
 				sleep 0.4;
-			};
-			
+			};	
 		} forEach vehicles;
 	};
 
