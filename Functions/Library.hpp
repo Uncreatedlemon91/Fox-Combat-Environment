@@ -19,6 +19,7 @@ class CfgFunctions
 			class moveCamera {};
 			class RadioSetup {};
 			class respawnPlayer {};
+			class checkRoles {};
 		};
 		class Objectives
 		{

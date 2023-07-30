@@ -49,15 +49,6 @@ for "_i" from 0 to count _classes - 1 do {
 // Add ace actions and interaction items
 [_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 
-/*
-_crew = getNumber (configFile >> "CfgVehicles" >> _class >> "hasDriver");
-if (_crew == 0) then {
-	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
-} else {
-	_veh setDamage 0.8;
-	_veh setFuel 0.2;
-};
-*/ 
 
 // Setup vehicle event handlers if it is a vehicle
 switch (true) do

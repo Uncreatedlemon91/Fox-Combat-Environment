@@ -17,3 +17,5 @@ player setUnitLoadout (getUnitLoadout _loadout);
 
 // Set the player variable to a string instead 
 player setVariable ["roleLoadout", str _loadout];
+
+[_loadout, player] remoteExec ["fce_Fnc_checkRoles", 2];
