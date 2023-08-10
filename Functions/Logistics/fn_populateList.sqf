@@ -17,12 +17,9 @@ _logiSpawnables = (getmissionlayerEntities "LogiItems") select 0;
 	_cargoBps = getBackpackCargo _x;
 	_cargoMags = getMagazineCargo _x;
 
-	["write", [_nameV, "Magazines", _cargoMags]] call _db;
-	["write", [_nameV, "Title", _nameV]] call _db;
-	["write", [_nameV, "Type", _class]] call _db;
-	["write", [_nameV, "Items", _cargoItems]] call _db;
-	["write", [_nameV, "Weapons", _cargoWeps]] call _db;
-	["write", [_nameV, "Backpacks", _cargoBps]] call _db;	
+	_data = [_class, _nameV, _cargoItems, _cargoWeps, _cargoBps, _cargoMags];
+
+	["write", [_nameV, "Data", _data]] call _db;
 } forEach _logiSpawnables;
 
 // Add action to the computer for players to use

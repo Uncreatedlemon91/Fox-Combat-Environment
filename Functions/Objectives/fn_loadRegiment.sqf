@@ -12,7 +12,7 @@ _sections = "getSections" call _db;
 		_trg setVariable ["Regiment", _x];
 		_trg setVariable ["Side", _regimentSide];
 		_trg setTriggerArea [850, 850, 0, false, 200];
-		_trg setTriggerActivation ["WEST", "PRESENT", true];
+		_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 		_trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
 		// Add marker to world map 

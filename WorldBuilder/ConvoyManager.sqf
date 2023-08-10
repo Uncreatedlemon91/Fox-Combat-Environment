@@ -8,10 +8,8 @@ while {true} do {
 		_deployType = selectRandom ["OPFOR AA Sites", "Opfor Artillery", "OPFOR Helipad", "OPFOR Snipers"];
 
 		switch (_deployType) do {
-			case "OPFOR AA Sites": {_deployClass = selectRandom ["ACM_O_HDF_T_ZU23", "ACM_O_HDF_T_DSHKM_Mini", "ACM_O_HDF_T_DSHKM", "ACM_O_HDF_HILUX_IGLA"]};
-			case "Opfor Artillery": {_deployClass = selectRandom ["ACM_O_HDF_BM21", "ACM_O_HDF_T_D30", "ACM_O_HDF_T_D30_AT", "ACM_O_HDF_T_Mortar", "ACM_O_HDF_T_SPG9"]};
-			case "OPFOR Helipad": {_deployClass = selectRandom ["Land_HelipadCivil_F", "Land_HelipadCircle_F"]};
-			case "OPFOR Snipers": {_deployClass = selectRandom ["Land_tent_east", "Land_TentA_F"]};
+			case "OPFOR AA Sites": {_deployClass = selectRandom ["O_A_Static_AA_F", "O_T_APC_Tracked_02_AA_ghex_F"]};
+			case "Opfor Artillery": {_deployClass = selectRandom ["O_A_Mortar_01_F", "O_T_MBT_02_arty_ghex_F", "O_T_Truck_02_MRL_F"]};
 		};
 
 		[_deployClass, _deployPoint, _deployType] remoteExec ["fce_fnc_createConvoy", 2];

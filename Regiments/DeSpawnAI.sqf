@@ -1,5 +1,6 @@
 params ["_grp", "_trg", "_regimentName", "_groupID", "_regimentSide"];
 
+"Despawn Script" remoteExec ["systemChat", 0, true];
 sleep 5;
 _loop = true;
 while {_loop} do {

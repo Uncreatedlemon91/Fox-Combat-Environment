@@ -11,13 +11,13 @@ _sections = "getSections" call _db;
 	_mkr setMarkerShapelocal "Ellipse";
 	_mkr setMarkerColorlocal "ColorRed";
 	_mkr setMarkerSizelocal _size;
-	_mkr setMarkerAlphalocal 0.5;
+	_mkr setMarkerAlphalocal 0;
 	_mkr setMarkerBrush "DiagGrid";
 
 	_mkr2 = createMarkerlocal [_mkr2Name, _randPos];
 	_mkr2 setMarkerTypelocal "mil_objective";
 	_mkr2 setMarkerColorlocal "ColorWhite";
-	_mkr2 setMarkerAlphalocal 1;
+	_mkr2 setMarkerAlphalocal 0;
 	_mkr2 setMarkerText format ["%1", _mkr2Name];
 	switch (_owner) do {
 		case "Neutral": {_mkr2 setMarkerColorlocal "ColorWhite"};

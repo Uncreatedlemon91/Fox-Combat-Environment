@@ -1,8 +1,19 @@
 // Sets up vehicle event handlers 
 params ["_veh"];
 
+if (_isVehicle) then {
+	_veh setDamage 0.8;
+	_veh setFuel 0.1;
+};
+
+// Debug 
+"Setting up Vehicle EH" remoteExec ["systemChat", 0, true];
+
+// Database addition
+_pDb = ["new", format ["Player Profiles %1 %2", missionName, worldName]] call oo_inidbi;
+
 // If the vehicle is in a list of saved factions, add these event handlers
-_savedFactions = ["ACM_B_NAG", "BLU_F", "OPF_F"];
+_savedFactions = ["ACM_I_HRA2", "BLU_F", "ACM_I_HRA"];
 _vehFaction = getText (configfile >> "CfgVehicles" >> typeOf _veh >> "faction");
 if (_vehFaction in _savedFactions) then {
 	_veh addEventHandler ["GetIn", {

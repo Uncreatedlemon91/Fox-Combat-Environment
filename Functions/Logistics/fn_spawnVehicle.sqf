@@ -19,13 +19,13 @@ _turrets = magazinesAllTurrets _veh;
 	_veh removeMagazinesTurret [_mag, _turret];
 } forEach _turrets;
 
-_mags = ["read", [_name, "Magazines"]] call _db;
-_items = ["read", [_name, "Items"]] call _db;
-_weps = ["read", [_name, "Weapons"]] call _db;
-_bps = ["read", [_name, "Backpacks"]] call _db;
-_cargo = ["read", [_name, "CargoSize"]] call _db;
+_data = ["read", [_name, "Data"]] call _db;
 
-[_veh, _cargo] call ace_cargo_fnc_setSpace;
+_items = _data select 2;
+_weps = _data select 3;
+_bps = _data select 4;
+_mags = _data select 5;
+
 _items params ["_classes","_count"];
 for "_i" from 0 to count _classes - 1 do {
 	_veh addItemCargoGlobal [_classes select _i,_count select _i]
@@ -49,15 +49,18 @@ for "_i" from 0 to count _classes - 1 do {
 // Add ace actions and interaction items
 [_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 
+// Add ACRE Radio feature to vehicle 
+[_veh, ["ACRE_VRC103", "Vehicle Radio", "Dash", false, ["inside"], [], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
+
 
 // Setup vehicle event handlers if it is a vehicle
 switch (true) do
 {
-	case (_veh isKindOf "Car") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
-	case (_veh isKindOf "Tank") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
-	case (_veh isKindOf "Motorcycle") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
-	case (_veh isKindOf "Ship") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
-	case (_veh isKindOf "Helicopter") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
-	case (_veh isKindOf "Plane") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];};
+	case (_veh isKindOf "Car") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
+	case (_veh isKindOf "Tank") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
+	case (_veh isKindOf "Motorcycle") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
+	case (_veh isKindOf "Ship") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
+	case (_veh isKindOf "Helicopter") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
+	case (_veh isKindOf "Plane") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
 	default {};
 };

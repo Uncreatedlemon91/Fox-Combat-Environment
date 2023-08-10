@@ -7,7 +7,7 @@ _uid = getPlayerUID player;
 // Add event handlers to player 
 player addEventHandler ["Respawn", {
 	params ["_unit", "_corpse"];
-	_unit setPosatl [-1105.89,2142.39,8.00307];
+	_unit setPosatl [-3375.42,1722.5,143.777];
 	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
@@ -33,3 +33,8 @@ player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, _killer, _instigator] remoteExec ["fce_fnc_PlayerKilled", 2];
 }];
+
+while {true} do {
+	player removeItem "ItemGPS";
+	sleep 20;
+};

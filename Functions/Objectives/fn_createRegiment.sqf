@@ -11,14 +11,18 @@ _regimentSpeed = 5;
 _regimentSkill = selectRandom ["Private", "Corporal", "Sergeant"];
 _values = [];
 switch (_regimentType) do {
-	case "Infantry": {_regimentMarker = format ["%1_Inf", _regimentSide]; _regimentSpeed = 6; _values = [0.5, 0.2, 0.2, 0.1, 0.1]};
-	case "Mechanized": {_regimentMarker = format ["%1_mech_inf", _regimentSide]; _regimentSpeed = 10; _values = [0.3, 0.5, 0.3, 0.1, 0.2]};
-	case "Motorized": {_regimentMarker = format ["%1_Motor_inf", _regimentSide]; _regimentSpeed = 15; _values = [0.3, 0.1, 0.5, 0.2, 0.1]};
-	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.2, 0.1, 0.1, 0.5, 0.1]};
-	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.2, 0.2, 0.2, 0.2, 0.4]};
+	case "Infantry": {_regimentMarker = format ["%1_Inf", _regimentSide]; _regimentSpeed = 6; _values = [0.8, 0.2, 0.2, 0.1, 0.1]};
+	case "Mechanized": {_regimentMarker = format ["%1_mech_inf", _regimentSide]; _regimentSpeed = 10; _values = [0.6, 0.5, 0.3, 0.1, 0.2]};
+	case "Motorized": {_regimentMarker = format ["%1_Motor_inf", _regimentSide]; _regimentSpeed = 15; _values = [0.6, 0.1, 0.5, 0.2, 0.1]};
+	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.5, 0.1, 0.1, 0.5, 0.1]};
+	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.5, 0.2, 0.2, 0.2, 0.4]};
 };
 _regimentSize = round (random [10, 15, 20]);
 _HqPos = [[_locMkr], ["base", "water"]] call BIS_fnc_randomPos;
+_noPos = _hqPos inArea "NoLocation";
+if (_noPos) then {
+	_HqPos = [["AO"], ["base", "water"]] call BIS_fnc_randomPos;
+};
 
 // Save regiment to database 
 ["write", [_regimentName, "Position", _hqPos]] call _db;
@@ -41,7 +45,7 @@ _trg setVariable ["Active", false, true];
 _trg setVariable ["Regiment", _regimentName];
 _trg setVariable ["Side", _regimentSide];
 _trg setTriggerArea [850, 850, 0, false, 200];
-_trg setTriggerActivation ["WEST", "PRESENT", true];
+_trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 _trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
 // Define classnames for AI spawning 
@@ -56,102 +60,96 @@ switch (_regimentSide) do {
 	case "b": {
 		_faction = west;
 		_inf = [
-			"ACM_NAG_Soldier_AR",
-			"ACM_NAG_Soldier_CLS",
-			"ACM_NAG_Soldier_GL",
-			"ACM_NAG_Soldier_MR",
-			"ACM_NAG_Soldier_ExplEx",
-			"ACM_NAG_Soldier_AA",
-			"ACM_NAG_Soldier_AT",
-			"ACM_NAG_Soldier_ATA",
-			"ACM_NAG_Soldier_Radio",
-			"ACM_NAG_Soldier_Repair",
-			"ACM_NAG_Soldier",
-			"ACM_NAG_Soldier_RifleAT",
-			"ACM_NAG_Soldier_RifleLight",
-			"ACM_NAG_Soldier_TL"
+			"B_MasereRMDF_AT_01",
+			"B_MasereRMDF_Auto_01",
+			"B_MasereRMDF_CLS_01",
+			"B_MasereRMDF_Engineer_01",
+			"B_MasereRMDF_GL_01",
+			"B_MasereRMDF_HMG_01",
+			"B_MasereRMDF_M_01",
+			"B_MasereRMDF_MisslAA_01",
+			"B_MasereRMDF_MisslAT_01",
+			"B_MasereRMDF_Rifleman_01",
+			"B_MasereRMDF_Light_AT_01",
+			"B_MasereRMDF_SL_01",
+			"B_MasereRMDF_TL_01",
+			"B_MasereRMDF_UAVOp_01"
 		];
 
 		_mech = [
-			"ACM_B_NAG_BMP2",
-			"ACM_B_NAG_BTR80A",
-			"ACM_B_NAG_BMP2_ZU"
+			"ACM_BTR80A_RMDF_Naval"
 		];
 
 		_mot = [
-			"ACM_B_NAG_Ifrit_HMG",
-			"ACM_B_NAG_UAZ_AGS30",
-			"ACM_B_NAG_UAZ_MG",
-			"ACM_B_NAG_UAZ_SPG"
+			"ACM_Dingo_GL_RMDF_Naval",
+			"ACM_Dingo_MG_RMDF_Naval"
 		];
 		
 		_armor = [
-			"ACM_B_NAG_T72"
+			"ACM_AFV_Wheeled_01_cannon_RMDF_NAVAL_F",
+			"ACM_AFV_Wheeled_01_cannon_up_RMDF_NAVAL_F"
 		];
 		
 		_recon = [
-			"ACM_NAG_Soldier_SPEC_AR",
-			"ACM_NAG_Soldier_SPEC_CLS",
-			"ACM_NAG_Soldier_SPEC_GL",
-			"ACM_NAG_Soldier_SPEC_MR",
-			"ACM_NAG_Soldier_SPEC_ExplEx",
-			"ACM_NAG_Soldier_SPEC",
-			"ACM_NAG_Soldier_SPEC_AT",
-			"ACM_NAG_Soldier_SPEC_RifleAT",
-			"ACM_NAG_Soldier_SPEC_TL",
-			"ACM_NAG_Soldier_SPEC_RifleLight"
+			"B_MasereRMDF_NSF_Autogren_01",
+			"B_MasereRMDF_NSF_Marksman_01",
+			"B_MasereRMDF_NSF_CLS_01",
+			"B_MasereRMDF_NSF_Scout_01",
+			"B_MasereRMDF_NSF_AT_01",
+			"B_MasereRMDF_NSF_TL_01"
 		];
 	};
 	case "o": {
 		_faction = east;
 		_inf = [
-			"ACM_HDF_Soldier_AA",
-			"ACM_HDF_Soldier_AR",
-			"ACM_HDF_Soldier_CLS",
-			"ACM_HDF_Soldier_GL",
-			"ACM_HDF_Soldier_MR",
-			"ACM_HDF_Soldier_AT",
-			"ACM_HDF_Soldier",
-			"ACM_HDF_Soldier_LiteAT",
-			"ACM_HDF_Soldier_Light",
-			"ACM_HDF_Soldier_Thermals",
-			"ACM_HDF_Soldier_TL"
+			"O_A_soldier_A_F",
+			"O_A_soldier_AR_F",
+			"O_A_medic_F",
+			"O_A_engineer_F",
+			"O_A_soldier_GL_F",
+			"O_A_soldier_M_F",
+			"O_A_soldier_AA_F",
+			"O_A_soldier_AT_F",
+			"O_A_soldier_F",
+			"O_A_soldier_LAT_F",
+			"O_A_Soldier_AR_lxWS",
+			"O_A_Soldier_TL_lxWS",
+			"O_A_Soldier_lxWS",
+			"O_A_medic_lxWS",
+			"O_A_RadioOperator_F",
+			"O_A_soldier_SL_F",
+			"O_A_soldier_TL_F",
+			"O_A_HeavyGunner_lxWS",
+			"O_A_medic_lxWS",
+			"O_A_Soldier_GL_lxWS"
 		];
 
 		_mech = [
-			"ACM_O_HDF_BMP2",
-			"ACM_O_HDF_BMP2_HQ"
+			"O_A_APC_Tracked_02_cannon_F",
+			"O_A_APC_Wheeled_02_rcws_v2_F"
 		];
 
 		_mot = [
-			"ACM_O_HDF_HILUX_DSHKM",
-			"ACM_O_HDF_HILUX_IGLA",
-			"ACM_O_HDF_HILUX_ARMORED_SPG9",
-			"ACM_O_HDF_HILUX_ARMORED_ZU23",
-			"ACM_O_HDF_UAZ_MG",
-			"ACM_O_HDF_UAZ_SPG9"
+			"O_A_LSV_02_unarmed_F",
+			"O_A_LSV_02_armed_F",
+			"O_A_LSV_02_AT_F"
 		];
 
 		_armor = [
-			"ACM_O_HDF_T55",
-			"ACM_O_HDF_T34",
-			"ACM_O_HDF_T72"
+			"O_A_MBT_02_cannon_F"
 		];
 
 		_recon = [
-			"ACM_HDF_Soldier_LI_MG",
-			"ACM_HDF_Soldier_LI_CLS",
-			"ACM_HDF_Soldier_LI_GL",
-			"ACM_HDF_Soldier_LI_MR",
-			"ACM_HDF_Soldier_LI_Expl",
-			"ACM_HDF_Soldier_LI_MR2",
-			"ACM_HDF_Soldier_LI_AA",
-			"ACM_HDF_Soldier_LI_AT",
-			"ACM_HDF_Soldier_LI_ATA",
-			"ACM_HDF_Soldier_LI",
-			"ACM_HDF_Soldier_LI_Repair",
-			"ACM_HDF_Soldier_LI_LiteAT",
-			"ACM_HDF_Soldier_LI_RifleLite"
+			"O_T_Recon_F",
+			"O_T_Recon_CQ_F",
+			"O_T_Recon_TL_F",
+			"O_T_Sniper_F",
+			"O_T_Recon_JTAC_F",
+			"O_T_Recon_GL_F",
+			"O_T_Recon_M_F",
+			"O_T_Pathfinder_F",
+			"O_T_Pathfinder_F",
+			"O_T_Spotter_F"
 		];
 	};
 };

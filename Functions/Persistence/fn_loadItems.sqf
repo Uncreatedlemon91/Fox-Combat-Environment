@@ -2,17 +2,19 @@ _db = ["new", format ["ALLITEMS %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 {
 	// Current result is saved in variable _x
-	_type = ["read", [_x, "Type"]] call _db;
-	_pos = ["read", [_x, "Position"]] call _db;
-	_dir = ["read", [_x, "Direction"]] call _db;
-	_dmg = ["read", [_x, "Damage"]] call _db;
-	_fuel = ["read", [_x, "Fuel"]] call _db;
+	_data = ["read", [_x, "Data"]] call _db;
 
-	_items = ["read", [_x, "CargoItems"]] call _db;
-	_mags = ["read", [_x, "CargoMags"]] call _db;
-	_weps = ["read", [_x, "CargoWeps"]] call _db;
-	_backs = ["read", [_x, "CargoBps"]] call _db;
-	_pitch = ["read", [_x, "Pitch"]] call _db;
+	_type = _data select 0;
+	_pos = _data select 1;
+	_dir = _data select 2;
+	_dmg = _data select 3;
+	_fuel = _data select 4;
+
+	_items = _data select 5;
+	_mags = _data select 6;
+	_weps = _data select 7;
+	_backs = _data select 8;
+	_pitch = _data select 9;
 
 	["deleteSection", _x] call _db;
 

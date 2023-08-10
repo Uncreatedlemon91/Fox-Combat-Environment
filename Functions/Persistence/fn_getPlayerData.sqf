@@ -9,4 +9,10 @@ if (_uid in _getSections) then {
 	_dir = ["read", [_uid, "Direction"]] call _db;
 	_roles = ["read", [_uid, "Roles"]] call _db;
 	[_pos, _gear, _dir, _roles] remoteExec ["fce_fnc_loadPlayer", _netID];
+} else {
+	_name = ["write", [_uid, "Name", _name]] call _db;
+	_pos = ["write", [_uid, "Position", [11955.9,2297.09,0]]] call _db;
+	_gear = ["write", [_uid, "Gear", ""]] call _db;
+	_dir = ["write", [_uid, "Direction", 0]] call _db;
+	_roles = ["write", [_uid, "Roles", ["fox_rifleman"]]] call _db;
 };

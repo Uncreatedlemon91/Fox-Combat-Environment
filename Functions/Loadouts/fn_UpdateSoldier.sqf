@@ -110,7 +110,7 @@ switch (_det) do {
 		[fox_scout] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};
-	case "Scout Machinegunner": {
+	case "Scout Grenadier": {
 		[fox_scoutMg] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
 	};

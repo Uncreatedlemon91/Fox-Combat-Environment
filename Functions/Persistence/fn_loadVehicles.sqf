@@ -1,6 +1,9 @@
 _db = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 
+// Debug
+"Loading Vehicles" remoteExec ["systemChat", 0, true];
+
 // apply saved vehicle locations back to the server 
 {
 	_data = ["read", [_x, "Vehicle Info"]] call _db;
@@ -11,6 +14,9 @@ _sections = "getSections" call _db;
 	_dmg = _data select 3;
 	_fuel = _data select 4;
 	_mags = _data select 5;
+	_items = _data select 6;
+	_ammo = _data select 7;
+	_weps = _data select 8;
 
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
@@ -26,6 +32,23 @@ _sections = "getSections" call _db;
 		_veh removeMagazinesTurret [_mag, _turret];
 		_veh addMagazineTurret [_mag, _turret, _ammo];
 	} forEach _mags;
+
+	// Add cargo / Inventory of the vehicle back 
+	_items params ["_classes","_count"];
+	for "_i" from 0 to count _classes - 1 do {
+		_veh addItemCargoGlobal [_classes select _i,_count select _i]
+	};
+
+	_ammo params ["_classes","_count"];
+	for "_i" from 0 to count _classes - 1 do {
+		_veh addMagazineCargoGlobal [_classes select _i,_count select _i]
+	};
+
+	_weps params ["_classes","_count"];
+	for "_i" from 0 to count _classes - 1 do {
+		_veh addWeaponCargoGlobal [_classes select _i,_count select _i]
+	};
+	
 	["deleteSection", _x] call _db;
 	[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];
 	[_veh, 0] remoteExec ["fce_fnc_saveVehicle", 2];

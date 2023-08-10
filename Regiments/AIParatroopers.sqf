@@ -1,7 +1,7 @@
 params ["_caller"];
 // Create Plane 
 _tgtPos = getPos _caller;
-_planeClass = selectRandom ["ACM_O_SEV_C47"];
+_planeClass = selectRandom ["O_T_Plane_Transport_01_infantry_ghex_F", "O_T_VTOL_02_infantry_dynamicLoadout_F"];
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
 _jetV = createVehicle [_planeClass, _spawnPos, [], 0, "Fly"];
 _jetG = createVehicleCrew _jetV;
@@ -13,30 +13,22 @@ _jetG move _tgtPos;
 _jetV flyInHeight random [100, 200, 300];
 
 _dist = _jetV distance2D _tgtPos;
-waitUntil {_dist < 50};
+waitUntil {_dist < 10};
 
 systemChat "Spawning Paratroopers!";
 // Add passengers
 _smoke = "SmokeShellRed" createVehicle _tgtPos;
 _inf = [
-	"ACM_HDF_Soldier_Thermals",
-	"ACM_HDF_Soldier_LiteAT",
-	"ACM_HDF_Soldier",
-	"ACM_HDF_Soldier_AT",
-	"ACM_HDF_Soldier_GL",
-	"ACM_HDF_Soldier_CLS",
-	"ACM_HDF_Soldier_AA",
-	"ACM_HDF_Soldier_LI",
-	"ACM_HDF_Soldier_LI_Repair",
-	"ACM_HDF_Soldier_LI_ATA",
-	"ACM_HDF_Soldier_LI_Expl",
-	"ACM_HDF_Soldier_LI_MR2",
-	"ACM_HDF_Soldier_LI_MR",
-	"ACM_HDF_Soldier_LI_CLS",
-	"ACM_HDF_Soldier_LI_MG",
-	"ACM_HDF_Soldier_MR",
-	"ACM_HDF_Soldier_AR",
-	"ACM_HDF_Soldier_TL"
+	"O_T_Spotter_F",
+	"O_T_Sniper_F",
+	"O_T_Recon_TL_F",
+	"O_T_Recon_M_F",
+	"O_T_Recon_Medic_F",
+	"O_T_Recon_F",
+	"O_T_Recon_LAT_F",
+	"O_T_Recon_JTAC_F",
+	"O_T_Recon_Exp_F",
+	"O_T_Pathfinder_F"
 ];
 _grp = createGroup east;
 for "_i" from 1 to 12 do {
