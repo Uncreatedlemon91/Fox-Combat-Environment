@@ -12,8 +12,9 @@
 ["ACRE_PRC148", "default", 10, "label", "AIRNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 11, "label", "AIRNET2"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 12, "label", "ATC1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 13, "label", "EMERGENCY1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 14, "label", "MED1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 13, "label", "CONVOY1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 14, "label", "CONVOY2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 15, "label", "MED1"] call acre_api_fnc_setPresetChannelField;
 
 // SET 117 LRR FREQUENCIES
 ["ACRE_PRC117F", "default", 1, "label", "PLTNET1"] call acre_api_fnc_setPresetChannelField;
@@ -28,5 +29,6 @@
 ["ACRE_PRC117F", "default", 10, "label", "AIRNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 11, "label", "AIRNET2"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 12, "label", "ATC1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 13, "label", "EMERGENCY1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 14, "label", "MED1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 13, "label", "CONVOY1"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 14, "label", "CONVOY2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 15, "label", "MED1"] call acre_api_fnc_setPresetChannelField;

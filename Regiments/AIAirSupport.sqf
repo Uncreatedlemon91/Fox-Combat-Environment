@@ -21,7 +21,7 @@ _jetG move _tgtPos;
 _jetV flyInHeight random [100, 400, 900];
 
 _dist = 500;
-while {_dist > 200} do {
+while {_dist > 50} do {
 	_dist = _jetV distance2D _tgtPos;
 	sleep 4;
 };
@@ -31,7 +31,7 @@ _exfil = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
 _jetV move _exfil;
 _dist = 500;
 
-while {_dist > 200} do {
+while {_dist > 50} do {
 	_dist = _jetV distance2D _tgtPos;
 	sleep 4;
 };
