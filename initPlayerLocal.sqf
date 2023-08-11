@@ -20,7 +20,7 @@ player addEventHandler ["Respawn", {
 	removeAllWeapons _corpse;
 	removeAllItems _corpse;
 	removeAllAssignedItems _corpse;
-	removeBackpack _unit;
+	removeBackpack _corpse;
 
 	_unit linkItem "ItemMap";
 	_unit linkItem "ItemCompass";
