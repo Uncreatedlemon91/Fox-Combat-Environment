@@ -50,7 +50,7 @@ for "_i" from 0 to count _classes - 1 do {
 [_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 
 // Add ACRE Radio feature to vehicle 
-[_veh, ["ACRE_VRC103", "Vehicle Radio", "Dash", false, ["inside"], [], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
+[_veh, ["ACRE_VRC103", "FOX Radio Network", "Dash", false, ["inside"], ["CARGO"], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
 
 
 // Setup vehicle event handlers if it is a vehicle
