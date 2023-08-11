@@ -4,7 +4,6 @@ params ["_veh", "_wreck"];
 _pvic = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_inidbi;
 _wVic = ["new", format ["Wrecks %1 %2", missionName, worldName]] call oo_inidbi;
 
-"Saving Vehicle" remoteExec ["systemChat", 0, true];
 
 if (_wreck == 1) then {
 	_pos = getPosATL _veh;

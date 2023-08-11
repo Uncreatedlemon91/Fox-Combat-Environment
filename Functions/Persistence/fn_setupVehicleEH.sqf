@@ -7,8 +7,6 @@ if (_isVehicle) then {
 };
 
 // Debug 
-"Setting up Vehicle EH" remoteExec ["systemChat", 0, true];
-
 // Database addition
 _pDb = ["new", format ["Player Profiles %1 %2", missionName, worldName]] call oo_inidbi;
 

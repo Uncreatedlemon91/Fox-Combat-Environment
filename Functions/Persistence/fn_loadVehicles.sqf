@@ -2,7 +2,6 @@ _db = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_
 _sections = "getSections" call _db;
 
 // Debug
-"Loading Vehicles" remoteExec ["systemChat", 0, true];
 
 // apply saved vehicle locations back to the server 
 {
