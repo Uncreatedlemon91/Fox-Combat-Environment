@@ -88,10 +88,6 @@ switch (_det) do {
 	};
 
 	// Add Medical 
-	case "(MedDet) Combat Life Saver": {
-		[fox_cls2] call fce_fnc_moveCamera;
-		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];
-	};
 	case "Medical Technician": {
 		[fox_medtech] call fce_fnc_moveCamera;
 		buttonSetAction [2400, "[] call fce_fnc_getLoadout"];

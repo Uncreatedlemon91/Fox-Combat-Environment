@@ -49,10 +49,6 @@ for "_i" from 0 to count _classes - 1 do {
 // Add ace actions and interaction items
 [_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 
-// Add ACRE Radio feature to vehicle 
-[_veh, ["ACRE_VRC103", "FOX Radio Network", "Dash", false, ["inside"], ["CARGO"], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
-
-
 // Setup vehicle event handlers if it is a vehicle
 switch (true) do
 {
@@ -63,4 +59,18 @@ switch (true) do
 	case (_veh isKindOf "Helicopter") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
 	case (_veh isKindOf "Plane") : {[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2]; _veh setDamage 0.8; _veh setFuel 0.1};
 	default {};
+};
+
+// If the vehicle is a phone line 
+if (_class == "Land_IPPhone_01_sand_F") then {
+	[_veh, ["ACRE_VRC103", "FOX Landlines", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;
+	
+	// Get the radio 
+	_radios = [_veh] call acre_api_fnc_getVehicleRacks;
+
+	// Set radio to speaker + change to channel 101 for landline
+	{
+		[_x, true] call acre_api_fnc_setRadioSpeaker;
+		[_x, 101] call acre_api_fnc_setRadioChannel;
+	} forEach _radios;
 };

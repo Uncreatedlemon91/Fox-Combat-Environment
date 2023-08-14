@@ -9,6 +9,7 @@ class CfgFunctions
 			class spawnVehicle {};
 			class addAceActions {};
 			class populateList {};
+			class addKeys {};
 		};
 		class Loadouts
 		{

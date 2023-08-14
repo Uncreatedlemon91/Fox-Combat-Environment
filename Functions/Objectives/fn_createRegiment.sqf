@@ -8,7 +8,7 @@ _regimentType = selectRandom ["Infantry", "Mechanized", "Motorized", "Special Op
 _regimentName = format ["%1 %2 Regiment", _regimentNumber, _regimentType];
 _regimentMarker = "";
 _regimentSpeed = 5;
-_regimentSkill = selectRandom ["Private", "Corporal", "Sergeant"];
+_regimentSkill = selectRandom ["Private", "Corporal", "Sergeant", "Captain"];
 _values = [];
 switch (_regimentType) do {
 	case "Infantry": {_regimentMarker = format ["%1_Inf", _regimentSide]; _regimentSpeed = 6; _values = [0.8, 0.2, 0.2, 0.1, 0.1]};
@@ -17,7 +17,7 @@ switch (_regimentType) do {
 	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.5, 0.1, 0.1, 0.5, 0.1]};
 	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.5, 0.2, 0.2, 0.2, 0.4]};
 };
-_regimentSize = round (random [10, 15, 20]);
+_regimentSize = round (random [4, 8, 12]);
 _HqPos = [[_locMkr], ["base", "water"]] call BIS_fnc_randomPos;
 _noPos = _hqPos inArea "NoLocation";
 if (_noPos) then {

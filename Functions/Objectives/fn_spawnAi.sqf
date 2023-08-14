@@ -43,7 +43,7 @@ if (_active == true) then {
 			_chanceOfAirSupport = random 100;
 			_chanceOfParatrooper = random 100;
 
-			if (_chanceOfAirSupport < 4) then {
+			if (_chanceOfAirSupport < 8) then {
 				[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
 				systemChat "Calling in Air";
 			};
@@ -99,6 +99,6 @@ if (_active == true) then {
 		{
 			[_x, _groupID, _regimentName, _regimentSide, _regimentRank] remoteExec ["fce_fnc_AIAttributes", 2];	
 		} forEach units _grp;
-	sleep 2;
+	sleep 3;
 	};
 };

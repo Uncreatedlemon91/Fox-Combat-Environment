@@ -6,7 +6,7 @@ setTimeMultiplier 3;
 if (_exists) then {
 	_date = ["read", ["World Info", "Date"]] call _db;
 	setDate _date;
-
+	
 	_fog = ["read", ["World Info", "Fog"]] call _db;
 	0 setFog _fog;
 

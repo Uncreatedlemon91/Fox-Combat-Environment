@@ -7,7 +7,7 @@ switch (_det) do {
 		_roles = [fox_rifleman, fox_ammoCarrier, fox_grenadier, fox_mg, fox_cls, fox_gren, fox_missileSpec, fox_rto, fox_jtac, fox_ftl, fox_sl, fox_pl];
 	};
 	case "2nd Platoon - The Armor": {
-		_roles = [fox_crewleader, fox_crew];
+		_roles = [fox_crewLeader, fox_crew];
 	};
 	case "B Battery": {
 		_roles = [fox_battCommander, fox_battFO, fox_battGunner];
@@ -16,7 +16,7 @@ switch (_det) do {
 		_roles = [fox_hPilot, fox_hCrew, fox_jPilot];
 	};
 	case "7th Medical Detachment": {
-		_roles = [fox_cls2, fox_medtech, fox_surgeon];
+		_roles = [fox_medtech, fox_surgeon];
 	};
 	case "Intelligence Detachment": {
 		_roles = [fox_scoutLead, fox_scout, fox_scoutMg, fox_scoutMule, fox_scoutSniper];

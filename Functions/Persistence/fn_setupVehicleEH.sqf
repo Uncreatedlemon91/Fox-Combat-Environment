@@ -35,3 +35,20 @@ _veh addEventHandler ["Killed", {
 	[_unit, 1] remoteExec ["fce_fnc_saveVehicle", 2];
 	[_unit] remoteExec ["fce_fnc_deleteVehicle", 2];
 }];
+
+// Setup ACRE Radio on the vehicle 
+[_veh, ["ACRE_VRC103", "FOX Radio Network", "Land", false, ["inside"], ["CARGO"], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
+
+// If the vehicle is a phone line 
+if (_class == "Land_IPPhone_01_sand_F") then {
+	[_veh, ["ACRE_VRC103", "FOX Landlines", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;
+	
+	// Get the radio 
+	_radios = [_veh] call acre_api_fnc_getVehicleRacks;
+
+	// Set radio to speaker + change to channel 101 for landline
+	{
+		[_x, true] call acre_api_fnc_setRadioSpeaker;
+		[_x, 101] call acre_api_fnc_setRadioChannel;
+	} forEach _radios;
+};

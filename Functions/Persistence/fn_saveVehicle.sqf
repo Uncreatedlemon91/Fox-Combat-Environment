@@ -23,6 +23,9 @@ if (_wreck == 1) then {
 	_type = typeOf _veh;
 	_netId = netId _veh;
 	_mags = magazinesAllTurrets _veh;
+	{
+		_x deleteAt 3;
+	} forEach _mags;
 	_items = getItemCargo _veh;
 	_ammo = getMagazineCargo _veh;
 	_weps = getWeaponCargo _veh;
