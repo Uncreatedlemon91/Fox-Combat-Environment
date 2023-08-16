@@ -22,9 +22,10 @@ if (_wreck == 1) then {
 	_fuel = fuel _veh;
 	_type = typeOf _veh;
 	_netId = netId _veh;
-	_mags = magazinesAllTurrets _veh;
+	_mags = magazinesAllTurrets [_veh, true];
 	{
 		_x deleteAt 3;
+		_x deleteAt 4;
 	} forEach _mags;
 	_items = getItemCargo _veh;
 	_ammo = getMagazineCargo _veh;

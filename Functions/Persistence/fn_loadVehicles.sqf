@@ -27,9 +27,9 @@ _sections = "getSections" call _db;
 	{
 		_mag = _x select 0;
 		_turret = _x select 1;
-		_ammo = _x select 2;
+		_magCount = _x select 2;
 		_veh removeMagazinesTurret [_mag, _turret];
-		_veh addMagazineTurret [_mag, _turret, _ammo];
+		_veh addMagazineTurret [_mag, _turret, _magCount];
 	} forEach _mags;
 
 	// Add cargo / Inventory of the vehicle back 
