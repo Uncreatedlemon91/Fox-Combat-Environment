@@ -4,8 +4,8 @@
 ["ACRE_PRC148", "default", 2, "label", "FIRESNET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 3, "label", "LOGINET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 4, "label", "AIRNET"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 5, "label", "CASNET1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC148", "default", 6, "label", "CASNET2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 5, "label", "CASNET"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC148", "default", 6, "label", "ATCNET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 7, "label", "PLTNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC148", "default", 8, "label", "PLTNET2"] call acre_api_fnc_setPresetChannelField;
 
@@ -14,8 +14,8 @@
 ["ACRE_PRC117F", "default", 2, "label", "FIRESNET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 3, "label", "LOGINET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 4, "label", "AIRNET"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 5, "label", "CASNET1"] call acre_api_fnc_setPresetChannelField;
-["ACRE_PRC117F", "default", 6, "label", "CASNET2"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 5, "label", "CASNET"] call acre_api_fnc_setPresetChannelField;
+["ACRE_PRC117F", "default", 6, "label", "ATCNET"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 7, "label", "PLTNET1"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 8, "label", "PLTNET2"] call acre_api_fnc_setPresetChannelField;
 
