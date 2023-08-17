@@ -43,12 +43,12 @@ if (_active == true) then {
 			_chanceOfAirSupport = random 100;
 			_chanceOfParatrooper = random 100;
 
-			if (_chanceOfAirSupport < 8) then {
+			if (_chanceOfAirSupport < 15) then {
 				[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
 				systemChat "Calling in Air";
 			};
 
-			if (_chanceofParatrooper < 4) then {
+			if (_chanceofParatrooper < 6) then {
 				[_unit] execVM "Regiments\AIParatroopers.sqf";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;

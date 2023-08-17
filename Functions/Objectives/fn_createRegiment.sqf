@@ -17,7 +17,7 @@ switch (_regimentType) do {
 	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.5, 0.1, 0.1, 0.5, 0.1]};
 	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.5, 0.2, 0.2, 0.2, 0.4]};
 };
-_regimentSize = round (random [4, 8, 12]);
+_regimentSize = round (random [10, 15, 20]);
 _HqPos = [[_locMkr], ["base", "water"]] call BIS_fnc_randomPos;
 _noPos = _hqPos inArea "NoLocation";
 if (_noPos) then {
