@@ -1,4 +1,6 @@
 // Module based design mission framework
+// Define classes used in the framework 
+[] remoteExec ["Fce_fnc_defineClasses", 2];
 
 // Create Regiment and Locations 
 [] execVM "Regiments\AOCreator.sqf";

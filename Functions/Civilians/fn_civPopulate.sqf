@@ -4,17 +4,6 @@
 _db = ["new", [format ["Civilian Module - %1 %2", missionName, worldName]]] call oo_inidbi;
 _sections = "getSections" call _db;
 
-// Define classnames of civilian pedestrians to spawn
-_civClasses = [
-
-];
-
-// Define civilian vehicles to spawn
-_civVehs = [
-
-];
-
-
 // For each location, populate the town 
 {
 	// Grab the database data 

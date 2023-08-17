@@ -32,6 +32,7 @@ class CfgFunctions
 			class spawnArtillery {};
 			class spawnAASite {};
 			class createConvoy {};
+			class defineClasses {};
 		};
 		class Persistence
 		{

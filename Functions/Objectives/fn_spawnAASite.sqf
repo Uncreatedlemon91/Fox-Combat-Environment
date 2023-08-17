@@ -31,7 +31,7 @@ if ("OPFOR AA Sites" in _sections) then {
 	for "_i" from 1 to _count do {
 		_spawnPos = [["AO"], ["Base", "Water"]] call BIS_fnc_randomPos;
 		_spawnPos = [_spawnPos, 0, 100, 5, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
-		_classToSpawn = selectRandom ["O_A_Static_AA_F"];
+		_classToSpawn = selectRandom fox_opfAA;
 		_data = [_spawnPos, _classToSpawn];
 
 		["write", ["Opfor AA Sites", format ["AA Site %1", _i], _data]] call _db;

@@ -35,6 +35,9 @@ player addEventHandler ["Killed", {
 }];
 
 while {true} do {
+	player unlinkItem "ItemGPS";
 	player removeItem "ItemGPS";
+	player unlinkItem "ItemRadio";
+	player removeItem "ItemRadio";
 	sleep 20;
 };

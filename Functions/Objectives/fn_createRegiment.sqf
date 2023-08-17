@@ -48,123 +48,17 @@ _trg setTriggerArea [1500, 1500, 0, false, 100];
 _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 _trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
-// Define classnames for AI spawning 
-_faction = "";
-_inf = [];
-_mech = [];
-_mot = [];
-_armor = [];
-_recon = [];
-
-switch (_regimentSide) do {
-	case "b": {
-		_faction = west;
-		_inf = [
-			"B_MasereRMDF_AT_01",
-			"B_MasereRMDF_Auto_01",
-			"B_MasereRMDF_CLS_01",
-			"B_MasereRMDF_Engineer_01",
-			"B_MasereRMDF_GL_01",
-			"B_MasereRMDF_HMG_01",
-			"B_MasereRMDF_M_01",
-			"B_MasereRMDF_MisslAA_01",
-			"B_MasereRMDF_MisslAT_01",
-			"B_MasereRMDF_Rifleman_01",
-			"B_MasereRMDF_Light_AT_01",
-			"B_MasereRMDF_SL_01",
-			"B_MasereRMDF_TL_01",
-			"B_MasereRMDF_UAVOp_01"
-		];
-
-		_mech = [
-			"ACM_BTR80A_RMDF_Naval"
-		];
-
-		_mot = [
-			"ACM_Dingo_GL_RMDF_Naval",
-			"ACM_Dingo_MG_RMDF_Naval"
-		];
-		
-		_armor = [
-			"ACM_AFV_Wheeled_01_cannon_RMDF_NAVAL_F",
-			"ACM_AFV_Wheeled_01_cannon_up_RMDF_NAVAL_F"
-		];
-		
-		_recon = [
-			"B_MasereRMDF_NSF_Autogren_01",
-			"B_MasereRMDF_NSF_Marksman_01",
-			"B_MasereRMDF_NSF_CLS_01",
-			"B_MasereRMDF_NSF_Scout_01",
-			"B_MasereRMDF_NSF_AT_01",
-			"B_MasereRMDF_NSF_TL_01"
-		];
-	};
-	case "o": {
-		_faction = east;
-		_inf = [
-			"O_A_soldier_A_F",
-			"O_A_soldier_AR_F",
-			"O_A_medic_F",
-			"O_A_engineer_F",
-			"O_A_soldier_GL_F",
-			"O_A_soldier_M_F",
-			"O_A_soldier_AA_F",
-			"O_A_soldier_AT_F",
-			"O_A_soldier_F",
-			"O_A_soldier_LAT_F",
-			"O_A_Soldier_AR_lxWS",
-			"O_A_Soldier_TL_lxWS",
-			"O_A_Soldier_lxWS",
-			"O_A_medic_lxWS",
-			"O_A_RadioOperator_F",
-			"O_A_soldier_SL_F",
-			"O_A_soldier_TL_F",
-			"O_A_HeavyGunner_lxWS",
-			"O_A_medic_lxWS",
-			"O_A_Soldier_GL_lxWS"
-		];
-
-		_mech = [
-			"O_A_APC_Tracked_02_cannon_F",
-			"O_A_APC_Wheeled_02_rcws_v2_F"
-		];
-
-		_mot = [
-			"O_A_LSV_02_unarmed_F",
-			"O_A_LSV_02_armed_F",
-			"O_A_LSV_02_AT_F"
-		];
-
-		_armor = [
-			"O_A_MBT_02_cannon_F"
-		];
-
-		_recon = [
-			"O_T_Recon_F",
-			"O_T_Recon_CQ_F",
-			"O_T_Recon_TL_F",
-			"O_T_Sniper_F",
-			"O_T_Recon_JTAC_F",
-			"O_T_Recon_GL_F",
-			"O_T_Recon_M_F",
-			"O_T_Pathfinder_F",
-			"O_T_Pathfinder_F",
-			"O_T_Spotter_F"
-		];
-	};
-};
-
 // Create Groups for the regiment 
 for "_i" from 1 to _regimentSize do {
 	_groupType = selectRandomWeighted ["Infantry", _values select 0, "Mechanized", _values select 1, "Motorized", _values select 2, "Special Operations", _values select 3, "Armored", _values select 4];
 	_pltType = "";
 	_pltSize = 4;
 	switch (_groupType) do {
-		case "Infantry": {_pltType = _inf; _pltSize = round (random [10, 14, 18]);};
-		case "Mechanized": {_pltType = _mech; _pltSize = 1;};
-		case "Motorized": {_pltType = _mot; _pltSize = 1;};
-		case "Special Operations": {_pltType = _recon; _pltSize = round (random [6, 8, 10]);};
-		case "Armored": {_pltType = _armor; _pltSize = 1;};
+		case "Infantry": {_pltType = fox_opfInf; _pltSize = round (random [10, 14, 18]);};
+		case "Mechanized": {_pltType = fox_opfMec; _pltSize = 1;};
+		case "Motorized": {_pltType = fox_opfMot; _pltSize = 1;};
+		case "Special Operations": {_pltType = fox_opfRec; _pltSize = round (random [6, 8, 10]);};
+		case "Armored": {_pltType = fox_opfArm; _pltSize = 1;};
 	};
 	
 	_pltComp = [];
