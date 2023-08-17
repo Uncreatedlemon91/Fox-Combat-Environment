@@ -2,8 +2,8 @@ params ["_unit", "_groupID", "_regimentName", "_regimentSide", "_regimentRank"];
 _db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
 
 // Add variables to AI 
-_unit setVariable ["Regiment", _regimentName];
-_unit setVariable ["Group", _groupID];
+_unit setVariable ["Regiment", _regimentName, true];
+_unit setVariable ["Group", _groupID, true];
 
 // Change difficulty of AI
 _unit setRank _regimentRank;

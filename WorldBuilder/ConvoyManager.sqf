@@ -8,7 +8,7 @@ while {true} do {
 		_deployType = selectRandom ["OPFOR AA Sites", "Opfor Artillery"];
 
 		switch (_deployType) do {
-			case "OPFOR AA Sites": {_deployClass = selectRandom ["O_A_Static_AA_F", "O_T_APC_Tracked_02_AA_ghex_F"]};
+			case "OPFOR AA Sites": {_deployClass = selectRandom ["O_A_Static_AA_F"]};
 			case "Opfor Artillery": {_deployClass = selectRandom ["O_T_MBT_02_arty_ghex_F", "O_T_Truck_02_MRL_F"]};
 		};
 
