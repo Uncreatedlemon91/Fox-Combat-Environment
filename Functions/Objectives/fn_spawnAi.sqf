@@ -48,7 +48,7 @@ if (_active == true) then {
 				systemChat "Calling in Air";
 			};
 
-			if (_chanceofParatrooper < 6) then {
+			if (_chanceofParatrooper < 15) then {
 				[_unit] execVM "Regiments\AIParatroopers.sqf";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;

@@ -10,7 +10,7 @@ _jetG deleteGroupWhenEmpty true;
 
 // Set waypoints for plane
 _jetG move _tgtPos;
-_jetV flyInHeight random [100, 200, 300];
+_jetV flyInHeight random [300, 500, 600];
 
 _dist = _jetV distance2D _tgtPos;
 waitUntil {_dist < 10};
@@ -45,7 +45,7 @@ for "_i" from 1 to 12 do {
 _jetG move _spawnPos;
 
 _dist = _jetV distance2D _spawnPos;
-waitUntil {_dist < 300};
+waitUntil {_dist < 50};
 
 deleteVehicleCrew _jetV;
 deleteVehicle _jetV;
