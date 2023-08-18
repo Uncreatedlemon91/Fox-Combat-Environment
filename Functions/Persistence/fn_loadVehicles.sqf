@@ -19,6 +19,7 @@ _sections = "getSections" call _db;
 
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
+	_veh allowDamage false;
 	_veh setDir _dir;
 	_veh setDamage [_dmg, false];
 	_veh setFuel _fuel;
@@ -51,6 +52,7 @@ _sections = "getSections" call _db;
 	["deleteSection", _x] call _db;
 	[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];
 	[_veh, 0] remoteExec ["fce_fnc_saveVehicle", 2];
+	_veh allowDamage true;
 } forEach _sections;
 
 // Spawn in all wreckages 
@@ -67,9 +69,11 @@ _sections = "getSections" call _db;
 
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
+	_veh allowDamage false;
 	_veh setDir _dir;
 	_veh setDamage [_dmg, false];
 
 	["deleteSection", _x] call _wVic;
 	[_veh, 1] remoteExec ["fce_fnc_saveVehicle", 2];
+	_veh allowDamage true;
 } forEach _sections;
