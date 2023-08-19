@@ -34,6 +34,11 @@ player addEventHandler ["Killed", {
 	[_unit, _killer, _instigator] remoteExec ["fce_fnc_PlayerKilled", 2];
 }];
 
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	[_unit, _role, _vehicle] remoteExec ["fce_fnc_CheckVehicles", 2];
+}];
+
 while {true} do {
 	player unlinkItem "ItemGPS";
 	player removeItem "ItemGPS";
