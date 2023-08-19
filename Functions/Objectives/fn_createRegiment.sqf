@@ -45,16 +45,16 @@ _trg = createTrigger ["EmptyDetector", _hqPos, true];
 _trg setVariable ["Active", false, true];
 _trg setVariable ["Regiment", _regimentName];
 _trg setVariable ["Side", _regimentSide];
-_trg setTriggerArea [1500, 1500, 0, false, 100];
+_trg setTriggerArea [1500, 1500, 0, false, 500];
 _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 _trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
 // Grab unit classnames 
-_inf = ["read", ["opfInf", "Classnames"]] call _opfordb;
-_mech = ["read", ["opfAPCs", "Classnames"]] call _opfordb;
-_mot = ["read", ["opfCars", "Classnames"]] call _opfordb;
-_recon = ["read", ["opfRecon", "Classnames"]] call _opfordb;
-_armor = ["read", ["opfArmor", "Classnames"]] call _opfordb;
+_inf = ["read", ["opfInf", "Classes"]] call _opfordb;
+_mech = ["read", ["opfAPCs", "Classes"]] call _opfordb;
+_mot = ["read", ["opfCars", "Classes"]] call _opfordb;
+_recon = ["read", ["opfRecon", "Classes"]] call _opfordb;
+_armor = ["read", ["opfArmor", "Classes"]] call _opfordb;
 
 // Create Groups for the regiment 
 for "_i" from 1 to _regimentSize do {
