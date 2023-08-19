@@ -12,6 +12,18 @@ closeDialog 3;
 // Equp the loadout for player 
 player setUnitLoadout (getUnitLoadout _loadout);
 
+// Clear all ACE role permissions 
+player setVariable ["ACE_IsEngineer",0, true];
+player setVariable ["ace_medical_medicclass", 0, true];
+
+// Set ACE Permissions based on role 
+switch (_loadout) do {
+	case "fox_cls": {player setVariable ["ace_medical_medicclass", 1, true]};
+	case "fox_medTech": {player setVariable ["ace_medical_medicclass", 2, true]};
+	case "fox_cEngineer": {player setVariable ["ACE_IsEngineer", 1, true]};
+};
+
+
 // Open the ace arsenal for glasses customization
 [ace_arsenal, player, false] call ace_arsenal_fnc_openBox;
 
