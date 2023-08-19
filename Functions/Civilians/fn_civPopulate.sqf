@@ -15,6 +15,7 @@ _sections = "getSections" call _db;
 	_popLoyalty = _data select 4;
 	_vehCount = _data select 5;
 
+	_civs = [];
 	// Spawn Civilian at house 
 	for "_i" from 1 to _popCount do {
 		_homePos = selectRandom _homes;
@@ -35,9 +36,13 @@ _sections = "getSections" call _db;
 			_languages pushback "International";
 		};
 
+		// Delete civilian to help frames 
+		deleteVehicle _unit;
+		deleteGroup _grp;
 
 		_data = [_name, _face, _gear, _loyalty, _languages];
-		["write", [_x, "Civ Data"]]
+		_civs pushBack _data;
 	};
-
+	// Save data to the database
+	["write", [_x, "Civ Data", _civs]] call _db;
 } forEach _sections;

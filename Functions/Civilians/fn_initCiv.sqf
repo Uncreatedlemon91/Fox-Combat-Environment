@@ -33,7 +33,7 @@ if (_exists) then {
 
 		// Compile data to send to inidbi 
 		_data = [_name, _pos, _homes, _popCount, _popLoyalty, _vehCount];
-		["write", [_name, "Civ Data", _data]] call _db;
+		["write", [_name, "Town Data", _data]] call _db;
 	} forEach _locs;
 };
 
