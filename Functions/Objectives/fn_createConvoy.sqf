@@ -1,7 +1,8 @@
 // Function to create a convoy that moves to an area, then deploys an item. 
 params ["_deployClass", "_deployPoint", "_deployType"];
 _convoySpawnPos = selectRandom ["INS_1", "INS_2", "INS_3", "INS_4", "INS_5"];
-_vehicle = selectRandom fox_opfTrk;
+_opfordb = ["new", format ["OPFOR Compositions %1 %2", missionName, worldName]] call oo_inidbi;
+_vehicle = selectRandom (["read", ["opfSupplyTrucks", "Classes"]] call _opfordb);
 _spawnVeh = [getMarkerPos _convoySpawnPos, random 360, _vehicle, east] call BIS_fnc_spawnVehicle;
 
 systemChat format ["%1 : %2 : %3", _deployClass, _deployPoint, _deployType];

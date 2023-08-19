@@ -1,15 +1,29 @@
 // Manages the convoy functions 
+_opfordb = ["new", format ["OPFOR Compositions %1 %2", missionName, worldName]] call oo_inidbi;
+_regDb = ["new", format ["o Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
+
+// Variables 
+_arty = ["read", ["opfArty", "Classes"]] call _opfordb;
+_aa = ["read", ["opfAA", "Classes"]] call _opfordb;
+
 while {true} do {
 	if (playersNumber west > 0) then {
 		systemChat "Running Convoy!";
 		_deployClass = "";
-		_deployPoint = [["AO"], ["base", "water"]] call BIS_fnc_randomPos;
+		// Get locations that are hostile still 
+		_sections = "getSections" call _regDb;
+		_locations = [];
+		{
+			_pos = ["read", [_x, "Position"]] call _regDb;
+			_locations pushback _pos;	
+		} forEach _sections;
+		_deployPoint = selectRandom _locations;
 		_deployPoint = [_deployPoint, 0, 200, 7, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
 		_deployType = selectRandom ["OPFOR AA Sites", "Opfor Artillery"];
 
 		switch (_deployType) do {
-			case "OPFOR AA Sites": {_deployClass = selectRandom ["O_A_Static_AA_F"]};
-			case "Opfor Artillery": {_deployClass = selectRandom ["O_T_MBT_02_arty_ghex_F", "O_T_Truck_02_MRL_F"]};
+			case "OPFOR AA Sites": {_deployClass = selectRandom _aa};
+			case "Opfor Artillery": {_deployClass = selectRandom _arty};
 		};
 
 		[_deployClass, _deployPoint, _deployType] remoteExec ["fce_fnc_createConvoy", 2];
