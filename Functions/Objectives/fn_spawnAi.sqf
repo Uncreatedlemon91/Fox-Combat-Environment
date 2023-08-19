@@ -61,7 +61,7 @@ if (_active == true) then {
 				// Get the players with a 117 radio on them 
 				_radioOperators = [];
 				{
-					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
+					_hasRadio = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
 					if (_hasRadio) then {
 						_radioOperators pushback _x;
 					};
@@ -83,7 +83,7 @@ if (_active == true) then {
 				// Get the players with a 117 radio on them 
 				_radioOperators = [];
 				{
-					_hasRadio = [_x, "ACRE_PRC117F"] call acre_api_fnc_hasKindOfRadio;
+					_hasRadio = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
 					systemChat "Check radios";
 					if (_hasRadio) then {
 						_radioOperators pushback _x;

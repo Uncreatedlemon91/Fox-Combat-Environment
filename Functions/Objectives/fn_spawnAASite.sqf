@@ -3,6 +3,8 @@ params ["_count"];
 _db = ["new", format ["Opfor Installations - %1 %2", missionName, worldName]] call oo_inidbi;
 _sections = "getSections" call _db;
 
+_opfdb = ["new", format ["OPFOR Compositions %1 %2", missionName, worldName]] call oo_inidbi;
+
 if ("OPFOR AA Sites" in _sections) then {
 	_keys =  ["getKeys", "OPFOR AA Sites"] call _db;
 	_count = count _keys;
@@ -31,7 +33,7 @@ if ("OPFOR AA Sites" in _sections) then {
 	for "_i" from 1 to _count do {
 		_spawnPos = [["AO"], ["Base", "Water"]] call BIS_fnc_randomPos;
 		_spawnPos = [_spawnPos, 0, 100, 5, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
-		_classToSpawn = selectRandom fox_opfAA;
+		_classToSpawn = selectRandom (["read", ["opfAA", "Classes"]] call _opfdb);
 		_data = [_spawnPos, _classToSpawn];
 
 		["write", ["Opfor AA Sites", format ["AA Site %1", _i], _data]] call _db;

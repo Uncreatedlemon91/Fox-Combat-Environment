@@ -36,13 +36,10 @@ if (_class == "Land_IPPhone_01_sand_F") then {
 	[_veh, ["ACRE_VRC103", "FOX Landlines", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;
 	
 	// Get the radio 
-	_radios = [_veh] call acre_api_fnc_getVehicleRacks;
+	_radioId = ["ACRE_PRC152", _veh] call acre_api_fnc_getRadioByType;
+	[_radioId, 101] call acre_api_fnc_setRadioChannel;
+	_success = [_radioId, "INTAUDIO"] call acre_api_fnc_setRadioAudioSource
 
-	// Set radio to speaker + change to channel 101 for landline
-	{
-		[_x, true] call acre_api_fnc_setRadioSpeaker;
-		[_x, 101] call acre_api_fnc_setRadioChannel;
-	} forEach _radios;
 };
 
 _deleteObject = [
