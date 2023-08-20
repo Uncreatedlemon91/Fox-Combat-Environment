@@ -48,5 +48,10 @@ class CfgFunctions
 			class loadItems {};
 			class loadVehicles {};
 		};
+		class Civilians
+		{
+			class initCiv {};
+			class civPopulate {};
+		};
 	};
 };

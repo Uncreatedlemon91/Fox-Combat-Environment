@@ -18,6 +18,9 @@
 // Start environmental module
 [] execVM "WorldBuilder\startWorldBuilder.sqf";
 
+// Start Civilian Module 
+[] remoteExec ["fce_fnc_initCiv", 2];
+
 // Add event handlers 
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];

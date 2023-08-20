@@ -15,7 +15,6 @@ _sections = "getSections" call _db;
 	_popLoyalty = _data select 4;
 	_vehCount = _data select 5;
 
-	_civs = [];
 	// Spawn Civilian at house 
 	for "_i" from 1 to _popCount do {
 		_homePos = selectRandom _homes;
