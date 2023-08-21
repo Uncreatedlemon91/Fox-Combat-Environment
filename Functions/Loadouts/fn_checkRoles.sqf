@@ -1,3 +1,4 @@
+// Check roles of players and make sure they have a whitelisted slot to take the kbAddTopic
 params ["_loadout", "_player"];
 
 _uid = getPlayerUID _player;
