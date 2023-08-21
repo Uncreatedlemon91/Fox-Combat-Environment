@@ -4,6 +4,9 @@
 _db = ["new", [format ["Civilian Module - %1 %2", missionName, worldName]]] call oo_inidbi;
 _sections = "getSections" call _db;
 
+// Reference the civilian types database 
+_Cdb = ["new", format ["Civilian Compositions %1 %2", missionName, worldName]] call oo_inidbi;
+
 // For each location, populate the town 
 {
 	// Grab the database data 

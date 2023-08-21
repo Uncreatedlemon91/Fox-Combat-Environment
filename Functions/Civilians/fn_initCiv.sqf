@@ -15,7 +15,7 @@ if (_exists) then {
 		// Get the name of the location 
 		_name = str _x;
 
-		// Get the position of the 'location'
+		// Get the position of the location
 		_pos = getPos _x;
 
 		// Count the amount of houses that can be used as Civilian Spawn points 
@@ -23,7 +23,7 @@ if (_exists) then {
 		_countHomes = count _homes;
 
 		// Set initial population count by dividing the amount of houses by 3
-		_popCount = round (_homes / 3);
+		_popCount = round (_countHomes / 3);
 
 		// Set population loyalty, a random number between 1 and 100
 		_popLoyalty = round (random 100);
