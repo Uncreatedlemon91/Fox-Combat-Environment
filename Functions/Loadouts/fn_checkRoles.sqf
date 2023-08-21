@@ -13,7 +13,7 @@ _whitelisted = ["read", [_uid, "Roles"]] call _db;
 if (_loadout in _whitelisted) then {
 	["write", [_uid, "CurrentRole", _loadout]] call _db;
 } else {
-	"You are not registered for this role! Contact S4 for training" remoteExec ["systemChat", _netid, true];
+	"You are not registered for this role! Contact S4 for training" remoteExec ["systemChat", _netid];
 	_player setUnitLoadout (getUnitLoadout dummy);
 	_player setVariable ["roleLoadout", "Dummy"];
 };
