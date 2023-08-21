@@ -2,7 +2,6 @@
 params ["_veh"];
 
 // Database addition
-_pDb = ["new", format ["Player Profiles %1 %2", missionName, worldName]] call oo_inidbi;
 
 _veh addEventHandler ["GetIn", {
 	params ["_vehicle", "_role", "_unit", "_turret"];
@@ -38,17 +37,3 @@ _veh addEventHandler ["Killed", {
 
 // Setup ACRE Radio on the vehicle 
 [_veh, ["ACRE_VRC103", "FOX Radio Network", "Land", false, ["inside"], ["CARGO"], "ACRE_PRC117F", [], []], true] call acre_api_fnc_addRackToVehicle;
-
-// If the vehicle is a phone line 
-/*if (_class == "Land_IPPhone_01_sand_F") then {
-	[_veh, ["ACRE_VRC103", "FOX Landlines", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;
-	
-	// Get the radio 
-	_radios = [_veh] call acre_api_fnc_getVehicleRacks;
-
-	// Set radio to speaker + change to channel 101 for landline
-	{
-		[_x, true] call acre_api_fnc_setRadioSpeaker;
-		[_x, 101] call acre_api_fnc_setRadioChannel;
-	} forEach _radios;
-};
