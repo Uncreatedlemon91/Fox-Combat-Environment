@@ -4,23 +4,20 @@ class CfgFunctions
 	{
 		class Logistics
 		{
-			class openMenu {};
-			class getLogiData {};
+			class startLogistics {};
 			class spawnVehicle {};
 			class addAceActions {};
-			class populateList {};
-			class addKeys {};
+			class ammoBoxActions {};
+			class openLogiMenu {};
+			class defineObjects {};
 		};
 		class Loadouts
 		{
-			class loadoutMenu {};
-			class UpdateListBox {};
-			class UpdateSoldier {};
-			class GetLoadout {};
-			class moveCamera {};
-			class RadioSetup {};
-			class respawnPlayer {};
-			class checkRoles {};
+			class loadout_DefineKits {};
+			class loadout_GetKit {};
+			class loadout_OpenMenu {};
+			class loadout_PrepMenu {};
+			class loadout_SyncKit {};
 		};
 		class Objectives
 		{
@@ -47,11 +44,33 @@ class CfgFunctions
 			class deleteVehicle {};
 			class loadItems {};
 			class loadVehicles {};
+			class startSpec {};
 		};
 		class Civilians
 		{
 			class initCiv {};
 			class civPopulate {};
+			class spawnCiv {};
+		};
+		class Whitelist
+		{
+			class GetWLData {};
+			class OpenWlMenu {};
+			class LoadWlMenu {};
+			class initWl {};
+			class UpdateWL {};
+		};
+		class FOB 
+		{
+			class addFobActions {};
+			class FobSupplies {};
+			class deployFOB {};
+			class deleteFob {};
+			class loadFOBs {};
+		};
+		class Actions 
+		{
+			class CheckVehicles {};
 		};
 	};
 };

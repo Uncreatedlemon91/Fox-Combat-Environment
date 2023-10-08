@@ -24,5 +24,7 @@ _date = format ["%4%5/%2%3/%1",
 
 _time = format ["%1H:%2M", _hours, _minutes];
 
-_db = ["new", format ["Player Deaths %1 %2", missionName, worldName]] call oo_inidbi;
-["write", [_date, _uid, format ["%1 killed by %2, a %3 at %4", _name, _killerName, _killerType, _time]]] call _db;
+if !(_name == _killerName) then {
+	_db = ["new", format ["Player Deaths %1 %2", missionName, worldName]] call oo_inidbi;
+	["write", [_date, _uid, format ["%1 killed by %2, a %3 at %4", _name, _killerName, _killerType, _time]]] call _db;
+};

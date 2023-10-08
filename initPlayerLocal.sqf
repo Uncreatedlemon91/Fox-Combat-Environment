@@ -3,11 +3,11 @@ _name = name player;
 _id = clientOwner; 
 _uid = getPlayerUID player;
 [_name, _uid, _id] remoteExec ["fce_fnc_getPlayerData", 2];
+[] remoteExec ["fce_fnc_defineObjects", clientOwner];
 
 // Add event handlers to player 
 player addEventHandler ["Respawn", {
 	params ["_unit", "_corpse"];
-	_unit setPosatl [-3375.42,1722.5,143.777];
 	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
@@ -22,11 +22,14 @@ player addEventHandler ["Respawn", {
 	removeAllAssignedItems _corpse;
 	removeBackpack _corpse;
 
+	_name = name _unit;
+	_id = clientOwner; 
+	_uid = getPlayerUID _unit;
+	[_name, _uid, _id] remoteExec ["fce_fnc_getPlayerData", 2];
+
 	_unit linkItem "ItemMap";
 	_unit linkItem "ItemCompass";
 	_unit linkItem "ItemWatch";
-
-	systemChat "Welcome to the after life...";
 }];
 
 player addEventHandler ["Killed", {
@@ -36,13 +39,16 @@ player addEventHandler ["Killed", {
 
 player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
-	[_unit, _role, _vehicle] remoteExec ["fce_fnc_CheckVehicles", 2];
+	[_unit, _role, _vehicle, clientOwner, "GetIn"] remoteExec ["fce_fnc_CheckVehicles", 2];
+}];
+
+player addEventHandler ["SeatSwitchedMan", {
+	params ["_unit1", "_unit2", "_vehicle"];
+	[_unit1, _unit2, _vehicle, clientOwner, "Switch"] remoteExec ["fce_fnc_CheckVehicles", 2];
 }];
 
 while {true} do {
 	player unlinkItem "ItemGPS";
 	player removeItem "ItemGPS";
-	player unlinkItem "ItemRadio";
-	player removeItem "ItemRadio";
 	sleep 20;
 };

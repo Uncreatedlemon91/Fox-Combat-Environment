@@ -1,5 +1,5 @@
 params ["_name", "_UID", "_netID", "_pos", "_gear", "_dir", "_roles"];
-_db = ["new", format ["Player Profiles %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", "Player Profiles"] call oo_inidbi;
 _sections = "getSections" call _db;
 
 if (_uid in _sections) then {

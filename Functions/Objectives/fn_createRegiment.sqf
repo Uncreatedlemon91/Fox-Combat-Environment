@@ -18,7 +18,7 @@ switch (_regimentType) do {
 	case "Special Operations": {_regimentMarker = format ["%1_Recon", _regimentSide]; _regimentSpeed = 8; _values = [0.8, 0.1, 0.1, 0.5, 0.1]};
 	case "Armored": {_regimentMarker = format ["%1_Armor", _regimentSide]; _regimentSpeed = 6; _values = [0.8, 0.2, 0.2, 0.2, 0.5]};
 };
-_regimentSize = round (random [10, 15, 20]);
+_regimentSize = round (random [4, 8, 12]);
 _HqPos = [[_locMkr], ["base", "water"]] call BIS_fnc_randomPos;
 _noPos = _hqPos inArea "NoLocation";
 if (_noPos) then {
@@ -45,7 +45,7 @@ _trg = createTrigger ["EmptyDetector", _hqPos, true];
 _trg setVariable ["Active", false, true];
 _trg setVariable ["Regiment", _regimentName];
 _trg setVariable ["Side", _regimentSide];
-_trg setTriggerArea [1500, 1500, 0, false, 500];
+_trg setTriggerArea [900, 900, 0, false, 100];
 _trg setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 _trg setTriggerStatements ["this", "[thisTrigger] remoteExec ['fce_fnc_SpawnAI', 2]", ""];
 
@@ -62,7 +62,7 @@ for "_i" from 1 to _regimentSize do {
 	_pltType = "";
 	_pltSize = 4;
 	switch (_groupType) do {
-		case "Infantry": {_pltType = _inf; _pltSize = round (random [15, 20, 25]);};
+		case "Infantry": {_pltType = _inf; _pltSize = round (random [8, 10, 12]);};
 		case "Mechanized": {_pltType = _mech; _pltSize = 1;};
 		case "Motorized": {_pltType = _mot; _pltSize = 1;};
 		case "Special Operations": {_pltType = _recon; _pltSize = round (random [6, 8, 10]);};

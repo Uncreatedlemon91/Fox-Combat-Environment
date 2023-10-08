@@ -1,21 +1,74 @@
-params ["_unit", "_role", "_veh"];
+params ["_unit", "_role", "_veh", "_clientId", "_type"];
 
 // Get player data information 
-_db = ["new", format ["Player Profiles %1 %2", missionName, worldName]] call oo_inidbi;
-_uid = getPlayerUID _unit;
-_curRole = ["read", [_uid, "CurrentRole"]] call _db;
+_db = ["new", "Player Profiles"] call oo_inidbi;
+_curRole = ["read", [_clientId, "CurrentRole"]] call _db;
 
+_whitelistedd = [];
+_whitelistedg = [];
+_check = false;
+
+systemChat format ["%1 - %2 - %3 - %4 - %5", _veh, _role, _veh, _clientID, _type];
 // Define vehicle 
-if (_veh isKindOf "Tank") then {
-	_whitelistedRoles = ["fox_crewLeader", "fox_crew"];
-	if !(_curRole in _whitelistedRoles) then {
-		_unit action ["GetOut", _veh];
+if (_veh in fox_lightVehicles) then {
+	_whitelistedd = ["LV Crewman", "LV Commander"];
+	_whitelistedg = ["LV Crewman", "LV Commander"];
+	_check = true;
+};
+if (_veh in fox_mediumVehicles) then {
+	_whitelistedd = ["APC/IFV Crewman", "APC/IFV Commander"];
+	_whitelistedg = ["APC/IFV Crewman", "APC/IFV Commander"];
+	_check = true;
+};
+if (_veh in fox_heavyVehicles) then {
+	_whitelistedd = ["MBT Crewman", "MBT Commander"];
+	_whitelistedg = ["MBT Crewman", "MBT Commander"];
+	_check = true;
+};
+if (_veh in fox_artyVehicles) then {
+	_whitelistedd = ["Mortarman", "Mortar Assistant", "Mortar Security"];
+	_whitelistedg = ["Mortarman", "Mortar Assistant", "Mortar Security"];
+	_check = true;
+};
+if (_veh in fox_heloVehiclesT) then {
+	_whitelistedd = ["Rotary Pilot (Transport / Logistics)"];
+	_whitelistedg = ["Rotary Pilot (Transport / Logistics)", "Rotary Crew Chief / Door Gunner"];
+	_check = true;
+};
+if (_veh in fox_heloVehiclesM) then {
+	_whitelistedd = ["Rotary Pilot (Multi)"];
+	_whitelistedg = ["Rotary Pilot (Multi)", "Rotary Crew Chief / Door Gunner"];
+	_check = true;
+};
+if (_veh in fox_heloVehiclesA) then {
+	_whitelistedd = ["Rotary Pilot (Attack)"];
+	_whitelistedg = ["Rotary Pilot (Attack)"];
+	_check = true;
+};
+
+
+// Check player current role vs whitelisted for driver when they change to Driver / Gunner slots
+if (_type == "Switch") then {
+	
+	_roleArray = assignedVehicleRole _unit;
+	if (!(_curRole in _whitelistedd) AND ("driver" in _roleArray) AND (_check)) then {
+		moveOut _unit;
+		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
+	};
+	if (!(_curRole in _whitelistedg) AND ("gunner" in _roleArray) AND (_check)) then {
+		moveOut _unit;
+		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
 	};
 };
 
-if (_veh isKindOf "Air") then {
-	_whitelistedRoles = ["fox_hPilot", "fox_hCrew", "fox_jPilot"];
-	if !(_curRole in _whitelistedRoles) then {
-		_unit action ["GetOut", _veh];
+// Check player current role vs whiitelisted for driver / gunner when they get in to that slot
+if (_type == "GetIn") then {
+	if (!(_curRole in _whitelistedd) AND (_role == "DRIVER") AND (_check)) then {
+		moveOut _unit;
+		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
+	};
+	if (!(_curRole in _whitelistedg) AND (_role == "GUNNER") AND (_check)) then {
+		moveOut _unit;
+		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
 	};
 };

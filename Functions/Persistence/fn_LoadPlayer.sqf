@@ -1,18 +1,12 @@
 // Load player data and apply it to the player unit 
-params ["_pos", "_gear", "_dir", "_roles", "_curRole"];
+params ["_pos", "_gear", "_dir", "_roles", "_curRole", "_kit"];
 
-player setPosATL _pos;
+// player setPosATL _pos;
 player setUnitLoadout _gear;
-player setDir _dir;
+
+// player setDir _dir;
 player setVariable ["roleLoadout", _curRole];
+player setVariable ["fox_loadout_kit", _kit];
 
-// Clear all ACE role permissions 
-player setVariable ["ACE_IsEngineer",0, true];
-player setVariable ["ace_medical_medicclass", 0, true];
-
-// Set ACE Permissions based on role 
-switch (_loadout) do {
-	case "fox_medTech": {player setVariable ["ace_medical_medicclass", 1, true]};
-	case "fox_surgeon": {player setVariable ["ace_medical_medicclass", 2, true]};
-	case "fox_cEngineer": {player setVariable ["ACE_IsEngineer", 1, true]};
-};
+// Add a respawn point to the map
+[player, _pos, "Last Known Location"] call BIS_fnc_addRespawnPosition;

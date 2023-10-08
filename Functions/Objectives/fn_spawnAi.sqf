@@ -41,15 +41,10 @@ if (_active == true) then {
 			params ["_unit", "_groupOfUnit", "_target"];
 
 			_chanceOfAirSupport = random 100;
-			_chanceOfParatrooper = random 100;
 
-			if (_chanceOfAirSupport < 15) then {
+			if (_chanceOfAirSupport < 25) then {
 				[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
 				systemChat "Calling in Air";
-			};
-
-			if (_chanceofParatrooper < 15) then {
-				[_unit] execVM "Regiments\AIParatroopers.sqf";
 			};
 		}] call BIS_fnc_addScriptedEventHandler;
 
@@ -68,7 +63,7 @@ if (_active == true) then {
 				} forEach allPlayers;
 				
 				_receiver = selectRandom _radioOperators;
-				_receiverID = owner _receiver;
+				_receiverID = netId _receiver;
 				_arty = [configFile >> "CfgVehicles" >> typeOf _ArtilleryGun] call BIS_fnc_displayName;
 				format ["[RADIO INTERCEPT] This is %2 to %3. We are requesting immediate fire mission on %1", _TargetPosition, _groupOfUnit, _ArtilleryGun] remoteExec ["SystemChat", _receiverID];
 			};

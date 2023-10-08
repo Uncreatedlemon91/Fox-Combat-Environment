@@ -9,6 +9,7 @@ _unit setVariable ["Group", _groupID, true];
 _unit setRank _regimentRank;
 
 // add event handlers
+// Adds intel check on sleeves of AI 
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[
@@ -27,6 +28,7 @@ _unit addEventHandler ["Killed", {
 	]] remoteExec ["Addaction", 0, true];
 }];
 
+// Clean body when it is killed
 _unit addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	removeAllWeapons _unit;

@@ -52,6 +52,7 @@ _sections = "getSections" call _db;
 	["deleteSection", _x] call _db;
 	[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];
 	[_veh, 0] remoteExec ["fce_fnc_saveVehicle", 2];
+	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	_veh allowDamage true;
 } forEach _sections;
 

@@ -1,5 +1,5 @@
 _base = getMarkerPos "BASE";
-_locs = nearestLocations [_base, ["Name", "NameCity", "NameLocal", "NameVillage", "Mount", "Hill", "RockArea","Strategic", "Flag"], worldSize * 4];
+_locs = nearestLocations [_base, ["Name", "NameCity", "NameLocal", "NameVillage", "Strategic", "Flag"], worldSize * 4];
 _countLocs = count _locs;
 _mkrAlpha = 0;
 

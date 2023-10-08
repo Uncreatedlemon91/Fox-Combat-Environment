@@ -34,5 +34,5 @@ while {_loop} do {
 		_trg setVariable ["Active", false];
 		_loop = false;
 	};
-	sleep 5;
+	sleep 15;
 };
