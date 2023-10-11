@@ -7,7 +7,7 @@ _mkr setMarkerShapeLocal "Ellipse";
 _mkr setMarkerSize [100, 100];
 _tgtPos = [[_mkr], ["base", "water"]] call BIS_fnc_randomPos;
 
-_jetClass = selectRandom ["rhssaf_airforce_o_l_18", "rhssaf_airforce_o_l_18_101", "RHS_TU95MS_vvs_old", "rhssaf_airforce_o_ht40", "rhssaf_airforce_o_ht48"];
+_jetClass = selectRandom ["RHS_TU95MS_vvs_tambov", "RHS_Ka52_vvsc", "RHS_Mi24V_vvsc", "rhs_mig29sm_vvs", "RHS_Su25SM_vvs", "rhs_mig29s_vvs"];
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
 _jet = [_spawnPos, random 360, _jetClass, east] call BIS_fnc_spawnVehicle;
 
@@ -17,6 +17,7 @@ _jetG = _jet select 2;
 
 _jetG deleteGroupWhenEmpty true;
 _jetG setCombatMode "RED";
+_jetG setSpeedMode "FULL";
 _jetG move _tgtPos;
 _jetV flyInHeight random [100, 400, 900];
 

@@ -2,7 +2,7 @@ params ["_veh"];
 
 _class = typeOf _veh;
 _isVehicle = false;
-if ((_class in fox_generalVehicles) OR (_class in fox_lightVehicles) OR (_class in fox_mediumVehicles) OR (_class in fox_heavyVehicles) OR (_class in fox_medicalVehicles) OR (_class in fox_artyVehicles) OR (_class in fox_supplyVehicles)) then {
+if ((_class in fox_generalVehicles) OR (_class in fox_lightVehicles) OR (_class in fox_mediumVehicles) OR (_class in fox_heavyVehicles) OR (_class in fox_medicalVehicles) OR (_class in fox_artyVehicles) OR (_class in fox_supplyVehicles) OR (_class in fox_heloVehiclesT) OR (_class in fox_heloVehiclesM) OR (_class in fox_heloVehiclesA) OR (_class in fox_AA)) then {
 	_isVehicle = true;
 };
 

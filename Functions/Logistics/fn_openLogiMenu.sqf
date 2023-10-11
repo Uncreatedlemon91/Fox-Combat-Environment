@@ -22,7 +22,8 @@ _categories = [
 	"Attack Helicopters",
 	"Supplies",
 	"Base Items",
-	"Anti Air"
+	"Anti Air",
+	"Building Materials"
 ];
 {
 	_categoryList lbadd _x;
@@ -30,6 +31,7 @@ _categories = [
 
 // Add button interactions
 _spawnButton buttonSetAction "_class = player getVariable ""fox_btn_log_item""; [_class] call fce_fnc_spawnVehicle";
+_exitButton buttonSetAction "closeDialog 2";
 
 // Add event handlers to the interface 
 _categoryList ctrlAddEventHandler ["LBSelChanged", {
@@ -76,6 +78,9 @@ _categoryList ctrlAddEventHandler ["LBSelChanged", {
 		};
 		case 12: {
 			_items = fox_aa;
+		};
+		case 13: {
+			_items = fox_baseBuilding;
 		};
 	};
 

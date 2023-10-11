@@ -8,7 +8,7 @@ _whitelistedd = [];
 _whitelistedg = [];
 _check = false;
 
-systemChat format ["%1 - %2 - %3 - %4 - %5", _veh, _role, _veh, _clientID, _type];
+_veh = typeOf _veh;
 // Define vehicle 
 if (_veh in fox_lightVehicles) then {
 	_whitelistedd = ["LV Crewman", "LV Commander"];
@@ -46,16 +46,11 @@ if (_veh in fox_heloVehiclesA) then {
 	_check = true;
 };
 
-
 // Check player current role vs whitelisted for driver when they change to Driver / Gunner slots
 if (_type == "Switch") then {
 	
 	_roleArray = assignedVehicleRole _unit;
-	if (!(_curRole in _whitelistedd) AND ("driver" in _roleArray) AND (_check)) then {
-		moveOut _unit;
-		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
-	};
-	if (!(_curRole in _whitelistedg) AND ("gunner" in _roleArray) AND (_check)) then {
+	if (!(_curRole in _whitelistedd) AND !("cargo" in _roleArray) AND (_check)) then {
 		moveOut _unit;
 		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
 	};
@@ -63,11 +58,7 @@ if (_type == "Switch") then {
 
 // Check player current role vs whiitelisted for driver / gunner when they get in to that slot
 if (_type == "GetIn") then {
-	if (!(_curRole in _whitelistedd) AND (_role == "DRIVER") AND (_check)) then {
-		moveOut _unit;
-		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
-	};
-	if (!(_curRole in _whitelistedg) AND (_role == "GUNNER") AND (_check)) then {
+	if (!(_curRole in _whitelistedd) AND !(_role == "CARGO") AND (_check)) then {
 		moveOut _unit;
 		"Your role doesn't have access to this seat!" remoteExec ["systemChat", _clientId];
 	};
