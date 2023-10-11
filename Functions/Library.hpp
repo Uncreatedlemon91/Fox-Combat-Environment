@@ -63,7 +63,6 @@ class CfgFunctions
 		class FOB 
 		{
 			class addFobActions {};
-			class FobSupplies {};
 			class deployFOB {};
 			class deleteFob {};
 			class loadFOBs {};
