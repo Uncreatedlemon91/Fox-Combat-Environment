@@ -1,8 +1,8 @@
-params ["_unit", "_role", "_veh", "_clientId", "_type"];
+params ["_unit", "_role", "_veh", "_clientId", "_type", "_uid"];
 
 // Get player data information 
 _db = ["new", "Player Profiles"] call oo_inidbi;
-_curRole = ["read", [_clientId, "CurrentRole"]] call _db;
+_curRole = ["read", [_uid, "CurrentRole"]] call _db;
 
 _whitelistedd = [];
 _whitelistedg = [];

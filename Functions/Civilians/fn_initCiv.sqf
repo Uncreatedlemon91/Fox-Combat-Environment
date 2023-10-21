@@ -1,42 +1,41 @@
-// Find all locations that are predetermined by the Server Init file. 
-// These will be used to build AI population centers. 
-_base = getMarkerPos "BASE";
-_locs = nearestLocations [_base, ["Name", "NameCity", "NameLocal", "NameVillage"], worldSize * 4];
+// Starts the civilian module. 
+// Populate the map with AI Civilians and give them tasks. 
+// Needs a civilian task manager to allow users to see AI move around and complete tasks 
+// Incorporated with the Insurgency Module 
+_db = ["new", format ["City Profiles %1 %2", missionName, worldName]] call oo_inidbi;
+_exists = "exists" call _db;
+if !(_exists) then {
+	// Get locations to use 
+	_locs = nearestLocations [getMarkerPos "Base", [
+		"NameCity",
+		"NameCityCapital",
+		"NameLocal",
+		"NameVillage"
+	], worldSize];
 
-// Initialize the database for civilian locations 
-_db = ["new", format ["Civilian Module - %1 %2", missionName, worldName]] call oo_inidbi;
-_exists = "Exists" call _db;
-
-if (_exists) then {
-	// Load the database 
-} else {
-	// Create a database
 	{
-		// Get the name of the location 
-		_name = text _x;
+		// If server owner is local, show map markers for debugging
+		_mkr = createMarker [format ["%1 - %2", text _x, getpos _x], getPos _x]; 
+		_mkr setMarkerTypelocal "hd_dot";
+		_mkr setMarkerColorLocal "COLORBLUE";
+		_mkr setMarkerTextLocal text _x;
 
-		// Get the position of the location
-		_pos = getPos _x;
-
-		// Count the amount of houses that can be used as Civilian Spawn points 
-		_homes = nearestObjects [_pos, ["house"], 400];
-		_countHomes = count _homes;
-
-		// Set initial population count by dividing the amount of houses by 3
-		_popCount = round (_countHomes / 6);
-
-		// Set population loyalty, a random number between 1 and 100
-		_popLoyalty = round (random 100);
-
-		// Set initial vehicle count, based on population count...divide it by 3
-		_vehCount = round (_popCount / 3);
-
-		// Compile data to send to inidbi 
-		_data = [_name, _pos, _countHomes, _popCount, _popLoyalty, _vehCount];
-		["write", [_name, "Town Data", _data]] call _db;
+		// Build city profile 
+		[_x] remoteExec ["fce_fnc_setupCity", 2];
+		sleep 5;
 	} forEach _locs;
+} else {
+	_sections = "getSections" call _Db;
+	{
+		_name = ["read", [_x, "City Name"]] call _db;
+		_pos = ["read", [_x, "City Position"]] call _db;
+
+		_mkr = createMarker [format ["%1 - %2", _name, _pos], _pos]; 
+		_mkr setMarkerTypelocal "hd_dot";
+		_mkr setMarkerColorLocal "COLORBLUE";
+		_mkr setMarkerTextLocal _name;
+	} forEach _sections;
+	
+	[] remoteExec ["fce_fnc_loadCiv", 2];
+	[] remoteExec ["fce_fnc_loadStash", 2];
 };
-
-// Setup civilians for each town 
-[] remoteExec ["fce_fnc_CivPopulate", 2];
-

@@ -44,4 +44,4 @@ _db = ["new", format ["FOBs %1 %2", missionName, worldName]] call oo_inidbi;
 ["write", [_nameID, "Supply", _supply]] call _db;
 
 // Add disable fob action to area 
-[_fobArea, true] remoteExec ["fce_fnc_addFobActions"];
+[_fobArea, true] remoteExec ["fce_fnc_addFobActions", 0, true];

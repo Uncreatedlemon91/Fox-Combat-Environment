@@ -1,33 +1,46 @@
-// Spawns AI Civilians and applies logic to them. 
+// Spawns a Civilian
 params ["_trg"];
+// systemChat "Civ Spawning";
+// systemChat format ["%1", _civ];
+_civID = _trg getVariable "fox_civ_data";
 
-// Debug 
-systemChat "Civilian Spawning!";
+// Database loading 
+_db = ["new", format ["Civilian Database %1 %2", missionName, worldName]] call oo_inidbi;
+_name = ["read", [_civID, "Name"]] call _db;
+_face = ["read", [_civID, "Face"]] call _db;
+_homeTown = ["read", [_civID, "Home Town"]] call _db;
+_loadout = ["read", [_civID, "Loadout"]] call _db;
+_hostility = ["read", [_civID, "Hostility"]] call _db;
+_pos = ["read", [_civID, "Position"]] call _db;
+_languages = ["read", [_civID, "Languages"]] call _db;
+_home = ["read", [_civID, "Home"]] call _db;
+_status = ["read", [_civID, "Status"]] call _db;
+_hostile = ["read", [_civID, "Hostile"]] call _db;
 
-// Get the information from the trigger
-_civData = _trg getVariable "CivData";
+// Initialize civilian 
+_civG = createGroup civilian;
+_civ = _civG createUnit ["C_Man_1", _pos, [], 0, "CAN_COLLIDE"];
+_civ setVariable ["fox_civ_hostility", _hostility, true];
+_civ setVariable ["fox_civ_status", _status, true];
+_civ setVariable ["fox_civ_home", _home, true];
+_civ setVariable ["fox_civ_hostile", _hostile, true];
+_civ setVariable ["fox_civ_languages", _languages, true];
+_civ setVariable ["fox_civ_hometown", _hometown, true];
+_civ setVariable ["fox_civ_id", _civID, true];
 
-// Unpack the data 
-_name = _civData select 0;
-_face = _civData select 1;
-_gear = _civData select 2;
-_pos = _civData select 3;
-_loyalty = _civData select 4;
-_languages = _civData select 5;
-_civ = _civData select 6;
+[_civ, _face, nil, nil, nil, _name, nil] call BIS_fnc_setIdentity;
+// [_civ, _face] remoteExecCall ["setFace", 0, true];
+[_civ, _loadout] remoteExecCall ["setUnitLoadout", 0, true];
 
-// Spawn the AI unit 
-_grp = createGroup civilian;
-_unit = _grp createUnit [_civ, _pos, [], 20, "FORM"];
-_unit setPosATL _pos;
+// Add event handlers to Civilian AI 
+_civ addEventHandler ["Hit", {
+	params ["_unit", "_source", "_damage", "_instigator"];
+}];
 
-_unit setVariable ["Fox_Loyalty", _loyalty];
-_unit setVariable ["Fox_Lang", _languages];
-_unit setVariable ["Fox_Loy", _loyalty];
+_civ addEventHandler ["killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+}]
 
-_unit setName _name;
-_unit setUnitLoadout _gear;
-_unit setFace _face;
-
-// Set AI to walk around 
-[_grp, _pos, 200] call BIS_fnc_taskPatrol;
+sleep 3;
+// Provide direction 
+[_civ] remoteExec ["fce_fnc_taskManager", 2];

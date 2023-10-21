@@ -49,8 +49,16 @@ class CfgFunctions
 		class Civilians
 		{
 			class initCiv {};
-			class civPopulate {};
+			class setupCity {};
+			class createCivilian {};
 			class spawnCiv {};
+			class loadCiv {};
+			class taskManager {};
+			class createStash {};
+			class loadStash {};
+			class C_task_MoveHome {};
+			class C_task_SetIED {};
+
 		};
 		class Whitelist
 		{

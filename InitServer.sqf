@@ -3,7 +3,7 @@
 [] remoteExec ["Fce_fnc_defineClasses", 2];
 
 // Start Civilian Module 
-// [] remoteExec ["fce_fnc_initCiv", 2];
+[] remoteExec ["fce_fnc_initCiv", 2];
 
 // Create Regiment and Locations 
 [] execVM "Regiments\AOCreator.sqf";

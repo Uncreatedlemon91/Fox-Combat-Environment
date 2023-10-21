@@ -12,17 +12,3 @@ _Odb = ["new", format ["OPFOR Compositions %1 %2", missionName, worldName]] call
 	} forEach _units;
 	["write",[_x, "Classes", _definedUnit]] call _Odb;
 } forEach _opforTypes;
-
-
-_civTypes = ["CivPed", "CivVic"];
-_Cdb = ["new", format ["Civilian Compositions %1 %2", missionName, worldName]] call oo_inidbi;
-{
-	_units = (getMissionLayerEntities _x) select 0;
-	_type = _x;
-	_definedUnit = [];
-	{
-		_class = typeOf _x;
-		_definedUnit pushback _class;		
-	} forEach _units;	
-	["write", [_x, "Classes", _definedUnit]] call _Cdb;
-} forEach _civTypes;

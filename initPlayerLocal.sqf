@@ -39,14 +39,40 @@ player addEventHandler ["Killed", {
 
 player addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle", "_turret"];
-	[_unit, _role, _vehicle, clientOwner, "GetIn"] remoteExec ["fce_fnc_CheckVehicles", 2];
+	_uid = getPlayerUID player;
+	[_unit, _role, _vehicle, clientOwner, "GetIn", _uid] remoteExec ["fce_fnc_CheckVehicles", 2];
 }];
 
 player addEventHandler ["SeatSwitchedMan", {
 	params ["_unit1", "_unit2", "_vehicle"];
-	[_unit1, _unit2, _vehicle, clientOwner, "Switch"] remoteExec ["fce_fnc_CheckVehicles", 2];
+	_uid = getPlayerUID player;
+	[_unit1, _unit2, _vehicle, clientOwner, "Switch", _uid] remoteExec ["fce_fnc_CheckVehicles", 2];
 }];
 
+// Add weapon switching notice 
+waitUntil {!(isNull (findDisplay 46))};
+#include "\a3\ui_f\hpp\definedikcodes.inc"
+findDisplay 46 displayAddEventHandler ["KeyUp", {
+	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
+	if (_key == 33) then {
+		_wep = currentWeapon player;
+		_mode = currentWeaponMode player;
+		systemChat format ["%1 Mode: %2", _wep, _mode];
+	};
+}];
+
+// Add Grenade switching notice
+findDisplay 46 displayAddEventHandler ["KeyUp", {
+	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
+	if ((_key == 34) AND (_ctrl)) then {
+		_selThrowable = currentThrowable  player;
+		_class = _selThrowable select 0;
+		_name = gettext (configfile >> "CfgMagazines" >> _class >> "displayName");
+		systemChat format ["Selected Throwable: %1", _name];
+	};
+}];
+
+// Stop players getting a GPS
 while {true} do {
 	player unlinkItem "ItemGPS";
 	player removeItem "ItemGPS";

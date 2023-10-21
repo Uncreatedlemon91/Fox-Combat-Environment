@@ -14,6 +14,6 @@ player setVariable ["currentLoadout", _loadout, true];
 _uid = getPlayerUID player; 
 [_loadout, player, _uid] remoteExec ["fce_fnc_loadout_SyncKit", 2];
 
-
+sleep 1;
 // [player setUnitLoadout _kit;]
 [Ace_Arsenal, player] call ace_arsenal_fnc_openBox;
