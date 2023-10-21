@@ -20,7 +20,7 @@ _turrets = magazinesAllTurrets _veh;
 [_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 
 // Setup vehicle event handlers if it is a vehicle
-if ((_class in fox_generalVehicles) OR (_class in fox_lightVehicles) OR (_class in fox_mediumVehicles) OR (_class in fox_heavyVehicles) OR (_class in fox_medicalVehicles) OR (_class in fox_artyVehicles) OR (_class in fox_supplyVehicles)) then {
+if ((_class in fox_generalVehicles) OR (_class in fox_lightVehicles) OR (_class in fox_mediumVehicles) OR (_class in fox_heavyVehicles) OR (_class in fox_medicalVehicles) OR (_class in fox_artyVehicles) OR (_class in fox_supplyVehicles) OR (_class in fox_AA) OR (_class in fox_heloVehiclesA) OR (_class in fox_heloVehiclesM) or (_class in fox_heloVehiclesT)) then {
 	[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];
 	_veh setDamage 0.8;
 	_veh setFuel 0.1;

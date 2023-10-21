@@ -45,6 +45,7 @@ class CfgFunctions
 			class loadItems {};
 			class loadVehicles {};
 			class startSpec {};
+			class buildingDmg {};
 		};
 		class Civilians
 		{
@@ -78,6 +79,10 @@ class CfgFunctions
 		class Actions 
 		{
 			class CheckVehicles {};
+		};
+		class Buildings
+		{
+			class TaskRepairBuilding {};
 		};
 	};
 };
