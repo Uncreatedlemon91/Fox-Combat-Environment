@@ -39,7 +39,7 @@ if !(_isVehicle) then {
 	[_veh, 0, ["ACE_MainActions"], _deleteObject] call ace_interact_menu_fnc_addActionToObject;
 	
 	// Set If player can carry it 
-	[_veh, true, [0, 2, 1], 10] call ace_dragging_fnc_setCarryable;
+	[_veh, true, [0, 2, 1], 1] call ace_dragging_fnc_setCarryable;
 	
 	// Set Cargo Size 
 	[_veh, 1] call ace_cargo_fnc_setSize;

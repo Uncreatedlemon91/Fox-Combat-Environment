@@ -33,5 +33,7 @@ addMissionEventHandler ["HandleDisconnect", {
 	_dir = getDir _unit;
 	_name = name _unit;
 	_curRole = _unit getVariable "roleLoadout";
-	[_name, _UID, _id, _pos, _gear, _dir, _curRole] remoteExec ["fce_fnc_savePlayer", 2];
+	_med = [_unit] call ace_medical_fnc_serializeState;
+	_face = face _unit;
+	[_name, _UID, _id, _pos, _gear, _dir, _curRole, _med, _face] remoteExec ["fce_fnc_savePlayer", 2];
 }];

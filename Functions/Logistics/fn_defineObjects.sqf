@@ -55,12 +55,12 @@ fox_artyVehicles = [
 
 fox_heloVehiclesT = [
 	"PRACS_CH53",
-	"PRACS_Sa330_Puma"
+	"PRACS_Sa330_Puma_Marine"
 ];
 
 fox_heloVehiclesM = [
-	"PRACS_Sa330_Puma_SOCAT",
-	"PRACS_Sa330_Puma_MED"
+	"PRACS_Sa330_Puma_SOCAT_Marine",
+	"PRACS_Sa330_Puma_MED_Marine"
 ];
 
 fox_heloVehiclesA = [
