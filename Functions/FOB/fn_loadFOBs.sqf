@@ -8,7 +8,6 @@ _sections = "getSections" call _db;
 	_name = ["read", [_x, "Name"]] call _db;
 	_id = ["read", [_x, "ID"]] call _db;
 	_pos = ["read", [_x, "Position"]] call _db;
-	_supply = ["read", [_x, "Supply"]] call _db;
 
 	// Apply data from database to game world 
 	_fobArea = "PARACHUTE_TARGET" createVehicle _pos;
@@ -25,7 +24,6 @@ _sections = "getSections" call _db;
 	_nameID = format ["%1 %2", _name, _id];
 	_fobArea setVariable ["fox_fob_name", _name, true];
 	_fobArea setVariable ["fox_fob_id", _id, true];
-	_fobArea setVariable ["fox_fob_supply", _supply, true];
 	_fobArea setVariable ["fox_fob_mkr", _mkr, true];
 
 	// Add disable fob action to area 

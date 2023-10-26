@@ -74,6 +74,7 @@ class CfgFunctions
 			class deployFOB {};
 			class deleteFob {};
 			class loadFOBs {};
+			class checkSupplies {};
 		};
 		class Actions 
 		{

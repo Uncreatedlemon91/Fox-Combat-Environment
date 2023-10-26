@@ -33,7 +33,6 @@ _supply = 5;
 _nameID = format ["%1 %2", _name, _id];
 _fobArea setVariable ["fox_fob_name", _name, true];
 _fobArea setVariable ["fox_fob_id", _id, true];
-_fobArea setVariable ["fox_fob_supply", _supply, true];
 _fobArea setVariable ["fox_fob_mkr", _mkr, true];
 
 // Save the FOB to the database 
@@ -41,7 +40,6 @@ _db = ["new", format ["FOBs %1 %2", missionName, worldName]] call oo_inidbi;
 ["write", [_nameID, "Name", _name]] call _db;
 ["write", [_nameID, "ID", _id]] call _db;
 ["write", [_nameID, "Position", _pos]] call _db;
-["write", [_nameID, "Supply", _supply]] call _db;
 
 // Add disable fob action to area 
 [_fobArea, true] remoteExec ["fce_fnc_addFobActions", 0, true];
