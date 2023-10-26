@@ -2,7 +2,6 @@
 params ["_veh"];
 
 // Database addition
-
 _veh addEventHandler ["GetIn", {
 	params ["_vehicle", "_role", "_unit", "_turret"];
 	[_vehicle, 0] remoteExec ["fce_fnc_saveVehicle", 2];
