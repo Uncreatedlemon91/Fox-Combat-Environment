@@ -29,5 +29,5 @@ _sections = "getSections" call _db;
 	_fobArea setVariable ["fox_fob_mkr", _mkr, true];
 
 	// Add disable fob action to area 
-	[_fobArea, true] remoteExec ["fce_fnc_addFobAreaActions", 0, true];
+	[_fobArea, true] remoteExec ["fce_fnc_addFobActions", 0, true];
 } forEach _sections;
