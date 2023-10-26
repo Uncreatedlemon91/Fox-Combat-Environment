@@ -41,27 +41,25 @@ _vehicleClasses = [
 	};
 } forEach _vehicleClasses;
 
-// If the Vehicle is a FOB Item 
-if (_class == "B_Slingload_01_Cargo_F") then {
-	[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true];
-};
-
-// If the vehicle is an ammo box 
-if (_class == "Land_Ammobox_rounds_F") then {
-	[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true];
-};
-
 switch (_class) do {
 	// Repair Vehicles
 	case "PRACS_M250_Repair": {_veh setVariable ["ace_repair_canRepair", 1, true]};
+	
 	// Refuel Vehicles 
 	case "PRACS_M250_fuel": {[_veh, 3000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
 	case "PRACS_HEMMTT_Fueler": {[_veh, 3000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
 	case "PRACS_m548_fuel": {[_veh, 1000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
+	
 	// Rearming Trucks 
 	case "PRACS_m548_ammo": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
 	case "PRACS_m548_arty_tender": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
 	case "PRACS_M250_Ammo": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
 	
-	default { };
+	// Ammo box 
+	case "Land_Ammobox_rounds_F": {[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true]};
+
+	// FOB 
+	case "B_Slingload_01_Cargo_F": {[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true]};
+	
+	default {};
 };

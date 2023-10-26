@@ -44,6 +44,8 @@ if ("OPFOR AA Sites" in _sections) then {
 		_veh = _arty select 0;
 		_key = format ["Arty Group %1", _i];
 		_veh setVariable ["ID", _key];
+
+		// Add event handler upon death 
 		_veh addEventHandler ["Killed", {
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
 			_id = _unit getVariable "ID";
