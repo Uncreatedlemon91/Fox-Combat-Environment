@@ -55,7 +55,7 @@ waitUntil {!(isNull (findDisplay 46))};
 findDisplay 46 displayAddEventHandler ["KeyUp", {
 	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
 	if (_key == 33) then {
-		_wep = currentWeapon player;
+		_mode = currentWeaponMode player;
 		systemChat format ["Fire-mode: %1", _mode];
 	};
 }];
