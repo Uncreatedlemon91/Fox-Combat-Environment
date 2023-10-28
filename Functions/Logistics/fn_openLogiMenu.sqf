@@ -23,7 +23,8 @@ _categories = [
 	"Supplies",
 	"Base Items",
 	"Anti Air",
-	"Building Materials"
+	"Building Materials",
+	"Construction"
 ];
 {
 	_categoryList lbadd _x;
@@ -81,6 +82,9 @@ _categoryList ctrlAddEventHandler ["LBSelChanged", {
 		};
 		case 13: {
 			_items = fox_baseBuilding;
+		};
+		case 14: {
+			_items = fox_construction;
 		};
 	};
 

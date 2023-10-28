@@ -14,6 +14,23 @@ player setVariable ["currentLoadout", _loadout, true];
 _uid = getPlayerUID player; 
 [_loadout, player, _uid] remoteExec ["fce_fnc_loadout_SyncKit", 2];
 
-sleep 1;
+
 // [player setUnitLoadout _kit;]
 [Ace_Arsenal, player] call ace_arsenal_fnc_openBox;
+
+_engineer = 0;
+_medic = 0;
+
+
+// Assign ace roles 
+switch (_loadout) do {
+	case "Combat Engineer": {_engineer = 1};
+	case "Ground Crew": {_engineer = 2};
+	case "Squad Medic": {_medic = 1};
+	case "CSAR Operator": {_medic = 1};
+	case "Surgeon": {_engineer = 2};
+	default { };
+};
+
+player setVariable ["ace_medical_medicclass", _medic, true];
+player setVariable ["ace_isEngineer", _engineer, true];

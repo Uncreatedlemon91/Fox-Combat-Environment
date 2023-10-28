@@ -41,6 +41,5 @@ _civ addEventHandler ["killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 }];
 
-sleep 3;
 // Provide direction 
 [_civ] remoteExec ["fce_fnc_taskManager", 2];

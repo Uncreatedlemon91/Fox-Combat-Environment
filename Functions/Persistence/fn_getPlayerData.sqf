@@ -23,17 +23,14 @@ if (_uid in _getSections) then {
 		_dir = ["read", [_uid, "Direction"]] call _db;
 		_roles = ["read", [_uid, "Roles"]] call _db;
 		_curRole = ["read", [_uid, "CurrentRole"]] call _db;
-		_med = ["read", [_uid, "Med"]] call _db;
 		_face = ["read", [_uid, "Face"]] call _db;
 
 		// Set Kit expectations 
 		_kitdb = ["new", format ["Fox Kits %1 %2", missionName, worldName]] call oo_inidbi;
 		_kit = ["read", [_curRole, "Loadout"]] call _kitdb;
-
-		systemchat format ["[getPlayer] - Med %1", _med];
-
+		
 		// Send Data to player 
-		[_pos, _gear, _dir, _roles, _curRole, _kit, _med, _face] remoteExec ["fce_fnc_loadPlayer", _netID];
+		[_pos, _gear, _dir, _roles, _curRole, _kit,_face] remoteExec ["fce_fnc_loadPlayer", _netID];
 	};	
 } else {
 	_spawnPoint = getPosATL ace_arsenal;

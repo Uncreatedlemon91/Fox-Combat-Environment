@@ -71,9 +71,18 @@ findDisplay 46 displayAddEventHandler ["KeyUp", {
 	};
 }];
 
+waitUntil {inputAction "MoveForward" > 0};
+
+// Restore medical settings 
+_med = profileNameSpace getVariable "FCE_Med";
+[player, _med] call ace_medical_fnc_deserializeState;
+
 // Stop players getting a GPS
 while {true} do {
 	player unlinkItem "ItemGPS";
 	player removeItem "ItemGPS";
+	_med = [player] call ace_medical_fnc_serializeState;
+	profileNameSpace setVariable ["FCE_Med", _med];
+	[player] remoteExec ["fce_fnc_savePlayer", 2];
 	sleep 20;
 };

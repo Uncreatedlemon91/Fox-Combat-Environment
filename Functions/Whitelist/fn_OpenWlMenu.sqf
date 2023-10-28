@@ -26,7 +26,7 @@ _qualList = findDisplay 4 displayCtrl 1502;
 } forEach _quals;
 
 _whitelistButton = findDisplay 4 displayCtrl 1600;
-_whitelistButton buttonSetAction "closeDialog 2; _selected = player getVariable ""fox_wl_btn_data""; _uid = player getVariable ""fox_wl_btn_playeruid""; [_selected, _uid] remoteExec [""fce_fnc_UpdateWL"", 2]";
+_whitelistButton buttonSetAction "_selected = player getVariable ""fox_wl_btn_data""; _uid = player getVariable ""fox_wl_btn_playeruid""; [_selected, _uid] remoteExec [""fce_fnc_UpdateWL"", 2]; systemChat format [""%1 added to %2"", _selected, _uid]";
 
 
 _qualList ctrlAddEventHandler ["LBSelChanged", {

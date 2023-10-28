@@ -8,7 +8,7 @@ _netID = netId _player;
 _inBase = _player distance2D getMarkerPos "BASE";
 
 // Check if there are supplies nearby. 
-if (_inBase < 100) then {
+if (_inBase > 100) then {
 	if (_dist < 30) then {
 		// Remove the supply item 
 		deleteVehicle _nearObj;

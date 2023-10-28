@@ -70,9 +70,8 @@ _sections = "getSections" call _db;
 
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
-	_veh allowDamage false;
 	_veh setDir _dir;
-	_veh setDamage [_dmg, false];
+	_veh setDamage [_dmg, false, objNull, objNull];
 
 	["deleteSection", _x] call _wVic;
 	[_veh, 1] remoteExec ["fce_fnc_saveVehicle", 2];

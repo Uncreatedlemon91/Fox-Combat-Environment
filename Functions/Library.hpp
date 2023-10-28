@@ -85,6 +85,8 @@ class CfgFunctions
 			class TaskRepairBuilding {};
 			class loadBuildings {};
 			class buildingDmg {};
+			class addActionBuilding {};
+			class deleteBuildingWreckage {};
 		};
 	};
 };

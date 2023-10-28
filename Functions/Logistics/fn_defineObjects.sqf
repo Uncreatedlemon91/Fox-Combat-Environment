@@ -70,6 +70,7 @@ fox_heloVehiclesA = [
 
 fox_supplyVehicles = [
 	"PRACS_M250_Ammo",
+	"PRACS_M250_Repair",
 	"PRACS_M250_flat_bed",
 	"PRACS_M250_fuel",
 	"PRACS_M250_Salvage",
@@ -141,4 +142,11 @@ fox_AA = [
 	"PRACS_M727_SEM_IHAWK",
 	"PRACS_m48_chapparal",
 	"PRACS_MiM23_HAWK"
+];
+
+fox_construction = [
+	"Land_CinderBlocks_F",
+	"Land_Bricks_V1_F",
+	"Land_WorkStand_F",
+	"Land_WoodenPlanks_01_pine_F"
 ];
