@@ -1,9 +1,6 @@
 // Opens the menu to show the loadouts available and whitelisted to the player. 
 params ["_loadouts"];
 
-// Debug 
-systemChat "Menu opened!";
-
 // Open the menu and display whitelisted roles 
 createDialog "LoadoutsNew";
 

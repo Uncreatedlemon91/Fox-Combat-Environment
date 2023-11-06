@@ -79,6 +79,7 @@ class CfgFunctions
 		class Actions 
 		{
 			class CheckVehicles {};
+			class changeMap {};
 		};
 		class Buildings
 		{

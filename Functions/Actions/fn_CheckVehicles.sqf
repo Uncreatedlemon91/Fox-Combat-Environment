@@ -45,6 +45,11 @@ if (_veh in fox_heloVehiclesA) then {
 	_whitelistedg = ["Rotary Pilot (Attack)"];
 	_check = true;
 };
+if (_veh in fox_boats) then {
+	_whitelistedd = ["Naval Crewman"];
+	_whitelistedg = ["Naval Crewman"];
+	_check = true;
+};
 
 // Check player current role vs whitelisted for driver when they change to Driver / Gunner slots
 if (_type == "Switch") then {

@@ -126,7 +126,8 @@ fox_baseBuilding = [
 	"Land_Trophy_01_bronze_F",
 	"Land_Trophy_01_gold_F",
 	"Land_Trophy_01_silver_F",
-	"Land_WoodenShelter_01_F"
+	"Land_WoodenShelter_01_F",
+	"Land_PierConcrete_01_4m_ladders_F"
 ];
 
 fox_FOBS = [
@@ -149,4 +150,9 @@ fox_construction = [
 	"Land_Bricks_V1_F",
 	"Land_WorkStand_F",
 	"Land_WoodenPlanks_01_pine_F"
+];
+
+fox_boats = [
+	"PRACS_Mk5_SOCR",
+	"PRACS_Zodiac"
 ];

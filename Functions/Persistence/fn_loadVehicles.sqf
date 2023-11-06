@@ -20,8 +20,12 @@ _sections = "getSections" call _db;
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
 	_veh allowDamage false;
+	clearItemCargoGlobal _veh;
+	clearMagazineCargoGlobal _veh;
+	clearBackpackCargoGlobal _veh;
+	clearWeaponCargoGlobal _veh;
 	_veh setDir _dir;
-	_veh setDamage [_dmg, false];
+	_veh setDamage [_dmg, false, objNull, objNull];
 	_veh setFuel _fuel;
 
 	// add Ammo 
@@ -72,6 +76,10 @@ _sections = "getSections" call _db;
 	_veh = _type createVehicle _pos;
 	_veh setDir _dir;
 	_veh setDamage [_dmg, false, objNull, objNull];
+	clearItemCargoGlobal _veh;
+	clearMagazineCargoGlobal _veh;
+	clearBackpackCargoGlobal _veh;
+	clearWeaponCargoGlobal _veh;
 
 	["deleteSection", _x] call _wVic;
 	[_veh, 1] remoteExec ["fce_fnc_saveVehicle", 2];

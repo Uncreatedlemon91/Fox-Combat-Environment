@@ -24,11 +24,15 @@ _medic = 0;
 
 // Assign ace roles 
 switch (_loadout) do {
+	// Engineer Perms
 	case "Combat Engineer": {_engineer = 1};
+	case "Naval Crewman": {_engineer = 1};
 	case "Ground Crew": {_engineer = 2};
+	// Medical Perms 
 	case "Squad Medic": {_medic = 1};
 	case "CSAR Operator": {_medic = 1};
-	case "Surgeon": {_engineer = 2};
+	case "Surgeon": {_medic = 2};
+	case "Surgeon Assistant": {_medic = 2};
 	default { };
 };
 

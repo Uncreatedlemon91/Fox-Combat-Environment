@@ -19,7 +19,7 @@ _repairBld = [
 
 		_taskid = _target getVariable "fox_bld_taskid";
 		systemChat format ["%1", _target];
-		if ((_isEngineer > 0) AND (_nearBricks < 10) AND (_nearWood < 10) AND (_nearBlocks < 10) AND (_nearWorkStation < 10)) then {
+		if ((_isEngineer > 1) AND (_nearBricks < 10) AND (_nearWood < 10) AND (_nearBlocks < 10) AND (_nearWorkStation < 10)) then {
 			deleteVehicle _nearWoodObj;
 			deleteVehicle _nearWorkStationObj;
 			deleteVehicle _nearBlocksObj;
@@ -28,10 +28,12 @@ _repairBld = [
 			[_taskid, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
 			// remove building from building wreckage area 
+			systemchat "Move back!";
+			sleep 4;
 			[_target] remoteExec ["fce_fnc_deleteBuildingWreckage", 2];
 		} else {
 			systemChat "Either you're not an engineer, or you don't have all the materials needed for construction";
-			systemChat "You need Cinder Blocks, Bricks, a workstation and wood in order to rebuild buildings";
+			systemChat "You need Cinder Blocks, Bricks, a workstation and wood (one of each) in order to rebuild buildings";
 		};
 	},
 	{true},

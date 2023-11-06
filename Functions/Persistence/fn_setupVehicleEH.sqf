@@ -30,8 +30,8 @@ _veh addEventHandler ["Explosion", {
 // Add these event handlers to all vehicles
 _veh addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	[_unit, 1] remoteExec ["fce_fnc_saveVehicle", 2];
-	[_unit] remoteExec ["fce_fnc_deleteVehicle", 2];
+	[_unit, 0] remoteExec ["fce_fnc_saveVehicle", 2];
+	// [_unit] remoteExec ["fce_fnc_deleteVehicle", 2];
 }];
 
 // Setup ACRE Radio on the vehicle 

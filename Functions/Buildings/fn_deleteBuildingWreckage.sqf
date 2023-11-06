@@ -2,6 +2,10 @@
 params ["_bld"];
 _db = ["new", format ["Building Damages %1 %2", missionName, worldName]] call oo_inidbi;
 
+// Allow player to move back 
+systemChat "Move back!";
+sleep 5; 
+
 // Add new building 
 _pos = getPosatl _bld;
 _old = ["read", [_bld, "Old Model"]] call _db;

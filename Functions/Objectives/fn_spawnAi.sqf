@@ -53,7 +53,7 @@ if (_active == true) then {
 			_chance = random 100;
 			_chanceOfIntercept = 25;
 			if (_chance < _chanceOfIntercept) then {
-				// Get the players with a 117 radio on them 
+				// Get the players with a 148 radio on them 
 				_radioOperators = [];
 				{
 					_hasRadio = [_x, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio;
@@ -86,7 +86,7 @@ if (_active == true) then {
 				} forEach allPlayers;
 				
 				_receiver = selectRandom _radioOperators;
-				_receiverID = owner _receiver;
+				_receiverID = netid _receiver;
 				format ["[RADIO INTERCEPT] We have eyes on enemy contact! It looks like %1! Send assistance!", _target] remoteExec ["SystemChat", _receiverID];
 			};
 		}] call BIS_fnc_addScriptedEventHandler;

@@ -3,6 +3,7 @@ params ["_class"];
 // Spawn the vehicle and attach correct elements to it 
 _veh = _class createVehicle position Logi_Spawn;
 
+_veh allowDamage false;
 clearItemCargoGlobal _veh;
 clearMagazineCargoGlobal _veh;
 clearBackpackCargoGlobal _veh;
@@ -31,7 +32,8 @@ _vehicleClasses = [
 	fox_AA,
 	fox_heloVehiclesA,
 	fox_heloVehiclesM,
-	fox_heloVehiclesT
+	fox_heloVehiclesT,
+	fox_boats
 ];
 {
 	if (_class in _x) then {
@@ -60,6 +62,12 @@ switch (_class) do {
 
 	// FOB 
 	case "B_Slingload_01_Cargo_F": {[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true]};
+
+	// Move boats to the water 
+	case "PRACS_Mk5_SOCR": {_veh setPos (getPosAsl sea_spawn)};
+	case "PRACS_Zodiac": {_veh setPos (getPosASL sea_spawn)};
 	
 	default {};
 };
+
+_veh allowDamage true;

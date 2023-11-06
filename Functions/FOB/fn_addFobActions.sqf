@@ -16,7 +16,7 @@ if (_deployed) then {
 	] call ace_interact_menu_fnc_createAction;
 
 	// Add Actioin to FOB Area
-	[_fobArea, 0, ["ACE_MainActions"], _deleteFOB] call ace_interact_menu_fnc_addActionToObject;
+	[_fob, 0, ["ACE_MainActions"], _deleteFOB] call ace_interact_menu_fnc_addActionToObject;
 } else {
 	// Action to deploy FOB 
 	_deployFOB = [
