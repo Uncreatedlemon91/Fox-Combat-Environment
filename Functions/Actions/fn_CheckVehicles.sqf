@@ -45,9 +45,9 @@ if (_veh in fox_heloVehiclesA) then {
 	_whitelistedg = ["Rotary Pilot (Attack)"];
 	_check = true;
 };
-if (_veh in fox_boats) then {
+if (_veh == "PRACS_Mk5_SOCR") then {
 	_whitelistedd = ["Naval Crewman"];
-	_whitelistedg = ["Naval Crewman"];
+	_whitelistedg = ["Naval Crewman", "Naval Gunner"];
 	_check = true;
 };
 
