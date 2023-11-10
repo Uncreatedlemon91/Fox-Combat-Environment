@@ -42,7 +42,11 @@ fox_medicalVehicles = [
 	"PRACS_M250_AMB",
 	"PRACS_M998_cargo_open",
 	"PRACS_BMR_AMB",
-	"PRACS_M113_MED"
+	"PRACS_M113_MED",
+	"Attachable_Helistretcher",
+	"kat_stretcherBag",
+	"Land_IntravenStand_01_2bags_F",
+	"Land_MedicalTent_01_NATO_generic_open_F"
 ];
 
 fox_artyVehicles = [
@@ -100,8 +104,6 @@ fox_baseBuilding = [
 	"Land_HBarrierWall6_F",
 	"Land_HBarrierWall4_F",
 	"Land_HBarrierTower_F",
-	"Land_IntravenStand_01_1bag_F",
-	"Land_IntravenStand_01_2bags_F",
 	"TargetP_Inf9_Acc2_F",
 	"PortableHelipadLight_01_red_F",
 	"PRACS_sign_flag",
@@ -122,7 +124,6 @@ fox_baseBuilding = [
 	"Land_Router_01_sand_F",
 	"Land_SolarPanel_04_sand_F",
 	"SatelliteAntenna_01_Sand_F",
-	"Land_Stretcher_01_sand_F",
 	"Land_Trophy_01_bronze_F",
 	"Land_Trophy_01_gold_F",
 	"Land_Trophy_01_silver_F",

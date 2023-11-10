@@ -14,7 +14,7 @@ _categories = [
 	"Light Vehicles",
 	"Light Armored Vehicles",
 	"Heavy Armored Vehicles",
-	"Medical Vehicles",
+	"Medical Supplies",
 	"Artillery Vehicles",
 	"Support Vehicles",
 	"Transport Helicopters",
