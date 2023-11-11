@@ -13,6 +13,7 @@ fox_lightVehicles =
 	"PRACS_M1165_M134_QSB", 
 	"PRACS_M1165_Mk19", 
 	"PRACS_M1025_marine", 
+	"PRACS_M966_TOW",
 	"PRACS_M1117"
 ];
 
