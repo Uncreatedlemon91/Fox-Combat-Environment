@@ -35,7 +35,6 @@ player addEventHandler ["Respawn", {
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, _killer, _instigator] remoteExec ["fce_fnc_PlayerKilled", 2];
-	profileNameSpace setVariable ["FCE_Med", _med];
 }];
 
 player addEventHandler ["GetInMan", {
