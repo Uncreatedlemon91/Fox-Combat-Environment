@@ -5,7 +5,6 @@ addMissionEventHandler ["BuildingChanged", {
 	_sections = "getSections" call _Db;
 	_pos = getPos _to;
 	_oldM = typeOf _from;
-	_newM = typeOf _to;
 	_dir = direction _to;
 
 	["write", [str _to, "Old Model", _oldM]] call _Db;
