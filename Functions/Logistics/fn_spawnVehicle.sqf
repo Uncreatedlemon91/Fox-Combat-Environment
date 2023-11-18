@@ -44,19 +44,6 @@ _vehicleClasses = [
 } forEach _vehicleClasses;
 
 switch (_class) do {
-	// Repair Vehicles
-	case "PRACS_M250_Repair": {_veh setVariable ["ace_repair_canRepair", 1, true]};
-	
-	// Refuel Vehicles 
-	case "PRACS_M250_fuel": {[_veh, 3000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
-	case "PRACS_HEMMTT_Fueler": {[_veh, 3000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
-	case "PRACS_m548_fuel": {[_veh, 1000] remoteExec ["ace_refuel_fnc_makeSource", 0, true]};
-	
-	// Rearming Trucks 
-	case "PRACS_m548_ammo": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
-	case "PRACS_m548_arty_tender": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
-	case "PRACS_M250_Ammo": {[_veh, 300] remoteExec ["ace_rearm_fnc_makeSource", 0, true]};
-	
 	// Ammo box 
 	case "Land_Ammobox_rounds_F": {[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true]};
 
