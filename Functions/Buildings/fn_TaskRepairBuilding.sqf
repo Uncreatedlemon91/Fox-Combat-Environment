@@ -10,7 +10,7 @@ _taskid = format ["%1 %2", _current, _pos];
 _bld setVariable ["fox_bld_taskid", _taskid, true];
 
 _bldRepair = [
-	west,
+	true,
 	_taskid,
 	["Repair the building!", "Repair", ""],
 	_bld,
