@@ -3,18 +3,16 @@ params ["_pos", "_gear", "_dir", "_roles", "_curRole", "_kit", "_face"];
 // player setPosATL _pos;
 player setUnitLoadout _gear;
 player setFace _face;
-
-// player setDir _dir;
+player setPosATL _pos;
+player setDir _dir;
 player setVariable ["roleLoadout", _curRole];
 player setVariable ["fox_loadout_kit", _kit];
 
 // Add a respawn point to the map
-[player, _pos, "Previous Location"] call BIS_fnc_addRespawnPosition;
-
+//[player, _pos, "Previous Location"] call BIS_fnc_addRespawnPosition;
 
 _engineer = 0;
 _medic = 0;
-
 
 // Assign ace roles 
 switch (_curRole) do {

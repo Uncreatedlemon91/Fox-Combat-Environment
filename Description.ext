@@ -1,5 +1,5 @@
 forceRotorLibSimulation = 0; // Default: 0
-respawnOnStart = 1;
+respawnOnStart = -1;
 
 #include "Interfaces\BaseControls.hpp"
 #include "Interfaces\LogiMenu.hpp"
