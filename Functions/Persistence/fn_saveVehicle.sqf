@@ -31,7 +31,10 @@ if (_wreck == 1) then {
 	_ammo = getMagazineCargo _veh;
 	_weps = getWeaponCargo _veh;
 
-	_data = [_type, _pos, _dir, _dmg, _fuel, _mags, _items, _ammo, _weps];
+	_pylons = getAllPylonsInfo _veh;
+
+
+	_data = [_type, _pos, _dir, _dmg, _fuel, _mags, _items, _ammo, _weps, _pylons];
 
 	["write", [_netId, "Vehicle Info", _data]] call _pVic;
 };
