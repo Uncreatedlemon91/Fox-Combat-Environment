@@ -39,6 +39,7 @@ _civ addEventHandler ["Hit", {
 
 _civ addEventHandler ["killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	[_unit] remoteExec ["fce_fnc_deleteCiv", 2];
 }];
 
 // Provide direction 

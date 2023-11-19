@@ -51,6 +51,7 @@ class CfgFunctions
 			class initCiv {};
 			class setupCity {};
 			class createCivilian {};
+			class deleteCivilian {};
 			class spawnCiv {};
 			class loadCiv {};
 			class taskManager {};
