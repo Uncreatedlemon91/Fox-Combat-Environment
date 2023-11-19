@@ -54,7 +54,7 @@ onEachFrame format [
                     {
                         if (diag_tickTime > %18) then
                         {
-                            diag_log ""RCTS Timeout (no server)"";
+                            SystemChat ""RCTS Timeout (no server)"";
                             onEachFrame {};
                         };  
                     
@@ -70,7 +70,7 @@ onEachFrame format [
                                 {                       
                                     if (diag_tickTime > %18) then
                                     {
-                                        diag_log ""RCTS Timeout (cannot join)"";
+                                        SystemChat ""RCTS Timeout (cannot join)"";
                                         onEachFrame {};
                                     };
                                     
@@ -84,7 +84,7 @@ onEachFrame format [
                                     
                                     if (getClientStateNumber >= 3) then
                                     {
-                                        diag_log ""RCTS Success"";
+                                        SystemChat ""RCTS Success"";
                                         onEachFrame {};
                                     };
                                 };
