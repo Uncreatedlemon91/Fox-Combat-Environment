@@ -56,7 +56,7 @@ class CfgFunctions
 			class taskManager {};
 			class createStash {};
 			class loadStash {};
-			class C_task_MoveHome {};
+			class C_task_Move {};
 			class C_task_SetIED {};
 
 		};
