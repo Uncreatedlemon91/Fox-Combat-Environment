@@ -12,4 +12,3 @@ deleteVehicle _stash;
 
 // Notify all players that a Cache has been destroyed
 [format ["A Cache has been discovered and destroyed in %1!", _city]] remoteExec ["TitleText", -2];
-titleText
