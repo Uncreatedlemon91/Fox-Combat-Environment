@@ -19,7 +19,7 @@ if (_housesCount == 0) then {
 _cityHostility = round (random 100);
 
 // Setup insurgent Stashes 
-_cityStashes = round (_cityHostility / 10);
+_cityStashes = round (random 8);
 for "_i" from 1 to _cityStashes do {
 	[_city] remoteExec ["fce_fnc_createStash", 2];
 	sleep 0.3;

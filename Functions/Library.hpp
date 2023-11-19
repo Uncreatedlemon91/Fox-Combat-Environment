@@ -58,6 +58,7 @@ class CfgFunctions
 			class loadStash {};
 			class C_task_Move {};
 			class C_task_SetIED {};
+			class deleteStash {};
 
 		};
 		class Whitelist
