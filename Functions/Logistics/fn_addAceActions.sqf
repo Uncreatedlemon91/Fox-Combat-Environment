@@ -58,7 +58,4 @@ if !(_isVehicle) then {
 		100
 	] call ace_interact_menu_fnc_createAction;
 	[_veh, 0, ["ACE_MainActions"], _deleteObject] call ace_interact_menu_fnc_addActionToObject;
-
-	// Add Radio Network 
-	[_veh, ["ACRE_VRC103", "FOX Communications", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;
 };
