@@ -29,6 +29,14 @@ _sections = "getSections" call _db;
 	_veh setDamage [_dmg, false, objNull, objNull];
 	_veh setFuel _fuel;
 
+	if ((_type isKindOf "PLANE") OR (_type isKindOf "HELICOPTER")) then {
+		// Add Pylons 
+		{
+			_veh setPylonLoadout [_x select 0, _x select 3, true, _x select 2];
+			_veh setAmmoOnPylon [_x select 0, _x select 4];
+		} forEach _pylons;
+	};
+
 	// add Ammo 
 	{
 		_mag = _x select 0;
@@ -53,12 +61,6 @@ _sections = "getSections" call _db;
 	for "_i" from 0 to count _classes - 1 do {
 		_veh addWeaponCargoGlobal [_classes select _i,_count select _i]
 	};
-
-	// Add Pylons 
-	{
-		_veh setPylonLoadout [_x select 0, _x select 3, true, _x select 2];
-		_veh setAmmoOnPylon [_x select 0, _x select 4];
-	} forEach _pylons;
 	
 	["deleteSection", _x] call _db;
 	[_veh] remoteExec ["fce_fnc_setupVehicleEH", 2];
