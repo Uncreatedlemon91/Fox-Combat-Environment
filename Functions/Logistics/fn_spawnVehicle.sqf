@@ -25,15 +25,11 @@ _vehicleClasses = [
 	fox_generalVehicles,
 	fox_lightVehicles,
 	fox_mediumVehicles,
-	fox_heavyVehicles,
 	fox_medicalVehicles,
 	fox_artyVehicles,
-	fox_supplyVehicles,
-	fox_AA,
 	fox_heloVehiclesA,
 	fox_heloVehiclesM,
-	fox_heloVehiclesT,
-	fox_boats
+	fox_heloVehiclesT
 ];
 {
 	if (_class in _x) then {
@@ -48,12 +44,7 @@ switch (_class) do {
 	case "Land_Ammobox_rounds_F": {[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true]};
 
 	// FOB 
-	case "B_Slingload_01_Cargo_F": {[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true]};
-
-	// Move boats to the water 
-	case "PRACS_Mk5_SOCR": {_veh setPos (getPosAsl sea_spawn)};
-	case "PRACS_Zodiac": {_veh setPos (getPosASL sea_spawn)};
-	
+	case "B_Slingload_01_Cargo_F": {[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true]};	
 	default {};
 };
 

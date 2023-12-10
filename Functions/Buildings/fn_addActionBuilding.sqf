@@ -40,8 +40,7 @@ _repairBld = [
 	{},
 	[],
 	[0, 0, 0],
-	500,
-	["doNotCheckLOS"]
+	100
 ] call ace_interact_menu_fnc_createAction;
 
 // Add Action to Building Area

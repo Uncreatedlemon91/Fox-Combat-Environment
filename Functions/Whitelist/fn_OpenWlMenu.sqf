@@ -6,8 +6,8 @@ params ["_players", "_quals"];
 _playerid = getPlayerUID player;
 _approved = [
 	"76561197976414714" // Lemon
-];
-if !(_playerid in _approved) exitWith {systemChat "You are not qualified to open this menu!"};
+]; 
+if !((_playerid in _approved) OR (call BIS_fnc_admin == 2)) exitWith {systemChat "You are not qualified to open this menu!"};
 createDialog "whMenu";
 
 // Add player info to menu 

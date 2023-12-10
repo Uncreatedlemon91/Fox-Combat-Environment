@@ -21,16 +21,13 @@ _uid = getPlayerUID player;
 _engineer = 0;
 _medic = 0;
 
-
 // Assign ace roles 
 switch (_loadout) do {
 	// Engineer Perms
-	case "Combat Engineer": {_engineer = 1};
-	case "Naval Crewman": {_engineer = 1};
-	case "Ground Crew": {_engineer = 2};
+	case "Combat Engineer": {_engineer = 2};
+	case "Helicopter Crew": {_engineer = 1};
 	// Medical Perms 
-	case "Squad Medic": {_medic = 1};
-	case "CSAR Operator": {_medic = 1};
+	case "Corpsman": {_medic = 1};
 	case "Surgeon": {_medic = 2};
 	case "Surgeon Assistant": {_medic = 2};
 	default { };

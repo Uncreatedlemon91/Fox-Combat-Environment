@@ -1,15 +1,21 @@
 params ["_caller"];
 
 _tgtPos = getPos _caller;
+_side = side _caller;
+_planes = [];
+switch (_side) do {
+	case "WEST": {_planes = selectRandom [fox_blu_AGPlanes, fox_blu_AAPlanes, fox_blu_Helicopters]};
+	case "EAST": {_planes = selectRandom [fox_opf_AGPlanes, fox_opf_AAPlanes, fox_opf_Helicopters]};
+};
 _mkr = createMarkerLocal ["targetingMarker", _tgtPos];
 _mkr setMarkerAlphaLocal 0;
 _mkr setMarkerShapeLocal "Ellipse";
 _mkr setMarkerSize [100, 100];
 _tgtPos = [[_mkr], ["base", "water"]] call BIS_fnc_randomPos;
 
-_jetClass = selectRandom ["RHS_TU95MS_vvs_tambov", "RHS_Ka52_vvsc", "RHS_Mi24V_vvsc", "rhs_mig29sm_vvs", "RHS_Su25SM_vvs", "rhs_mig29s_vvs"];
+_jetClass = selectRandom _planes;
 _spawnPos = [["OffMap"], ["AO"]] call BIS_fnc_randomPos;
-_jet = [_spawnPos, random 360, _jetClass, east] call BIS_fnc_spawnVehicle;
+_jet = [_spawnPos, random 360, _jetClass, _side] call BIS_fnc_spawnVehicle;
 
 _jetV = _jet select 0;
 _jetC = _jet select 1;

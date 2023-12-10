@@ -1,85 +1,45 @@
 // Defined items that can be spawned into the arma world 
 fox_generalVehicles = 
 [
-	"PRACS_M1025_M2_Marine", 
-	"PRACS_M1025_Mk19_Marine", 
-	"PRACS_M1025_marine", 
-	"PRACS_M1097_Scout_Marine", 
-	"PRACS_M250"
-];
-
-fox_lightVehicles = 
-[
-	"PRACS_M1165_M134_QSB", 
-	"PRACS_M1165_Mk19", 
-	"PRACS_M1025_marine", 
-	"PRACS_M966_TOW",
-	"PRACS_M1117"
+	"rhsusf_m1240a1_m240_usmc_d",
+	"rhsusf_m1240a1_m2_usmc_d",
+	"rhsusf_m1240a1_mk19_usmc_d",
+	"rhsusf_m1152_rsv_usmc_d",
+	"rhsusf_m1045_d_s",
+	"rhsusf_M977A4_AMMO_usarmy_d",
+	"rhsusf_M977A4_REPAIR_usarmy_d",
+	"rhsusf_M978A4_usarmy_d"
 ];
 
 fox_mediumVehicles = [
-	"PRACS_BMR_ATGM",
-	"PRACS_BMR_M2",
-	"PRACS_BMR_ATGM_TOW",
-	"PRACS_BMR_ATGM_TOW",
-	"PRACS_BMR_A3_GA1",
-	"PRACS_BMR_A3_M3_SFOD",
-	"PRACS_BMR_A3_Mk19",
-	"PRACS_M113_M240",
-	"PRACS_M113_M2",
-	"PRACS_M113_mk19",
-	"PRACS_Pizarro"
-];
-
-fox_heavyVehicles = [
-	"PRACS_FV101",
-	"PRACS_FV107",
-	"PRACS_M1A1_AIM",
-	"PRACS_M60A3",
-	"PRACS_M60S"
+	"rhsusf_stryker_m1126_m2_d"
 ];
 
 fox_medicalVehicles = [
-	"PRACS_M250_AMB",
-	"PRACS_M998_cargo_open",
-	"PRACS_BMR_AMB",
-	"PRACS_M113_MED",
-	"Attachable_Helistretcher",
+	"rhsusf_m113d_usarmy_medical",
 	"kat_stretcherBag",
 	"Land_IntravenStand_01_2bags_F",
-	"Land_MedicalTent_01_NATO_generic_open_F"
+	"Land_Medevac_house_V1_F"
 ];
 
 fox_artyVehicles = [
 	"itc_land_rhsusf_m119_d",
 	"itc_land_rhsusf_m252_d",
-	"rhsusf_m109d_usarmy",
-	"itc_land_COBRA01",
-	"PRACS_m548_arty_tender"
+	"rhsusf_M142_usarmy_D"
 ];
 
 fox_heloVehiclesT = [
-	"PRACS_CH53",
-	"PRACS_Sa330_Puma_Marine"
+	"RHS_UH1Y_UNARMED_d",
+	"rhsusf_CH53E_USMC_GAU21_D",
+	"rhsusf_CH53e_USMC_D_cargo"
 ];
 
 fox_heloVehiclesM = [
-	"PRACS_Sa330_Puma_SOCAT_Marine",
-	"PRACS_Sa330_Puma_MED_Marine"
+	"RHS_UH1Y_d"
 ];
 
 fox_heloVehiclesA = [
-	"PRACS_AH1S",
-	"PRACS_RAH6"
-];
-
-fox_supplyVehicles = [
-	"PRACS_M250_Ammo",
-	"PRACS_M250_Repair",
-	"PRACS_M250_flat_bed",
-	"PRACS_M250_fuel",
-	"PRACS_M250_Salvage",
-	"PRACS_M450"
+	"RHS_AH1Z"
 ];
 
 fox_supplies = [
@@ -107,7 +67,6 @@ fox_baseBuilding = [
 	"Land_HBarrierTower_F",
 	"TargetP_Inf9_Acc2_F",
 	"PortableHelipadLight_01_red_F",
-	"PRACS_sign_flag",
 	"Land_BatteryPack_01_open_sand_F",
 	"Land_Computer_01_sand_F",
 	"Land_DeskChair_01_sand_F",
@@ -129,22 +88,41 @@ fox_baseBuilding = [
 	"Land_Trophy_01_gold_F",
 	"Land_Trophy_01_silver_F",
 	"Land_WoodenShelter_01_F",
-	"Land_PierConcrete_01_4m_ladders_F"
+	"Land_PierConcrete_01_4m_ladders_F",
+	"TargetP_Inf3_F",
+	"TargetP_Inf4_F",
+	"TargetP_HVT1_F",
+	"TargetP_Civ_F",
+	"Land_Balloon_01_water_F",
+	"Land_Balloon_01_air_F",
+	"Land_BulletTrap_01_F",
+	"Land_Target_Dueling_01_F",
+	"Skeet_Clay_F",
+	"Land_PortableCabinet_01_7drawers_black_F",
+	"Land_DeskChair_01_black_F",
+	"Land_PortableDesk_01_black_F",
+	"Land_CncShelter_F",
+	"Land_Obstacle_Bridge_F",
+	"Land_Obstacle_Climb_F",
+	"Land_Obstacle_Crawl_F",
+	"Land_Obstacle_Cross_F",
+	"Land_Obstacle_Pass_F",
+	"Land_Obstacle_Ramp_F",
+	"Land_Obstacle_RunAround_F",
+	"Land_Obstacle_Saddle_F",
+	"ITC_Land_Loudspeakers2",
+	"Land_Shoot_House_Wall_Long_F",
+	"Land_Shoot_House_Wall_F",
+	"Land_Shoot_House_Wall_Crouch_F",
+	"Land_Shoot_House_Corner_F"
 ];
 
-fox_FOBS = [
-	"B_Slingload_01_Cargo_F",
-	"B_CargoNet_01_ammo_F"
-];
-
-fox_AA = [
-	"PRACS_M163_MACHBET",
-	"PRACS_M163_PIVADS",
-	"PRACS_M163_VADS",
-	"PRACS_M727_IHAWK",
-	"PRACS_M727_SEM_IHAWK",
-	"PRACS_m48_chapparal",
-	"PRACS_MiM23_HAWK"
+fox_Turrets = [
+	"RHS_Stinger_AA_pod_USMC_D",
+	"RHS_M2StaticMG_MiniTripod_USMC_D",
+	"RHS_M2StaticMG_USMC_D",
+	"RHS_TOW_TriPod_USMC_D",
+	"RHS_MK19_TriPod_USMC_D"
 ];
 
 fox_construction = [
@@ -152,9 +130,4 @@ fox_construction = [
 	"Land_Bricks_V1_F",
 	"Land_WorkStand_F",
 	"Land_WoodenPlanks_01_pine_F"
-];
-
-fox_boats = [
-	"PRACS_Mk5_SOCR",
-	"PRACS_Zodiac"
 ];

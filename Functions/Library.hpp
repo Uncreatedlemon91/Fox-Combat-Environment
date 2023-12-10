@@ -22,13 +22,8 @@ class CfgFunctions
 		class Objectives
 		{
 			class Objectives {};
-			class createRegiment {};
-			class loadRegiment {};
 			class spawnAI {};
 			class AIAttributes {};
-			class spawnArtillery {};
-			class spawnAASite {};
-			class createConvoy {};
 			class defineClasses {};
 		};
 		class Persistence
@@ -46,42 +41,15 @@ class CfgFunctions
 			class loadVehicles {};
 			class startSpec {};
 		};
-		class Civilians
+		class Platoons 
 		{
-			class initCiv {};
-			class setupCity {};
-			class createCivilian {};
-			class deleteCivilian {};
-			class spawnCiv {};
-			class loadCiv {};
-			class taskManager {};
-			class createStash {};
-			class loadStash {};
-			class C_task_Move {};
-			class C_task_SetIED {};
-			class deleteStash {};
-
-		};
-		class Whitelist
-		{
-			class GetWLData {};
-			class OpenWlMenu {};
-			class LoadWlMenu {};
-			class initWl {};
-			class UpdateWL {};
-		};
-		class FOB 
-		{
-			class addFobActions {};
-			class deployFOB {};
-			class deleteFob {};
-			class loadFOBs {};
-			class checkSupplies {};
+			class createPlt {};
+			class movePlatoon {};
+			class loadPlt {};
 		};
 		class Actions 
 		{
 			class CheckVehicles {};
-			class changeMap {};
 		};
 		class Buildings
 		{
@@ -90,6 +58,19 @@ class CfgFunctions
 			class buildingDmg {};
 			class addActionBuilding {};
 			class deleteBuildingWreckage {};
+		};
+		class Whitelist
+		{
+			class getWLData {};
+			class initWl {};
+			class LoadWlMenu {};
+			class OpenWlMenu {};
+			class UpdateWL {};
+		};
+		class Convoys 
+		{
+			class convoyManager {};
+			class createConvoy {};
 		};
 	};
 };

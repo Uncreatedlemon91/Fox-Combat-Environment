@@ -1,7 +1,7 @@
 _db = ["new", format ["WorldBuilder %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "Exists" call _db;
 // Set world settings 
-setTimeMultiplier 3;
+setTimeMultiplier 4;
 
 if (_exists) then {
 	_date = ["read", ["World Info", "Date"]] call _db;

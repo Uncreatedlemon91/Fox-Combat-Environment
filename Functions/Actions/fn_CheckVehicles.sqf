@@ -10,19 +10,9 @@ _check = false;
 
 _veh = typeOf _veh;
 // Define vehicle 
-if (_veh in fox_lightVehicles) then {
-	_whitelistedd = ["LV Crewman", "LV Commander"];
-	_whitelistedg = ["LV Crewman", "LV Commander"];
-	_check = true;
-};
 if (_veh in fox_mediumVehicles) then {
-	_whitelistedd = ["APC/IFV Crewman", "APC/IFV Commander"];
-	_whitelistedg = ["APC/IFV Crewman", "APC/IFV Commander"];
-	_check = true;
-};
-if (_veh in fox_heavyVehicles) then {
-	_whitelistedd = ["MBT Crewman", "MBT Commander"];
-	_whitelistedg = ["MBT Crewman", "MBT Commander"];
+	_whitelistedd = ["LAV Crew", "LAV Crew"];
+	_whitelistedg = ["LAV Crew", "LAV Crew"];
 	_check = true;
 };
 if (_veh in fox_artyVehicles) then {
@@ -31,18 +21,18 @@ if (_veh in fox_artyVehicles) then {
 	_check = true;
 };
 if (_veh in fox_heloVehiclesT) then {
-	_whitelistedd = ["Rotary Pilot (Transport / Logistics)"];
-	_whitelistedg = ["Rotary Pilot (Transport / Logistics)", "Rotary Crew Chief / Door Gunner"];
+	_whitelistedd = ["Helicopter Pilot 1"];
+	_whitelistedg = ["Helicopter Crew"];
 	_check = true;
 };
 if (_veh in fox_heloVehiclesM) then {
-	_whitelistedd = ["Rotary Pilot (Multi)"];
-	_whitelistedg = ["Rotary Pilot (Multi)", "Rotary Crew Chief / Door Gunner"];
+	_whitelistedd = ["Helicopter Pilot 2"];
+	_whitelistedg = ["Helicopter Crew"];
 	_check = true;
 };
 if (_veh in fox_heloVehiclesA) then {
-	_whitelistedd = ["Rotary Pilot (Attack)"];
-	_whitelistedg = ["Rotary Pilot (Attack)"];
+	_whitelistedd = ["Helicopter Pilot 3"];
+	_whitelistedg = ["Helicopter Crew"];
 	_check = true;
 };
 if (_veh == "PRACS_Mk5_SOCR") then {

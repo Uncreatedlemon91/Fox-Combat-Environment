@@ -10,7 +10,7 @@ _taskid = format ["%1 %2", _current, _pos];
 _bld setVariable ["fox_bld_taskid", _taskid, true];
 
 _bldRepair = [
-	true,
+	west,
 	_taskid,
 	["Repair the building!", "Repair", ""],
 	_bld,
@@ -22,4 +22,4 @@ _bldRepair = [
 ] call BIS_fnc_taskCreate;
 
 [_taskid ,"help"] call BIS_fnc_taskSetType;
-[_bld, _taskid, _oldModel] remoteExec ["fce_fnc_addActionBuilding", 0, true];
+[_bld, _taskid, _oldModel] remoteExec ["fce_fnc_addActionBuilding", -2, true];

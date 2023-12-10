@@ -2,7 +2,6 @@ _db = ["new", format ["Player Vehicles %1 %2", missionName, worldName]] call oo_
 _sections = "getSections" call _db;
 
 // Debug
-
 // apply saved vehicle locations back to the server 
 {
 	_data = ["read", [_x, "Vehicle Info"]] call _db;
@@ -16,7 +15,6 @@ _sections = "getSections" call _db;
 	_items = _data select 6;
 	_ammo = _data select 7;
 	_weps = _data select 8;
-	_pylons = _data select 9;
 
 	// Spawn vehicle replica 
 	_veh = _type createVehicle _pos;
@@ -28,14 +26,6 @@ _sections = "getSections" call _db;
 	_veh setDir _dir;
 	_veh setDamage [_dmg, false, objNull, objNull];
 	_veh setFuel _fuel;
-
-	if ((_type isKindOf "PLANE") OR (_type isKindOf "HELICOPTER")) then {
-		// Add Pylons 
-		{
-			_veh setPylonLoadout [_x select 0, _x select 3, true, _x select 2];
-			_veh setAmmoOnPylon [_x select 0, _x select 4];
-		} forEach _pylons;
-	};
 
 	// add Ammo 
 	{

@@ -35,6 +35,7 @@ player addEventHandler ["Respawn", {
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, _killer, _instigator] remoteExec ["fce_fnc_PlayerKilled", 2];
+	// profileNameSpace setVariable ["FCE_Med", _med];
 }];
 
 player addEventHandler ["GetInMan", {
@@ -71,7 +72,22 @@ findDisplay 46 displayAddEventHandler ["KeyUp", {
 	};
 }];
 
-waitUntil {inputAction "MoveForward" > 0};
+// Add date option to watch
+findDisplay 46 displayAddEventHandler ["KeyUp", {
+	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
+	if (_key == 24) then {
+		private _ddMMyyyy = format ["%2%3/%4%5/%1",
+			date select 0,
+			["", "0"] select (date select 1 < 10),
+			date select 1,
+			["", "0"] select (date select 2 < 10),
+			date select 2
+		];
+		hint format ["%1", _ddMMyyyy];
+	};
+}];
+
+// waitUntil {inputAction "MoveForward" > 0};
 
 // Restore medical settings 
 _med = profileNameSpace getVariable "FCE_Med";

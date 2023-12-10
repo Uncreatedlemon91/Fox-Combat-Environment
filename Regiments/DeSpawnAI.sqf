@@ -1,4 +1,4 @@
-params ["_grp", "_trg", "_regimentName", "_groupID", "_regimentSide"];
+params ["_grp", "_trg"];
 
 sleep 5;
 _loop = true;
@@ -8,31 +8,19 @@ while {_loop} do {
 	_playerList sort true;
 	_closestPlayer = (_playerList select 0) param [1, objNull];
 	_dist = _closestPlayer distance _pos;
-	_countGrp = { alive _x } count units _grp;
-
-	// Exit loop and delete group from data base
-	if (_countGrp < 2) then {
-		_db = ["new", format ["%1 Regiments - %2 %3", _regimentSide, missionName, worldName]] call oo_inidbi;
-		["deleteKey", [_regimentName, _groupID]] call _db;
-		_size = ["read", [_regimentName, "Size"]] call _Db;
-		_newSize = _size - 1;
-		["write", [_regimentName, "Size", _newSize]] call _Db;
-		if (_newSize == 0) then {
-			["deleteSection", _regimentName] call _db;
-			deleteVehicle _trg;
-		};
-		systemChat format ["Removed Unit %1 - %2 from Database: Count %3", _regimentName, _groupID, _countGrp];
-		_loop = false;
-	};	
+	_mkr = _trg getVariable "unitMkr";
 
 	// Exit loop and remove AI from the map
-	if (_dist > 800) then {
+	if (_dist > 1000) then {
+		_mkr setMarkerPos _pos;
 		{	
 			deleteVehicle vehicle _x;
 			deleteVehicle _x;
 		} forEach units _grp;
-		_trg setVariable ["Active", false];
+		_trg setVariable ["unitActive", false];
 		_loop = false;
+
+		[_trg] remoteExec ["fce_fnc_movePlatoon", 2];
 	};
 	sleep 15;
 };

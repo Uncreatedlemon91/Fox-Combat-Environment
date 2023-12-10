@@ -11,21 +11,17 @@ _exitButton = findDisplay 1 displayCtrl 1601;
 // Add Data to the interfaces 
 _categories = [
 	"General Vehicles",
-	"Light Vehicles",
 	"Light Armored Vehicles",
-	"Heavy Armored Vehicles",
 	"Medical Supplies",
 	"Artillery Vehicles",
-	"Support Vehicles",
 	"Transport Helicopters",
 	"Multi Role Helicopters",
 	"Attack Helicopters",
 	"Supplies",
 	"Base Items",
-	"Anti Air",
 	"Building Materials",
-	"Construction",
-	"Boats"
+	"Turrets",
+	"Construction"
 ];
 {
 	_categoryList lbadd _x;
@@ -46,49 +42,34 @@ _categoryList ctrlAddEventHandler ["LBSelChanged", {
 			_items = fox_generalVehicles;
 		};
 		case 1: {
-			_items = fox_lightVehicles;
-		};
-		case 2: {
 			_items = fox_mediumVehicles;
 		};
-		case 3: {
-			_items = fox_heavyVehicles;
-		};
-		case 4: {
+		case 2: {
 			_items = fox_medicalVehicles;
 		};
-		case 5: {
+		case 3: {
 			_items = fox_artyVehicles;
 		};
-		case 6: {
-			_items = fox_supplyVehicles;
-		};
-		case 7: {
+		case 4: {
 			_items = fox_heloVehiclesT;
 		};
-		case 8: {
+		case 5: {
 			_items = fox_heloVehiclesM;
 		};
-		case 9: {
+		case 6: {
 			_items = fox_heloVehiclesA;
 		};
-		case 10: {
+		case 7: {
 			_items = fox_supplies;
 		};
-		case 11: {
-			_items = fox_FOBS;
-		};
-		case 12: {
-			_items = fox_aa;
-		};
-		case 13: {
+		case 8: {
 			_items = fox_baseBuilding;
 		};
-		case 14: {
-			_items = fox_construction;
+		case 9: {
+			_items = fox_Turrets;
 		};
-		case 15: {
-			_items = fox_boats;
+		case 10: {
+			_items = fox_construction;
 		};
 	};
 
@@ -108,4 +89,3 @@ _itemsList ctrlAddEventHandler ["LBSelChanged", {
 	_picture ctrlSetText _imageToShow;
 	player setVariable ["fox_btn_log_item", _classname, true];
 }];
-

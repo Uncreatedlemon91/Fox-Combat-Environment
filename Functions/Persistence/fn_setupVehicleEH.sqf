@@ -32,6 +32,3 @@ _veh addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	[_unit, 1] remoteExec ["fce_fnc_saveVehicle", 2];
 }];
-
-// Add Radio Network 
-[_veh, ["ACRE_VRC103", "FOX Communications", "Dash", false, ["external"], [], "ACRE_PRC148", [], []], true] call acre_api_fnc_addRackToVehicle;

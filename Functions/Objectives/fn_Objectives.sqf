@@ -1,32 +1,51 @@
 _base = getMarkerPos "BASE";
-_locs = nearestLocations [_base, ["Name", "NameCity", "NameLocal", "NameVillage", "Strategic", "Flag"], worldSize * 4];
-_countLocs = count _locs;
+_locs = nearestLocations [_base, ["Name", "NameCity", "NameLocal", "NameVillage", "Strategic", "Flag", "Hill", "VegetationBroadleaf", "VegetationFir", "VegetationPalm", "VegetationVineyard"], worldSize * 4];
 _mkrAlpha = 0;
 
-_db = ["new", format ["o Regiments - %1 %2", missionName, worldName]] call oo_inidbi;
+_db = ["new", format ["Objectives %1 %2", missionName, worldName]] call oo_inidbi;
 _exists = "Exists" call _db;
-if (_exists) then {
-	["o"] remoteExec ["fce_fnc_loadRegiment", 2];
-};
+
 {
 	// Add markers to the map
 	_mkr = createMarkerLocal [format ["Location: %1", str _x], position _x];
 	_mkr setMarkerTypeLocal "hd_Flag";
 	_mkr setMarkerTextLocal str _x;
 	_mkr setMarkerAlphaLocal _mkrAlpha;
-	_mkr setMarkerColor "ColorYellow";
+	_mkr setMarkerColorLocal "ColorYellow";
 
-	_mkr2 = createMarkerLocal [format ["%1", str _x], position _x];
-	_mkr2 setMarkerShapeLocal "ELLIPSE";
-	_mkr2 setMarkerColorLocal "ColorRed";
-	_mkr2 setMarkerSizeLocal [500, 500];
-	_mkr2 setMarkerAlphaLocal _mkrAlpha;
-	_mkr2 setMarkerBrush "DIAGGRID";
+	// Do not add more objectives to the database if it already exists.
+	if !(_exists) then {
+		_locType = type _x;
+		_locstr = _x;
+		_locName = text _x;
+		_locOwner = "Neutral";
+		_locUnits = [];
+		_locPos = position _x;
 
-	if (_exists) then {
-		
-	} else {
-		[_x, _mkr2, "o"] remoteExec ["fce_fnc_createRegiment", 2];
+		["write", [_locType, _locstr, [_locName, _locOwner, _locUnits, _locPos]]] call _db;
 	};
 } forEach _locs;
 
+// Inform server that locations have been loaded
+systemChat "[OBJ] Locations Loaded...";
+
+_pltDb = ["new", format ["OPFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi;
+_pltExists = "exists" call _pltDb;
+
+if !(_pltExists) then { 
+	// Initiate generals for b and o sides 
+	_amountOfPlatoons = round (random [150, 200, 250]);
+	for "_i" from 1 to _amountOfPlatoons do {
+		["O", "Ospawn"] remoteExec ["fce_fnc_createPlt", 2];
+		sleep 0.5;
+	};
+
+	_amountOfPlatoons = round (random [50, 80, 120]);
+	for "_i" from 1 to _amountOfPlatoons do {
+		["B", "Bspawn"] remoteExec ["fce_fnc_createPlt", 2];
+		sleep 0.5;
+	};
+} else {
+	["BLUFOR", "B"] remoteExec ["fce_fnc_loadPlt", 2];
+	["OPFOR", "O"] remoteExec ["fce_fnc_loadPlt", 2];
+};
