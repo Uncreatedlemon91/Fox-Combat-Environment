@@ -73,7 +73,7 @@ findDisplay 46 displayAddEventHandler ["KeyUp", {
 }];
 
 // Add date option to watch
-findDisplay 46 displayAddEventHandler ["KeyUp", {
+findDisplay 46 displayAddEventHandler ["KeyDown", {
 	params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
 	if (_key == 24) then {
 		private _ddMMyyyy = format ["%2%3/%4%5/%1",

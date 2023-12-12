@@ -18,7 +18,7 @@ _bldRepair = [
 	-1, 
 	false,
 	"",
-	true	
+	false	
 ] call BIS_fnc_taskCreate;
 
 [_taskid ,"help"] call BIS_fnc_taskSetType;

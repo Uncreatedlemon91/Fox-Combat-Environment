@@ -1,10 +1,13 @@
 params ["_trg"];
+// Set script variables 
+_playerLimit = 2;
+
 // Get variables
 _pltStart = getPos _trg;
 _mkr = _trg getVariable "unitMkr";
 _type = _trg getVariable "unitType";
 _id = _trg getVariable "unitID";
-_active = _trg getVariable "unitActive";
+_active = _trg getVariable ["unitActive", false];
 _side = _trg getVariable "unitSide";
 _pltSpeed = _trg getVariable "unitSpeed";
 
@@ -41,7 +44,7 @@ while {(_mkrCurrent distance2D _endPos) > 2} do {
     } forEach _nearTrigs;
     _countNearTrigs = count _nearTrigsTypes;
     _countPlayers = count (allPlayers);
-    if (!(_active) AND (_countNearTrigs == 0) AND (_countPlayers > 2)) then {
+    if (!(_active) AND (_countNearTrigs == 0) AND (_countPlayers > _playerLimit)) then {
         // Calculate the current position based on time
         _currentPosition = _pltStart vectorAdd (_direction vectorMultiply (_pltSpeed * (time - _startTime)));
         
@@ -66,6 +69,7 @@ while {(_mkrCurrent distance2D _endPos) > 2} do {
 _mkr setMarkerPos _endPos;
 _trg setPos _endPos;
 
-/*
+
 // Assign new mission 
+systemChat "REASSINGING MOVE TASK";
 [_trg] remoteExec ["fce_fnc_movePlatoon", 2];

@@ -1,6 +1,9 @@
 // Creates a platoon to be used for %1OR or BLUFOR forces. 
 params ["_pltSide", "_spawnmkr"];
 
+// Set script variables 
+_mkrAlpha = 0;
+
 // Platoon variables 
 _pltDb = "";
 _pltSelect = "";
@@ -8,18 +11,18 @@ switch (_pltSide) do {
 	case "O": {
 		_pltSelect = selectRandomWeighted [
 			["Infantry", round (random [12, 18, 24]), fox_opf_Infantry, "o_inf", 0.4], 0.7,
-			["Mechanized", selectRandom [1, 2, 3, 4], fox_opf_Mech, "o_mech_inf", 0.6], 0.3,
-			["Armored", selectRandom [1, 2, 3, 4], fox_opf_Armored, "o_armor", 0.5], 0.2,
-			["Recon", round (random [8, 10, 12]), fox_opf_Recon, "o_recon", 0.3], 0.3
+			["Mechanized", selectRandom [1, 2, 3, 4], fox_opf_Mech, "o_mech_inf", 0.6], 0.2,
+			["Armored", selectRandom [1, 2, 3, 4], fox_opf_Armored, "o_armor", 0.5], 0.1,
+			["Recon", round (random [8, 10, 12]), fox_opf_Recon, "o_recon", 0.3], 0.1
 		];
 		_pltDb = ["new", format ["OPFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi
 	};
 	case "B": {
 		_pltSelect = selectRandomWeighted [
 			["Infantry", round (random [12, 18, 24]), fox_blu_Infantry, "b_inf", 0.4], 0.7,
-			["Mechanized", round (random [1, 2, 4]), fox_blu_Mech, "b_mech_inf", 0.6], 0.3,
-			["Armored", round (random [1, 2, 5]), fox_blu_Armored, "b_armor", 0.5], 0.2, 
-			["Recon", round (random [8, 10, 12]), fox_blu_Recon, "b_recon", 0.3], 0.3
+			["Mechanized", round (random [1, 2, 4]), fox_blu_Mech, "b_mech_inf", 0.6], 0.2,
+			["Armored", round (random [1, 2, 5]), fox_blu_Armored, "b_armor", 0.5], 0.1, 
+			["Recon", round (random [8, 10, 12]), fox_blu_Recon, "b_recon", 0.3], 0.1
 		]; 
 		_pltDb = ["new", format ["BLUFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi;
 	};
@@ -45,7 +48,7 @@ _pltStart = [[_spawnmkr], ["BASE"]] call BIS_fnc_randomPos;
 _mkr = createMarkerLocal [format ["%1 - %2", _pltType, _pltStart], _pltStart];
 _mkr setMarkerTypeLocal _pltMkr;
 _mkr setMarkerSizeLocal [0.8, 0.8];
-_mkr setMarkerAlphaLocal 0;
+_mkr setMarkerAlphaLocal _mkrAlpha;
 _mkr setMarkerTextLocal format ["%1 | %2", _pltType, _pltSize];
 
 // Save to platoon database 

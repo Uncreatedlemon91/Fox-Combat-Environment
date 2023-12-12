@@ -13,7 +13,4 @@ while {true} do {
 		// Server debug 
 		systemChat "[CONVOY MANAGER] - New Convoy sent!";
 	};
-
-	// Wait a random period of time before running again 
-	sleep random 600;
 };

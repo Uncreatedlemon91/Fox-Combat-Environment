@@ -22,31 +22,19 @@ if !(_active) then {
 	_count = ["read", [_id, "Size"]] call _pltDb;
 	_comp = ["read", [_id, "Composition"]] call _pltDb;
 	_pos = ["read", [_id, "Pos"]] call _pltDb;
-
-	_groupID = format ["Group %1", _id];
-	_spawnPos = [_pos, 1, 100, 20, 0, 10, 0, ["base"]] call BIS_fnc_findSafePos;
-	
-	_grp = [_spawnPos, _faction, _comp, [], [], [], [], [],180, false] call BIS_fnc_spawnGroup;
-	{
-		_x allowDamage false;
-		[_x, _id, _sideStr] remoteExec ["fce_fnc_aiAttributes", 2];
-	} forEach units _grp;
-
+	_grp = createGroup _faction;
 	_grp deleteGroupWhenEmpty true;
-	[_grp, _endpos, 100] call lambs_wp_fnc_taskPatrol;
 
+	for "_i" from 1 to _count do {
+		_unitType = selectRandom _comp;
+		_unit = _grp createUnit [_unitType, _pos, [], 30, "FORM"];
+		[_unit, _id, _sideStr] remoteExec ["fce_fnc_aiAttributes", 2];
+		sleep 0.1;
+	};
+	
+	[_grp, _endpos, 100] call lambs_wp_fnc_taskPatrol;
 	[_grp, _trg] execVM "Regiments\DeSpawnAI.sqf";
 	_grpLdr = leader _grp;
-	[_grpLdr, "lambs_danger_OnContact", {
-		params ["_unit", "_groupOfUnit", "_target"];
-
-		_chanceOfAirSupport = random 100;
-
-		if (_chanceOfAirSupport < 25) then {
-			[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
-			systemChat "Calling in Air";
-		};
-	}] call BIS_fnc_addScriptedEventHandler;
 
 	[_grpLdr, "lambs_danger_OnArtilleryCalled", {
 		params ["_unitThatCalledArtillery", "_groupOfUnit", "_ArtilleryGun", "_TargetPosition"];
@@ -71,6 +59,11 @@ if !(_active) then {
 
 	[_grpLdr, "lambs_danger_OnInformationShared", {
 		params ["_unit", "_groupOfUnit", "_target", "_groups"];
+		_chanceOfAirSupport = random 100;
+		if (_chanceOfAirSupport < 5) then {
+			[_unit, _target] execVM "Regiments\AIAirSupport.sqf";
+			systemChat "Calling in Air";
+		};
 		_chance = random 100;
 		_chanceOfIntercept = 25;
 		systemChat "AI is Calling out targets";
@@ -90,7 +83,4 @@ if !(_active) then {
 			format ["[RADIO INTERCEPT] We have eyes on enemy contact! It looks like %1! Send assistance!", _target] remoteExec ["SystemChat", _receiverID];
 		};
 	}] call BIS_fnc_addScriptedEventHandler;
-	{
-		_x allowDamage true;
-	} forEach units _grp;
 };

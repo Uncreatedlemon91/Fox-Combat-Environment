@@ -58,29 +58,3 @@ _sections = "getSections" call _db;
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	_veh allowDamage true;
 } forEach _sections;
-
-// Spawn in all wreckages 
-_wVic = ["new", format ["Wrecks %1 %2", missionName, worldName]] call oo_inidbi;
-_sections = "getSections" call _db;
-
-{
-	_data = ["read", [_x, "Vehicle Info"]] call _wVic;
-	systemChat format ["Data: %1", _data];
-	_type = _data select 0;
-	_pos = _data select 1;
-	_dir = _data select 2;
-	_dmg = _data select 3;
-
-	// Spawn vehicle replica 
-	_veh = _type createVehicle _pos;
-	_veh setDir _dir;
-	_veh setDamage [_dmg, false, objNull, objNull];
-	clearItemCargoGlobal _veh;
-	clearMagazineCargoGlobal _veh;
-	clearBackpackCargoGlobal _veh;
-	clearWeaponCargoGlobal _veh;
-
-	["deleteSection", _x] call _wVic;
-	[_veh, 1] remoteExec ["fce_fnc_saveVehicle", 2];
-	_veh allowDamage true;
-} forEach _sections;

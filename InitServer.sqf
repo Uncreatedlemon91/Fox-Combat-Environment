@@ -28,3 +28,9 @@ addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit"];
 	[_unit] remoteExec ["fce_fnc_savePlayer", 2];
 }];
+
+// Loop module starts
+while {true} do {
+	[] call fce_fnc_convoyManager;
+	sleep random 600;
+};

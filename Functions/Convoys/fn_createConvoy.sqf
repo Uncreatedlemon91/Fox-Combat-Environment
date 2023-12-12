@@ -40,8 +40,9 @@ _truck = [_spawnPos, random 360, _transport, _spawnSide] call BIS_fnc_spawnVehic
 _driver = _truck select 1;
 _driver moveTo _destPos;
 _distance = _driver distance2D _destPos;
+systemchat "[CONVOY] En Route!";
 waitUntil {_distance < 5};
-
+systemchat "[CONVOY] Arrived!";
 // Setup asset and provide direction 
 _assetSpawned = [_destPos, random 360, _asset, _spawnSide] call BIS_fnc_spawnVehicle;
 switch (_assetType) do {

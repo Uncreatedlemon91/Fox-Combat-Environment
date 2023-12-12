@@ -18,7 +18,6 @@ _categories = [
 	"Multi Role Helicopters",
 	"Attack Helicopters",
 	"Supplies",
-	"Base Items",
 	"Building Materials",
 	"Turrets",
 	"Construction"
