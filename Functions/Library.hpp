@@ -10,6 +10,7 @@ class CfgFunctions
 			class ammoBoxActions {};
 			class openLogiMenu {};
 			class defineObjects {};
+			class loadoutBoxActions {};
 		};
 		class Loadouts
 		{

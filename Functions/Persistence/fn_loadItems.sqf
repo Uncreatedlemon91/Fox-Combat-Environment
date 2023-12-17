@@ -55,8 +55,13 @@ _sections = "getSections" call _db;
 	
 	[_veh] remoteExec ["fce_fnc_addAceActions", 0, true];
 	[_veh, _type] remoteExec ["fce_fnc_saveItem", 2];
+
+	// Add interactions to special items 
+	switch (_type) do {
+		case "Land_Ammobox_rounds_F": {[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true]};
+		case "Box_NATO_Equip_F": {[_veh] remoteExec ["fce_fnc_loadoutBoxActions", 0, true]};
+		default { };
+	};
 } forEach _sections;
-
-
 
 "All Persistent Data Loaded" remoteExec ["SystemChat", 0, true];

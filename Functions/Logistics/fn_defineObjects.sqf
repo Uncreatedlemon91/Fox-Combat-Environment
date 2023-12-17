@@ -48,7 +48,8 @@ fox_supplies = [
 	"B_Slingload_01_Ammo_F",
 	"Land_RepairDepot_01_tan_F",
 	"ACE_Wheel",
-	"ACE_Track"
+	"ACE_Track",
+	"Box_NATO_Equip_F"
 ];
 
 fox_baseBuilding = [

@@ -2,7 +2,7 @@
 // Determine if enough players are on to enable convoys 
 _playerCount = count allplayers;
 _commit = random 100;
-if ((_playerCount > 2) AND (_commit < 80)) then {
+if ((_playerCount > 0) AND (_commit < 80)) then {
 	// Determine the side that the convoy originates from 
 	_side = selectRandom ["B", "O"];
 

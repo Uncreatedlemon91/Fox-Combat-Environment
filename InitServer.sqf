@@ -7,7 +7,7 @@ sleep 1;
 [] remoteExec ["fce_fnc_Objectives", 2];
 
 // Start Logistics Module
-[] remoteExec ["fce_fnc_startLogistics", 2];
+[] remoteExec ["fce_fnc_startLogistics", 0, true];
 [] remoteExec ["fce_fnc_convoyManager", 2];
 
 // Start persistence module 
@@ -15,10 +15,10 @@ sleep 1;
 [] remoteExec ["fce_fnc_loadItems", 2];
 
 // Add loadouts and gear on menu
-[] remoteExec ["fce_fnc_loadout_DefineKits", 2];
+[] remoteExec ["fce_fnc_loadout_DefineKits", 0, true];
 
 // Add whitelist Controller 
-[] remoteExec ["fce_fnc_initWL", 2];
+[] remoteExec ["fce_fnc_initWL", 0, true];
 
 // Start environmental module
 [] execVM "WorldBuilder\startWorldBuilder.sqf";
@@ -29,8 +29,9 @@ addMissionEventHandler ["HandleDisconnect", {
 	[_unit] remoteExec ["fce_fnc_savePlayer", 2];
 }];
 
+/*
 // Loop module starts
 while {true} do {
 	[] call fce_fnc_convoyManager;
-	sleep random 600;
+	sleep random [10, 300, 600];
 };

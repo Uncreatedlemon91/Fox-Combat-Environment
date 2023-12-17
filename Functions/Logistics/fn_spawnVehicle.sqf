@@ -23,7 +23,6 @@ _turrets = magazinesAllTurrets _veh;
 // Setup vehicle event handlers if it is a vehicle
 _vehicleClasses = [
 	fox_generalVehicles,
-	fox_lightVehicles,
 	fox_mediumVehicles,
 	fox_medicalVehicles,
 	fox_artyVehicles,
@@ -42,9 +41,13 @@ _vehicleClasses = [
 switch (_class) do {
 	// Ammo box 
 	case "Land_Ammobox_rounds_F": {[_veh] remoteExec ["fce_fnc_ammoBoxActions", 0, true]};
+	// Change Loadout Box 
+	case "Box_NATO_Equip_F": {[_veh] remoteExec ["fce_fnc_loadoutBoxActions", 0, true]};
 
 	// FOB 
 	case "B_Slingload_01_Cargo_F": {[_veh, false] remoteExec ["fce_fnc_addFobActions", 0, true]};	
+
+
 	default {};
 };
 

@@ -32,12 +32,17 @@ systemChat "[OBJ] Locations Loaded...";
 _pltDb = ["new", format ["OPFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi;
 _pltExists = "exists" call _pltDb;
 
-if !(_pltExists) then { 
+if !(_pltExists) then {
 	// Initiate generals for b and o sides 
 	_amountOfPlatoons = round (random [300, 500, 600]);
 	// _amountOfPlatoons = 3;
 	for "_i" from 1 to _amountOfPlatoons do {
 		["O", "Ospawn"] remoteExec ["fce_fnc_createPlt", 2];
+		
+		sleep 0.5;
+	};
+	_amountOfPlatoons = round (random [50, 100, 150]);
+	for "_i" from 1 to _amountOfPlatoons do {
 		["B", "Bspawn"] remoteExec ["fce_fnc_createPlt", 2];
 		sleep 0.5;
 	};

@@ -16,7 +16,7 @@ _uid = getPlayerUID player;
 
 
 // [player setUnitLoadout _kit;]
-[Ace_Arsenal, player] call ace_arsenal_fnc_openBox;
+// [Ace_Arsenal, player] call ace_arsenal_fnc_openBox;
 
 _engineer = 0;
 _medic = 0;
@@ -28,8 +28,8 @@ switch (_loadout) do {
 	case "Helicopter Crew": {_engineer = 1};
 	// Medical Perms 
 	case "Corpsman": {_medic = 1};
-	case "Surgeon": {_medic = 2};
-	case "Surgeon Assistant": {_medic = 2};
+	case "Doctor": {_medic = 2};
+	case "Doctor Assistant": {_medic = 2};
 	default { };
 };
 

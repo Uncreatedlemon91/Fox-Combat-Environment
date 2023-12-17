@@ -39,7 +39,14 @@ if (_uid in _getSections) then {
 	_gear = ["write", [_uid, "Gear", ""]] call _db;
 	_dir = ["write", [_uid, "Direction", 0]] call _db;
 	_roles = ["write", [_uid, "Roles", [
+		"Off Duty",
 		"Rifleman",
-		"Off Duty"
+		"Automatic Rifleman",
+		"Grenadier",
+		"Machine Gunner Assistant",
+		"Heavy Anti Tank Assistant",
+		"Helicopter Crew",
+		"Medium Anti Tank Assistant",
+		"Combat Engineer"
 	]]] call _db;
 };
