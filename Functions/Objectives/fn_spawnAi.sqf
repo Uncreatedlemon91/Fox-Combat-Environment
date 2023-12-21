@@ -18,10 +18,10 @@ if !(_active) then {
 	_type = _trg getVariable "unitType";
 	_id = _trg getVariable "unitID";
 	_endpos = _trg getVariable "PltEndPos";
+	_pos = _trg getVariable "unitPos";
 
 	_count = ["read", [_id, "Size"]] call _pltDb;
 	_comp = ["read", [_id, "Composition"]] call _pltDb;
-	_pos = ["read", [_id, "Pos"]] call _pltDb;
 	_grp = createGroup _faction;
 	_grp deleteGroupWhenEmpty true;
 

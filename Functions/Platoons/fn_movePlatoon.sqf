@@ -59,7 +59,7 @@ while {(_mkrCurrent distance2D _endPos) > 2} do {
             case "O": {_db = ["new", format ["OPFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi};
             case "B": {_db = ["new", format ["BLUFOR Platoons %1 %2", missionName, worldName]] call oo_inidbi};
         };
-        ["write", [_id, "pos", _currentPosition]] call _db;
+        
         };
     // Sleep for a short time
     sleep 5;
@@ -68,6 +68,7 @@ while {(_mkrCurrent distance2D _endPos) > 2} do {
 // Set the final position to ensure accuracy
 _mkr setMarkerPos _endPos;
 _trg setPos _endPos;
+["write", [_id, "pos", _endPos]] call _db;
 
 
 // Assign new mission 
