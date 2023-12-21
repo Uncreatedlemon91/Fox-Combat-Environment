@@ -34,17 +34,12 @@ _pltExists = "exists" call _pltDb;
 
 if !(_pltExists) then {
 	// Initiate generals for b and o sides 
-	_amountOfPlatoons = round (random [300, 500, 600]);
 	// _amountOfPlatoons = 3;
-	for "_i" from 1 to _amountOfPlatoons do {
+	for "_i" from 1 to 200 do {
 		["O", "Ospawn"] remoteExec ["fce_fnc_createPlt", 2];
-		
-		sleep 0.5;
 	};
-	_amountOfPlatoons = round (random [50, 100, 150]);
-	for "_i" from 1 to _amountOfPlatoons do {
+	for "_i" from 1 to 50 do {
 		["B", "Bspawn"] remoteExec ["fce_fnc_createPlt", 2];
-		sleep 0.5;
 	};
 } else {
 	["BLUFOR", "B"] remoteExec ["fce_fnc_loadPlt", 2];
